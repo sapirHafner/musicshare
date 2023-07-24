@@ -1,12 +1,12 @@
-function NavigationBar(){
-    return(
+import NavigationButton from "./NavigationButton";
+
+function NavigationBar({ navigationItems }){
+    const NavigationButtons = navigationItems.map( navigationItem =>
+        <NavigationButton title = { navigationItem.title } onClick = { navigationItem.onClick } />
+    )
+    return (
         <nav>
-            <ul>
-                <li>Home</li>
-                <li>My profile</li>
-                <li>My Friends</li>
-                <li>My songs</li>
-            </ul>
+            { NavigationButtons }
         </nav>
     )
 }

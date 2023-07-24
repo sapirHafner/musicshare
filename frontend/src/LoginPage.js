@@ -1,6 +1,6 @@
 import LoginForm from './LoginForm';
 
-function LoginPage({OnLogin}){    
+function LoginPage({OnLogin}){
     function handleSubmit(event){
         event.preventDefault()
         const userName = event.target.username.value
@@ -16,7 +16,7 @@ function LoginPage({OnLogin}){
         <div>
             <h1>Login Page</h1>
             <LoginForm OnSubmit={handleSubmit}  />
-        </div>        
+        </div>
     );
 }
 
