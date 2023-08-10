@@ -1,24 +1,27 @@
 const mongoose = require("mongoose");
 
-const SongSchema = new mongoose.Schema({
-  Name: {
+const ProfileScema = new mongoose.Schema({
+  UserId: {
     type: String,
     required: true,
   },
-  Album: {
+
+  FirstName: {
     type: String,
     required: true,
   },
-  Artist: {
+
+  LastName: {
     type: String,
     required: true,
   },
-  Length: {
-    type: Number,
+
+  Email: {
+    type: String,
     required: true,
   },
 });
 
-const Song = mongoose.model("Song", SongSchema);
+const Profile = mongoose.model("Profile", ProfileScema);
 
-module.exports = Song;
+module.exports = Profile;

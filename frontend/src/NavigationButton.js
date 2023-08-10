@@ -1,12 +1,11 @@
 import React from 'react'
 
-const NavigationButton = ({ title, onClick }) => {
+const NavigationButton = ({ title, onClick, isSelected }) => {
   return (
-    <div onClick = { onClick }>
-      { title }
-    </div>
-  )
-}
+      <div key = { title } onClick = { onClick }>
+        {isSelected ? `### ${title} ###` : title}
+      </div>
+  );
+};
 
-export default NavigationButton
-
+export default NavigationButton;

@@ -7,12 +7,12 @@ const SongsDisplay = ({songItems}) => {
       <h2>album: {songItem.album}</h2>
       <h2>artist: {songItem.artist}</h2>
     </div>
-  )
+  );
   return (
     <div>
       {songsForDisplay}
     </div>
-  )
-}
+  );
+};
 
-export default SongsDisplay
+export default SongsDisplay;

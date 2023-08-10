@@ -1,4 +1,4 @@
-function LoginForm({OnSubmit}){
+const LoginForm = ({OnSubmit}) => {
     return (
         <form onSubmit={OnSubmit}>
             <label htmlFor='username'> User Name: </label>

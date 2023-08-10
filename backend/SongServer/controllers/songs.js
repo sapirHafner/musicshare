@@ -11,16 +11,7 @@ const getAllSongs = async (req, res) => {
 
 const addSong = async (req, res) => {
     try {
-        const name = req.body.name;
-        const album = req.body.album;
-        const artist = req.body.artist;
-        const length = req.body.length;
-        await Song.create({
-            name,
-            album,
-            artist,
-            length
-        });
+        await Song.create(req.body);
         res.sendStatus(200);
     } catch {
         res.sendStatus(404);
