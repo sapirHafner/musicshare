@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import SongsDisplay from './SongsDisplay';
 import FriendsDisplay from "./FriendsDisplay";
 import Profile from "./Profile";
-import axios from "axios";
+import { fetchSongs, fetchUserProfile, fetchFriends } from "./serverFunctions";
 import { useCookies } from "react-cookie";
-
 
 const Home = () => {
     const [navOptionSelected, setNavOptionSelected] = useState("Home");
@@ -18,11 +17,6 @@ const Home = () => {
     const [isFriendsLoaded, setIsFriendsLoaded] = useState(false);
 
     const [cookies] = useCookies(['userId']);
-
-    const baseServerUrl = "http://localhost:4000"
-    const songsServerUrl = `${baseServerUrl}/songs`;
-    const profilesServerUrl = `${baseServerUrl}/profiles`;
-    const friendServerUrl = `${baseServerUrl}/friends`;
 
     const homeNavItem = {
         title: "Home"
@@ -40,42 +34,25 @@ const Home = () => {
 
     const navigationItems = [homeNavItem, songsNavItem, profileNavItem, friendsNavItem];
 
-    const fetchSongs = async () => {
-        const response = await axios.get(songsServerUrl);
-        setSongs(response.data);
-        setIsSongsLoaded(true);
-    };
-
-    const fetchProfile = async () => {
-        const response = await axios.get(profilesServerUrl + "/" + cookies["userId"]);
-        setProfile(response.data);
-        setIsProfileLoaded(true);
-    };
-
-    const fetchFriends = async () => {
-        const response = await axios.get(friendServerUrl + "/" + cookies["userId"]);
-        const friendsIds = response.data;
-        const friendsProfiles = await Promise.all(friendsIds.map(async (friendId) => {
-            const response = await axios.get(profilesServerUrl + "/" + friendId);
-            return response.data;
-        }));
-        setFriends(friendsProfiles);
-        setIsFriendsLoaded(true);
-    };
-
     useEffect(() => {
         if (navOptionSelected === "Songs") {
             if (!isSongsLoaded) {
-                fetchSongs();
+                const songs = fetchSongs();
+                setSongs(songs);
+                setIsSongsLoaded(true);
             }
         } else if (navOptionSelected === "Friends") {
             if (!isFriendsLoaded) {
-                fetchFriends();
+                const friendsProfiles = fetchFriends(cookies['userId']);
+                setFriends(friendsProfiles);
+                setIsFriendsLoaded(true);
             }
         }
 
         if (!isProfileLoaded){
-            fetchProfile();
+            const profile = fetchUserProfile(cookies['userId']);
+            setProfile(profile);
+            setIsProfileLoaded(true);
         }
     }, [navOptionSelected]);
 
