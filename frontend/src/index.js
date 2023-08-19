@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
 import App from './App';
 import { CookiesProvider, useCookies } from 'react-cookie';
 import {
@@ -11,26 +10,21 @@ import {
 import CreateUser from './CreateUser';
 
 const router = createBrowserRouter([
-{
-  path:"/", 
-  element:<React.StrictMode>
-  <CookiesProvider>
-    <App />
-  </CookiesProvider>
-</React.StrictMode>,
-children: [
   {
-    path:"createuser",
-    element:<CreateUser/>
+    path:"/",
+    element:
+      <React.StrictMode>
+        <CookiesProvider>
+          <App />
+       </CookiesProvider>
+      </React.StrictMode>,
+  },
+  {
+    path: "createuser",
+    element:  <CreateUser />
   }
-]
-}
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<RouterProvider router = {
-  router
-}/>
-  
-);
+root.render(<RouterProvider router = {router}/>);
 

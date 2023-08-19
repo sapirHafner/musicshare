@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const App = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['userId']);
-    const [isLoggedIn, setIsLoggedIn] = useState(cookies["userId"] != undefined);
+    const [isLoggedIn, setIsLoggedIn] = useState(cookies["userId"] !== undefined);
 
     const fetchUserId = async (username, password) => {
         const response = await axios.get("http://localhost:4000/users", {

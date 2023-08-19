@@ -18,7 +18,7 @@ app.use(userRoutes);
 app.use(friendsRoutes)
 
 
-const MONGODB_URI = "mongodb+srv://ilaymor:SFj2ZgNpcJmTbSWW@cluster0.c1wocq5.mongodb.net/?retryWrites=true&w=majority";
+const MONGODB_URI = "mongodb+srv://ilaymor:bJMYrepflmn0fDmC@cluster0.c1wocq5.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
