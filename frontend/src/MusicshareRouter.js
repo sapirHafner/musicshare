@@ -7,18 +7,9 @@ import {
 } from "react-router-dom";
 import CreateUser from './CreateUser';
 import { addUser, addProfile ,addNewFriendsList } from './serverFunctions';
+import Home from './Home';
   
 const MusicshareRouter = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(['userId']);
-    const onSignUp = async (firstName, lastName, email, username, password) => {
-      try {
-        const userId = await addUser(username, password);
-        await addProfile(userId, firstName, lastName, email);
-        await addNewFriendsList(userId);
-        //setCookie("userId", userId, { path: "/"});
-      } catch {}
-    }
-
     const router = createBrowserRouter([
       {
         path:"/",
@@ -32,7 +23,11 @@ const MusicshareRouter = () => {
 
       {
         path: "createuser",
-        element:  <CreateUser OnSignUp={onSignUp} />
+        element: <CreateUser />
+      },
+      {
+        path: "home",
+        element: <Home />
       }
     ])
 

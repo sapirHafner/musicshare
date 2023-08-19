@@ -5,6 +5,8 @@ import FriendsDisplay from "./FriendsDisplay";
 import Profile from "./Profile";
 import { fetchSongs, fetchUserProfile, fetchFriends } from "./serverFunctions";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
 
 const Home = () => {
     const [navOptionSelected, setNavOptionSelected] = useState("Home");
@@ -16,7 +18,12 @@ const Home = () => {
     const [isProfileLoaded, setIsProfileLoaded] = useState(false);
     const [isFriendsLoaded, setIsFriendsLoaded] = useState(false);
 
-    const [cookies] = useCookies(['userId']);
+    const [cookies, setCookie, removeCookie] = useCookies(['userId']);
+    const navigate  = useNavigate()
+    const logOut = () => {
+        removeCookie('userId')
+        navigate("/")
+    }
 
     const homeNavItem = {
         title: "Home"
@@ -81,6 +88,8 @@ const Home = () => {
             {
                 selectedItem
             }
+
+            <div onClick={logOut}>log out</div>          
         </div>
     );
 };
