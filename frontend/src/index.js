@@ -12,11 +12,24 @@ import axios from "axios";
 
 const baseServerUrl = "http://localhost:4000"
 const userServerUrl = `${baseServerUrl}/users`
+const profileServerUrl = `${baseServerUrl}/profiles`
+const friendsServerUrl = `${baseServerUrl}/friends`
 
-const onSignUp = async(firstName, lastName, email, Username, Password) => {
+const onSignUp = async(FirstName, LastName, Email, Username, Password) => {
   try {
-    const response = await axios.post(userServerUrl, {Username: Username, Password:Password})
-  } catch (error) {
+    const addUserResponse = await axios.post(userServerUrl, {Username: Username, Password:Password})
+    const userId = addUserResponse.data
+    try{
+      const addProfileResponse = await axios.post(profileServerUrl, {UserId: userId, FirstName: FirstName, LastName: LastName, Email: Email})
+      try{
+        const addNewFriendsListResponse = await axios.post(friendsServerUrl + "/" + userId )
+      }
+      catch{}
+    } 
+    catch{}
+  }
+
+  catch (error) {
     if (error.response.status === 400){
       alert("user name already exists")
     }
