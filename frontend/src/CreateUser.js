@@ -2,7 +2,7 @@ import React from 'react'
 import SignUpForm from './SignUpForm'
 
 const CreateUser = ({OnSignUp}) => {
-    
+  
     const handleSignUp= (event) => {
         event.preventDefault()
         const firstName = event.target.firstname.value

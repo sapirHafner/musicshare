@@ -14,10 +14,13 @@ const baseServerUrl = "http://localhost:4000"
 const userServerUrl = `${baseServerUrl}/users`
 
 const onSignUp = async(firstName, lastName, email, Username, Password) => {
-const response = await axios.post(userServerUrl, {Username: Username, Password:Password})
-if (response.status === 400){
-  alert("user name already exists")
-}
+  try {
+    const response = await axios.post(userServerUrl, {Username: Username, Password:Password})
+  } catch (error) {
+    if (error.response.status === 400){
+      alert("user name already exists")
+    }
+  }
 }
 
 const router = createBrowserRouter([
