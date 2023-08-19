@@ -15,25 +15,40 @@ const userServerUrl = `${baseServerUrl}/users`
 const profileServerUrl = `${baseServerUrl}/profiles`
 const friendsServerUrl = `${baseServerUrl}/friends`
 
-const onSignUp = async(FirstName, LastName, Email, Username, Password) => {
-  try {
-    const addUserResponse = await axios.post(userServerUrl, {Username: Username, Password:Password})
-    const userId = addUserResponse.data
-    try{
-      const addProfileResponse = await axios.post(profileServerUrl, {UserId: userId, FirstName: FirstName, LastName: LastName, Email: Email})
-      try{
-        const addNewFriendsListResponse = await axios.post(friendsServerUrl + "/" + userId )
-      }
-      catch{}
-    } 
-    catch{}
-  }
+const onSignUp = async (firstName, lastName, email, username, password) => {
+    try {
+      const userId = await addUser(username, password);
+      await addProfile(userId, firstName, lastName, email);
+      await addNewFriendsList(userId);
+    } catch {}
+ }
 
-  catch (error) {
+const addUser = async (username, password) => {
+  try {
+    const response = await axios.post(userServerUrl, {
+      Username: username,
+      Password: password
+    })
+    return response.data;
+  } catch (error) {
     if (error.response.status === 400){
       alert("user name already exists")
     }
+    throw (error);
   }
+}
+
+const addProfile = async (userId, firstName, lastName, email) => {
+  await axios.post(profileServerUrl, {
+    UserId: userId,
+    FirstName: firstName,
+    LastName: lastName,
+    Email: email
+  })
+}
+
+const addNewFriendsList = async (userId) => {
+  await axios.post(`${friendsServerUrl}/${userId}`);
 }
 
 const router = createBrowserRouter([
