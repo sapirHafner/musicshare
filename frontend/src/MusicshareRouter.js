@@ -7,8 +7,7 @@ import {
 } from "react-router-dom";
 import CreateUser from './CreateUser';
 import { addUser, addProfile ,addNewFriendsList } from './serverFunctions';
-
-
+  
 const MusicshareRouter = () => {
     const onSignUp = async (firstName, lastName, email, username, password) => {
       try {

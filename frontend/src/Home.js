@@ -33,27 +33,30 @@ const Home = () => {
     };
 
     const navigationItems = [homeNavItem, songsNavItem, profileNavItem, friendsNavItem];
-
-    useEffect(() => {
+    const fetchData = async () => {
         if (navOptionSelected === "Songs") {
             if (!isSongsLoaded) {
-                const songs = fetchSongs();
+                const songs = await fetchSongs();
                 setSongs(songs);
                 setIsSongsLoaded(true);
             }
         } else if (navOptionSelected === "Friends") {
             if (!isFriendsLoaded) {
-                const friendsProfiles = fetchFriends(cookies['userId']);
+                const friendsProfiles = await fetchFriends(cookies['userId']);
                 setFriends(friendsProfiles);
                 setIsFriendsLoaded(true);
             }
         }
 
         if (!isProfileLoaded){
-            const profile = fetchUserProfile(cookies['userId']);
+            const profile = await fetchUserProfile(cookies['userId']);
             setProfile(profile);
             setIsProfileLoaded(true);
         }
+    }
+
+    useEffect(() => {
+        fetchData();
     }, [navOptionSelected]);
 
     const onChange = (title) => {
@@ -74,7 +77,6 @@ const Home = () => {
     return (
         <div>
             <h1>Welcome to MusicShare!</h1>
-            <h3> {profile.FirstName} {profile.LastName}</h3>
             <NavigationBar navigationItems = { navigationItems } defualtItem = "Home" onChange = { onChange } />
             {
                 selectedItem

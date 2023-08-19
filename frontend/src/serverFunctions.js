@@ -51,8 +51,8 @@ const fetchSongs = async () => {
 };
 
 const fetchUserProfile = async (userId) => {
-  const profile = await axios.get(profilesServerUrl + "/" + userId);
-  return profile;
+  const response = await axios.get(profilesServerUrl + "/" + userId);
+  return response.data;
 };
 
 const fetchFriends = async (userId) => {

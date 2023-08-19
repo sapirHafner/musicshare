@@ -27,8 +27,6 @@ const addFriendshipBetweenUsers = async (req, res) => {
         const secondUserId = req.body.SecondUserId;
         const firstUserFriends = await Friends.findOne({UserId: firstUserId});
         const secondUserFriends = await Friends.findOne({UserId: secondUserId});
-        console.log(firstUserFriends)
-        console.log(secondUserFriends)
         if (!firstUserFriends || !secondUserFriends) {
             res.sendStatus(404);
         } else {
