@@ -8,9 +8,16 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import CreateUser from './CreateUser';
+import axios from "axios";
 
-const onSignUp = (firstName, lastName, email, userName, password) => {
-  console.log(email)
+const baseServerUrl = "http://localhost:4000"
+const userServerUrl = `${baseServerUrl}/users`
+
+const onSignUp = async(firstName, lastName, email, Username, Password) => {
+const response = await axios.post(userServerUrl, {Username: Username, Password:Password})
+if (response.status === 400){
+  alert("user name already exists")
+}
 }
 
 const router = createBrowserRouter([
