@@ -9,6 +9,10 @@ import {
 } from "react-router-dom";
 import CreateUser from './CreateUser';
 
+const onSignUp = (firstName, lastName, email, userName, password) => {
+  console.log(email)
+}
+
 const router = createBrowserRouter([
   {
     path:"/",
@@ -21,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path: "createuser",
-    element:  <CreateUser />
+    element:  <CreateUser OnSignUp={onSignUp} />
   }
 ])
 

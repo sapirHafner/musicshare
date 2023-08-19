@@ -1,4 +1,5 @@
 import LoginForm from './LoginForm';
+import { Link } from 'react-router-dom';
 
 const LoginPage = ({OnLogin}) => {
     const handleSubmit= (event) => {
@@ -13,7 +14,7 @@ const LoginPage = ({OnLogin}) => {
         <div>
             <h1>Login Page</h1>
             <LoginForm OnSubmit={handleSubmit}  />
-            <div>Create a new user</div>
+            <Link to ="createuser"><div>Create a new user</div></Link>
         </div>
     );
 }
