@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import CreateUser from './CreateUser';
 import axios from "axios";
+const [cookies, setCookie, removeCookie] = useCookies(['userId']);
 
 const baseServerUrl = "http://localhost:4000"
 const userServerUrl = `${baseServerUrl}/users`
