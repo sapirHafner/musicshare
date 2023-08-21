@@ -6,21 +6,19 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import CreateUser from './CreateUser';
-import { addUser, addProfile ,addNewFriendsList } from './serverFunctions';
 import Home from './Home';
-  
+import LoginPage from './LoginPage';
+import Songs from './Songs';
+import Profile from './Profile';
+import Friends from './Friends';
+
 const MusicshareRouter = () => {
     const router = createBrowserRouter([
       {
         path:"/",
         element:
-          <React.StrictMode>
-            <CookiesProvider>
-              <App />
-           </CookiesProvider>
-          </React.StrictMode>,
+          <App />
       },
-
       {
         path: "createuser",
         element: <CreateUser />
@@ -28,6 +26,22 @@ const MusicshareRouter = () => {
       {
         path: "home",
         element: <Home />
+      },
+      {
+        path: "login",
+        element: <LoginPage />
+      },
+      {
+        path: "songs",
+        element: <Songs />
+      },
+      {
+        path: "profile",
+        element: <Profile />
+      },
+      {
+        path: "friends",
+        element: <Friends />
       }
     ])
 

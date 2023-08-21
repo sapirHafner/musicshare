@@ -1,20 +1,35 @@
 import LoginForm from './LoginForm';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { getUserId } from './serverFunctions';
+import { useCookies } from 'react-cookie';
 
-const LoginPage = ({OnLogin}) => {
-    const handleSubmit= (event) => {
+const LoginPage = () => {
+    const [cookies, setCookie] = useCookies(['userId']);
+    const navigate = useNavigate();
+
+    const handleSubmit = async (username, password, rememberMe) => {
+        try {
+            const userId = await getUserId(username, password);
+            setCookie("userId", userId, { path: "/"});
+            navigate("/home");
+        } catch(error) {}
+    }
+
+    const onSubmit = (event) => {
         event.preventDefault()
-        const userName = event.target.username.value
+        const username = event.target.username.value
         const password = event.target.password.value
         const rememberMe = event.target.rememberMe.checked
-        OnLogin(userName, password, rememberMe)
+        handleSubmit(username, password, rememberMe);
     }
 
     return (
         <div>
             <h1>Login Page</h1>
-            <LoginForm OnSubmit={handleSubmit}  />
-            <Link to ="createuser"><div>Create a new user</div></Link>
+            <LoginForm OnSubmit={onSubmit}  />
+            <Link to ="/createuser">
+                <div>Create a new user</div>
+            </Link>
         </div>
     );
 }

@@ -1,20 +1,20 @@
 import NavigationButton from "./NavigationButton";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const NavigationBar = ({ navigationItems, defualtItem, onChange }) => {
-    const [ optionSelected, setOptionSelected ] = useState(defualtItem);
+const NavigationBar = ({ navigationItems, selectedItem }) => {
+    const navigate = useNavigate();
 
-    const onClick = (title) => {
-        setOptionSelected(title);
-        onChange(title);
+    const onClick = (route) => {
+        navigate(route);
     };
 
     const NavigationButtons = navigationItems.map( navigationItem  =>
         <NavigationButton
             key = { navigationItem.title }
             title = { navigationItem.title }
-            onClick = { () => { onClick(navigationItem.title)}}
-            isSelected = { navigationItem.title === optionSelected }
+            onClick = { () => { onClick(navigationItem.route)}}
+            isSelected = { navigationItem.title === selectedItem }
         />
     );
     return (
