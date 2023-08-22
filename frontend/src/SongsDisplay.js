@@ -1,12 +1,16 @@
 import React from 'react'
+import Song from './Song';
 
-const SongsDisplay = ({songItems}) => {
-  const songsForDisplay = songItems.map( songItem =>
-    <div>
-      <h1>name: {songItem.name} </h1>
-      <h2>album: {songItem.album}</h2>
-      <h2>artist: {songItem.artist}</h2>
-    </div>
+const SongsDisplay = ({ songItems, onLiked, onDisliked }) => {
+  const songsForDisplay = songItems.map(songItem =>
+    <Song id = {songItem["_id"]}
+          name={songItem.name}
+          artist = {songItem.artist}
+          album = {songItem.album}
+          liked = {songItem.liked}
+          onLiked = {onLiked}
+          onDisliked = {onDisliked}
+     />
   );
   return (
     <div>

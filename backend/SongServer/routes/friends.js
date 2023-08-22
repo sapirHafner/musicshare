@@ -6,4 +6,4 @@ router.get('/friends/:userId', getFriendsByUserId);
 router.post('/friends/:userId', addNewFriendsListForUser);
 router.post('/friends', addFriendshipBetweenUsers);
 
-module.exports = router; 
+module.exports = router;

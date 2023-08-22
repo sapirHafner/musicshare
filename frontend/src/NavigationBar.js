@@ -1,5 +1,4 @@
 import NavigationButton from "./NavigationButton";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const NavigationBar = ({ navigationItems, selectedItem }) => {

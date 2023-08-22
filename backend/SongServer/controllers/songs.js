@@ -9,6 +9,19 @@ const getAllSongs = async (req, res) => {
     }
 }
 
+const getSongsFromIds = async (req, res) => {
+    try {
+        const songIds = req.params.songIds.split(',');
+        const songs = await Promise.all(songIds.map(async (songId) => {
+            const song = await Song.findOne({"_id": songId})
+            return song;
+        }));
+        res.status(200).send(songs);
+    } catch {
+        res.sendStatus(400);
+    }
+}
+
 const addSong = async (req, res) => {
     try {
         await Song.create(req.body);
@@ -28,4 +41,4 @@ const deleteSong = async (req, res) => {
     }
 }
 
-module.exports = { getAllSongs, addSong, deleteSong };
+module.exports = { getAllSongs, getSongsFromIds, addSong, deleteSong };

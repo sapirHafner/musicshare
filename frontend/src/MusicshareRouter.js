@@ -1,6 +1,5 @@
 import React from 'react';
 import App from './App';
-import { CookiesProvider, useCookies } from 'react-cookie';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,6 +10,7 @@ import LoginPage from './LoginPage';
 import Songs from './Songs';
 import Profile from './Profile';
 import Friends from './Friends';
+import Library from './Library';
 
 const MusicshareRouter = () => {
     const router = createBrowserRouter([
@@ -42,6 +42,10 @@ const MusicshareRouter = () => {
       {
         path: "friends",
         element: <Friends />
+      },
+      {
+        path: `library`,
+        element: <Library />
       }
     ])
 

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MusicshareNavigationBar = ({selectedItem}) => {
     const [cookies, setCookie, removeCookie] = useCookies(['userId']);
+    const userId = cookies['userId']
     const navigate = useNavigate()
 
     const homeNavItem = {
@@ -14,6 +15,10 @@ const MusicshareNavigationBar = ({selectedItem}) => {
     const songsNavItem = {
         title: "Songs",
         route: "/songs"
+    };
+    const LibraryNavItem = {
+        title: "Library",
+        route: `/library`
     };
     const profileNavItem = {
         title: "Profile",
@@ -30,11 +35,23 @@ const MusicshareNavigationBar = ({selectedItem}) => {
         navigate("/")
     }
 
-    const navigationItems = [homeNavItem, songsNavItem, profileNavItem, friendsNavItem];
+    const navigationItems = [
+        homeNavItem,
+        songsNavItem,
+        LibraryNavItem,
+        profileNavItem,
+        friendsNavItem,
+        ];
     return (
         <div>
            <NavigationBar navigationItems = { navigationItems } selectedItem = { selectedItem } />
             <div onClick={logOut}>log out</div>
+            ________________________________________________________________________
+            <br />
+            <br />
+            <br />
+            <br />
+
         </div>
     )
 }

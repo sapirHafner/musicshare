@@ -20,7 +20,7 @@ const Profile = () => {
 
   return (
     <div>
-        <MusicshareNavigationBar selectedItem = "Profile"  />
+        <MusicshareNavigationBar selectedItem = "Profile" />
         This is your profile!!! <br />
         your name is {profile.FirstName} <br />
         your last name is {profile.LastName} <br />

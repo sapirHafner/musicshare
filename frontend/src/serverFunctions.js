@@ -5,6 +5,63 @@ const usersServerUrl = `${baseServerUrl}/users`
 const profilesServerUrl = `${baseServerUrl}/profiles`
 const friendsServerUrl = `${baseServerUrl}/friends`
 const songsServerUrl = `${baseServerUrl}/songs`
+const likesServerUrl = `${baseServerUrl}/likes`
+
+const addUserLike = async (userId, objectId) => {
+  try{
+     await axios.put(likesServerUrl, {
+      add: true,
+      userId : userId,
+      objectId : objectId
+    })
+  } catch(error){
+    if (error.response.status === 404) {
+        alert("user already likes post!")
+    }
+    throw(error);
+  }
+}
+
+const fetchDiscoveryProfiles = async (userId) => {
+  // the profiles we recommend that you will be friends with
+  return [{
+    firstName: "bob",
+    lastName: "marley"
+  },
+{
+  firstName: "sapir",
+  lastName: "hafner"
+}]
+}
+
+const removeUserLike = async (userId, objectId) => {
+  try{
+     await axios.put(likesServerUrl, {
+      add: false,
+      userId : userId,
+      objectId : objectId
+    })
+
+  } catch(error){
+    if (error.response.status === 404) {
+        alert("user doesn't like post!")
+    }
+    throw(error);
+  }
+}
+
+const fetchUserLikes = async (userId) => {
+  try {
+    const response = await axios.get(`${likesServerUrl}/user/${userId}`)
+    return response.data;
+  } catch (error) {}
+}
+
+const fetchSongs = async (songIds) => {
+  const url = songIds !== undefined ? `${songsServerUrl}/${songIds.join()}` : songsServerUrl;
+  const response = await axios.get(url);
+  return response.data
+}
 
 const addUser = async (username, password) => {
     try {
@@ -13,7 +70,8 @@ const addUser = async (username, password) => {
         Password: password
       })
       return response.data;
-    } catch (error) {
+    }
+    catch (error) {
       if (error.response.status === 400){
         alert("user name already exists")
       }
@@ -45,11 +103,6 @@ const addUser = async (username, password) => {
     return response.data;
 };
 
-const fetchSongs = async () => {
-  const response = await axios.get(songsServerUrl);
-  return response.data;
-};
-
 const fetchUserProfile = async (userId) => {
   const response = await axios.get(profilesServerUrl + "/" + userId);
   return response.data;
@@ -66,11 +119,15 @@ const fetchFriends = async (userId) => {
 };
 
 export {
+  addUserLike,
+  removeUserLike,
   addUser,
   addProfile,
   addNewFriendsList,
   getUserId,
   fetchSongs,
   fetchUserProfile,
-  fetchFriends
+  fetchFriends,
+  fetchUserLikes,
+  fetchDiscoveryProfiles
 };
