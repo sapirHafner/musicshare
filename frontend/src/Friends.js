@@ -18,8 +18,8 @@ const Friends = () => {
         const friendsProfiles = await fetchFriends(userId);
         setFriends(friendsProfiles);
         setIsFriendsLoaded(true);
-        const discoveryProfiles = await fetchDiscoveryProfiles(userId);
-        setDiscoveryProfiles(discoveryProfiles);
+        const discoveryProfilesIds = await fetchDiscoveryProfiles(userId);
+        setDiscoveryProfiles(discoveryProfilesIds);
         setIsDiscoveryProfilesLoaded(true);
     }
 

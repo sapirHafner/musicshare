@@ -6,6 +6,7 @@ const profilesServerUrl = `${baseServerUrl}/profiles`
 const friendsServerUrl = `${baseServerUrl}/friends`
 const songsServerUrl = `${baseServerUrl}/songs`
 const likesServerUrl = `${baseServerUrl}/likes`
+const discoveryServerUrl = `${baseServerUrl}/discovery`
 
 const addUserLike = async (userId, objectId) => {
   try{
@@ -24,14 +25,8 @@ const addUserLike = async (userId, objectId) => {
 
 const fetchDiscoveryProfiles = async (userId) => {
   // the profiles we recommend that you will be friends with
-  return [{
-    firstName: "bob",
-    lastName: "marley"
-  },
-{
-  firstName: "sapir",
-  lastName: "hafner"
-}]
+  const response = await axios.get(`${discoveryServerUrl}/friends/${userId}`)
+  return(response.data)
 }
 
 const removeUserLike = async (userId, objectId) => {
