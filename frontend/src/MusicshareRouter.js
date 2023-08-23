@@ -11,6 +11,7 @@ import Songs from './Songs';
 import Profile from './Profile';
 import Friends from './Friends';
 import Library from './Library';
+import NewPost from './NewPost';
 
 const MusicshareRouter = () => {
     const router = createBrowserRouter([
@@ -46,6 +47,10 @@ const MusicshareRouter = () => {
       {
         path: `library`,
         element: <Library />
+      },
+      {
+        path: `newpost`,
+        element: <NewPost />
       }
     ])
 

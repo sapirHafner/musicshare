@@ -6,6 +6,7 @@ const friendsRoutes = require('./friends');
 const userRoutes = require('./users');
 const likesRoutes = require('./likes');
 const discoveryRoutes = require('./discovery');
+const postRoutes = require('./post')
 
 const router = express.Router();
 router.use(songsRoutes);
@@ -14,5 +15,6 @@ router.use(friendsRoutes);
 router.use(userRoutes);
 router.use(likesRoutes);
 router.use(discoveryRoutes);
+router.use(postRoutes);
 
 module.exports = router;

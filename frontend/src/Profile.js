@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { fetchUserProfile } from './serverFunctions';
 import { useCookies } from 'react-cookie';
 import MusicshareNavigationBar from './MusicshareNavigationBar';
+import PostsDisplay from './PostsDisplay';
 
 const Profile = () => {
   const [cookies] = useCookies(['userId']);
@@ -25,6 +26,15 @@ const Profile = () => {
         your name is {profile.FirstName} <br />
         your last name is {profile.LastName} <br />
         your email is {profile.Email} <br />
+
+        <br />
+        <br />
+        <br />
+        <div>
+          <h4>your posts:</h4>
+          <PostsDisplay />
+
+        </div>
     </div>
   );
 };

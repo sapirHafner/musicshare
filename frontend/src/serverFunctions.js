@@ -7,6 +7,11 @@ const friendsServerUrl = `${baseServerUrl}/friends`
 const songsServerUrl = `${baseServerUrl}/songs`
 const likesServerUrl = `${baseServerUrl}/likes`
 const discoveryServerUrl = `${baseServerUrl}/discovery`
+const postServerUrl = `${baseServerUrl}/post`
+
+const createNewPost = async (post) => {
+    await axios.post(postServerUrl, post);
+}
 
 const addUserLike = async (userId, objectId) => {
   try{
@@ -129,5 +134,6 @@ export {
   fetchFriends,
   fetchUserLikes,
   fetchDiscoveryProfiles,
-  fetchProfileBoxInfo
+  fetchProfileBoxInfo,
+  createNewPost
 };

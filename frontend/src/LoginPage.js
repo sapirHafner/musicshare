@@ -7,7 +7,7 @@ const LoginPage = () => {
     const [cookies, setCookie] = useCookies(['userId']);
     const navigate = useNavigate();
 
-    const handleSubmit = async (username, password, rememberMe) => {
+    const onLogin = async (username, password, rememberMe) => {
         try {
             const userId = await getUserId(username, password);
             setCookie("userId", userId, { path: "/"});
@@ -15,18 +15,10 @@ const LoginPage = () => {
         } catch(error) {}
     }
 
-    const onSubmit = (event) => {
-        event.preventDefault()
-        const username = event.target.username.value
-        const password = event.target.password.value
-        const rememberMe = event.target.rememberMe.checked
-        handleSubmit(username, password, rememberMe);
-    }
-
     return (
         <div>
             <h1>Login Page</h1>
-            <LoginForm OnSubmit={onSubmit}  />
+            <LoginForm OnLogin={onLogin}  />
             <Link to ="/createuser">
                 <div>Create a new user</div>
             </Link>
