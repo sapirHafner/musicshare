@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProfileBox = ({firstName, lastName}) => {
+const ProfileBox = ({userId, firstName, lastName}) => {
   return (
     <div>
-        {firstName} {lastName}
+        {firstName} {lastName} : {userId}
         (+)
     </div>
   )

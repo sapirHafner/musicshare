@@ -24,9 +24,13 @@ const addUserLike = async (userId, objectId) => {
 }
 
 const fetchDiscoveryProfiles = async (userId) => {
-  // the profiles we recommend that you will be friends with
-  const response = await axios.get(`${discoveryServerUrl}/friends/${userId}`)
-  return(response.data)
+    const response = await axios.get(`${discoveryServerUrl}/friends/${userId}`)
+    return response.data
+}
+
+const fetchProfileBoxInfo = async (userIds) => {
+  const response = await axios.get(`${profilesServerUrl}/boxes/${userIds.join()}`)
+  return response.data;
 }
 
 const removeUserLike = async (userId, objectId) => {
@@ -124,5 +128,6 @@ export {
   fetchUserProfile,
   fetchFriends,
   fetchUserLikes,
-  fetchDiscoveryProfiles
+  fetchDiscoveryProfiles,
+  fetchProfileBoxInfo
 };

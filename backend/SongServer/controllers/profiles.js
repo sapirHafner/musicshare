@@ -27,4 +27,27 @@ const addProfile = async (req, res) => {
     }
 }
 
-module.exports = { getProfiles, getProfileByUserId, addProfile };
+const getUsersProfileBoxInfo = async (req, res) => {
+    try {
+        const userIds = req.params.userIds.split(',');
+        const userBoxesInfo = await Promise.all(userIds.map(async userId => {
+            const userProfile = await Profile.findOne({"UserId": userId});
+            return {
+                    UserId: userProfile.UserId,
+                    FirstName: userProfile.FirstName,
+                    LastName: userProfile.LastName
+                }
+            }));
+        return res.status(200).send(userBoxesInfo);
+    } catch (error){
+        console.log(error)
+        res.sendStatus(404);
+    }
+}
+
+module.exports = {
+    getProfiles,
+    getProfileByUserId,
+    addProfile,
+    getUsersProfileBoxInfo
+};

@@ -3,8 +3,9 @@ import ProfileBox from './ProfileBox'
 const FriendsDiscovery = ({profiles}) => {
     const profileBoxes = profiles.map(profile =>
         <ProfileBox
-            firstName={profile.firstName}
-            lastName={profile.lastName}
+            userId={profile.UserId}
+            firstName={profile.FirstName}
+            lastName={profile.LastName}
         />
     )
   return (

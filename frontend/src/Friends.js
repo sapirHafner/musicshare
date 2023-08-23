@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import { fetchFriends, fetchDiscoveryProfiles } from './serverFunctions';
+import { fetchFriends, fetchDiscoveryProfiles, fetchProfileBoxInfo } from './serverFunctions';
 import MusicshareNavigationBar from './MusicshareNavigationBar';
 import FriendsDisplay from "./FriendsDisplay"
 import FriendsDiscovery from './FriendsDiscovery';
@@ -19,7 +19,8 @@ const Friends = () => {
         setFriends(friendsProfiles);
         setIsFriendsLoaded(true);
         const discoveryProfilesIds = await fetchDiscoveryProfiles(userId);
-        setDiscoveryProfiles(discoveryProfilesIds);
+        const discoveryProfiles = await fetchProfileBoxInfo(discoveryProfilesIds);
+        setDiscoveryProfiles(discoveryProfiles);
         setIsDiscoveryProfilesLoaded(true);
     }
 
