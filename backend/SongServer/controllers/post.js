@@ -25,8 +25,8 @@ const createNewPost = async (req, res) => {
     try {
         const post = req.body;
         post.Time = new Date();
-        await Post.create(post);
-        res.sendStatus(200);
+        const createdPost = await Post.create(post);
+        res.status(200).send(createdPost._id);
     } catch (error) {
         res.sendStatus(400);
     }

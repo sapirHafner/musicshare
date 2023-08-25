@@ -7,10 +7,8 @@ const getAllSongs = async (req, res) => {
             songs = await Song.find();
         } else {
             const songIds = req.query.id.split(',');
-            songs = await Promise.all(songIds.map(async (songId) => {
-                const song = await Song.findOne({"_id": songId})
-                return song;
-            }));
+            songs = await Promise.all(songIds.map(async songId =>
+                await Song.findOne({"_id": songId})));
         }
         res.status(200).send(songs);
     } catch {
@@ -31,8 +29,8 @@ const getSongFromId = async (req, res) => {
 
 const addSong = async (req, res) => {
     try {
-        await Song.create(req.body);
-        res.sendStatus(200);
+        const createdSong = await Song.create(req.body);
+        res.status(200).send(createdSong._id);
     } catch {
         res.sendStatus(400);
     }

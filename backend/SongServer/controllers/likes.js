@@ -63,11 +63,11 @@ const getAllLikesOfUserByUserId = async (req, res) => {
 
 const addNewLikesListForObject = async (req, res) => {
     try {
-        await Likes.create({
+        const createdLikes = await Likes.create({
             ObjectId: req.params.objectId,
             UsersIds: []
         });
-        res.sendStatus(200);
+        res.status(200).send(createdLikes._id);
     } catch {
         res.sendStatus(404);
     }

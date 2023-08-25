@@ -4,6 +4,7 @@ import { fetchUserProfile, fetchUserPosts, fetchMusicalObjects } from './serverF
 import { useCookies } from 'react-cookie';
 import MusicshareNavigationBar from './MusicshareNavigationBar';
 import PostsDisplay from './PostsDisplay';
+import LoadingScreen from './LoadingScreen';
 
 const Profile = () => {
   const [cookies] = useCookies(['userId']);
@@ -45,7 +46,7 @@ const Profile = () => {
           </div>
         </div>
         :
-          <p> loading... </p>
+          <LoadingScreen />
         }
     </div>
   );

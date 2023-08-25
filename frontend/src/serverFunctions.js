@@ -8,6 +8,7 @@ const songsServerUrl = `${baseServerUrl}/songs`
 const likesServerUrl = `${baseServerUrl}/likes`
 const discoveryServerUrl = `${baseServerUrl}/discovery`
 const postServerUrl = `${baseServerUrl}/post`
+const artistsServerUrl = `${baseServerUrl}/artists`
 
 const createNewPost = async (post) =>
     await axios.post(postServerUrl, post);
@@ -99,6 +100,13 @@ const fetchSongs = async (songIds) => {
   return response.data
 }
 
+const fetchArtists = async (artistsIds) => {
+  const url = artistsIds !== undefined ? `${artistsServerUrl}?id=${fetchArtists.join()}` : artistsServerUrl;
+  const response = await axios.get(url);
+  return response.data
+}
+
+
 const fetchSong = async (songId) =>
   (await axios.get(`${songsServerUrl}/${songId}`)).data;
 
@@ -172,5 +180,6 @@ export {
   fetchUsersProfileBoxes,
   createNewPost,
   fetchMusicalObjects,
-  fetchUserPosts
+  fetchUserPosts,
+  fetchArtists
 };

@@ -20,8 +20,8 @@ const getProfileByUserId = async (req, res) => {
 
 const addProfile = async (req, res) => {
     try {
-        await Profile.create(req.body);
-        res.sendStatus(200);
+        const createdProfile = await Profile.create(req.body);
+        res.status(200).send(createdProfile._id);
     } catch {
         res.sendStatus(400);
     }

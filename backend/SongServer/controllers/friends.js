@@ -11,11 +11,11 @@ const getFriendsByUserId = async (req, res) => {
 
 const addNewFriendsListForUser = async (req, res) => {
     try {
-        await Friends.create({
+        const createdFriends = await Friends.create({
             UserId: req.params.userId,
             Friends: []
         });
-        res.sendStatus(200);
+        res.status(200).send(createdFriends._id);
     } catch {
         res.sendStatus(404);
     }
