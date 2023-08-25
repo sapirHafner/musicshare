@@ -7,9 +7,10 @@ import { useCookies } from 'react-cookie';
 
 const Library = () => {
   const [likes, setLikes ] = useState([]);
-  const [isLikesLoaded, setIsLikeLoaded ] = useState(false);
   const [cookies] = useCookies(['userId']);
-  const userId = cookies['userId'];
+  const [isLoaded, setIsLoaded ] = useState(false);
+
+  const { userId } = cookies;
 
   const fetchData = async () => {
       const userLikes = await fetchUserLikes(userId);
@@ -23,7 +24,7 @@ const Library = () => {
         likedSong.liked = true;
       });
       setLikes(likedSongs);
-      setIsLikeLoaded(true);
+      setIsLoaded(true);
   }
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const Library = () => {
   return (
     <div>
         <MusicshareNavigationBar selectedItem = "Library"/>
-        {isLikesLoaded ?
+        {isLoaded ?
           likes.length !== 0 ?
             <div>
               <h3>You like:</h3>
@@ -50,7 +51,7 @@ const Library = () => {
                             onDisliked={onDisliked}/>
           </div>
         : <div>
-            <p>you don't like any songs...</p>  
+            <p>you don't like any songs...</p>
           </div>
         : <p>loading...</p>
         }

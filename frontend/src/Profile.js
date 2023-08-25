@@ -9,18 +9,15 @@ const Profile = () => {
   const [cookies] = useCookies(['userId']);
   const userId = cookies['userId'];
   const [profile, setProfile] = useState({});
-  const [isProfileLoaded, setIsProfileLoaded] = useState(false);
   const [userPosts, setUserPosts] = useState([]);
-  const [isUserPostsLoaded, setIsUserPostsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
 
   const fetchData = async () => {
-    const profile = await fetchUserProfile(userId);
-    setProfile(profile);
-    setIsProfileLoaded(true);
-    const userPosts = await fetchUserPosts(userId)
-    setUserPosts(userPosts);
-    setIsUserPostsLoaded(true);
+    setProfile(await fetchUserProfile(userId));
+    setUserPosts(await fetchUserPosts(userId));
+
+    setIsLoaded(true);
 
   }
   useEffect(() => {
@@ -30,7 +27,7 @@ const Profile = () => {
   return (
     <div>
         <MusicshareNavigationBar selectedItem = "Profile" />
-        { isProfileLoaded && isUserPostsLoaded
+        { isLoaded
         ?
         <div>
           This is your profile!!! <br />
