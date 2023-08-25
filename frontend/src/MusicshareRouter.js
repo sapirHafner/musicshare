@@ -7,11 +7,11 @@ import {
 import CreateUser from './CreateUser';
 import Home from './Home';
 import LoginPage from './LoginPage';
-import Songs from './Songs';
 import Profile from './Profile';
 import Friends from './Friends';
 import Library from './Library';
 import NewPost from './NewPost';
+import Browse from './Browse';
 
 const MusicshareRouter = () => {
     const router = createBrowserRouter([
@@ -33,8 +33,8 @@ const MusicshareRouter = () => {
         element: <LoginPage />
       },
       {
-        path: "songs",
-        element: <Songs />
+        path: "browse",
+        element: <Browse />
       },
       {
         path: "profile",

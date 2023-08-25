@@ -4,7 +4,6 @@ import SongsDisplay from './SongsDisplay';
 import { fetchUserLikes, fetchSongs, addUserLike, removeUserLike } from './serverFunctions';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-import { Link } from 'react-router-dom';
 
 const Library = () => {
   const [likes, setLikes ] = useState([]);

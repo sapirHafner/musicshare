@@ -5,17 +5,18 @@ import MusicshareNavigationBar from "./MusicshareNavigationBar";
 
 const Home = () => {
     const [cookies] = useCookies(['userId']);
+    const { userId } = cookies;
     const navigate  = useNavigate()
 
     useEffect(() => {
-        if (cookies['userId'] === undefined) {
+        if (cookies === undefined) {
             navigate("/")
         }
     }, [])
 
     return (
         <div>
-            <MusicshareNavigationBar selectedItem = "Home"  />
+            <MusicshareNavigationBar selectedItem = "Home"/>
             <h1>Welcome to MusicShare!</h1>
             <h2> You are at home! </h2>
         </div>

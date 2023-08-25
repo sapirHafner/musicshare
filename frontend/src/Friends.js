@@ -5,22 +5,22 @@ import { fetchFriends, fetchDiscoveryProfiles} from './serverFunctions';
 import MusicshareNavigationBar from './MusicshareNavigationBar';
 import FriendsDisplay from "./FriendsDisplay"
 import FriendsDiscovery from './FriendsDiscovery';
+import LoadingScreen from './LoadingScreen';
 
 const Friends = () => {
     const [cookies] = useCookies(['userId']);
-    const userId = cookies['userId'];
-    const [friends, setFriends] = useState([]);
-    const [isFriendsLoaded, setIsFriendsLoaded] = useState(false);
+    const { userId } = cookies;
+    const [userFriends, setUserFriends] = useState([]);
     const [discoveryProfiles, setDiscoveryProfiles] = useState([]);
-    const [isDiscoveryProfilesLoaded, setIsDiscoveryProfilesLoaded] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const fetchData = async () => {
         const friendsProfiles = await fetchFriends(userId);
-        setFriends(friendsProfiles);
-        setIsFriendsLoaded(true);
+        setUserFriends(friendsProfiles);
         const discoveryProfiles = await fetchDiscoveryProfiles(userId);
         setDiscoveryProfiles(discoveryProfiles);
-        setIsDiscoveryProfilesLoaded(true);
+
+        setIsLoaded(true);
     }
 
     useEffect(() => {
@@ -31,10 +31,10 @@ const Friends = () => {
     <div>
       <MusicshareNavigationBar selectedItem={"Friends"}/>
       {
-        isFriendsLoaded && isDiscoveryProfilesLoaded ? (
+        isLoaded ? (
           <div>
-          {friends.length > 0 ? (
-            <FriendsDisplay friends={friends}/>
+          {userFriends.length > 0 ? (
+            <FriendsDisplay friends={userFriends}/>
           ) : (
             <p>You don't have any friends...</p>
           )
@@ -42,7 +42,7 @@ const Friends = () => {
           <FriendsDiscovery profiles={discoveryProfiles}/>
           </div>
         ) : (
-        <p>loading...</p>
+        <LoadingScreen />
         )
       }
     </div>

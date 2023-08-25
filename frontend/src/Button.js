@@ -2,10 +2,10 @@ import React from 'react'
 
 const Button = ({ text, onClick }) => {
   return (
-    <div onClick={onClick}>
+    <span onClick={onClick}>
         <u>||{text}||</u>
-    </div>
-  )
+    </span>
+  );
 }
 
-export default Button
+export default Button;

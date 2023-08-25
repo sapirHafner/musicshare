@@ -1,6 +1,6 @@
 import React from 'react'
 import ProfileBox from './ProfileBox'
-const FriendsDiscovery = ({profiles}) => {
+const FriendsDiscovery = ({ profiles }) => {
     const profileBoxes = profiles.map(profile =>
         <ProfileBox
             userId={profile.UserId}
@@ -12,9 +12,7 @@ const FriendsDiscovery = ({profiles}) => {
     <div>
         ________________________________________________________________________
         <h2>Discover new people</h2>
-        {
-            profileBoxes
-        }
+        {profileBoxes}
         ________________________________________________________________________
     </div>
   )

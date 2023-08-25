@@ -12,9 +12,9 @@ const MusicshareNavigationBar = ({selectedItem}) => {
         title: "Home",
         route: "/home"
     };
-    const songsNavItem = {
-        title: "Songs",
-        route: "/songs"
+    const browseNavItem = {
+        title: "Browse",
+        route: "/browse"
     };
     const LibraryNavItem = {
         title: "Library",
@@ -37,7 +37,7 @@ const MusicshareNavigationBar = ({selectedItem}) => {
 
     const navigationItems = [
         homeNavItem,
-        songsNavItem,
+        browseNavItem,
         LibraryNavItem,
         profileNavItem,
         friendsNavItem,
