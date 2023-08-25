@@ -4,13 +4,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import CreateUser from './CreateUser';
-import Home from './Home';
-import LoginPage from './LoginPage';
+import CreateUser from './Signing/CreateUser'
+import Home from './Common/Home';
+import LoginPage from './Signing/LoginPage';
 import Profile from './User/Profile';
-import Friends from './Friends';
+import Friends from './User/Friends';
 import Library from './User/Library';
-import NewPost from './NewPost';
+import NewPost from './Common/NewPost';
 import Browse from './User/Browse';
 import CreateArtist from './Signing/CreateArtist';
 import AddAlbums from './Artist/AddAlbums';

@@ -1,11 +1,11 @@
 import React from 'react'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import { fetchFriends, fetchDiscoveryProfiles} from './common/serverFunctions';
-import UserNavigationBar from './User/UserNavigationBar';
+import { fetchFriends, fetchDiscoveryProfiles} from '../serverFunctions';
+import UserNavigationBar from './UserNavigationBar';
 import FriendsDisplay from "./FriendsDisplay"
 import FriendsDiscovery from './FriendsDiscovery';
-import LoadingScreen from './LoadingScreen';
+import LoadingScreen from '../Common/LoadingScreen';
 
 const Friends = () => {
     const [cookies] = useCookies(['userId']);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Button from './common/Button';
+import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
 const Song = ({id, name, artist, album, liked, onLiked, onDisliked}) => {

@@ -1,11 +1,10 @@
 import React from 'react'
-import NavigationBar from '../NavigationBar';
+import NavigationBar from '../Common/NavigationBar';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 
 const UserNavigationBar = ({selectedItem}) => {
     const [cookies, setCookie, removeCookie] = useCookies(['userId']);
-    const userId = cookies['userId']
 
     const navigate = useNavigate()
 

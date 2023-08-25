@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import UserNavigationBar from './User/UserNavigationBar'
+import UserNavigationBar from '../User/UserNavigationBar'
 import NewPostForm from './NewPostForm'
-import { createNewPost } from './common/serverFunctions'
+import { createNewPost, fetchMusicalObjects } from '../serverFunctions'
 import { useCookies } from 'react-cookie'
-import { fetchMusicalObjects } from './common/serverFunctions'
 import { useNavigate } from 'react-router-dom'
 import { useLocation
  } from 'react-router-dom'
+
 const NewPost = () => {
   const [cookies] = useCookies(['userId']);
   const navigate = useNavigate();

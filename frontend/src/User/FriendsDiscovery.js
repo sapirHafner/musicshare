@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfileBox from './ProfileBox'
+import ProfileBox from '../Common/ProfileBox'
 const FriendsDiscovery = ({ profiles }) => {
     const profileBoxes = profiles.map(profile =>
         <ProfileBox

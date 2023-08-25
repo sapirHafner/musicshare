@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import UserNavigationBar from './UserNavigationBar'
-import MusicDisplay from './MusicDisplay'
-import LoadingScreen from './LoadingScreen';
-import { fetchArtists, fetchSongs } from '../common/serverFunctions';
+import MusicDisplay from '../Common/MusicDisplay'
+import LoadingScreen from '../Common/LoadingScreen';
+import { fetchArtists, fetchSongs } from '../serverFunctions';
 
 const Browse = () => {
   const [allArtists, setAllArtists] = useState([]);

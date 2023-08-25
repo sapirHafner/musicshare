@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { fetchSongs, fetchUserLikes } from './serverFunctions';
+import { fetchSongs, fetchUserLikes } from '../serverFunctions';
 import { useState } from 'react';
-import { addUserLike, removeUserLike } from './serverFunctions';
+import { addUserLike, removeUserLike } from '../serverFunctions';
 import UserNavigationBar from './User/UserNavigationBar';
-import SongsDisplay from "./SongsDisplay"
+import SongsDisplay from './SongsDisplay';
 import { useCookies } from 'react-cookie';
 
 const Songs = () => {

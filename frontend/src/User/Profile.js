@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { fetchUserProfile, fetchUserPosts, fetchMusicalObjects } from '../common/serverFunctions';
+import { fetchUserProfile, fetchUserPosts } from '../serverFunctions';
 import { useCookies } from 'react-cookie';
 import UserNavigationBar from './UserNavigationBar';
-import PostsDisplay from '../PostsDisplay';
-import LoadingScreen from '../LoadingScreen';
+import PostsDisplay from '../Common/PostsDisplay';
+import LoadingScreen from '../Common/LoadingScreen';
 
 const Profile = () => {
   const [cookies] = useCookies(['userId']);

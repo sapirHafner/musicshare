@@ -1,6 +1,6 @@
 import LoginForm from './LoginForm';
 import { Link, useNavigate } from 'react-router-dom';
-import { getUserId } from './common/serverFunctions';
+import { getUserId } from '../serverFunctions';
 import { useCookies } from 'react-cookie';
 
 const LoginPage = () => {
