@@ -134,7 +134,7 @@ const addUser = async (user) => {
   }
 
 
-  const getUserId = async (username, password) => {
+  const getUser = async (username, password) => {
     const response = await axios.get("http://localhost:4000/users", {
         params: {
             Username: username,
@@ -165,7 +165,7 @@ export {
   addUser,
   addProfile,
   addNewFriendsList,
-  getUserId,
+  getUser,
   fetchSongs,
   fetchUserProfile,
   fetchFriends,

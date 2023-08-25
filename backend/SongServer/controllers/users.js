@@ -1,9 +1,12 @@
 const User = require("../models/User");
 
-const getUserId = async (req, res) => {
+const getUser = async (req, res) => {
     try {
         const user = await User.findOne(req.query);
-        res.status(200).send(user._id);
+        res.status(200).send({
+            Id: user._id,
+            Type: user.Type
+        });
     } catch {
         res.sendStatus(400);
     }
@@ -24,4 +27,4 @@ const addUser = async (req, res) => {
     }
 }
 
-module.exports = { getUserId, addUser };
+module.exports = { getUser, addUser };

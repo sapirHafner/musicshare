@@ -1,6 +1,6 @@
 import LoginForm from './LoginForm';
 import { Link, useNavigate } from 'react-router-dom';
-import { getUserId } from '../serverFunctions';
+import { getUser } from '../serverFunctions';
 import { useCookies } from 'react-cookie';
 
 const LoginPage = () => {
@@ -9,8 +9,9 @@ const LoginPage = () => {
 
     const onLogin = async (username, password, rememberMe) => {
         try {
-            const userId = await getUserId(username, password);
-            setCookie("userId", userId, { path: "/"});
+            const { Id, Type } = await getUser(username, password);
+            setCookie("userId", Id, { path: "/"});
+            setCookie("userType", Type, { path: "/"});
             navigate("/home");
         } catch(error) {}
     }

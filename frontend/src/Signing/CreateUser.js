@@ -6,15 +6,16 @@ import { useNavigate } from "react-router-dom";
 
 const CreateUser = () => {
   const [cookies, setCookie] = useCookies(['userId']);
-  
   const navigate  = useNavigate()
   const onSignUp = async (user, profile) => {
     try {
+      user.Type = "user";
       const userId = await addUser(user);
       profile.UserId = userId;
       await addProfile(profile);
       await addNewFriendsList(userId);
       setCookie("userId", userId, { path: "/"});
+      setCookie("userType", "user", { path: "/"});
       navigate("/home")
     } catch {}
   }

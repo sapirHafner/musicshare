@@ -2,12 +2,12 @@ import React from 'react';
 import App from './App';
 import {
   createBrowserRouter,
-  RouterProvider,
 } from "react-router-dom";
 import CreateUser from './Signing/CreateUser'
 import Home from './Common/Home';
 import LoginPage from './Signing/LoginPage';
-import Profile from './User/Profile';
+import User from './User/User';
+import Artist from './Artist/Artist'
 import Friends from './User/Friends';
 import Library from './User/Library';
 import NewPost from './Common/NewPost';
@@ -42,8 +42,12 @@ const router = createBrowserRouter([
         element: <Browse />
       },
       {
-        path: "profile",
-        element: <Profile />
+        path: "user/:id",
+        element: <User />
+      },
+      {
+        path: 'artist/:id',
+        element: <Artist />
       },
       {
         path: "friends",
