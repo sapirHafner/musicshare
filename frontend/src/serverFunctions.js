@@ -8,7 +8,7 @@ const songsServerUrl = `${baseServerUrl}/songs`
 const likesServerUrl = `${baseServerUrl}/likes`
 const discoveryServerUrl = `${baseServerUrl}/discovery`
 const postServerUrl = `${baseServerUrl}/post`
-const artistsServerUrl = `${baseServerUrl}/artists`
+const artistsServerUrl = `${baseServerUrl}/artist`
 
 const createNewPost = async (post) =>
     await axios.post(postServerUrl, post);

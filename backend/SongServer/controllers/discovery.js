@@ -1,6 +1,5 @@
 const { default: mongoose } = require("mongoose");
 const Friends = require("../models/Friends");
-const Profile = require("../models/Profile");
 const User = require("../models/User");
 
 const getFriendsRecommendationForUser = async (req, res) => {

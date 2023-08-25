@@ -3,11 +3,11 @@ const Artist = require('../models/Artist');
 const getArtistById = async (req, res) => {
     try {
         const artistId = req.param.id;
-        const artist = await Artist.findOne({"_id": artistId});
+        const artist = await Artist.findById(artistId);
         res.status(200).send(artist);
     } catch (error) {
         console.log(error);
-        res.status(400)
+        res.sendStatus(500)
     }
 }
 
@@ -19,12 +19,12 @@ const getArtists = async (req, res) => {
         } else {
             const artistsIds = req.query.ids.split(',');
             artists = await Promise.all(artistsIds.map(async artistId =>
-                await Artist.findOne({"_id": artistId})));
+                await Artist.findById(artistId)));
         }
         res.status(200).send(artists);
     } catch (error) {
         console.log(error);
-        res.status(400)
+        res.sendStatus(500)
     }
 }
 
@@ -34,7 +34,28 @@ const addArtist = async (req, res) => {
         res.status(200).send(createdArtist._id);
     } catch (error) {
         console.log(error);
-        res.status(500);
+        res.sendStatus(500);
+    }
+}
+
+const deleteArtist = async (req, res) => {
+    try {
+        const artistId = req.params.id;
+        await Artists.findByIdAndDelete(artistId)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
+
+const updateArtist = async (req, res) => {
+    try {
+        await Artist.findByIdAndUpdate(req.body._id, req.body);
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
     }
 }
 

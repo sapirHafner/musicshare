@@ -7,6 +7,7 @@ const userRoutes = require('./users');
 const likesRoutes = require('./likes');
 const discoveryRoutes = require('./discovery');
 const postRoutes = require('./post')
+const artistRoutes = require('./artist');
 
 const router = express.Router();
 router.use(songsRoutes);
@@ -16,5 +17,6 @@ router.use(userRoutes);
 router.use(likesRoutes);
 router.use(discoveryRoutes);
 router.use(postRoutes);
+router.use(artistRoutes);
 
 module.exports = router;
