@@ -1,24 +1,20 @@
-const SignUpForm = ({OnSignUp}) => {
+const NewArtistFrom = ({OnSignUp}) => {
     const onSubmit= (event) => {
         event.preventDefault()
-        const profile = {
-            FirstName: event.target.firstname.value,
-            LastName: event.target.lastname.value,
-            Email: event.target.email.value
-        }
         const user = {
             Username: event.target.username.value,
-            Password:event.target.password.value
+            Password: event.target.password.value,
         }
-        OnSignUp(user, profile)
+        const artist = {
+            Name: event.target.name.value,
+            Email: event.target.email.value,
+        }
+        OnSignUp(user, artist)
     }
     return (
         <form onSubmit={onSubmit}>
-            <label htmlFor='firstname'> First Name: </label>
-            <input type='text' name='firstname'/>
-            <br/>
-            <label htmlFor='lastname'> Last Name: </label>
-            <input type='text' name='lastname'/>
+            <label htmlFor='name'> Name: </label>
+            <input type='text' name='name'/>
             <br/>
             <label htmlFor='email'> Mail: </label>
             <input type='text' name='email'/>
@@ -35,4 +31,4 @@ const SignUpForm = ({OnSignUp}) => {
     );
 }
 
-export default SignUpForm;
+export default NewArtistFrom;

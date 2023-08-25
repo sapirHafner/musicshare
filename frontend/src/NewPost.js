@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import MusicshareNavigationBar from './MusicshareNavigationBar'
 import NewPostForm from './NewPostForm'
-import { createNewPost } from './serverFunctions'
+import { createNewPost } from './common/serverFunctions'
 import { useCookies } from 'react-cookie'
-import useQuery from './Common'
-import { fetchMusicalObjects } from './serverFunctions'
+import { fetchMusicalObjects } from './common/serverFunctions'
 import { useNavigate } from 'react-router-dom'
-
+import { useLocation
+ } from 'react-router-dom'
 const NewPost = () => {
   const [cookies] = useCookies(['userId']);
   const navigate = useNavigate();
   const userId = cookies['userId'];
+  const useQuery = () => {
+    const { search } = useLocation();
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+}
   const query = useQuery();
   const type = query.get("type")
   const musicalObjectId = query.get("id")

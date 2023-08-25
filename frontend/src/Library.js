@@ -1,7 +1,7 @@
 import React from 'react'
 import MusicshareNavigationBar from './MusicshareNavigationBar';
 import SongsDisplay from './SongsDisplay';
-import { fetchUserLikes, fetchSongs, addUserLike, removeUserLike } from './serverFunctions';
+import { fetchUserLikes, fetchSongs, addUserLike, removeUserLike } from './common/serverFunctions';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 

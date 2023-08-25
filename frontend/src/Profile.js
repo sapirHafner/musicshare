@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
-import { fetchUserProfile, fetchUserPosts, fetchMusicalObjects } from './serverFunctions';
+import { fetchUserProfile, fetchUserPosts, fetchMusicalObjects } from './common/serverFunctions';
 import { useCookies } from 'react-cookie';
 import MusicshareNavigationBar from './MusicshareNavigationBar';
 import PostsDisplay from './PostsDisplay';

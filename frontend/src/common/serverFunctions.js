@@ -13,6 +13,8 @@ const artistsServerUrl = `${baseServerUrl}/artist`
 const createNewPost = async (post) =>
     await axios.post(postServerUrl, post);
 
+const createNewArtist = async (artist) =>
+    await axios.post(artistsServerUrl, artist);
 
 const fetchMusicalObjects = async (type, objectIds) => {
   if (type === "song") {
@@ -110,12 +112,9 @@ const fetchArtists = async (artistsIds) => {
 const fetchSong = async (songId) =>
   (await axios.get(`${songsServerUrl}/${songId}`)).data;
 
-const addUser = async (username, password) => {
+const addUser = async (user) => {
     try {
-      const response = await axios.post(usersServerUrl, {
-        Username: username,
-        Password: password
-      })
+      const response = await axios.post(usersServerUrl, user)
       return response.data;
     }
     catch (error) {
@@ -126,13 +125,8 @@ const addUser = async (username, password) => {
     }
   }
 
-  const addProfile = async (userId, firstName, lastName, email) => {
-    await axios.post(profilesServerUrl, {
-      UserId: userId,
-      FirstName: firstName,
-      LastName: lastName,
-      Email: email
-    })
+  const addProfile = async (profile) => {
+    await axios.post(profilesServerUrl, profile)
   }
 
   const addNewFriendsList = async (userId) => {
@@ -181,5 +175,6 @@ export {
   createNewPost,
   fetchMusicalObjects,
   fetchUserPosts,
-  fetchArtists
+  fetchArtists,
+  createNewArtist
 };

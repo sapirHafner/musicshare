@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 import MusicshareNavigationBar from "./MusicshareNavigationBar";
 
 const Home = () => {
-    const [cookies] = useCookies(['userId']);
-    const { userId } = cookies;
+    const [cookies] = useCookies(['userId', 'userType']);
+    const { userId, userType } = cookies;
     const navigate  = useNavigate()
 
     useEffect(() => {
-        if (cookies === undefined) {
+        if (userId === undefined) {
             navigate("/")
         }
     }, [])

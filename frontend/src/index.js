@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import MusicshareRouter from './MusicshareRouter';
+import router from './MusicshareRouter';
+import { RouterProvider } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const router = MusicshareRouter();
-root.render(router);
+root.render(<RouterProvider router = {router}/>);
 

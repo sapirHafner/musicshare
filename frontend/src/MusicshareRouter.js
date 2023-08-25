@@ -12,17 +12,22 @@ import Friends from './Friends';
 import Library from './Library';
 import NewPost from './NewPost';
 import Browse from './Browse';
+import CreateArtist from './CreateArtist';
+import AddAlbums from './AddAlbums';
 
-const MusicshareRouter = () => {
-    const router = createBrowserRouter([
+const router = createBrowserRouter([
       {
         path:"/",
         element:
           <App />
       },
       {
-        path: "createuser",
+        path: "createUser",
         element: <CreateUser />
+      },
+      {
+        path: "createArtist",
+        element: <CreateArtist />
       },
       {
         path: "home",
@@ -51,10 +56,12 @@ const MusicshareRouter = () => {
       {
         path: `newpost`,
         element: <NewPost />
+      },
+      {
+        path: `addAlbums`,
+        element: <AddAlbums />
       }
     ])
 
-    return <RouterProvider router = {router}/>
-  }
 
-  export default MusicshareRouter;
+  export default router;

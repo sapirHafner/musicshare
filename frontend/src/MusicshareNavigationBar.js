@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const MusicshareNavigationBar = ({selectedItem}) => {
     const [cookies, setCookie, removeCookie] = useCookies(['userId']);
     const userId = cookies['userId']
+
     const navigate = useNavigate()
 
     const homeNavItem = {

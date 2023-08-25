@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import { fetchFriends, fetchDiscoveryProfiles} from './serverFunctions';
+import { fetchFriends, fetchDiscoveryProfiles} from './common/serverFunctions';
 import MusicshareNavigationBar from './MusicshareNavigationBar';
 import FriendsDisplay from "./FriendsDisplay"
 import FriendsDiscovery from './FriendsDiscovery';
