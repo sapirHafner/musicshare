@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
-import { fetchFriends, fetchDiscoveryProfiles, fetchProfileBoxInfo } from './serverFunctions';
+import { fetchFriends, fetchDiscoveryProfiles} from './serverFunctions';
 import MusicshareNavigationBar from './MusicshareNavigationBar';
 import FriendsDisplay from "./FriendsDisplay"
 import FriendsDiscovery from './FriendsDiscovery';
@@ -18,8 +18,7 @@ const Friends = () => {
         const friendsProfiles = await fetchFriends(userId);
         setFriends(friendsProfiles);
         setIsFriendsLoaded(true);
-        const discoveryProfilesIds = await fetchDiscoveryProfiles(userId);
-        const discoveryProfiles = await fetchProfileBoxInfo(discoveryProfilesIds);
+        const discoveryProfiles = await fetchDiscoveryProfiles(userId);
         setDiscoveryProfiles(discoveryProfiles);
         setIsDiscoveryProfilesLoaded(true);
     }
@@ -32,15 +31,20 @@ const Friends = () => {
     <div>
       <MusicshareNavigationBar selectedItem={"Friends"}/>
       {
-        isFriendsLoaded ?
-          friends.length > 0 ?
+        isFriendsLoaded && isDiscoveryProfilesLoaded ? (
+          <div>
+          {friends.length > 0 ? (
             <FriendsDisplay friends={friends}/>
-            :
+          ) : (
             <p>You don't have any friends...</p>
-        :
+          )
+          }
+          <FriendsDiscovery profiles={discoveryProfiles}/>
+          </div>
+        ) : (
         <p>loading...</p>
+        )
       }
-      <FriendsDiscovery profiles={discoveryProfiles}/>
     </div>
 
   )

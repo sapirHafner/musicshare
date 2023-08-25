@@ -5,23 +5,18 @@ const NewPostForm = ({onSubmit}) => {
       event.preventDefault();
       const title = event.target.title.value;
       const content = event.target.content.value;
-      const objectType = event.target.objectType.value;
-      onSubmit(title, content, objectType);
+      onSubmit(title, content);
   }
   return (
     <form onSubmit={handleSumbit}>
-        <label for="objectType">Choose a type:</label>
-        <select id="objectType" name="objectType">
-            <option value="song">Song</option>
-            <option value="album">Album</option>
-            <option value="artist">Artist</option>
-        </select>
-        <input type="search" id="typeSearch" name="typeSearch" />
         <br />
-        <label for="title">Title:</label>
+        <label for="title">Title:</label> <br />
         <input name="title" />
         <br />
-        your post:
+        <br />
+        <br />
+        Content:
+        <br />
         <textarea name="content"></textarea>
         <br />
         <br />

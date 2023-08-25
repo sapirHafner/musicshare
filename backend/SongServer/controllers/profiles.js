@@ -23,31 +23,49 @@ const addProfile = async (req, res) => {
         await Profile.create(req.body);
         res.sendStatus(200);
     } catch {
-        res.sendStatus(404);
+        res.sendStatus(400);
     }
 }
 
 const getUsersProfileBoxInfo = async (req, res) => {
     try {
-        const userIds = req.params.userIds.split(',');
-        const userBoxesInfo = await Promise.all(userIds.map(async userId => {
-            const userProfile = await Profile.findOne({"UserId": userId});
+        let profiles;
+        if (req.query.id === undefined) {
+            profiles = await Profile.find();
+
+        } else {
+            const userIds = req.query.id.split(',');
+            profiles = await Promise.all(userIds.map(async userId =>
+                await Profile.findOne({"UserId": userId})
+            ))
+        }
+        const profilesBoxes = profiles.map(profile => {
             return {
-                    UserId: userProfile.UserId,
-                    FirstName: userProfile.FirstName,
-                    LastName: userProfile.LastName
-                }
-            }));
-        return res.status(200).send(userBoxesInfo);
+            UserId: profile.UserId,
+            FirstName: profile.FirstName,
+            LastName: profile.LastName
+        }});
+        res.status(200).send(profilesBoxes);
     } catch (error){
         console.log(error)
-        res.sendStatus(404);
+        res.sendStatus(400);
     }
 }
 
+const getUserProfileBoxInfoById = async (req, res) => {
+    const userId = req.params.userId;
+    const profile = await Profile.findOne({"UserId": userId});
+    const profileBox =  {
+        UserId: profile.UserId,
+        FirstName: profile.FirstName,
+        LastName: profile.LastName
+    }
+    res.status(200).send(profileBox);
+}
 module.exports = {
     getProfiles,
     getProfileByUserId,
     addProfile,
-    getUsersProfileBoxInfo
+    getUsersProfileBoxInfo,
+    getUserProfileBoxInfoById
 };

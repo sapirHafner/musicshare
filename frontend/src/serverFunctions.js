@@ -9,8 +9,39 @@ const likesServerUrl = `${baseServerUrl}/likes`
 const discoveryServerUrl = `${baseServerUrl}/discovery`
 const postServerUrl = `${baseServerUrl}/post`
 
-const createNewPost = async (post) => {
+const createNewPost = async (post) =>
     await axios.post(postServerUrl, post);
+
+
+const fetchMusicalObjects = async (type, objectIds) => {
+  if (type === "song") {
+    return await fetchSongs(objectIds)
+  }
+}
+
+const fetchMusicalObject = async (type, objectId) => {
+  if (type == "song") {
+    return await fetchSong(objectId);
+  }
+}
+
+const fetchUserProfileBox = async (userId) =>
+  (await axios.get(`${profilesServerUrl}/boxes/${userId}`)).data;
+
+
+const fetchUserPosts = async (userId) => {
+  const response = await axios.get(`${postServerUrl}/user/${userId}`);
+  const userPosts = await Promise.all(response.data.map(async post => {
+    const user = await fetchUserProfileBox(post.UserId)
+    const musicalObject = await fetchMusicalObject(post.MusicalObject.Type, post.MusicalObject.Id)
+    return {
+      title: post.Title,
+      content: post.Content,
+      user,
+      musicalObject
+    }
+  }));
+  return userPosts;
 }
 
 const addUserLike = async (userId, objectId) => {
@@ -30,11 +61,12 @@ const addUserLike = async (userId, objectId) => {
 
 const fetchDiscoveryProfiles = async (userId) => {
     const response = await axios.get(`${discoveryServerUrl}/friends/${userId}`)
-    return response.data
+    const profileBoxes = await fetchUsersProfileBoxes(response.data)
+    return profileBoxes
 }
 
-const fetchProfileBoxInfo = async (userIds) => {
-  const response = await axios.get(`${profilesServerUrl}/boxes/${userIds.join()}`)
+const fetchUsersProfileBoxes = async (userIds) => {
+  const response = await axios.get(`${profilesServerUrl}/boxes?id=${userIds.join()}`)
   return response.data;
 }
 
@@ -62,10 +94,13 @@ const fetchUserLikes = async (userId) => {
 }
 
 const fetchSongs = async (songIds) => {
-  const url = songIds !== undefined ? `${songsServerUrl}/${songIds.join()}` : songsServerUrl;
+  const url = songIds !== undefined ? `${songsServerUrl}?id=${songIds.join()}` : songsServerUrl;
   const response = await axios.get(url);
   return response.data
 }
+
+const fetchSong = async (songId) =>
+  (await axios.get(`${songsServerUrl}/${songId}`)).data;
 
 const addUser = async (username, password) => {
     try {
@@ -134,6 +169,8 @@ export {
   fetchFriends,
   fetchUserLikes,
   fetchDiscoveryProfiles,
-  fetchProfileBoxInfo,
-  createNewPost
+  fetchUsersProfileBoxes,
+  createNewPost,
+  fetchMusicalObjects,
+  fetchUserPosts
 };

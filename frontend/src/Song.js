@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
+import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 
 const Song = ({id, name, artist, album, liked, onLiked, onDisliked}) => {
     const [isLiked, setIsLiked] = useState(liked);
+    const navigate = useNavigate();
+
     const handleLike = (event) => {
         event.preventDefault();
         onLiked(id)
@@ -23,6 +27,9 @@ const Song = ({id, name, artist, album, liked, onLiked, onDisliked}) => {
         <div onClick={handleDislike}>([]V)</div>
       : <div onClick={handleLike}>([]^) </div>
       }
+      <Button text="new post" onClick={()=>{
+              navigate(`/newpost?type=song&id=${id}`)
+      }} />
     </div>
   )
 }

@@ -26,9 +26,9 @@ const createNewPost = async (req, res) => {
         const post = req.body;
         post.Time = new Date();
         await Post.create(post);
-        res.status(200);
+        res.sendStatus(200);
     } catch (error) {
-        res.status(400);
+        res.sendStatus(400);
     }
 
 };
@@ -36,9 +36,9 @@ const deletePost = async (req, res) => {
     try {
         const postId = req.params.postId;
         await Post.findByIdAndDelete(postId);
-        res.status(200);
+        res.sendStatus(200);
     } catch (error) {
-        res.status(400);
+        res.sendStatus(400);
     }
 };
 

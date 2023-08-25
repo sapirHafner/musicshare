@@ -1,10 +1,17 @@
 const express = require('express');
-const { getProfiles, getProfileByUserId, addProfile, getUsersProfileBoxInfo } = require('../controllers/profiles');
+const {
+    getProfiles,
+    getProfileByUserId,
+    addProfile,
+    getUsersProfileBoxInfo,
+    getUserProfileBoxInfoById
+} = require('../controllers/profiles');
 
 const router = express.Router();
-router.get('/profiles', getProfiles);
+router.get('/profiles/boxes/:userId', getUserProfileBoxInfoById);
+router.get('/profiles/boxes', getUsersProfileBoxInfo);
 router.get('/profiles/:userId', getProfileByUserId);
+router.get('/profiles', getProfiles);
 router.post('/profiles', addProfile);
-router.get('/profiles/boxes/:userIds', getUsersProfileBoxInfo);
 
 module.exports = router;

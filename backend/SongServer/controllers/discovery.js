@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const Friends = require("../models/Friends");
 const Profile = require("../models/Profile");
 const User = require("../models/User");
@@ -7,13 +8,15 @@ const getFriendsRecommendationForUser = async (req, res) => {
         const userId = req.params.userId;
         const userFriends = await Friends.findOne({UserId: userId});
         const userFriendsAndCurrentUser = userFriends.Friends.concat([userId]);
+        const userFriendsAndCurrentUserIds = userFriendsAndCurrentUser.map(id => new mongoose.Types.ObjectId(id));
         const recommendedProfiles = await User.aggregate([
-            { $match: { _id: { $nin: userFriendsAndCurrentUser } } },
+            { $match: { _id: { $nin: userFriendsAndCurrentUserIds } } },
             { $sample: { size: 5 } }
         ])
         const recommendedProfilesIds = recommendedProfiles.map(recommendedProfile => recommendedProfile._id)
         res.status(200).send(recommendedProfilesIds);
-    } catch {
+    } catch (error) {
+        console.log(error)
         res.sendStatus(404);
     }
 }
