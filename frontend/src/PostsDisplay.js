@@ -7,6 +7,8 @@ const PostsDisplay = ({posts}) => {
       <Post
         title={post.title}
         content={post.content}
+        musicalObject={post.musicalObject}
+        user={post.user}
         />
     )
   return (
