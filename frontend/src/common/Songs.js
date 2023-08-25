@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { fetchSongs, fetchUserLikes } from './serverFunctions';
 import { useState } from 'react';
 import { addUserLike, removeUserLike } from './serverFunctions';
-import MusicshareNavigationBar from './MusicshareNavigationBar';
+import UserNavigationBar from './User/UserNavigationBar';
 import SongsDisplay from "./SongsDisplay"
 import { useCookies } from 'react-cookie';
 
@@ -35,7 +35,7 @@ const Songs = () => {
 
   return (
     <div>
-      <MusicshareNavigationBar selectedItem={"Songs"}/>
+      <UserNavigationBar selectedItem={"Songs"}/>
       <SongsDisplay songItems={songs} onLiked={onLiked} onDisliked={onDisliked}/>
     </div>
   )

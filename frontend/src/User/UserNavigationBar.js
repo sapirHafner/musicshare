@@ -1,9 +1,9 @@
 import React from 'react'
-import NavigationBar from './NavigationBar';
+import NavigationBar from '../NavigationBar';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 
-const MusicshareNavigationBar = ({selectedItem}) => {
+const UserNavigationBar = ({selectedItem}) => {
     const [cookies, setCookie, removeCookie] = useCookies(['userId']);
     const userId = cookies['userId']
 
@@ -57,4 +57,4 @@ const MusicshareNavigationBar = ({selectedItem}) => {
     )
 }
 
-export default MusicshareNavigationBar
+export default UserNavigationBar

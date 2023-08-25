@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import MusicshareNavigationBar from "./MusicshareNavigationBar";
+import ArtistHome from "./Artist/ArtistHome";
+import UserHome from "./User/UserHome";
 
 const Home = () => {
     const [cookies] = useCookies(['userId', 'userType']);
@@ -14,12 +15,13 @@ const Home = () => {
         }
     }, [])
 
+    const Homes = {
+        "user":  <UserHome />,
+        "artist": <ArtistHome />
+    }
+
     return (
-        <div>
-            <MusicshareNavigationBar selectedItem = "Home"/>
-            <h1>Welcome to MusicShare!</h1>
-            <h2> You are at home! </h2>
-        </div>
+        Homes[userType]
     );
 };
 

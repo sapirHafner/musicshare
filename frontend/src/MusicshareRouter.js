@@ -7,13 +7,13 @@ import {
 import CreateUser from './CreateUser';
 import Home from './Home';
 import LoginPage from './LoginPage';
-import Profile from './Profile';
+import Profile from './User/Profile';
 import Friends from './Friends';
-import Library from './Library';
+import Library from './User/Library';
 import NewPost from './NewPost';
-import Browse from './Browse';
-import CreateArtist from './CreateArtist';
-import AddAlbums from './AddAlbums';
+import Browse from './User/Browse';
+import CreateArtist from './Signing/CreateArtist';
+import AddAlbums from './Artist/AddAlbums';
 
 const router = createBrowserRouter([
       {

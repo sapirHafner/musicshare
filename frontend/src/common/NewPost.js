@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import MusicshareNavigationBar from './MusicshareNavigationBar'
+import UserNavigationBar from './User/UserNavigationBar'
 import NewPostForm from './NewPostForm'
 import { createNewPost } from './common/serverFunctions'
 import { useCookies } from 'react-cookie'
@@ -45,7 +45,7 @@ const NewPost = () => {
   }
   return (
     <div>
-        <MusicshareNavigationBar />
+        <UserNavigationBar />
           new post: <br />
           type: {type} <br />
         <NewPostForm onSubmit={onSubmit}/>

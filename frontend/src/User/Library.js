@@ -1,7 +1,7 @@
 import React from 'react'
-import MusicshareNavigationBar from './MusicshareNavigationBar';
-import SongsDisplay from './SongsDisplay';
-import { fetchUserLikes, fetchSongs, addUserLike, removeUserLike } from './common/serverFunctions';
+import UserNavigationBar from './UserNavigationBar';
+import SongsDisplay from '../common/SongsDisplay';
+import { fetchUserLikes, fetchSongs, addUserLike, removeUserLike } from '../common/serverFunctions';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 
@@ -41,7 +41,7 @@ const Library = () => {
 
   return (
     <div>
-        <MusicshareNavigationBar selectedItem = "Library"/>
+        <UserNavigationBar selectedItem = "Library"/>
         {isLoaded ?
           likes.length !== 0 ?
             <div>

@@ -1,6 +1,6 @@
 import React from 'react'
-import NewArtistFrom from './NewArtistFrom'
-import { addUser, createNewArtist } from './common/serverFunctions';
+import NewArtistFrom from '../User/NewArtistFrom'
+import { addUser, createNewArtist } from '../common/serverFunctions';
 //import { useDispatch } from 'react-redux'
 //import { change } from './redux/userTypeReducer';
 

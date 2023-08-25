@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SongsDisplay from './SongsDisplay';
-import Button from './Button';
+import Button from './common/Button';
 const MusicDisplay = ({songs}) => {
     const [ selectedCategory, setSelectedCategory ] = useState("Artists")
     const categoryComponents = {

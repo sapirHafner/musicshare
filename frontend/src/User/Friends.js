@@ -2,7 +2,7 @@ import React from 'react'
 import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 import { fetchFriends, fetchDiscoveryProfiles} from './common/serverFunctions';
-import MusicshareNavigationBar from './MusicshareNavigationBar';
+import UserNavigationBar from './User/UserNavigationBar';
 import FriendsDisplay from "./FriendsDisplay"
 import FriendsDiscovery from './FriendsDiscovery';
 import LoadingScreen from './LoadingScreen';
@@ -27,7 +27,7 @@ const Friends = () => {
 
   return (
     <div>
-      <MusicshareNavigationBar selectedItem={"Friends"}/>
+      <UserNavigationBar selectedItem={"Friends"}/>
       {
         isLoaded ? (
           <div>

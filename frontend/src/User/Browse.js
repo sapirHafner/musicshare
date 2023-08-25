@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import MusicshareNavigationBar from './MusicshareNavigationBar'
+import UserNavigationBar from './UserNavigationBar'
 import MusicDisplay from './MusicDisplay'
 import LoadingScreen from './LoadingScreen';
-import { fetchArtists, fetchSongs } from './common/serverFunctions';
+import { fetchArtists, fetchSongs } from '../common/serverFunctions';
 
 const Browse = () => {
   const [allArtists, setAllArtists] = useState([]);
@@ -20,7 +20,7 @@ const Browse = () => {
   }, [])
   return (
     <div>
-      <MusicshareNavigationBar selectedItem="Browse"/>
+      <UserNavigationBar selectedItem="Browse"/>
       {
         isLoaded ?
           <MusicDisplay songs={allSongs} />
