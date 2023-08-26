@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { fetchUserProfile } from '../ServerFunctions/ProfilesFunctions';
-import { fetchUserPosts } from '../ServerFunctions/PostsFunctions';
+import { enrichPosts, fetchUserPosts } from '../ServerFunctions/PostsFunctions';
 import { useParams } from 'react-router-dom';
 import Error from '../Common/Error';
 import LoadingScreen from '../Common/LoadingScreen';
@@ -18,7 +18,7 @@ const User = () => {
     useEffect(() => {
       const fetchData = async () => {
         setProfile(await fetchUserProfile(id));
-        setUserPosts(await fetchUserPosts(id));
+        setUserPosts(await enrichPosts(await fetchUserPosts(id)));
         setIsLoaded(true);
       }
 
@@ -27,6 +27,7 @@ const User = () => {
       }
       fetchData()
     }, []);
+
 
     return (
         <div>

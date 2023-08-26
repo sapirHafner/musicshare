@@ -39,13 +39,13 @@ const addUserLike = async (req, res) => {
 
 const removeUserLike = async (req, res) => {
     try {
-        const musicalEntityId = req.body.musicalEntityId;
-        const userId = req.body.userId;
-        const musicalEntityLikes = await Likes.findOne({'MusicalEntity.Id': musicalEntityId});
+        const musicalEntity = req.body.MusicalEntity;
+        const userId = req.body.UserId;
+        const musicalEntityLikes = await Likes.findOne({MusicalEntity: musicalEntity});
         if (!musicalEntityLikes.UsersIds.includes(userId)) {
             res.sendStatus(404);
         } else {
-            musicalEntityLikes.UserIds.remove(userId);
+            musicalEntityLikes.UsersIds.remove(userId);
             await musicalEntityLikes.save();
             res.sendStatus(200);
         }

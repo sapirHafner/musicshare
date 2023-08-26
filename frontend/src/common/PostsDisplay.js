@@ -4,10 +4,10 @@ import Post from './Post'
 const PostsDisplay = ({posts}) => {
   const postsComponents = posts.map(post =>
       <Post
-        title={post.title}
-        content={post.content}
-        musicalObject={post.musicalObject}
-        user={post.user}
+        title={post.Title}
+        content={post.Content}
+        musicalObject={post.MusicalObject}
+        user={post.User}
         />
     )
   return (

@@ -26,7 +26,7 @@ const Browse = () => {
       setIsLoaded(true);
     }
     fetchData();
-  }, [])
+  }, [likes])
 
   return (
     <div>

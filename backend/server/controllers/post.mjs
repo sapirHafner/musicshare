@@ -37,7 +37,7 @@ export const getPosts = async (req, res) => {
 export const createNewPost = async (req, res) => {
     try {
         const post = req.body;
-        post.Time = new Date();
+        post.CreatedAt = new Date();
         const createdPost = await Post.create(post);
         res.status(200).send(createdPost._id);
     } catch (error) {

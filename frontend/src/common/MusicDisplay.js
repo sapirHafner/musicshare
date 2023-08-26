@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SongsDisplay from './SongsDisplay';
 import Button from './Button';
-import LoadingScreen from './LoadingScreen'
 import { addUserLike, fetchUserLikes, removeUserLike } from '../ServerFunctions/likesFunctions';
 import { useCookies } from 'react-cookie';
 
@@ -19,7 +18,7 @@ const MusicDisplay = ({songs}) => {
                     Type: "song",
                     Id: songId,
                   })}
-                  onDisliked={(songId) => addUserLike(userId, {
+                  onDisliked={(songId) => removeUserLike(userId, {
                     Type: "song",
                     Id: songId,
                   })}

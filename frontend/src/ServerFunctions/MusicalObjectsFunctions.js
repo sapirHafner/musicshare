@@ -1,13 +1,12 @@
 import { fetchSong, fetchSongs } from "./SongFunctions";
 
-export const fetchMusicalObjects = async (type, objectIds) => {
-    if (type === "song") {
-      return await fetchSongs(objectIds)
-    }
+export const fetchMusicalObjects = async (musicalObjects) => {
+    const songs = musicalObjects.filer(object => object.Type === "song");
+    return await fetchSongs(songs.map(song => song.Id))
   }
 
-  export const fetchMusicalObject = async (type, objectId) => {
-    if (type == "song") {
-      return await fetchSong(objectId);
+  export const fetchMusicalObject = async (musicalObject) => {
+    if (musicalObject.Type == "song") {
+      return await fetchSong(musicalObject.Id);
     }
   }

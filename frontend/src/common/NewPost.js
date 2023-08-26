@@ -22,7 +22,7 @@ const NewPost = () => {
 
   useEffect(() =>{
     const fetchData = async () => {
-      setMusicalObject(await fetchMusicalObject(type, musicalObjectId));
+ //     setMusicalObject(await fetchMusicalObject(type, musicalObjectId));
     }
     fetchData();
   }, [])
@@ -39,7 +39,7 @@ const NewPost = () => {
       UserId: userId
     }
     await createNewPost(Post);
-    navigate('/profile');
+    navigate(`/user/${userId}`);
   }
   return (
     <div>

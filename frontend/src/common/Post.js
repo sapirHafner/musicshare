@@ -1,12 +1,21 @@
 import React from 'react'
+import Song from './Song';
 
 const Post = ({title, content, musicalObject, user}) => {
+  let musicalObjectComponent;
+  switch (musicalObject.Type) {
+    case "song":
+      musicalObjectComponent = <Song id={musicalObject.Id}
+            name={musicalObject.Name}
+      />
+      break
+    default:
+      <p>invalid</p>
+  }
   return (
     <div>
         <br />
-        ______________________________ <br />
-        |{musicalObject.name} | {musicalObject.album} | {musicalObject.artist} | <br/>
-        ______________________________ <br />
+        {musicalObjectComponent}
         <h5>{title}</h5>
         <p>{content}</p>
         <br />
