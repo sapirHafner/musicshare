@@ -14,9 +14,10 @@ const CreateArtist = () => {
         const userId = await addUser(user);
         artist.Albums = [];
         artist.UserId = userId;
-        await createNewArtist(artist);
+        const artistId = await createNewArtist(artist);
         setCookie("userId", userId, { path: "/"});
         setCookie("userType", "artist", { path: "/"});
+        setCookie('artistId', artistId, {path: '/'});
         navigate('/addAlbums');
     };
   return (

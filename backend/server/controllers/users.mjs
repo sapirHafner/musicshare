@@ -1,6 +1,6 @@
-const User = require("../models/User");
+import User from "../models/User.mjs";
 
-const getUser = async (req, res) => {
+export const getUser = async (req, res) => {
     try {
         const user = await User.findOne(req.query);
         res.status(200).send({
@@ -12,7 +12,7 @@ const getUser = async (req, res) => {
     }
 }
 
-const addUser = async (req, res) => {
+export const addUser = async (req, res) => {
     try {
         const isUserExists = await User.exists({Username: req.body.Username});
         if (isUserExists) {
@@ -26,5 +26,3 @@ const addUser = async (req, res) => {
         res.sendStatus(400);
     }
 }
-
-module.exports = { getUser, addUser };

@@ -3,22 +3,31 @@ import UserNavigationBar from './UserNavigationBar'
 import MusicDisplay from '../Common/MusicDisplay'
 import LoadingScreen from '../Common/LoadingScreen';
 import { fetchArtists } from '../ServerFunctions/ArtistFunctions';
-import { fetchSongs } from '../ServerFunctions/SongsFunctions';
+import { fetchSongs } from '../ServerFunctions/SongFunctions';
+import { fetchUserLikes } from '../ServerFunctions/likesFunctions';
+import { useCookies } from 'react-cookie';
+import { setEntitiesLikes } from '../Common/Utilities';
 
 const Browse = () => {
   const [allArtists, setAllArtists] = useState([]);
   const [allAlbums, setAllAlbums] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
+  const [likes, setLikes] = useState([])
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const [cookies] = useCookies(['userId']);
+  const { userId } = cookies;
 
   useEffect(() => {
     const fetchData = async () => {
-      setAllArtists(await fetchArtists());
-      setAllSongs(await fetchSongs());
+      setLikes(await fetchUserLikes(userId));
+      setAllArtists(setEntitiesLikes(await fetchArtists(), likes));
+      setAllSongs(setEntitiesLikes(await fetchSongs(), likes));
       setIsLoaded(true);
     }
     fetchData();
   }, [])
+
   return (
     <div>
       <UserNavigationBar selectedItem="Browse"/>

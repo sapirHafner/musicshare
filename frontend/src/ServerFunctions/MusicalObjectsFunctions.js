@@ -1,4 +1,4 @@
-import { fetchSong, fetchSongs } from "./SongsFunctions";
+import { fetchSong, fetchSongs } from "./SongFunctions";
 
 export const fetchMusicalObjects = async (type, objectIds) => {
     if (type === "song") {

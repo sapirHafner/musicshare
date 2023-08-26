@@ -1,17 +1,17 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
     getArtistById,
     getArtists,
     addArtist,
     deleteArtist,
     updateArtist
-} = require('../controllers/artist');
+} from '../controllers/artist.mjs';
 
 const router = express.Router();
 router.get('/artist/:id', getArtistById);
 router.get('/artist', getArtists);
 router.post('/artist', addArtist);
-router.delete('/artist', deleteArtist);
+router.delete('/artist/:id', deleteArtist);
 router.put('/artist', updateArtist)
 
-module.exports = router;
+export default router;

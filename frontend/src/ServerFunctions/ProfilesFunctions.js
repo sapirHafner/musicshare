@@ -13,5 +13,7 @@ export const fetchUserProfileBox = async (userId) =>
   (await axios.get(`${profilesServerUrl}/boxes/${userId}`)).data;
 
 export const fetchUsersProfileBoxes = async (userIds) =>
+    userIds.length > 0 ?
     (await axios.get(`${profilesServerUrl}/boxes?ids=${userIds.join()}`)).data
+    : []
 

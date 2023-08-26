@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const artistSchema = new mongoose.Schema({
     UserId: {
@@ -13,15 +13,10 @@ const artistSchema = new mongoose.Schema({
       type: String,
       required: true
     },
-    Albums: {
+    AlbumsIds: {
         type: Array,
         required: true,
       },
 });
 
-
-
-
-const Artist = mongoose.model("Artist", artistSchema);
-
-module.exports = Artist;
+export default mongoose.model("Artist", artistSchema);

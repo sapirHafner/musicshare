@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 
 const FriendsSchema = new mongoose.Schema({
   UserId: {
@@ -12,6 +12,4 @@ const FriendsSchema = new mongoose.Schema({
   },
 });
 
-const Friends = mongoose.model("Friends", FriendsSchema);
-
-module.exports = Friends;
+export default mongoose.model("Friends", FriendsSchema);

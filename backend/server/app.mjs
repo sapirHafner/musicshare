@@ -1,7 +1,7 @@
-const express = require('express')
-const mongoose = require("mongoose");
-var cors = require('cors')
-const router = require('./routes/router')
+import express from 'express';
+import mongoose from 'mongoose';
+import router from './routes/router.mjs';
+import cors from 'cors'
 
 const app = express();
 const port = 4000;

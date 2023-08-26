@@ -17,9 +17,9 @@ const User = () => {
 
     useEffect(() => {
       const fetchData = async () => {
-      setProfile(await fetchUserProfile(id));
-      setUserPosts(await fetchUserPosts(id));
-      setIsLoaded(true);
+        setProfile(await fetchUserProfile(id));
+        setUserPosts(await fetchUserPosts(id));
+        setIsLoaded(true);
       }
 
       if (id === undefined) {

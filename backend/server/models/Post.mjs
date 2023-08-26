@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const postScheme = mongoose.Schema({
     MusicalObject: {
@@ -17,12 +17,10 @@ const postScheme = mongoose.Schema({
         type: String,
         required: true,
     },
-    Time: {
+    CreatedAt: {
         type: Date,
         required: true
     },
   })
 
-const Post = mongoose.model("Post", postScheme);
-
-module.exports = Post;
+export default mongoose.model("Post", postScheme);

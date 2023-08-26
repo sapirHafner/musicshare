@@ -1,14 +1,15 @@
-const { default: mongoose } = require("mongoose");
-const Friends = require("../models/Friends");
-const User = require("../models/User");
+import mongoose from "mongoose";
+import Friends from "../models/Friends.mjs";
+import User from "../models/User.mjs";
 
-const getFriendsRecommendationForUser = async (req, res) => {
+export const getFriendsRecommendationForUser = async (req, res) => {
     try {
         const userId = req.params.userId;
         const userFriends = await Friends.findOne({UserId: userId});
         const userFriendsAndCurrentUser = userFriends.Friends.concat([userId]);
         const userFriendsAndCurrentUserIds = userFriendsAndCurrentUser.map(id => new mongoose.Types.ObjectId(id));
         const recommendedProfiles = await User.aggregate([
+            { $match: {Type: "user"}},
             { $match: { _id: { $nin: userFriendsAndCurrentUserIds } } },
             { $sample: { size: 5 } }
         ])
@@ -20,4 +21,3 @@ const getFriendsRecommendationForUser = async (req, res) => {
     }
 }
 
-module.exports = { getFriendsRecommendationForUser };

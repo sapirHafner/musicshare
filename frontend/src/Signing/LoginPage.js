@@ -2,6 +2,8 @@ import LoginForm from './LoginForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUser } from '../ServerFunctions/UserFunctions';
 import { useCookies } from 'react-cookie';
+import { fetchArtistByUserId } from '../ServerFunctions/ArtistFunctions';
+import { ObjectId } from 'mongoose';
 
 const LoginPage = () => {
     const [cookies, setCookie] = useCookies(['userId']);
@@ -12,8 +14,14 @@ const LoginPage = () => {
             const { Id, Type } = await getUser(username, password);
             setCookie("userId", Id, { path: "/"});
             setCookie("userType", Type, { path: "/"});
+            if (Type === "artist") {
+                const artistId = (await fetchArtistByUserId(Id))._id
+                setCookie("artistId", artistId, { path: "/"});
+            }
             navigate("/home");
-        } catch(error) {}
+        } catch(error) {
+            console.log(error)
+        }
     }
 
     return (

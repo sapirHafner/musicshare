@@ -2,62 +2,49 @@ import React from 'react'
 import UserNavigationBar from './UserNavigationBar';
 import SongsDisplay from '../Common/SongsDisplay';
 import { fetchUserLikes, addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions';
-import { fetchSongs } from '../ServerFunctions/SongsFunctions';
+import { fetchSongs } from '../ServerFunctions/SongFunctions';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import LoadingScreen from '../Common/LoadingScreen';
+import MusicDisplay from '../Common/MusicDisplay';
+import { fetchArtists } from '../ServerFunctions/ArtistFunctions';
+import { useParams } from 'react-router-dom';
+import { setEntitiesLikes } from '../Common/Utilities';
 
 const Library = () => {
-  const [likes, setLikes ] = useState([]);
-  const [cookies] = useCookies(['userId']);
-  const [isLoaded, setIsLoaded ] = useState(false);
+    const [likedArtists, setLikedArtists] = useState([]);
+    const [likedAlbums, setLikedAlbums] = useState([]);
+    const [likedSongs, setLikedSongs] = useState([]);
+    const [likes, setLikes] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
-  const { userId } = cookies;
+    const { id } = useParams();
+    const [ cookies ] = useCookies()
+    const { userId } = cookies
 
-  const fetchData = async () => {
-      const userLikes = await fetchUserLikes(userId);
-      let likedSongs;
-      if (userLikes.length !== 0) {
-        likedSongs = await fetchSongs(userLikes);
-      } else {
-        likedSongs = [];
+    useEffect(() => {
+      const fetchData = async () => {
+        const userLikes = await fetchUserLikes(id)
+        const currentUserLikes = await fetchUserLikes(userId)
+   //     setLikedArtists(await fetchArtists(userLikes.filter(like => like.MusicalEntity.Type === "artist").map(like => like.MusicalEntity.Id)));
+     //  setLikedAlbums(await fetchLikedAlbums(userLikes.filter(like => like.MusicalEntity.Type === "album").map(like => like.MusicalEntity.Id)));
+        const songsIds = userLikes.filter(like => like.MusicalEntity.Type === "song").map(like => like.MusicalEntity.Id)
+        setLikedSongs(setEntitiesLikes(await fetchSongs(songsIds), currentUserLikes));
+        setIsLoaded(true);
       }
-      likedSongs.forEach(likedSong => {
-        likedSong.liked = true;
-      });
-      setLikes(likedSongs);
-      setIsLoaded(true);
-  }
-
-  useEffect(() => {
-    fetchData();
-  },[])
-
-  const onLiked = (objectId) => {
-    addUserLike(userId, objectId)
-  }
-
-  const onDisliked = (objectId) => {
-    removeUserLike(userId, objectId)
-  }
-
-  return (
-    <div>
-        <UserNavigationBar selectedItem = "Library"/>
-        {isLoaded ?
-          likes.length !== 0 ?
-            <div>
-              <h3>You like:</h3>
-              <SongsDisplay songItems={likes}
-                            onLiked={onLiked}
-                            onDisliked={onDisliked}/>
-          </div>
-        : <div>
-            <p>you don't like any songs...</p>
-          </div>
-        : <p>loading...</p>
+      fetchData();
+    }, [])
+    return (
+      <div>
+        <UserNavigationBar selectedItem="Library"/>
+        {
+          isLoaded ?
+            <MusicDisplay songs={likedSongs} />
+          :
+            <LoadingScreen />
         }
-    </div>
-  )
+      </div>
+    )
 }
 
 export default Library;

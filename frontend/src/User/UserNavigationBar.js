@@ -18,7 +18,7 @@ const UserNavigationBar = ({selectedItem}) => {
     };
     const LibraryNavItem = {
         title: "Library",
-        route: `/library`
+        route: `/library/${userId}`
     };
     const profileNavItem = {
         title: "Profile",

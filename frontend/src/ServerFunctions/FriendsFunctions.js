@@ -10,5 +10,5 @@ export const addNewFriendsList = async (userId) =>
 
 export const fetchFriends = async (userId) => {
     const friendsIds = (await axios.get(friendsServerUrl + "/" + userId)).data;
-    return await fetchUsersProfileBoxes(friendsIds)
+    return await fetchUsersProfileBoxes(friendsIds);
 };

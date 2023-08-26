@@ -15,6 +15,7 @@ import Browse from './User/Browse';
 import CreateArtist from './Signing/CreateArtist';
 import AddAlbums from './Artist/AddAlbums';
 import MyMusic from './Artist/MyMusic';
+import AddNewAlbum from './Artist/AddNewAlbum';
 
 const router = createBrowserRouter([
       {
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
         element: <Friends />
       },
       {
-        path: `library`,
+        path: `library/:id`,
         element: <Library />
       },
       {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: `myMusic`,
         element: <MyMusic />
+      },
+      {
+        path: `addNewAlbum`,
+        element: <AddNewAlbum />
       }
     ])
 

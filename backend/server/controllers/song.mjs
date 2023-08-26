@@ -1,12 +1,12 @@
-const Song = require("../models/Song");
+import Song from "../models/Song.mjs";
 
-const getAllSongs = async (req, res) => {
+export const getAllSongs = async (req, res) => {
     try {
         let songs;
-        if (req.query.id === undefined) {
+        if (req.query.ids === undefined) {
             songs = await Song.find();
         } else {
-            const songIds = req.query.id.split(',');
+            const songIds = req.query.ids.split(',');
             songs = await Promise.all(songIds.map(async songId =>
                 await Song.findOne({"_id": songId})));
         }
@@ -16,7 +16,7 @@ const getAllSongs = async (req, res) => {
     }
 }
 
-const getSongFromId = async (req, res) => {
+export const getSongFromId = async (req, res) => {
     try {
         const songId = req.params.songId;
         const song = await Song.findOne({"_id": songId})
@@ -27,16 +27,17 @@ const getSongFromId = async (req, res) => {
 }
 
 
-const addSong = async (req, res) => {
+export const addSongs = async (req, res) => {
     try {
-        const createdSong = await Song.create(req.body);
-        res.status(200).send(createdSong._id);
-    } catch {
-        res.sendStatus(400);
+        const createdSongs = await Promise.all(req.body.Songs.map(async song => await Song.create(song)));
+        res.status(200).send(createdSongs.map(song => song._id));
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
     }
 }
 
-const deleteSong = async (req, res) => {
+export const deleteSong = async (req, res) => {
     try {
         const songId = req.params.songId;
         await Song.findByIdAndDelete(songId);
@@ -45,9 +46,3 @@ const deleteSong = async (req, res) => {
         res.sendStatus(404);
     }
 }
-
-module.exports = {
-    getAllSongs,
-    getSongFromId,
-    addSong,
-    deleteSong };

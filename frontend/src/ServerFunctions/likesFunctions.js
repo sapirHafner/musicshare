@@ -1,22 +1,14 @@
 import axios from 'axios';
-import { baseServerUrl } from './serverFunctions';
+import { baseServerUrl, createIdsQuery } from './serverFunctions';
 
-const likesServerUrl = `${baseServerUrl}/ikes`
+const likesServerUrl = `${baseServerUrl}/likes`
 
-export const addUserLike = async (userId, objectId) => {
-    try{
-       await axios.put(likesServerUrl, {
-        add: true,
-        UserId : userId,
-        ObjectId : objectId
-      })
-    } catch(error){
-      if (error.response.status === 404) {
-          alert("user already likes post!")
-      }
-      throw(error);
-    }
-  }
+export const addUserLike = async (userId, musicalEntity) => {
+  await axios.put(likesServerUrl, {
+    Add: true,
+    MusicalEntity: musicalEntity,
+    UserId : userId,
+  })}
 
 export const removeUserLike = async (userId, objectId) => {
     try{
@@ -34,9 +26,11 @@ export const removeUserLike = async (userId, objectId) => {
     }
   }
 
-export const fetchUserLikes = async (userId) => {
-    try {
-      const response = await axios.get(`${likesServerUrl}/user/${userId}`)
-      return response.data;
-    } catch (error) {}
-  }
+export const fetchUsersLikes = async (userIds) =>
+  (await axios.get(`${likesServerUrl}?usersIds=${userIds.join()}`)).data;
+
+export const fetchUserLikes = async (userId) =>
+  await fetchUsersLikes([userId])
+
+export const createEmptyLikesArray = async (musicalEntity) =>
+  (await axios.post(likesServerUrl, {MusicalEntity: musicalEntity})).data;

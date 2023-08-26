@@ -1,11 +1,11 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
     getProfiles,
     getProfileByUserId,
     addProfile,
     getUsersProfileBoxInfo,
     getUserProfileBoxInfoById
-} = require('../controllers/profiles');
+} from '../controllers/profiles.mjs';
 
 const router = express.Router();
 router.get('/profiles/boxes/:userId', getUserProfileBoxInfoById);
@@ -14,4 +14,4 @@ router.get('/profiles/:userId', getProfileByUserId);
 router.get('/profiles', getProfiles);
 router.post('/profiles', addProfile);
 
-module.exports = router;
+export default router;

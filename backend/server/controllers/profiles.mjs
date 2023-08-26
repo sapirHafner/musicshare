@@ -1,6 +1,6 @@
-const Profile = require("../models/Profile");
+import Profile from "../models/Profile.mjs";
 
-const getProfiles = async (req, res) => {
+export const getProfiles = async (req, res) => {
     try {
         const profiles = await Profile.find();
         res.status(200).send(profiles);
@@ -9,7 +9,7 @@ const getProfiles = async (req, res) => {
     }
 }
 
-const getProfileByUserId = async (req, res) => {
+export const getProfileByUserId = async (req, res) => {
     try {
         const profile = await Profile.findOne({UserId: req.params.userId});
         res.status(200).send(profile);
@@ -18,7 +18,7 @@ const getProfileByUserId = async (req, res) => {
     }
 }
 
-const addProfile = async (req, res) => {
+export const addProfile = async (req, res) => {
     try {
         const createdProfile = await Profile.create(req.body);
         res.status(200).send(createdProfile._id);
@@ -27,14 +27,14 @@ const addProfile = async (req, res) => {
     }
 }
 
-const getUsersProfileBoxInfo = async (req, res) => {
+export const getUsersProfileBoxInfo = async (req, res) => {
     try {
         let profiles;
-        if (req.query.id === undefined) {
+        if (req.query.ids === undefined) {
             profiles = await Profile.find();
 
         } else {
-            const userIds = req.query.id.split(',');
+            const userIds = req.query.ids.split(',');
             profiles = await Promise.all(userIds.map(async userId =>
                 await Profile.findOne({"UserId": userId})
             ))
@@ -52,7 +52,7 @@ const getUsersProfileBoxInfo = async (req, res) => {
     }
 }
 
-const getUserProfileBoxInfoById = async (req, res) => {
+export const getUserProfileBoxInfoById = async (req, res) => {
     const userId = req.params.userId;
     const profile = await Profile.findOne({"UserId": userId});
     const profileBox =  {
@@ -62,10 +62,3 @@ const getUserProfileBoxInfoById = async (req, res) => {
     }
     res.status(200).send(profileBox);
 }
-module.exports = {
-    getProfiles,
-    getProfileByUserId,
-    addProfile,
-    getUsersProfileBoxInfo,
-    getUserProfileBoxInfoById
-};

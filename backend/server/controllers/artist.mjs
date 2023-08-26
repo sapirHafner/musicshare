@@ -1,8 +1,9 @@
-const Artist = require('../models/Artist');
+import Artist from '../models/Artist.mjs';
 
-const getArtistById = async (req, res) => {
+export const getArtistById = async (req, res) => {
     try {
-        const artistId = req.param.id;
+        const artistId = req.params.id;
+        console.log(artistId)
         const artist = await Artist.findById(artistId);
         res.status(200).send(artist);
     } catch (error) {
@@ -10,17 +11,18 @@ const getArtistById = async (req, res) => {
         res.sendStatus(500)
     }
 }
-
-const getArtists = async (req, res) => {
+export const getArtists = async (req, res) => {
     try {
-        let artists;
-        if (req.query.ids === undefined) {
-            artists = await Artist.find();
-        } else {
-            const artistsIds = req.query.ids.split(',');
-            artists = await Promise.all(artistsIds.map(async artistId =>
-                await Artist.findById(artistId)));
+        const query = {};
+        const artistsIds = req.query.ids;
+        if (artistsIds !== undefined) {
+            query._id = {$in: artistsIds.split(',')}
         }
+        const userIds = req.query.userIds;
+        if (userIds !== undefined) {
+            query.UserId = {$in: userIds.split(',')}
+        }
+        const artists = await Artist.find(query);
         res.status(200).send(artists);
     } catch (error) {
         console.log(error);
@@ -28,7 +30,7 @@ const getArtists = async (req, res) => {
     }
 }
 
-const addArtist = async (req, res) => {
+export const addArtist = async (req, res) => {
     try {
         const createdArtist = await Artist.create(req.body);
         res.status(200).send(createdArtist._id);
@@ -38,7 +40,7 @@ const addArtist = async (req, res) => {
     }
 }
 
-const deleteArtist = async (req, res) => {
+export const deleteArtist = async (req, res) => {
     try {
         const artistId = req.params.id;
         await Artists.findByIdAndDelete(artistId)
@@ -49,20 +51,13 @@ const deleteArtist = async (req, res) => {
     }
 }
 
-const updateArtist = async (req, res) => {
+export const updateArtist = async (req, res) => {
     try {
-        await Artist.findByIdAndUpdate(req.body._id, req.body);
+        const artistId = req.body._id;
+        await Artist.findByIdAndUpdate(artistId, req.body);
         res.sendStatus(200);
     } catch (error) {
         console.log(error);
         res.sendStatus(500);
     }
-}
-
-module.exports = {
-    getArtistById,
-    getArtists,
-    addArtist,
-    deleteArtist,
-    updateArtist
 }
