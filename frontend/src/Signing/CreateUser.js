@@ -1,6 +1,8 @@
 import React from 'react'
 import SignUpForm from './SignUpForm'
-import { addUser, addProfile ,addNewFriendsList } from '../serverFunctions';
+import { addUser } from '../ServerFunctions/UserFunctions';
+import { addProfile } from '../ServerFunctions/ProfilesFunctions';
+import { addNewFriendsList } from '../ServerFunctions/FriendsFunctions';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 

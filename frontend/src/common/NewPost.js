@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import UserNavigationBar from '../User/UserNavigationBar'
 import NewPostForm from './NewPostForm'
-import { createNewPost, fetchMusicalObjects } from '../serverFunctions'
+import { createNewPost } from '../ServerFunctions/PostsFunctions'
+import { fetchMusicalObject } from '../ServerFunctions/MusicalObjectsFunctions'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
-import { useLocation
- } from 'react-router-dom'
+import { useQuery } from './Utilities'
 
 const NewPost = () => {
   const [cookies] = useCookies(['userId']);
-  const navigate = useNavigate();
   const userId = cookies['userId'];
-  const useQuery = () => {
-    const { search } = useLocation();
-    return React.useMemo(() => new URLSearchParams(search), [search]);
-}
+
+  const navigate = useNavigate();
+
   const query = useQuery();
   const type = query.get("type")
   const musicalObjectId = query.get("id")
+
   const [musicalObject, setMusicalObject] = useState();
 
 
   useEffect(() =>{
     const fetchData = async () => {
-      const object = (await fetchMusicalObjects(type, [musicalObjectId]))[0];
-      setMusicalObject(object);
+      setMusicalObject(await fetchMusicalObject(type, musicalObjectId));
     }
     fetchData();
   }, [])

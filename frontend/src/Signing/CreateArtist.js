@@ -1,17 +1,13 @@
 import React from 'react'
 import NewArtistFrom from '../User/NewArtistFrom'
-import { addUser, createNewArtist } from '../serverFunctions';
-//import { useDispatch } from 'react-redux'
-//import { change } from './redux/userTypeReducer';
-
+import { addUser } from '../ServerFunctions/UserFunctions';
+import { createNewArtist } from '../ServerFunctions/ArtistFunctions';
 import { useNavigate } from 'react-router-dom';
-import { useCookies
- } from 'react-cookie';
+import { useCookies } from 'react-cookie';
 
 const CreateArtist = () => {
     const navigate = useNavigate()
     const [cookies, setCookie] = useCookies(['userId']);
-   // const dispatch = useDispatch();
 
     const OnSignUp = async (user, artist) => {
         user.Type = "artist";

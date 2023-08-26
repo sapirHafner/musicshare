@@ -7,7 +7,6 @@ import UserHome from "../User/UserHome";
 const Home = () => {
     const [cookies] = useCookies(['userId', 'userType']);
     const { userId, userType } = cookies;
-    console.log(userType)
     const navigate  = useNavigate()
 
     useEffect(() => {

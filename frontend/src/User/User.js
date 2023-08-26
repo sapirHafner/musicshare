@@ -1,11 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { fetchUserProfile, fetchUserPosts } from '../serverFunctions';
+import { fetchUserProfile } from '../ServerFunctions/ProfilesFunctions';
+import { fetchUserPosts } from '../ServerFunctions/PostsFunctions';
 import { useParams } from 'react-router-dom';
 import Error from '../Common/Error';
 import LoadingScreen from '../Common/LoadingScreen';
 import UserNavigationBar from './UserNavigationBar';
 import PostsDisplay from '../Common/PostsDisplay'
+import UserProfile from './UserProfile';
 
 const User = () => {
     const [profile, setProfile] = useState({});
@@ -32,10 +34,7 @@ const User = () => {
             { isLoaded
             ?
             <div>
-              This is your profile!!! <br />
-              your name is {profile.FirstName} <br />
-              your last name is {profile.LastName} <br />
-              your email is {profile.Email} <br />
+              <UserProfile profile={profile} />
               <br />
               <br />
               <br />

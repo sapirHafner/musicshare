@@ -14,6 +14,7 @@ import NewPost from './Common/NewPost';
 import Browse from './User/Browse';
 import CreateArtist from './Signing/CreateArtist';
 import AddAlbums from './Artist/AddAlbums';
+import MyMusic from './Artist/MyMusic';
 
 const router = createBrowserRouter([
       {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: `addAlbums`,
         element: <AddAlbums />
+      },
+      {
+        path: `myMusic`,
+        element: <MyMusic />
       }
     ])
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import UserNavigationBar from './UserNavigationBar';
 import SongsDisplay from '../Common/SongsDisplay';
-import { fetchUserLikes, fetchSongs, addUserLike, removeUserLike } from '../serverFunctions';
+import { fetchUserLikes, addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions';
+import { fetchSongs } from '../ServerFunctions/SongsFunctions';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 

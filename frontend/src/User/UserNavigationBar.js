@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const UserNavigationBar = ({selectedItem}) => {
     const [cookies, setCookie, removeCookie] = useCookies(['userId']);
-
+    const { userId } = cookies;
     const navigate = useNavigate()
 
     const homeNavItem = {
@@ -22,7 +22,7 @@ const UserNavigationBar = ({selectedItem}) => {
     };
     const profileNavItem = {
         title: "Profile",
-        route: "/profile"
+        route: `/user/${userId}`
     };
 
     const friendsNavItem = {
