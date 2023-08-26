@@ -24,7 +24,7 @@ const LoginPage = () => {
                 <div>Create a new user</div>
             </Link>
             <Link to ="/createArtist">
-                <div>Create a new artist profile</div>
+                <div>Create a new artist account</div>
             </Link>
         </div>
     );

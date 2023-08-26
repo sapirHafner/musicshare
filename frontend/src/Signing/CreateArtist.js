@@ -14,7 +14,7 @@ const CreateArtist = () => {
    // const dispatch = useDispatch();
 
     const OnSignUp = async (user, artist) => {
-        user.Type = "Artist";
+        user.Type = "artist";
         const userId = await addUser(user);
         artist.Albums = [];
         artist.UserId = userId;
