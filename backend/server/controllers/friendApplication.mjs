@@ -1,4 +1,4 @@
-import FriendsApplicaton from "../models/FriendApplicaton.mjs";
+import FriendsApplicaton from '../models/FriendApplication.mjs'
 
 export const getFriendsApplicationsByUserId = async (req, res) => {
     try {

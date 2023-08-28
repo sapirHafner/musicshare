@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 import {
     getFriendsApplicationsByUserId,
     addFriendRequestByUserId,
@@ -10,4 +10,4 @@ router.get('/friendApplication/:userId', getFriendsApplicationsByUserId);
 router.post('/friendApplication/', addFriendRequestByUserId);
 router.delete('/friendApplication/:userId', removeFriendRequestByUserId);
 
-module.exports = router;
+export default router
