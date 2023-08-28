@@ -35,26 +35,39 @@ body {
 }
 
 .navitem {
-  margin: 0.25rem;
   padding: 1rem;
+}
+
+.song {
+  background-color: rgb(77, 75, 75);
+  display: flex;
+}
+
+.song .left{
+  float:inline-start;
+}
+
+.song .middle {
+  float:inline-end;
 }
 
 .musicdisplay .button {
   color: black;
   padding-left: 1em;
   padding-right: 1em;
-  margin: 0.5rem ;
-  background-color: grey;
+  margin: 0.5rem;
+  margin-top: 5em;
+  background-color: rgb(77, 75, 75);;
   text-align: center;
 }
 
 .musicdisplay .selected {
   color: black;
-  background-color: green;
+  background-color: darkgreen;
 }
 
 .navitem:hover {
-  background-color: #3a3a3a;
+  background-color: rgb(77, 75, 75);;
 }
 
 .navitem:active {
@@ -63,7 +76,7 @@ body {
 
 
 #selectnavitem {
-  background-color: green;
+  background-color: darkgreen;
 }
 
 code {

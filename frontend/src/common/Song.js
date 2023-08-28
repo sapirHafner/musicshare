@@ -18,17 +18,24 @@ const Song = ({song, onLiked, onDisliked}) => {
     }
 
   return (
-    <div>
-      <h1>name: {song.Name} </h1>
-      <h2>album: {song.album.Name}</h2>
-      <h2>artist: {song.artist.Name}</h2>
-      {isLiked ?
-        <div onClick={handleDislike}>([]V)</div>
-      : <div onClick={handleLike}>([]^) </div>
-      }
-      <Button text="new post" onClick={()=>{
-              navigate(`/newpost?type=song&id=${song._id}`)
-      }} />
+    <div className='song'>
+      <div className='left'>
+        <h1>{song.Name} </h1>
+        <h3>{song.artist.Name}</h3>
+      </div>
+      <div className='middle'>
+        <h2>{song.album.Name}</h2>
+      </div>
+      <div className='bottom'>
+        {isLiked ?
+          <div onClick={handleDislike}>([]V)</div>
+        : <div onClick={handleLike}>([]^) </div>
+        }
+        <Button text="new post" onClick={()=>{
+                navigate(`/newpost?type=song&id=${song._id}`)
+        }} />
+      </div>
+
     </div>
   )
 }
