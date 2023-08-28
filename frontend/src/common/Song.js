@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 
-const Song = ({song, liked, onLiked, onDisliked}) => {
-    const [isLiked, setIsLiked] = useState(liked);
+const Song = ({song, onLiked, onDisliked}) => {
+    const [isLiked, setIsLiked] = useState(song.liked);
     const navigate = useNavigate();
     const handleLike = (event) => {
         event.preventDefault();

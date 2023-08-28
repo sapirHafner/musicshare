@@ -1,10 +1,16 @@
 import mongoose from 'mongoose';
 
 const postScheme = mongoose.Schema({
-    MusicalEntity: {
-      type: Object,
+  MusicalEntity: {
+    Type: {
+      type: String,
       required: true,
     },
+    Id: {
+      type: String,
+      required: true,
+    },
+  },
     UserId: {
       type: String,
       required: true,

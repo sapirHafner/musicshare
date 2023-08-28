@@ -14,7 +14,7 @@ export const createNewPost = async (post) =>
     await axios.post(postServerUrl, post);
 
 export const fetchUsersPosts = async (usersIds) =>
-  (await axios.get(`${postServerUrl}?userIds=${usersIds.join()}`)).data;
+  (await axios.get(`${postServerUrl}?orderby=createdat_desc&userIds=${usersIds.join()}`)).data;
 
 export const fetchUserPosts = async (userId) =>
     await fetchUsersPosts([userId]);

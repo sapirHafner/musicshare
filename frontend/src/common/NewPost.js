@@ -22,7 +22,7 @@ const NewPost = () => {
 
   useEffect(() =>{
     const fetchData = async () => {
- //     setMusicalObject(await fetchMusicalObject(type, musicalObjectId));
+           setMusicalObject(await fetchMusicalObject(type, musicalObjectId));
     }
     fetchData();
   }, [])
@@ -32,7 +32,7 @@ const NewPost = () => {
     const Post = {
       Title: title,
       Content: content,
-      MusicalObject: {
+      MusicalEntity: {
         Type: type,
         Id: musicalObjectId
       },

@@ -25,7 +25,6 @@ const Library = () => {
     useEffect(() => {
       const fetchData = async () => {
         const userLikes = await fetchUserLikes(id)
-        const currentUserLikes = await fetchUserLikes(userId)
         setLikedArtists(await fetchArtists(getTypeIds(userLikes, "artist")));
         setLikedAlbums(await fetchAlbums(getTypeIds(userLikes, "album")));
         setLikedSongs(await fetchSongs(getTypeIds(userLikes, "song")));
@@ -38,7 +37,7 @@ const Library = () => {
         <UserNavigationBar selectedItem="Library"/>
         {
           isLoaded ?
-            <MusicDisplay artists= {likedArtists} albums={[]} songs={likedSongs} />
+            <MusicDisplay artists= {likedArtists} albums={likedAlbums} songs={likedSongs} />
           :
             <LoadingScreen />
         }

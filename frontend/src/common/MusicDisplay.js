@@ -10,13 +10,14 @@ import AlbumsDisplay from './AlbumsDisplay';
 const MusicDisplay = ({artists, albums, songs}) => {
   const [ selectedCategory, setSelectedCategory ] = useState("Artists")
   const [ artistsDetails, setArtistsDetails ] = useState([]);
+  const [ albumsDetails, setAlbumsDetails ] = useState([]);
   const [ songsDetails, setSongsDetails ] = useState([]);
   const [ cookies ] = useCookies(['userId'])
   const { userId } = cookies;
 
   const categoryComponents = {
       "Artists": <ArtistsDisplay artists={artistsDetails} />,
-      "Albums": <AlbumsDisplay albums={albums} />,
+      "Albums": <AlbumsDisplay albums={albumsDetails} />,
       "Songs": <SongsDisplay
                   songItems={songsDetails}
                   onLiked={(songId) => addUserLike(userId, {
@@ -34,6 +35,7 @@ const MusicDisplay = ({artists, albums, songs}) => {
     const fetchData = async () => {
       const [artistsItems, albumsItems, songsItems] = await fetchFullDetails(artists, albums, songs, userId);
       setArtistsDetails(artistsItems);
+      setAlbumsDetails(albumsItems);
       setSongsDetails(songsItems);
 
     };
