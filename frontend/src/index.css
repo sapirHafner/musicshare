@@ -15,7 +15,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 7% 1fr;
+  grid-template-columns: 5% 1fr;
   grid-template-areas:
     "navbar content"
     "navbar content"
@@ -48,7 +48,7 @@ body {
   cursor: pointer;
 }
 
-.song {
+.musicalentity {
   border-style:solid;
   border-color:gray;
   background-color: rgb(77, 75, 75);
@@ -57,45 +57,45 @@ body {
   justify-content: space-around;
 }
 
-.song .top {
+.musicalentity .top {
   order: 1;
   display: flex;
   justify-content: space-between;
 }
 
-.song .bottom {
+.musicalentity .bottom {
   order: 2;
   justify-content: space-between;
   margin-top: 10px;
 }
 
-.song .top .left {
+.musicalentity .top .left {
   text-align: left;
   display: flex;
 }
 
-.song .top .left .album-image {
+.musicalentity .top .left .music-image {
   order:1;
   margin-top: 2.5rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
 
-.song .top .left .details {
+.musicalentity .top .left .details {
   order:2;
   text-align: left;
   width: 400px;
 }
 
-.song .top .middle {
+.musicalentity .top .middle {
   order:2;
 }
 
-.song .top .right {
+.musicalentity .top .right {
   order:3;
 }
 
-.albumimage {
+.musicimage {
   width: 2.5vw;
   height: 3.5vh;
 }

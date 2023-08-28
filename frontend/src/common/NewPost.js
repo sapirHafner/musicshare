@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import UserNavigationBar from '../User/UserNavigationBar'
 import NewPostForm from './NewPostForm'
 import { createNewPost } from '../ServerFunctions/PostsFunctions'
-import { fetchMusicalObject } from '../ServerFunctions/MusicalObjectsFunctions'
+import { fetchMusicalEntity } from '../ServerFunctions/MusicalEntitiesFunctions'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
-import { useQuery } from './Utilities'
+import { useQuery, getMusicalEntityBoxComponent } from './Utilities'
+import LoadingScreen from '../Common/LoadingScreen';
 
 const NewPost = () => {
   const [cookies] = useCookies(['userId']);
@@ -15,18 +16,22 @@ const NewPost = () => {
 
   const query = useQuery();
   const type = query.get("type")
-  const musicalObjectId = query.get("id")
-
-  const [musicalObject, setMusicalObject] = useState();
+  const musicalEntityId = query.get("id")
+  const [musicalEntityComponent, setMusicalEntityComponent] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
 
 
   useEffect(() =>{
     const fetchData = async () => {
-           setMusicalObject(await fetchMusicalObject(type, musicalObjectId));
+        setMusicalEntityComponent(getMusicalEntityBoxComponent(await fetchMusicalEntity({
+          Type: type,
+          Id: musicalEntityId
+        })));
+        console.log("here")
+        setIsLoaded(true);
     }
     fetchData();
   }, [])
-
 
   const onSubmit = async (title, content) => {
     const Post = {
@@ -34,19 +39,29 @@ const NewPost = () => {
       Content: content,
       MusicalEntity: {
         Type: type,
-        Id: musicalObjectId
+        Id: musicalEntityId
       },
       UserId: userId
     }
     await createNewPost(Post);
     navigate(`/user/${userId}`);
   }
+
+
   return (
-    <div>
+    <div className='grid-container'>
         <UserNavigationBar />
-          new post: <br />
-          type: {type} <br />
-        <NewPostForm onSubmit={onSubmit}/>
+        <div className='content'>
+          {
+            isLoaded ?
+            <div>
+              {musicalEntityComponent}
+              <NewPostForm onSubmit={onSubmit}/>
+            </div>
+            :
+            <LoadingScreen />
+          }
+        </div>
     </div>
   )
 }

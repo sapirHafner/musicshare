@@ -1,16 +1,13 @@
 import React from 'react'
-import Song from './Song';
+import SongBox from './SongBox';
 
-const SongsDisplay = ({ songs, onLiked, onDisliked }) => {
-  const songsForDisplay = songs.map(song =>
-    <Song song={song}
-          onLiked = {onLiked}
-          onDisliked = {onDisliked}
-     />
+const SongsDisplay = ({ songs }) => {
+  const songsComponents = songs.map(song =>
+    <SongBox song={song} />
   );
   return (
     <div>
-      {songsForDisplay}
+      {songsComponents}
     </div>
   );
 };

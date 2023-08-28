@@ -3,12 +3,12 @@ import { baseServerUrl, createIdsQuery } from './serverFunctions';
 
 const likesServerUrl = `${baseServerUrl}/likes`
 
-export const addUserLike = async (userId, musicalEntity) =>
+export const  addUserLike = async (userId, musicalEntity) =>{
   await axios.put(likesServerUrl, {
     Add: true,
     MusicalEntity: musicalEntity,
     UserId : userId,
-  })
+  })}
 
 export const removeUserLike = async (userId, musicalEntity) =>
   await axios.put(likesServerUrl, {

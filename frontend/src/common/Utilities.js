@@ -1,5 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom'
+import SongBox from './SongBox';
+import AlbumBox from './AlbumBox'
+import ArtistBox from './ArtistBox'
 
 export const useQuery = () => {
     const { search } = useLocation();
@@ -29,5 +32,14 @@ export const createIdsQuery = ids => {
 export const isEmptyArray = (array) =>
   Array.isArray(array) && array.length === 0;
 
+export const getMusicalEntityBoxComponent = (musicalEntity) => {
+  if (musicalEntity.Type === "song") {
+    return <SongBox song={musicalEntity.entity} />
+  } else if (musicalEntity.Type === "album") {
+    return <AlbumBox album={musicalEntity.entity} />
+  } else if (musicalEntity.Type === "artist") {
+    return <ArtistBox artist={musicalEntity.entity} />
+  }
+}
 
 

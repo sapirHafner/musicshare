@@ -2,8 +2,8 @@ import React from 'react'
 
 const LoadingScreen = () => {
   return (
-    <div> Loading...
-
+    <div>
+      Loading...
     </div>
   )
 }

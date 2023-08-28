@@ -1,19 +1,33 @@
 import { fetchSong, fetchSongs } from "./SongFunctions";
 import { createEntitiesIdsDictionary, setEntitiesLikes } from "../Common/Utilities";
-import { fetchAlbums } from "./AlbumFunctions";
+import { fetchAlbum, fetchAlbums } from "./AlbumFunctions";
 import { fetchUserLikes } from "./likesFunctions";
-import { fetchArtists } from "./ArtistFunctions";
+import { fetchArtist, fetchArtists } from "./ArtistFunctions";
 
-export const fetchMusicalObjects = async (musicalObjects) => {
-    const songs = musicalObjects.filer(object => object.Type === "song");
-    return await fetchSongs(songs.map(song => song.Id))
-  }
-
-  export const fetchMusicalObject = async (musicalObject) => {
-    if (musicalObject.Type == "song") {
-      return await fetchSong(musicalObject.Id);
+export const fetchMusicalEntity = async (musicalEntity) => {
+  if (musicalEntity.Type === "artist") {
+    musicalEntity.entity = await fetchArtist(musicalEntity.Id);
+    return musicalEntity;
+  } else if (musicalEntity.Type === "album") {
+      const album = await fetchAlbum(musicalEntity.Id);
+      const artist = await fetchArtist(album.ArtistId);
+      musicalEntity.entity = {
+        ...album,
+        artist
+      }
+      return musicalEntity;
+    } else if (musicalEntity.Type === "song") {
+    const song = await fetchSong(musicalEntity.Id);
+    const album = await fetchAlbum(song.AlbumId);
+    const artist = await fetchArtist(album.ArtistId);
+    musicalEntity.entity =  {
+      ...song,
+      album,
+      artist
     }
+    return musicalEntity;
   }
+}
 
 export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) => {
   const artists = await fetchArtists(artistsIds);
@@ -29,3 +43,4 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
   const likes = await fetchUserLikes(userId);
   return [setEntitiesLikes(artists, likes), setEntitiesLikes(albums, likes), setEntitiesLikes(songs,likes)];
 }
+

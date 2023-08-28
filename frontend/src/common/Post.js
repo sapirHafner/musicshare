@@ -1,11 +1,11 @@
 import React from 'react'
-import Song from './Song';
+import SongBox from './SongBox';
 
 const Post = ({title, content, musicalEntity, user}) => {
   let musicalEntityComponent;
   switch (musicalEntity.Type) {
     case "song":
-      musicalEntityComponent = <Song song={musicalEntity.Info}
+      musicalEntityComponent = <SongBox song={musicalEntity.Info}
       />
       break
     default:

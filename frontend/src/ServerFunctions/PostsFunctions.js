@@ -5,7 +5,7 @@ import { fetchSongs } from './SongFunctions';
 import { getTypeIds } from '../Common/Utilities';
 import { fetchAlbums } from './AlbumFunctions';
 import { fetchArtists } from './ArtistFunctions';
-import { fetchFullDetails } from './MusicalObjectsFunctions';
+import { fetchFullDetails } from './MusicalEntitiesFunctions';
 import { createEntitiesIdsDictionary } from '../Common/Utilities';
 
 const postServerUrl = `${baseServerUrl}/post`

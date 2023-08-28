@@ -1,32 +1,47 @@
 import React, { useState } from 'react'
-import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import thumbsUpIcon from '../Images/thumbs-up-icon.png'
 import thumbsDownIcon from '../Images/thumbs-down-icon.png'
 import shareIcon from '../Images/share-icon.png'
+import { useCookies } from 'react-cookie';
+import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions';
 
-
-const Song = ({song, onLiked, onDisliked}) => {
+const SongBox = ({song}) => {
+    const [cookies] = useCookies(['userId']);
+    const { userId } = cookies;
     const [isLiked, setIsLiked] = useState(song.liked);
     const navigate = useNavigate();
+
     const handleLike = (event) => {
+      const onLike = async () => {
         event.preventDefault();
-        onLiked(song._id)
+        await addUserLike(userId, {
+          Type: "song",
+          Id: song._id,
+        });
         setIsLiked(true);
+      };
+      onLike();
     }
 
     const handleDislike = (event) => {
+      const onDisike = async () => {
         event.preventDefault();
-        onDisliked(song._id);
-        setIsLiked(false);
+        await removeUserLike(userId, {
+          Type: "album",
+          Id: song._id,
+        });
+        setIsLiked(true);
+      };
+      onDisike();
     }
 
   return (
-    <div className='song'>
+    <div className='musicalentity'>
       <div className='top'>
         <div className='left'>
-          <div className='album-image'>
-            <img class='albumimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+          <div className='music-image'>
+            <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
           </div>
           <div className='details'>
             <h1>{song.Name} </h1>
@@ -47,9 +62,8 @@ const Song = ({song, onLiked, onDisliked}) => {
         }
         <span onClick={()=>{navigate(`/newpost?type=song&id=${song._id}`)}}><img class='icon' src={shareIcon}/></span>
       </div>
-
     </div>
   )
 }
 
-export default Song
+export default SongBox

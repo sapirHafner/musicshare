@@ -3,15 +3,13 @@ import UserNavigationBar from './UserNavigationBar'
 import MusicDisplay from '../Common/MusicDisplay'
 import LoadingScreen from '../Common/LoadingScreen';
 import { useCookies } from 'react-cookie';
-import { fetchFullDetails } from '../ServerFunctions/MusicalObjectsFunctions'
+import { fetchFullDetails } from '../ServerFunctions/MusicalEntitiesFunctions'
 
 const Browse = () => {
   const [allArtists, setAllArtists] = useState([]);
   const [allAlbums, setAllAlbums] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-
-
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
 

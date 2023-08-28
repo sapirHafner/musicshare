@@ -1,16 +1,13 @@
 import React from 'react'
 import UserNavigationBar from './UserNavigationBar';
 import { fetchUserLikes } from '../ServerFunctions/likesFunctions';
-import { fetchSongs } from '../ServerFunctions/SongFunctions';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import LoadingScreen from '../Common/LoadingScreen';
 import MusicDisplay from '../Common/MusicDisplay';
-import { fetchArtists } from '../ServerFunctions/ArtistFunctions';
 import { useParams } from 'react-router-dom';
 import { getTypeIds } from '../Common/Utilities';
-import { fetchAlbums } from '../ServerFunctions/AlbumFunctions';
-import { fetchFullDetails } from '../ServerFunctions/MusicalObjectsFunctions'
+import { fetchFullDetails } from '../ServerFunctions/MusicalEntitiesFunctions'
 
 const Library = () => {
     const [likedArtists, setLikedArtists] = useState([]);
