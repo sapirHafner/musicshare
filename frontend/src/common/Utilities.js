@@ -19,7 +19,7 @@ export const getTypeIds = (array, type) =>
     array.filter(element => element.MusicalEntity.Type === type).map(element => element.MusicalEntity.Id)
 
 export const createIdsQuery = ids => {
-  if (ids === undefined || ids.length === 0) {
+  if (ids === undefined) {
     return ''
   }
   return `?ids=${ids.join()}`

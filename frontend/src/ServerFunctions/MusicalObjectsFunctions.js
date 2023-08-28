@@ -15,7 +15,10 @@ export const fetchMusicalObjects = async (musicalObjects) => {
     }
   }
 
-export const fetchFullDetails = async (artists, albums, songs, userId) => {
+export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) => {
+  const artists = await fetchArtists(artistsIds);
+  const albums = await fetchAlbums(albumsIds);
+  const songs = await fetchSongs(songsIds);
   const albumsDict = createEntitiesIdsDictionary([...albums, ...await fetchAlbums(songs.map(song => song.AlbumId))]);
   const artistsDict = createEntitiesIdsDictionary([...artists, ...await fetchArtists(Object.values(albumsDict ).map(album => album.ArtistId)) ]);
   albums.forEach(album => album.artist = artistsDict[album.ArtistId]);

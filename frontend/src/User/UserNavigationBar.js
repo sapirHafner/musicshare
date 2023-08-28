@@ -48,15 +48,9 @@ const UserNavigationBar = ({selectedItem}) => {
         friendsNavItem,
         ];
     return (
-        <div>
+        <div className="navbar">
            <NavigationBar navigationItems = { navigationItems } selectedItem = { selectedItem } />
-            <div onClick={logOut}>log out</div>
-            ________________________________________________________________________
-            <br />
-            <br />
-            <br />
-            <br />
-
+           <div id='logout' className='navitem' onClick={logOut}>log out</div>
         </div>
     )
 }

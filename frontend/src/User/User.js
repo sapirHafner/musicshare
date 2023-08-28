@@ -22,7 +22,7 @@ const User = () => {
     useEffect(() => {
       const fetchData = async () => {
         setProfile(await fetchUserProfile(id));
-        setUserPosts(await fetchPostsFullDetails(await fetchUserPosts(id), userId));
+        setUserPosts(await fetchPostsFullDetails(id, userId));
         setIsLoaded(true);
       }
 
@@ -34,25 +34,22 @@ const User = () => {
 
 
     return (
-        <div>
-            <UserNavigationBar selectedItem = "Profile" />
-            { isLoaded
-            ?
-            <div>
-              <UserProfile profile={profile} />
-              <br />
-              <br />
-              <br />
+      <div className='grid-container'>
+          <UserNavigationBar selectedItem = "Profile" />
+          <div className='content'>
+              { isLoaded
+              ?
               <div>
-                <h4>your posts:</h4>
+                <UserProfile profile={profile} />
                 <PostsDisplay posts={userPosts}/>
               </div>
-            </div>
-            :
-              <LoadingScreen />
-            }
-        </div>
+              :
+                <LoadingScreen />
+              }
+          </div>
+      </div>
       );
 }
 
 export default User;
+

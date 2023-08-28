@@ -10,7 +10,6 @@ const songServerUrl = `${baseServerUrl}/song`
 export const fetchSongs = async (songIds) =>
   !isEmptyArray(songIds) ? (await axios.get(`${songServerUrl}${createIdsQuery(songIds)}`)).data : [];
 
-
 export const fetchSong = async (songId) =>
   (await axios.get(`${songServerUrl}/${songId}`)).data;
 

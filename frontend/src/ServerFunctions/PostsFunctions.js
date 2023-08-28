@@ -19,11 +19,12 @@ export const fetchUsersPosts = async (usersIds) =>
 export const fetchUserPosts = async (userId) =>
     await fetchUsersPosts([userId]);
 
-export const fetchPostsFullDetails = async (posts, userId) => {
-  let artists = await fetchArtists(getTypeIds(posts, "artist"));
-  let albums = await fetchAlbums(getTypeIds(posts, "album"));
-  let songs = await fetchSongs(getTypeIds(posts, "song"));
-  const [artistsItems, albumsItems, songsItems] = await fetchFullDetails(artists, albums, songs, userId);
+export const fetchPostsFullDetails = async (id, currentUserId) => {
+  const posts = await fetchUserPosts(id)
+  let artistsIds = getTypeIds(posts, "artist");
+  let albumsIds = getTypeIds(posts, "album");
+  let songsIds = getTypeIds(posts, "song");
+  const [artistsItems, albumsItems, songsItems] = await fetchFullDetails(currentUserId, artistsIds, albumsIds, songsIds);
   const musicalEntities = createEntitiesIdsDictionary([...artistsItems, ...albumsItems, ...songsItems])
   return await Promise.all(posts.map(async post => {
     return {
