@@ -11,6 +11,7 @@ import LoadingScreen from '../Common/LoadingScreen';
 const Friends = () => {
     const [cookies] = useCookies(['userId']);
     const { userId } = cookies;
+    
     const [userFriends, setUserFriends] = useState([]);
     const [discoveryProfiles, setDiscoveryProfiles] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);

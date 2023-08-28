@@ -30,6 +30,11 @@ const UserNavigationBar = ({selectedItem}) => {
         route: "/friends"
     };
 
+    const friendsApplicatonsNavItem = {
+        title: "Friends Applicatons",
+        route: "/friendsApplications"
+    };
+
     const logOut = () => {
         removeCookie('userId')
         navigate("/")
