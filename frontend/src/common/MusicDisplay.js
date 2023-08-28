@@ -10,7 +10,6 @@ const MusicDisplay = ({artists, albums, songs}) => {
   const [ selectedCategory, setSelectedCategory ] = useState("Artists")
   const [ cookies ] = useCookies(['userId'])
   const { userId } = cookies;
-
   const categoryComponents = {
       "Artists": <ArtistsDisplay artists={artists} />,
       "Albums": <AlbumsDisplay albums={albums} />,
@@ -28,9 +27,10 @@ const MusicDisplay = ({artists, albums, songs}) => {
   }
 
   return (
-    <div> <Button text="Artists" onClick={() => {setSelectedCategory("Artists")}}/>
-          <Button text="Albums" onClick={() => {setSelectedCategory("Albums")}}/>
-          <Button text="Songs" onClick={() => {setSelectedCategory("Songs")}}/>
+    <div className='musicdisplay'>
+          <Button text="Artists" selected={selectedCategory === "Artists"} onClick={() => {setSelectedCategory("Artists")}}/>
+          <Button text="Albums" selected={selectedCategory === "Albums"} onClick={() => {setSelectedCategory("Albums")}}/>
+          <Button text="Songs" selected={selectedCategory === "Songs"} onClick={() => {setSelectedCategory("Songs")}}/>
           {categoryComponents[selectedCategory]}
     </div>
   )

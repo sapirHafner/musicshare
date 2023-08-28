@@ -39,6 +39,20 @@ body {
   padding: 1rem;
 }
 
+.musicdisplay .button {
+  color: black;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0.5rem ;
+  background-color: grey;
+  text-align: center;
+}
+
+.musicdisplay .selected {
+  color: black;
+  background-color: green;
+}
+
 .navitem:hover {
   background-color: #3a3a3a;
 }
