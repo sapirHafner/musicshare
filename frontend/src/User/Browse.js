@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import UserNavigationBar from './UserNavigationBar'
 import MusicDisplay from '../Common/MusicDisplay'
 import LoadingScreen from '../Common/LoadingScreen';
-import { fetchArtists } from '../ServerFunctions/ArtistFunctions';
-import { fetchSongs } from '../ServerFunctions/SongFunctions';
 import { useCookies } from 'react-cookie';
-import { fetchAlbums } from '../ServerFunctions/AlbumFunctions';
+import { fetchFullDetails } from '../ServerFunctions/MusicalObjectsFunctions'
 
 const Browse = () => {
   const [allArtists, setAllArtists] = useState([]);
@@ -19,23 +17,27 @@ const Browse = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setAllArtists(await fetchArtists());
-      setAllAlbums(await fetchAlbums());
-      setAllSongs(await fetchSongs());
+      const [ artists, albums, songs ] = await fetchFullDetails(userId);
+      setAllArtists(artists);
+      setAllAlbums(albums);
+      setAllSongs(songs);
       setIsLoaded(true);
     }
     fetchData();
   }, [])
 
   return (
-    <div>
+
+    <div className='grid-container'>
       <UserNavigationBar selectedItem="Browse"/>
+      <div className='content'>
       {
-        isLoaded ?
-          <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
-        :
-          <LoadingScreen />
+          isLoaded ?
+            <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
+          :
+            <LoadingScreen />
       }
+      </div>
     </div>
   )
 }

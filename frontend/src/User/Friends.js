@@ -11,7 +11,6 @@ import LoadingScreen from '../Common/LoadingScreen';
 const Friends = () => {
     const [cookies] = useCookies(['userId']);
     const { userId } = cookies;
-    
     const [userFriends, setUserFriends] = useState([]);
     const [discoveryProfiles, setDiscoveryProfiles] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -19,7 +18,6 @@ const Friends = () => {
     const fetchData = async () => {
         setUserFriends(await fetchFriends(userId));
         setDiscoveryProfiles(await fetchDiscoveryProfiles(userId));
-
         setIsLoaded(true);
     }
 
@@ -28,25 +26,26 @@ const Friends = () => {
       }, [])
 
   return (
-    <div>
-      <UserNavigationBar selectedItem={"Friends"}/>
-      {
-        isLoaded ? (
-          <div>
-          {userFriends.length > 0 ? (
-            <FriendsDisplay friends={userFriends}/>
+    <div className='grid-container'>
+        <UserNavigationBar selectedItem={"Friends"}/>
+        <div className='content'>
+        {
+          isLoaded ? (
+            <div>
+            {userFriends.length > 0 ? (
+              <FriendsDisplay friends={userFriends}/>
+            ) : (
+              <p>You don't have any friends...</p>
+            )
+            }
+            <FriendsDiscovery profiles={discoveryProfiles}/>
+            </div>
           ) : (
-            <p>You don't have any friends...</p>
+          <LoadingScreen />
           )
-          }
-          <FriendsDiscovery profiles={discoveryProfiles}/>
-          </div>
-        ) : (
-        <LoadingScreen />
-        )
-      }
+        }
+      </div>
     </div>
-
   )
 }
 

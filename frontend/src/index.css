@@ -1,10 +1,55 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  color:white;
+  font-family: sans-serif
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 7% 1fr;
+  grid-template-areas:
+    "navbar content"
+    "navbar content"
+    "navbar content";
+  min-height: 100vh; /* Ensure the container takes at least the viewport height */
+}
+
+.content {
+  grid-area: content;
+  background-color: #333;
+}
+
+.navbar {
+  grid-area: navbar;
+  text-align: center;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#logout {
+  position: fixed;
+  bottom:0
+}
+
+.navitem {
+  margin: 0.25rem;
+  padding: 1rem;
+}
+
+.navitem:hover {
+  background-color: #3a3a3a;
+}
+
+.navitem:active {
+  background-color: black;
+}
+
+
+#selectnavitem {
+  background-color: green;
 }
 
 code {

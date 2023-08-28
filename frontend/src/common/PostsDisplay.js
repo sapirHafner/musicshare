@@ -12,6 +12,7 @@ const PostsDisplay = ({posts}) => {
     )
   return (
     <div>
+        <h4>your posts:</h4>
         {postsComponents}
     </div>
   )

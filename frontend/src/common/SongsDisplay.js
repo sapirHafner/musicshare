@@ -1,9 +1,9 @@
 import React from 'react'
 import Song from './Song';
 
-const SongsDisplay = ({ songItems, onLiked, onDisliked }) => {
-  const songsForDisplay = songItems.map(songItem =>
-    <Song song={songItem}
+const SongsDisplay = ({ songs, onLiked, onDisliked }) => {
+  const songsForDisplay = songs.map(song =>
+    <Song song={song}
           onLiked = {onLiked}
           onDisliked = {onDisliked}
      />
