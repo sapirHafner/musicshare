@@ -30,9 +30,9 @@ const UserNavigationBar = ({selectedItem}) => {
         route: "/friends"
     };
 
-    const friendsApplicatonsNavItem = {
-        title: "Friends Applicatons",
-        route: "/friendsApplications"
+    const friendsRequestsNavItem = {
+        title: "Friends Requests",
+        route: "/friendsRequests"
     };
 
     const logOut = () => {

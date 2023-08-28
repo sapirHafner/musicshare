@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getUser } from '../ServerFunctions/UserFunctions';
 import { useCookies } from 'react-cookie';
 import { fetchArtistByUserId } from '../ServerFunctions/ArtistFunctions';
-import { ObjectId } from 'mongoose';
 
 const LoginPage = () => {
     const [cookies, setCookie] = useCookies(['userId']);

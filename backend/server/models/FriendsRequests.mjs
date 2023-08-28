@@ -6,7 +6,7 @@ const friendApplicationScheme = mongoose.Schema({
         required: true,
       },
 
-      Friends: {
+      RequestUserIds: {
         type: Array,
         required: true,
       },
