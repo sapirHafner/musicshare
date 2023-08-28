@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import SongsDisplay from './SongsDisplay';
 import Button from './Button';
-import { addUserLike, fetchUserLikes, removeUserLike } from '../ServerFunctions/likesFunctions';
+import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions';
 import { useCookies } from 'react-cookie';
+import ArtistsDisplay from './ArtistsDisplay';
+import { fetchFullDetails } from '../ServerFunctions/MusicalObjectsFunctions';
+import AlbumsDisplay from './AlbumsDisplay';
 
-const MusicDisplay = ({songs}) => {
+const MusicDisplay = ({artists, albums, songs}) => {
   const [ selectedCategory, setSelectedCategory ] = useState("Artists")
+  const [ artistsDetails, setArtistsDetails ] = useState([]);
+  const [ songsDetails, setSongsDetails ] = useState([]);
   const [ cookies ] = useCookies(['userId'])
   const { userId } = cookies;
 
   const categoryComponents = {
-      "Artists": <div> Artists! </div>,
-      "Albums": <div> Albums! </div>,
+      "Artists": <ArtistsDisplay artists={artistsDetails} />,
+      "Albums": <AlbumsDisplay albums={albums} />,
       "Songs": <SongsDisplay
-                  songItems={songs}
+                  songItems={songsDetails}
                   onLiked={(songId) => addUserLike(userId, {
                     Type: "song",
                     Id: songId,
@@ -24,6 +29,16 @@ const MusicDisplay = ({songs}) => {
                   })}
                   />
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const [artistsItems, albumsItems, songsItems] = await fetchFullDetails(artists, albums, songs, userId);
+      setArtistsDetails(artistsItems);
+      setSongsDetails(songsItems);
+
+    };
+    fetchData();
+  }, [])
 
   return (
     <div> <Button text="Artists" onClick={() => {setSelectedCategory("Artists")}}/>

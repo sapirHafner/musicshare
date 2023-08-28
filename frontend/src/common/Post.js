@@ -1,12 +1,11 @@
 import React from 'react'
 import Song from './Song';
 
-const Post = ({title, content, musicalObject, user}) => {
-  let musicalObjectComponent;
-  switch (musicalObject.Type) {
+const Post = ({title, content, musicalEntity, user}) => {
+  let musicalEntityComponent;
+  switch (musicalEntity.Type) {
     case "song":
-      musicalObjectComponent = <Song id={musicalObject.Id}
-            name={musicalObject.Name}
+      musicalEntityComponent = <Song song={musicalEntity.Info}
       />
       break
     default:
@@ -15,7 +14,7 @@ const Post = ({title, content, musicalObject, user}) => {
   return (
     <div>
         <br />
-        {musicalObjectComponent}
+        {musicalEntityComponent}
         <h5>{title}</h5>
         <p>{content}</p>
         <br />

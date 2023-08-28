@@ -6,8 +6,28 @@ export const useQuery = () => {
     return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
-export const setEntitiesLikes = (entities, likes) =>
-{
+export const setEntitiesLikes = (entities, likes) => {
     const likesIds = likes.map(like => like.MusicalEntity.Id);
     return entities.map(entity => {return {...entity, liked: likesIds.includes(entity._id)}})
 }
+
+export const createEntitiesIdsDictionary = (entities) => {
+    return Object.assign({}, ...entities.map(entity => ({[entity._id]: entity})));
+}
+
+export const getTypeIds = (array, type) =>
+    array.filter(element => element.MusicalEntity.Type === type).map(element => element.MusicalEntity.Id)
+
+export const createIdsQuery = ids => {
+  if (ids === undefined || ids.length === 0) {
+    return ''
+  }
+  return `?ids=${ids.join()}`
+
+}
+
+export const isEmptyArray = (array) =>
+  Array.isArray(array) && array.length === 0;
+
+
+

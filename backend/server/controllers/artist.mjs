@@ -3,7 +3,6 @@ import Artist from '../models/Artist.mjs';
 export const getArtistById = async (req, res) => {
     try {
         const artistId = req.params.id;
-        console.log(artistId)
         const artist = await Artist.findById(artistId);
         res.status(200).send(artist);
     } catch (error) {

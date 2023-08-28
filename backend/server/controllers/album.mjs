@@ -3,7 +3,7 @@ import Album from '../models/Album.mjs';
 export const getAlbumById = async (req, res) => {
     try {
         const albumId = req.params.id;
-        const album = Album.findById(albumId);
+        const album = await Album.findById(albumId);
         res.status(200).send(album);
     } catch (error) {
         console.log(error);
@@ -14,6 +14,10 @@ export const getAlbumById = async (req, res) => {
 export const getAlbums = async (req, res) => {
     try {
         const query = {};
+        const albumsIds = req.query.Ids;
+        if (albumsIds != undefined) {
+            query._id = {$in: albumsIds.split(',')}
+        }
         const artistId = req.query.artistId;
         if (artistId != undefined) {
             query.ArtistId = artistId;

@@ -6,7 +6,7 @@ const PostsDisplay = ({posts}) => {
       <Post
         title={post.Title}
         content={post.Content}
-        musicalObject={post.MusicalObject}
+        musicalEntity={post.MusicalEntity}
         user={post.User}
         />
     )

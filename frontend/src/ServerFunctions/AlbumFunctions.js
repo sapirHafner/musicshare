@@ -1,10 +1,17 @@
 import axios from 'axios';
 import { baseServerUrl } from './serverFunctions';
 import { createSongs } from './SongFunctions';
-import { addAlbumToArtist } from './ArtistFunctions';
+import { addAlbumToArtist, fetchArtist } from './ArtistFunctions';
 import { createEmptyLikesArray } from './likesFunctions'
+import { createIdsQuery, isEmptyArray } from '../Common/Utilities';
 
 const albumsServerUrl = `${baseServerUrl}/album`
+
+export const getAlbumById = async (albumId) =>
+    (await axios.get(`${albumsServerUrl}/${albumId}`)).data;
+
+export const fetchAlbums = async (albumsIds) =>
+    !isEmptyArray(albumsIds) ? (await axios.get(`${albumsServerUrl}${createIdsQuery(albumsIds)}`)).data : [];
 
 export const getArtistAlbums = async (artistId) =>
     (await axios.get(`${albumsServerUrl}?artistId=${artistId}`)).data;
@@ -41,3 +48,9 @@ export const updateAlbum = async (albumId, album) =>
         ...album,
         _id: albumId
     })).data
+
+export const fetchAlbumFullDetails = async (albumId) => {
+    const album = await getAlbumById(albumId);
+    album.Artist = await fetchArtist(album.ArtistId)
+    return album;
+}

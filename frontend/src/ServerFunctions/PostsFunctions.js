@@ -1,7 +1,12 @@
 import axios from 'axios';
 import { baseServerUrl } from './serverFunctions';
 import { fetchUserProfileBox } from './ProfilesFunctions';
-import { fetchMusicalObject } from './MusicalObjectsFunctions';
+import { fetchSongs } from './SongFunctions';
+import { getTypeIds } from '../Common/Utilities';
+import { fetchAlbums } from './AlbumFunctions';
+import { fetchArtists } from './ArtistFunctions';
+import { fetchFullDetails } from './MusicalObjectsFunctions';
+import { createEntitiesIdsDictionary } from '../Common/Utilities';
 
 const postServerUrl = `${baseServerUrl}/post`
 
@@ -14,15 +19,20 @@ export const fetchUsersPosts = async (usersIds) =>
 export const fetchUserPosts = async (userId) =>
     await fetchUsersPosts([userId]);
 
-export const enrichPosts = async (posts) => {
+export const fetchPostsFullDetails = async (posts, userId) => {
+  let artists = await fetchArtists(getTypeIds(posts, "artist"));
+  let albums = await fetchAlbums(getTypeIds(posts, "album"));
+  let songs = await fetchSongs(getTypeIds(posts, "song"));
+  const [artistsItems, albumsItems, songsItems] = await fetchFullDetails(artists, albums, songs, userId);
+  const musicalEntities = createEntitiesIdsDictionary([...artistsItems, ...albumsItems, ...songsItems])
   return await Promise.all(posts.map(async post => {
-    const user = await fetchUserProfileBox(post.UserId)
-    const musicalObject = await fetchMusicalObject(post.MusicalObject)
-    musicalObject.Type = post.MusicalObject.Type;
     return {
       ...post,
-      User: user,
-      MusicalObject: musicalObject
+      User: await fetchUserProfileBox(post.UserId),
+      MusicalEntity: {
+        Type: post.MusicalEntity.Type,
+        Info: musicalEntities[post.MusicalEntity.Id]
+      }
     }
   }))
 }

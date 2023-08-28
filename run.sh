@@ -1,3 +1,4 @@
-nodemon backend/server/app.js
-cd frontend
+cd backend/server/
+npm start
+cd ../../frontend/
 npm start

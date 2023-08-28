@@ -1,7 +1,6 @@
 import React from 'react'
 import UserNavigationBar from './UserNavigationBar';
-import SongsDisplay from '../Common/SongsDisplay';
-import { fetchUserLikes, addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions';
+import { fetchUserLikes } from '../ServerFunctions/likesFunctions';
 import { fetchSongs } from '../ServerFunctions/SongFunctions';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
@@ -9,7 +8,8 @@ import LoadingScreen from '../Common/LoadingScreen';
 import MusicDisplay from '../Common/MusicDisplay';
 import { fetchArtists } from '../ServerFunctions/ArtistFunctions';
 import { useParams } from 'react-router-dom';
-import { setEntitiesLikes } from '../Common/Utilities';
+import { getTypeIds } from '../Common/Utilities';
+import { fetchAlbums } from '../ServerFunctions/AlbumFunctions';
 
 const Library = () => {
     const [likedArtists, setLikedArtists] = useState([]);
@@ -26,10 +26,9 @@ const Library = () => {
       const fetchData = async () => {
         const userLikes = await fetchUserLikes(id)
         const currentUserLikes = await fetchUserLikes(userId)
-   //     setLikedArtists(await fetchArtists(userLikes.filter(like => like.MusicalEntity.Type === "artist").map(like => like.MusicalEntity.Id)));
-     //  setLikedAlbums(await fetchLikedAlbums(userLikes.filter(like => like.MusicalEntity.Type === "album").map(like => like.MusicalEntity.Id)));
-        const songsIds = userLikes.filter(like => like.MusicalEntity.Type === "song").map(like => like.MusicalEntity.Id)
-        setLikedSongs(setEntitiesLikes(await fetchSongs(songsIds), currentUserLikes));
+        setLikedArtists(await fetchArtists(getTypeIds(userLikes, "artist")));
+        setLikedAlbums(await fetchAlbums(getTypeIds(userLikes, "album")));
+        setLikedSongs(await fetchSongs(getTypeIds(userLikes, "song")));
         setIsLoaded(true);
       }
       fetchData();
@@ -39,7 +38,7 @@ const Library = () => {
         <UserNavigationBar selectedItem="Library"/>
         {
           isLoaded ?
-            <MusicDisplay songs={likedSongs} />
+            <MusicDisplay artists= {likedArtists} albums={[]} songs={likedSongs} />
           :
             <LoadingScreen />
         }

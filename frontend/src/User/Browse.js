@@ -4,36 +4,35 @@ import MusicDisplay from '../Common/MusicDisplay'
 import LoadingScreen from '../Common/LoadingScreen';
 import { fetchArtists } from '../ServerFunctions/ArtistFunctions';
 import { fetchSongs } from '../ServerFunctions/SongFunctions';
-import { fetchUserLikes } from '../ServerFunctions/likesFunctions';
 import { useCookies } from 'react-cookie';
-import { setEntitiesLikes } from '../Common/Utilities';
+import { fetchAlbums } from '../ServerFunctions/AlbumFunctions';
 
 const Browse = () => {
   const [allArtists, setAllArtists] = useState([]);
   const [allAlbums, setAllAlbums] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
-  const [likes, setLikes] = useState([])
   const [isLoaded, setIsLoaded] = useState(false);
+
 
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
 
   useEffect(() => {
     const fetchData = async () => {
-      setLikes(await fetchUserLikes(userId));
-      setAllArtists(setEntitiesLikes(await fetchArtists(), likes));
-      setAllSongs(setEntitiesLikes(await fetchSongs(), likes));
+      setAllArtists(await fetchArtists());
+      setAllAlbums(await fetchAlbums());
+      setAllSongs(await fetchSongs());
       setIsLoaded(true);
     }
     fetchData();
-  }, [likes])
+  }, [])
 
   return (
     <div>
       <UserNavigationBar selectedItem="Browse"/>
       {
         isLoaded ?
-          <MusicDisplay songs={allSongs} />
+          <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
         :
           <LoadingScreen />
       }
