@@ -1,16 +1,8 @@
 import React from 'react'
-import SongBox from './SongBox';
+import { getMusicalEntityBoxComponent } from '../Common/Utilities'
+const Post = ({post}) => {
+  const musicalEntityComponent = getMusicalEntityBoxComponent(post.MusicalEntity)
 
-const Post = ({title, content, musicalEntity, user}) => {
-  let musicalEntityComponent;
-  switch (musicalEntity.Type) {
-    case "song":
-      musicalEntityComponent = <SongBox song={musicalEntity.Info}
-      />
-      break
-    default:
-      <p>invalid</p>
-  }
   return (
     <div>
         <br />

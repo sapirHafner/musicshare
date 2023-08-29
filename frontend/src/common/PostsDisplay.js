@@ -2,14 +2,7 @@ import React from 'react'
 import Post from './Post'
 
 const PostsDisplay = ({posts}) => {
-  const postsComponents = posts.map(post =>
-      <Post
-        title={post.Title}
-        content={post.Content}
-        musicalEntity={post.MusicalEntity}
-        user={post.User}
-        />
-    )
+  const postsComponents = posts.map(post => <Post post={post}/>)
   return (
     <div>
         <h4>your posts:</h4>

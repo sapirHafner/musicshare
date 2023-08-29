@@ -32,7 +32,7 @@ export const fetchPostsFullDetails = async (id, currentUserId) => {
       User: await fetchUserProfileBox(post.UserId),
       MusicalEntity: {
         Type: post.MusicalEntity.Type,
-        Info: musicalEntities[post.MusicalEntity.Id]
+        entity: musicalEntities[post.MusicalEntity.Id]
       }
     }
   }))

@@ -34,7 +34,7 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
   const albums = await fetchAlbums(albumsIds);
   const songs = await fetchSongs(songsIds);
   const albumsDict = createEntitiesIdsDictionary([...albums, ...await fetchAlbums(songs.map(song => song.AlbumId))]);
-  const artistsDict = createEntitiesIdsDictionary([...artists, ...await fetchArtists(Object.values(albumsDict ).map(album => album.ArtistId)) ]);
+  const artistsDict = createEntitiesIdsDictionary([...artists, ...await fetchArtists(Object.values(albumsDict).map(album => album.ArtistId)) ]);
   albums.forEach(album => album.artist = artistsDict[album.ArtistId]);
   songs.forEach(song => {
     song.album = albumsDict[song.AlbumId];

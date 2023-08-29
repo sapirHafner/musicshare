@@ -21,7 +21,7 @@ export const createEntitiesIdsDictionary = (entities) => {
 export const getTypeIds = (array, type) =>
     array.filter(element => element.MusicalEntity.Type === type).map(element => element.MusicalEntity.Id)
 
-export const createIdsQuery = ids => {
+export const createIdsQuery = (ids) => {
   if (ids === undefined) {
     return ''
   }
