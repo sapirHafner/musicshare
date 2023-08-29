@@ -7,8 +7,8 @@ const Post = ({post}) => {
     <div>
         <br />
         {musicalEntityComponent}
-        <h5>{title}</h5>
-        <p>{content}</p>
+        <h5>{post.title}</h5>
+        <p>{post.content}</p>
         <br />
         ___________ <br />
         |{user.FirstName} {user.LastName} | <br / >
