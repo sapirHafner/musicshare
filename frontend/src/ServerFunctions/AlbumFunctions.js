@@ -7,7 +7,7 @@ import { createIdsQuery, isEmptyArray } from '../Common/Utilities';
 
 const albumsServerUrl = `${baseServerUrl}/album`
 
-export const getAlbumById = async (albumId) =>
+export const fetchAlbum = async (albumId) =>
     (await axios.get(`${albumsServerUrl}/${albumId}`)).data;
 
 export const fetchAlbums = async (albumsIds) =>
@@ -50,7 +50,7 @@ export const updateAlbum = async (albumId, album) =>
     })).data
 
 export const fetchAlbumFullDetails = async (albumId) => {
-    const album = await getAlbumById(albumId);
+    const album = await fetchAlbum(albumId);
     album.Artist = await fetchArtist(album.ArtistId)
     return album;
 }

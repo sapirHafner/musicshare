@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import SongsDisplay from './SongsDisplay';
 import Button from './Button';
-import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions';
 import { useCookies } from 'react-cookie';
 import ArtistsDisplay from './ArtistsDisplay';
 import AlbumsDisplay from './AlbumsDisplay';
 
 const MusicDisplay = ({artists, albums, songs}) => {
   const [ selectedCategory, setSelectedCategory ] = useState("Artists")
-  const [ cookies ] = useCookies(['userId'])
-  const { userId } = cookies;
   const categoryComponents = {
       "Artists": <ArtistsDisplay artists={artists} />,
       "Albums": <AlbumsDisplay albums={albums} />,
-      "Songs": <SongsDisplay
-                  songs={songs}
-                  onLiked={(songId) => addUserLike(userId, {
-                    Type: "song",
-                    Id: songId,
-                  })}
-                  onDisliked={(songId) => removeUserLike(userId, {
-                    Type: "song",
-                    Id: songId,
-                  })}
-                  />
+      "Songs": <SongsDisplay songs={songs} />
   }
 
   return (

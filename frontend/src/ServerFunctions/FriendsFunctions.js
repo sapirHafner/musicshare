@@ -4,7 +4,6 @@ import { fetchUsersProfileBoxes } from './ProfilesFunctions';
 
 const friendsServerUrl = `${baseServerUrl}/friends`
 
-
 export const addNewFriendsList = async (userId) =>
     await axios.post(`${friendsServerUrl}/${userId}`);
 

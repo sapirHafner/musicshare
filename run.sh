@@ -1,4 +1,4 @@
-cd backend/server/
-npm start
-cd ../../frontend/
+cd frontend
+npm start &
+cd ../backend/server/
 npm start

@@ -5,7 +5,7 @@ import { fetchSongs } from './SongFunctions';
 import { getTypeIds } from '../Common/Utilities';
 import { fetchAlbums } from './AlbumFunctions';
 import { fetchArtists } from './ArtistFunctions';
-import { fetchFullDetails } from './MusicalObjectsFunctions';
+import { fetchFullDetails } from './MusicalEntitiesFunctions';
 import { createEntitiesIdsDictionary } from '../Common/Utilities';
 
 const postServerUrl = `${baseServerUrl}/post`
@@ -32,7 +32,7 @@ export const fetchPostsFullDetails = async (id, currentUserId) => {
       User: await fetchUserProfileBox(post.UserId),
       MusicalEntity: {
         Type: post.MusicalEntity.Type,
-        Info: musicalEntities[post.MusicalEntity.Id]
+        entity: musicalEntities[post.MusicalEntity.Id]
       }
     }
   }))

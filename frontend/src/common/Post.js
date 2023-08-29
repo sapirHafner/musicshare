@@ -1,27 +1,17 @@
 import React from 'react'
-import Song from './Song';
-
-const Post = ({title, content, musicalEntity, user}) => {
-  let musicalEntityComponent;
-  switch (musicalEntity.Type) {
-    case "song":
-      musicalEntityComponent = <Song song={musicalEntity.Info}
-      />
-      break
-    default:
-      <p>invalid</p>
-  }
+import { getMusicalEntityBoxComponent } from '../Common/Utilities'
+const Post = ({post}) => {
+  const musicalEntityComponent = getMusicalEntityBoxComponent(post.MusicalEntity)
   return (
     <div>
         <br />
         {musicalEntityComponent}
-        <h5>{title}</h5>
-        <p>{content}</p>
+        <h5>{post.Title}</h5>
+        <p>{post.Content}</p>
         <br />
         ___________ <br />
-        |{user.FirstName} {user.LastName} | <br / >
+        |{post.User.FirstName} {post.User.LastName} | <br / >
         ___________ <br />
-
     </div>
   )
 }
