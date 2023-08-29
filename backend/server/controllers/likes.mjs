@@ -23,7 +23,11 @@ const addUserLike = async (req, res) => {
     try {
         const musicalEntity = req.body.MusicalEntity;
         const userId = req.body.UserId;
-        const musicalEntityLikes = await Likes.findOne({MusicalEntity: musicalEntity});
+        const musicalEntityLikes = await Likes.findOne({MusicalEntity: musicalEntity})
+        console.log("###");
+        console.log(musicalEntity);
+        console.log(musicalEntityLikes)
+        console.log("###")
         if (musicalEntityLikes.UsersIds.includes(userId)) {
             res.sendStatus(404);
         } else {

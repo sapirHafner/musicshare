@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useNavigate
  } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
- import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions'
+import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions'
 
 const AlbumBox = ({album}) => {
   const [isLiked, setIsLiked] = useState(album.liked);
@@ -31,7 +31,7 @@ const handleDislike = (event) => {
       Type: "album",
       Id: album._id,
     });
-    setIsLiked(true);
+    setIsLiked(false);
   };
   onDisike();
 }

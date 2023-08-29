@@ -28,10 +28,10 @@ const SongBox = ({song}) => {
       const onDisike = async () => {
         event.preventDefault();
         await removeUserLike(userId, {
-          Type: "album",
+          Type: "song",
           Id: song._id,
         });
-        setIsLiked(true);
+        setIsLiked(false);
       };
       onDisike();
     }
