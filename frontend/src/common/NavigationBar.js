@@ -1,7 +1,7 @@
 import NavigationButton from "./NavigationButton";
 import { useNavigate } from "react-router-dom";
 
-const NavigationBar = ({ navigationItems, selectedItem }) => {
+const NavigationBar = ({ navigationItems, selectedItem, onLogout }) => {
     const navigate = useNavigate();
 
     const onClick = (route) => {
@@ -17,8 +17,11 @@ const NavigationBar = ({ navigationItems, selectedItem }) => {
         />
     );
     return (
-        <nav>
-            { NavigationButtons }
+        <nav className="navbar">
+            <ul className="navbar-nav">
+                { NavigationButtons }
+                <li className='nav-item rounded p-3 m-1' onClick={onLogout}>logout</li>
+            </ul>
         </nav>
     );
 };

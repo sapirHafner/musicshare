@@ -8,6 +8,7 @@ import MusicDisplay from '../Common/MusicDisplay';
 import { useParams } from 'react-router-dom';
 import { getTypeIds } from '../Common/Utilities';
 import { fetchFullDetails } from '../ServerFunctions/MusicalEntitiesFunctions'
+import Upperbar from './Upperbar';
 
 const Library = () => {
     const [likedArtists, setLikedArtists] = useState([]);
@@ -35,17 +36,23 @@ const Library = () => {
     }, [])
     return (
       <div className='grid-container'>
-        <UserNavigationBar selectedItem="Library"/>
-        <div className='content'>
-        {
+        <Upperbar />
+        <div className='sidebar'>
+          <UserNavigationBar selectedItem = "Library"/>
+        </div>
+        <div className='main'>
+          <div className='content'>
+          {
             isLoaded ?
               <MusicDisplay artists={likedArtists} albums={likedAlbums} songs={likedSongs} />
             :
               <LoadingScreen />
-        }
+          }
+          </div>
         </div>
-    </div>
+      </div>
     )
 }
 
 export default Library;
+

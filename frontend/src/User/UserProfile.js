@@ -3,9 +3,8 @@ import React from 'react'
 const UserProfile = ({profile}) => {
   return (
     <div>
-        First name: {profile.FirstName} <br />
-        Last name: {profile.LastName} <br />
-        Email: {profile.Email} <br />
+        <div>{profile.FirstName} {profile.LastName}</div>
+        <div>{profile.Email}</div>
     </div>
   )
 }
