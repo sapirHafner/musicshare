@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         element: <User />
       },
       {
-        path: 'artist/:id',
+        path: 'artist/:artistId',
         element: <Artist />
       },
       {

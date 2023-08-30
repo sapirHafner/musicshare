@@ -62,6 +62,20 @@ export const getArtistFollowers = async (req, res) => {
     }
 }
 
+export const getFollowers = async (req, res) => {
+    try {
+        const query = {};
+        const usersIds = req.query.usersIds;
+        if (usersIds !== undefined) {
+            query.UsersIds = {$in: usersIds.split(',')};
+        }
+        res.status(200).send(await Follwers.find(query));
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
+
 export const deleteArtistFollowers = async (req, res) => {
     try {
         const artistId = req.params.artistId;

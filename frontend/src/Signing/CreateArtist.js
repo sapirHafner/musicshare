@@ -5,6 +5,7 @@ import { createNewArtist } from '../ServerFunctions/ArtistFunctions';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import {createEmptyLikesArray} from '../ServerFunctions/likesFunctions';
+import { createNewFollowers } from '../ServerFunctions/followersFunctions';
 
 const CreateArtist = () => {
     const navigate = useNavigate()
@@ -20,6 +21,7 @@ const CreateArtist = () => {
           Id: artistId,
           Type: "artist"
         });
+        await createNewFollowers(artistId);
         setCookie("userId", userId, { path: "/"});
         setCookie("userType", "artist", { path: "/"});
         setCookie('artistId', artistId, {path: '/'});

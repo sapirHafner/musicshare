@@ -41,12 +41,6 @@ const ArtistNavBar = ({selectedItem}) => {
         <div>
            <NavigationBar navigationItems = { navigationItems } selectedItem = { selectedItem } />
             <div onClick={logOut}>log out</div>
-            ________________________________________________________________________
-            <br />
-            <br />
-            <br />
-            <br />
-
         </div>
     )
 }

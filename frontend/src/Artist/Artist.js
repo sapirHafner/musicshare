@@ -6,31 +6,32 @@ import { fetchArtist } from '../ServerFunctions/ArtistFunctions'
 import LoadingScreen from '../Common/LoadingScreen'
 import { fetchAlbums } from '../ServerFunctions/AlbumFunctions'
 import AlbumBox from '../Common/AlbumBox'
-import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 import {  fetchUserLikes, addArtistLike, removeArtistLike } from '../ServerFunctions/likesFunctions'
 import { setEntitiesLikes } from '../Common/Utilities'
-import FollowersButton from './FollowersButton'
+import FollowersButton from '../Components/FollowersButton/FollowersButton'
 import LikeButton from '../Components/LikeButton/LikeButton';
 import ShareButton from '../Components/ShareButton/ShareButton'
+import { isUserFollowing, addFollower, removeFollower } from '../ServerFunctions/followersFunctions'
 
 const Artist = () => {
-  const { id } = useParams();
+  const { artistId } = useParams();
   const [ artist, setArtist ] = useState();
   const [ albums, setAlbums ] = useState();
   const [ loaded, setLoaded ] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [isFollowed, setIsFollowed] = useState(false);
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       const userLikes = await fetchUserLikes(userId);
-      const fetchedArtist = setEntitiesLikes([await fetchArtist(id)], userLikes)[0];
+      const fetchedArtist = setEntitiesLikes([await fetchArtist(artistId)], userLikes)[0];
       setArtist(fetchedArtist);
       setAlbums(await fetchAlbums(fetchedArtist.AlbumsIds));
       setIsLiked(fetchedArtist.liked)
+      setIsFollowed(await isUserFollowing(userId, artistId));
       setLoaded(true)
     };
     fetchData()
@@ -60,6 +61,30 @@ const Artist = () => {
     handleDislike();
   }
 
+  const onFollow = () => {
+    const handleFollow = async () => {
+      try {
+        setIsFollowed(true);
+        await addFollower(artistId, userId)
+      } catch (error) {
+        setIsFollowed(false);
+      }
+    };
+    handleFollow();
+  }
+
+  const onUnfollow = () => {
+    const handleFollow = async () => {
+      try {
+        setIsFollowed(false);
+        await removeFollower(artistId, userId)
+      } catch (error) {
+        setIsFollowed(true);
+      }
+    };
+    handleFollow();
+  }
+
   return (
     <div className='grid-container'>
     <Upperbar />
@@ -78,7 +103,7 @@ const Artist = () => {
                 </div>
                 <div className='functions'>
                   <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
-                  <FollowersButton />
+                  <FollowersButton isFollowed={isFollowed} onFollow={onFollow} onUnfollow={onUnfollow}/>
                   <ShareButton type="artist" id={artist._id} />
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 import { useState, useEffect } from "react";
 import { fetchUserProfile } from "../ServerFunctions/ProfilesFunctions";
 import {
@@ -40,7 +40,7 @@ const User = () => {
     <div className="grid-container">
       <Upperbar />
       <div className="sidebar">
-        <UserNavigationBar selectedItem="Profile" />
+        <UserNavigationBar selectedItem={id === userId ? "Profile" : ""} />
       </div>
       <div className="main">
         <div>
