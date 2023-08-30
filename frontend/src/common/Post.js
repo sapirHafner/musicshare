@@ -4,17 +4,18 @@ const Post = ({post}) => {
   const musicalEntityComponent = getMusicalEntityBoxComponent(post.MusicalEntity)
   return (
     <div className='post content'>
-      <div>
-          {post.User.FirstName} {post.User.LastName}
-      </div>
-
-      <div>
-          <div className='posttitle'>
-            {post.Title}
-          </div>
-          <div>
-            {post.Content}
-          </div>
+      <div className='left'>
+        <div>
+            {post.User.FirstName} {post.User.LastName}
+        </div>
+        <div className='posttext'>
+            <div className='posttitle'>
+              {post.Title}
+            </div>
+            <div>
+              {post.Content}
+            </div>
+        </div>
       </div>
 
       <div>

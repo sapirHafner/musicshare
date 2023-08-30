@@ -51,6 +51,7 @@ body {
   height: 100vh;
   padding: 0.25rem;
   padding-left: 2rem;
+  padding-top: 3rem;
 }
 
 .topbar {
@@ -78,6 +79,7 @@ body {
 
 .button {
   cursor: pointer;
+  padding: 1rem;
 }
 
 .icon {
@@ -92,13 +94,14 @@ body {
   padding: 0.5rem;
   padding-left: 4rem;
   margin-left: 4rem;
+  margin-bottom: 1rem;
 }
 
 .boximage {
   position: relative;
   max-width: 2.5vw;
   max-height: 3.5vh;
-  top:1rem;
+  top:0.5rem;
 }
 
 .albumName {
@@ -117,20 +120,49 @@ body {
   gap: 1rem;
 }
 
+.displaybuttons {
+  display: flex;
+  justify-content: space-between;
+  width: 15rem;
+  margin-bottom: 2rem;
+}
+
 .musicalentity {
   margin-right: 5rem;
   text-align: left;
 }
-.nav-item:hover {
+
+
+.button:hover {
+  cursor: pointer;
   background-color: rgb(77, 75, 75);;
+}
+
+
+.selected {
+  background-color:var(--musicshare-green);
+}
+
+
+
+.button.selected {
+  background-color:var(--musicshare-green);
+}
+
+.button:hover {
+  background-color:rgb(3, 137, 3);
 }
 
 .navbar-nav {
   margin: 0rem;
 }
 
-.nav-item:active {
+.button:active {
   background-color: rgb(34, 34, 34);
+}
+
+.musicdisplay .button {
+  margin-left: 1rem;
 }
 
 .post {
@@ -139,11 +171,99 @@ body {
   align-items: center;
 }
 
-#selectnavitem {
-  background-color:var(--musicshare-green);
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.listitem {
+  background-color: rgb(75, 75, 75);
+  margin-bottom: 1rem;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1rem;
+  padding-right:1rem;
+  padding-top: 0.5rem;
+  position: relative;
+  right:4rem;
+  border-radius: 0.5rem;
+}
+
+.listitem .details {
+  width: 20vw;
+  justify-content: left;
+}
+
+.listitem .albumName {
+  position: relative;
+  right: 8rem
+}
+
+.listitem.album {
+  margin-left: 2rem;
+}
+
+.link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.listitem.artist {
+  margin-left: 2rem;
+}
+
+.artist .artistName {
+  position: relative;
+  top: 1rem;
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+.functions {
+  position: inherit;
+  top:0.75rem;
+}
+
+.artistheader {
+  height: 5vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content.albums {
+  position: relative;
+  bottom: 22rem;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+.box .boximage {
+  max-width: 8vw;
+  max-height: 8vh;
+}
+
+.box .name {
+  position: relative;
+  top:1.5rem;
+  font-size: small;
+  max-width: 9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.albums {
+  display: flex;
+  gap:3rem;
+}
+
+.post .left {
+  display: flex;
+  gap:3rem;
 }

@@ -6,7 +6,7 @@ import shareIcon from '../Images/share-icon.png'
 import { useCookies } from 'react-cookie';
 import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions';
 
-const SongBox = ({song}) => {
+const SongBox = ({song, className}) => {
     const [cookies] = useCookies(['userId']);
     const { userId } = cookies;
     const [isLiked, setIsLiked] = useState(song.liked);
@@ -37,7 +37,7 @@ const SongBox = ({song}) => {
     }
 
   return (
-    <div className='musicalentity'>
+    <div className={`musicalentity`}>
       <div className='details'>
         <div className='boximage'>
           <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
@@ -48,7 +48,7 @@ const SongBox = ({song}) => {
           <span className='albumName'>{song.album.Name}</span>
         </div>
       </div>
-      <div>
+      <div className="functions">
         {isLiked ?
           <span onClick={handleDislike}><img class='icon' src={thumbsDownIcon}/></span>
         : <span onClick={handleLike}><img class='icon' src={thumbsUpIcon}/></span>
