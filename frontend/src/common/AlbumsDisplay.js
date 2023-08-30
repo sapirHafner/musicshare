@@ -1,8 +1,8 @@
 import React from 'react'
-import AlbumBox from './AlbumBox'
+import AlbumListItem from './AlbumListItem'
 
 const AlbumsDisplay = ({albums}) => {
-    const albumsComponents = albums.map(album => <AlbumBox album={album}/>);
+    const albumsComponents = albums.map(album => <AlbumListItem album={album}/>);
   return (
     <div>
         {albumsComponents}

@@ -15,10 +15,14 @@ const MusicDisplay = ({artists, albums, songs}) => {
 
   return (
     <div className='musicdisplay'>
+      <div className='displaybuttons'>
           <Button text="Artists" selected={selectedCategory === "Artists"} onClick={() => {setSelectedCategory("Artists")}}/>
           <Button text="Albums" selected={selectedCategory === "Albums"} onClick={() => {setSelectedCategory("Albums")}}/>
           <Button text="Songs" selected={selectedCategory === "Songs"} onClick={() => {setSelectedCategory("Songs")}}/>
-          {categoryComponents[selectedCategory]}
+      </div>
+      <div>
+        {categoryComponents[selectedCategory]}
+      </div>
     </div>
   )
 }

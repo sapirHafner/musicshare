@@ -1,14 +1,13 @@
 import React from 'react'
-import SongBox from './SongBox';
+import SongListItem from './SongListItem'
 
 const SongsDisplay = ({ songs }) => {
-  const songsComponents = songs.map(song =>
-    <SongBox song={song} />
-  );
+  const songsComponents = songs.map(song => <SongListItem song={song}/>);
+
   return (
-    <div>
+    <ul>
       {songsComponents}
-    </div>
+    </ul>
   );
 };
 

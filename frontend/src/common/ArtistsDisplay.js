@@ -1,8 +1,8 @@
 import React from 'react'
-import ArtistBox from './ArtistBox'
+import ArtistListItem from './ArtistListItem'
 
 const ArtistsDisplay = ({artists}) => {
-  const artistsComponents = artists.map(artist => <ArtistBox artist={artist}/>)
+  const artistsComponents = artists.map(artist => <ArtistListItem artist={artist}/>)
   return (
     <div>
       {artistsComponents}
