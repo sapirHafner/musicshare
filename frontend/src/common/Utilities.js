@@ -10,8 +10,8 @@ export const useQuery = () => {
 }
 
 export const setEntitiesLikes = (entities, likes) => {
-    const likesIds = likes.map(like => like.MusicalEntity.Id);
-    return entities.map(entity => {return {...entity, liked: likesIds.includes(entity._id)}})
+  const likesIds = likes.map(like => like.MusicalEntity.Id);
+  return entities.map(entity => {return {...entity, liked: likesIds.includes(entity._id)}})
 }
 
 export const createEntitiesIdsDictionary = (entities) => {

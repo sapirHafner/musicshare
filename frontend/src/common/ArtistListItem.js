@@ -42,7 +42,7 @@ const ArtistListItem = ({artist}) => {
         <div className='boximage'>
           <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
-        <div className='artistName link'>
+        <div className='artistName link' onClick={()=>{navigate(`/artist/${artist._id}`)}}>
           {artist.Name}
         </div>
       </div>

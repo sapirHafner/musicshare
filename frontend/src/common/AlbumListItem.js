@@ -44,7 +44,7 @@ const AlbumListItem = ({album}) => {
         </div>
         <div>
           <div className='link'>{album.Name}</div>
-          <div className='link'>{album.artist.Name}</div>
+          <div className='link' onClick={()=>{navigate(`/artist/${album.artist._id}`)}}>{album.artist.Name}</div>
         </div>
       </div>
       <div className='functions'>

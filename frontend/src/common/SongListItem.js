@@ -11,7 +11,6 @@ const SongListItem = ({song}) => {
   const { userId } = cookies;
   const [isLiked, setIsLiked] = useState(song.liked);
   const navigate = useNavigate();
-
   const handleLike = (event) => {
     const onLike = async () => {
       event.preventDefault();
@@ -40,11 +39,11 @@ const SongListItem = ({song}) => {
     <div className='listitem'>
       <div className='details'>
         <div className='boximage'>
-          <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+          <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
         <div>
           <div> {song.Name} </div>
-          <div className='link'>{song.artist.Name}</div>
+          <div className='link' onClick={() => navigate(`/artist/${song.artist._id}`)}>{song.artist.Name}</div>
         </div>
       </div>
       <div className='albumName link'>{song.album.Name}</div>

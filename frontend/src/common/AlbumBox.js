@@ -8,7 +8,7 @@ import { useNavigate
 import { useCookies } from 'react-cookie'
 import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions'
 
-const AlbumBox = ({album}) => {
+const AlbumBox = ({album, className}) => {
   const [isLiked, setIsLiked] = useState(album.liked);
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
@@ -38,10 +38,20 @@ const handleDislike = (event) => {
 
   const navigate = useNavigate();
   return (
+    className === "min" ?
+      <div className='box'>
+        <div className='boximage'>
+          <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+        </div>
+        <div className='name link'>
+          {album.Name}
+        </div>
+      </div>
+    :
     <div className='musicalentity'>
       <div className='details'>
         <div className='boximage'>
-          <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+          <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
         <div>
           {album.Name} <br />

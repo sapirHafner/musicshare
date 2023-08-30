@@ -226,3 +226,39 @@ code {
   position: inherit;
   top:0.75rem;
 }
+
+.artistheader {
+  height: 5vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content.albums {
+  position: relative;
+  bottom: 22rem;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+.box .boximage {
+  max-width: 8vw;
+  max-height: 8vh;
+}
+
+.box .name {
+  position: relative;
+  top:1.5rem;
+  font-size: small;
+  max-width: 9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+.albums {
+  display: flex;
+  gap:3rem;
+}
