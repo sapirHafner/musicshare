@@ -8,7 +8,6 @@ import likesRouter from './likes.mjs'
 import discoveryRouter from './discovery.mjs'
 import artistRouter from './artist.mjs'
 import albumRouter from './album.mjs'
-import friendsApplicationsRouter from './friendApplication.mjs';
 import followersRouter from './followers.mjs'
 import friendsRequestsRouter from './friendsRequests.mjs';
 
@@ -23,5 +22,6 @@ router.use(postRouter);
 router.use(artistRouter);
 router.use(albumRouter);
 router.use(friendsRequestsRouter)
+router.use(followersRouter);
 
 export default router;

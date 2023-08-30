@@ -22,9 +22,7 @@ export const getAlbums = async (req, res) => {
         if (artistId != undefined) {
             query.ArtistId = artistId;
         }
-        console.log(query)
         const albums = await Album.find(query);
-        console.log(albums)
         res.status(200).send(albums);
     } catch (error) {
         console.log(error);

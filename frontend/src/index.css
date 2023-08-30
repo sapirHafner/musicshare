@@ -1,5 +1,5 @@
 :root {
-  --sidebar-menu-width:6rem;
+  --sidebar-menu-width:8rem;
   --background-grey:#333;
   --top-bar-height:3rem;
   --musicshare-green:darkgreen;
@@ -147,10 +147,6 @@ body {
 
 .button.selected {
   background-color:var(--musicshare-green);
-}
-
-.button:hover {
-  background-color:rgb(3, 137, 3);
 }
 
 .navbar-nav {
