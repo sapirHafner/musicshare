@@ -262,3 +262,8 @@ code {
   display: flex;
   gap:3rem;
 }
+
+.post .left {
+  display: flex;
+  gap:3rem;
+}
