@@ -9,6 +9,7 @@
 img {
   height: 100%;
   width: 100%;
+  margin-right:0.5rem;
 }
 *, *:before, *:after {
   margin: 0;
@@ -104,9 +105,9 @@ body {
   color:gray;
 }
 
-.artistdetails {
+.artistbox {
   position: relative;
-  top:1rem;
+  right:2rem;
 }
 
 .details {
@@ -114,6 +115,11 @@ body {
   justify-content: space-between;
   margin-bottom: 1rem;
   gap: 1rem;
+}
+
+.musicalentity {
+  margin-right: 5rem;
+  text-align: left;
 }
 .nav-item:hover {
   background-color: rgb(77, 75, 75);;
