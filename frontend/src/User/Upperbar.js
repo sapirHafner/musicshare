@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
-import { fetchUserProfileBox } from '../ServerFunctions/ProfilesFunctions';
+import userIcon from '../Images/user-icon.png'
+import searchIcon from '../Images/search-icon.png'
 
 const Upperbar = () => {
     const [cookies] = useCookies(['userId'])
@@ -16,8 +17,14 @@ const Upperbar = () => {
     },[])
 
   return (
-    <div>
-        {userId.FirstName}
+    <div className='topbar'>
+        <div>
+            MusicShare
+        </div>
+        <div>
+            <img class='icon' src={searchIcon}/>
+            <img class='icon' src={userIcon}/>
+        </div>
     </div>
   )
 }

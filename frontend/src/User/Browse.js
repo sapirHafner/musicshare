@@ -27,20 +27,18 @@ const Browse = () => {
 
   return (
   <div className='grid-container'>
+    <Upperbar />
     <div className='sidebar'>
         <UserNavigationBar selectedItem = "Browse"/>
     </div>
     <div className='main'>
-        <div className='topbar'>
-          <Upperbar />
-        </div>
-        <div className='content'>
-        {
-          isLoaded ?
-            <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
-          :
-            <LoadingScreen />
-        }
+      <div className='content'>
+      {
+        isLoaded ?
+          <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
+        :
+          <LoadingScreen />
+      }
       </div>
     </div>
   </div>

@@ -36,13 +36,11 @@ const Library = () => {
     }, [])
     return (
       <div className='grid-container'>
+        <Upperbar />
         <div className='sidebar'>
-            <UserNavigationBar selectedItem = "Library"/>
+          <UserNavigationBar selectedItem = "Library"/>
         </div>
         <div className='main'>
-          <div className='topbar'>
-            <Upperbar />
-          </div>
           <div className='content'>
           {
             isLoaded ?
@@ -53,7 +51,6 @@ const Library = () => {
           </div>
         </div>
       </div>
-
     )
 }
 

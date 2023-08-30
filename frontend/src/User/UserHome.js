@@ -5,17 +5,15 @@ import Upperbar from './Upperbar';
 const UserHome = () => {
   return (
     <div className='grid-container'>
+      <Upperbar />
       <div className='sidebar'>
           <UserNavigationBar selectedItem = "Home"/>
+      </div>
+      <div className='main'>
+        <div className='content'>
+          <h1>Welcome to MusicShare!</h1>
         </div>
-        <div className='main'>
-          <div className='topbar'>
-            <Upperbar />
-          </div>
-          <div className='content'>
-            <h1>Welcome to MusicShare!</h1>
-          </div>
-        </div>
+      </div>
     </div>
   )
 }
