@@ -8,3 +8,4 @@ export const fetchDiscoveryProfiles = async (userId) => {
     const recommendedFriendsIds = (await axios.get(`${discoveryServerUrl}/friends/${userId}`)).data
     return await fetchUsersProfileBoxes(recommendedFriendsIds)
 }
+

@@ -1,11 +1,17 @@
 import React from 'react'
 import ProfileBox from '../Common/ProfileBox'
-const FriendsDiscovery = ({ profiles }) => {
+import { addFriendRequest } from '../ServerFunctions/FriendsFunctions';
+
+
+const FriendsDiscovery = ({ profiles, userId}) => {
+ 
     const profileBoxes = profiles.map(profile =>
         <ProfileBox
+            myId={userId}
             userId={profile.UserId}
             firstName={profile.FirstName}
             lastName={profile.LastName}
+            sendRequest={addFriendRequest}
         />
     )
   return (

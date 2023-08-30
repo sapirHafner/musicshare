@@ -9,6 +9,7 @@ import LoginPage from './Signing/LoginPage';
 import User from './User/User';
 import Artist from './Artist/Artist'
 import Friends from './User/Friends';
+import FriendsRequests from './User/FriendsRequests';
 import Library from './User/Library';
 import NewPost from './Common/NewPost';
 import Browse from './User/Browse';
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "friends",
         element: <Friends />
+      },
+      {
+        path: "friendsRequests",
+        element: <FriendsRequests />
       },
       {
         path: `library/:id`,

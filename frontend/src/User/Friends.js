@@ -43,7 +43,7 @@ const Friends = () => {
                     <p>You don't have any friends...</p>
                   )
                   }
-                  <FriendsDiscovery profiles={discoveryProfiles}/>
+                  <FriendsDiscovery profiles={discoveryProfiles} userId={userId}/>
                   </div>
                   :
                     <LoadingScreen />

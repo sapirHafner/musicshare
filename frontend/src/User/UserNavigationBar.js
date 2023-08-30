@@ -46,6 +46,7 @@ const UserNavigationBar = ({selectedItem}) => {
         LibraryNavItem,
         profileNavItem,
         friendsNavItem,
+        friendsRequestsNavItem
         ];
     return (
         <NavigationBar navigationItems = { navigationItems } selectedItem = { selectedItem } onLogout={logOut}/>
