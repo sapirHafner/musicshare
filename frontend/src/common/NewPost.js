@@ -20,15 +20,14 @@ const NewPost = () => {
   const [musicalEntityComponent, setMusicalEntityComponent] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   useEffect(() =>{
     const fetchData = async () => {
-        setMusicalEntityComponent(getMusicalEntityBoxComponent(await fetchMusicalEntity({
-          Type: type,
-          Id: musicalEntityId
-        })));
-        console.log("here")
-        setIsLoaded(true);
+      const musicalEntity = await fetchMusicalEntity({
+        Type: type,
+        Id: musicalEntityId
+      });
+      setMusicalEntityComponent(getMusicalEntityBoxComponent(musicalEntity));
+       setIsLoaded(true);
     }
     fetchData();
   }, [])

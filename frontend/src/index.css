@@ -225,6 +225,8 @@ code {
 .functions {
   position: inherit;
   top:0.75rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .artistheader {

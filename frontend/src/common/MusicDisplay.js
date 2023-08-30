@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import SongsDisplay from './SongsDisplay';
 import Button from './Button';
-import { useCookies } from 'react-cookie';
 import ArtistsDisplay from './ArtistsDisplay';
 import AlbumsDisplay from './AlbumsDisplay';
 

@@ -9,6 +9,7 @@ import discoveryRouter from './discovery.mjs'
 import artistRouter from './artist.mjs'
 import albumRouter from './album.mjs'
 import friendsApplicationsRouter from './friendApplication.mjs';
+import followersRouter from './followers.mjs'
 
 const router = express.Router();
 router.use(songRouter);
@@ -21,5 +22,6 @@ router.use(postRouter);
 router.use(artistRouter);
 router.use(albumRouter);
 router.use(friendsApplicationsRouter)
+router.use(followersRouter)
 
 export default router;

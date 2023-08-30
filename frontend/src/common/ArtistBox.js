@@ -1,43 +1,39 @@
 import React from 'react'
-import thumbsUpIcon from '../Images/thumbs-up-icon.png'
-import thumbsDownIcon from '../Images/thumbs-down-icon.png'
-import shareIcon from '../Images/share-icon.png'
 import { useState } from 'react'
-import { useNavigate
- } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
-import { addUserLike, removeUserLike } from '../ServerFunctions/likesFunctions'
-
+import { addArtistLike, removeArtistLike } from '../ServerFunctions/likesFunctions'
+import LikeButton from '../Components/LikeButton/LikeButton'
+import ShareButton from '../Components/ShareButton/ShareButton'
 
 const ArtistBox = ({artist}) => {
   const [isLiked, setIsLiked] = useState(artist.liked);
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
-  const navigate = useNavigate();
 
-  const handleLike = (event) => {
-    const onLike = async () => {
-      event.preventDefault();
-      await addUserLike(userId, {
-        Type: "artist",
-        Id: artist._id,
-      });
-      setIsLiked(true);
+  const onLike = () => {
+    const handleLike = async () => {
+      try {
+        setIsLiked(true);
+        await addArtistLike(userId, artist._id);
+      } catch (error) {
+        setIsLiked(false);
+      }
     };
-    onLike();
-}
+    handleLike();
+  }
 
-const handleDislike = (event) => {
-  const onDisike = async () => {
-    event.preventDefault();
-    await removeUserLike(userId, {
-      Type: "artist",
-      Id: artist._id,
-    });
-    setIsLiked(false);
-  };
-  onDisike();
-}
+  const onDislike = () => {
+    const handleDislike = async () => {
+      try {
+        setIsLiked(false);
+        await removeArtistLike(userId, artist._id);
+      } catch (error) {
+        setIsLiked(true);
+      }
+    };
+    handleDislike();
+  }
+
 
   return (
   <div className='musicalentity artistbox'>
@@ -51,13 +47,8 @@ const handleDislike = (event) => {
       </div>
     </div>
     <div>
-      {
-        isLiked ?
-        <span onClick={handleDislike}><img class='icon' src={thumbsDownIcon}/></span>
-      :
-        <span onClick={handleLike}><img class='icon' src={thumbsUpIcon}/></span>
-      }
-      <span onClick={()=>{navigate(`/newpost?type=artist&id=${artist._id}`)}}><img class='icon' src={shareIcon}/></span>
+      <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+      <ShareButton type="artist" id={artist._id} />
     </div>
   </div>
   )
