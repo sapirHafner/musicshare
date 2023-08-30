@@ -149,6 +149,10 @@ body {
   background-color:var(--musicshare-green);
 }
 
+.button.selected:hover {
+  background-color:rgb(3, 137, 3);
+}
+
 .navbar-nav {
   margin: 0rem;
 }
