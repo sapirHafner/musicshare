@@ -3,15 +3,23 @@ import { getMusicalEntityBoxComponent } from '../Common/Utilities'
 const Post = ({post}) => {
   const musicalEntityComponent = getMusicalEntityBoxComponent(post.MusicalEntity)
   return (
-    <div>
-        <br />
+    <div className='post content'>
+      <div>
+          {post.User.FirstName} {post.User.LastName}
+      </div>
+
+      <div>
+          <div>
+            {post.Title}
+          </div>
+          <div>
+            {post.Content}
+          </div>
+      </div>
+
+      <div>
         {musicalEntityComponent}
-        <h5>{post.Title}</h5>
-        <p>{post.Content}</p>
-        <br />
-        ___________ <br />
-        |{post.User.FirstName} {post.User.LastName} | <br / >
-        ___________ <br />
+      </div>
     </div>
   )
 }

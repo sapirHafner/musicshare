@@ -43,11 +43,13 @@ const User = () => {
         <UserNavigationBar selectedItem="Profile" />
       </div>
       <div className="main">
-        <div className="content">
+        <div>
           {isLoaded ? (
             <>
+            <div className="content">
               <UserProfile profile={profile} />
-              <PostsDisplay posts={userPosts} />
+            </div>
+            <PostsDisplay posts={userPosts} />
             </>
           ) : (
             <LoadingScreen />
