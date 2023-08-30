@@ -5,6 +5,11 @@
   --musicshare-green:darkgreen;
   --rightbar-menu-width:25rem;
 }
+
+img {
+  height: 100%;
+  width: 100%;
+}
 *, *:before, *:after {
   margin: 0;
   padding: 0;
@@ -17,6 +22,10 @@ body {
   background-color: rgb(79, 79, 79);
   color:white;
   font-family: sans-serif;
+}
+
+.posttitle {
+  font-size: larger;
 }
 
 .grid-container {
@@ -56,6 +65,12 @@ body {
   height: var(--top-bar-height);
 }
 
+.musicalentity {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .topbar .logo {
 
 }
@@ -78,12 +93,28 @@ body {
   margin-left: 4rem;
 }
 
-.musicimage {
-  width: 2.5vw;
-  height: 3.5vh;
+.boximage {
+  position: relative;
+  max-width: 2.5vw;
+  max-height: 3.5vh;
+  top:1rem;
 }
 
+.albumName {
+  color:gray;
+}
 
+.artistdetails {
+  position: relative;
+  top:1rem;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
 .nav-item:hover {
   background-color: rgb(77, 75, 75);;
 }

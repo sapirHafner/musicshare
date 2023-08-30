@@ -9,7 +9,7 @@ const Post = ({post}) => {
       </div>
 
       <div>
-          <div>
+          <div className='posttitle'>
             {post.Title}
           </div>
           <div>

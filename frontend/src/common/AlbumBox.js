@@ -39,18 +39,16 @@ const handleDislike = (event) => {
   const navigate = useNavigate();
   return (
     <div className='musicalentity'>
-      <div className='top'>
-        <div className='left'>
-          <div className='music-image'>
-            <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
-          </div>
-          <div className='details'>
-            <h1>{album.Name} </h1>
-            <h3>{album.artist.Name}</h3>
-          </div>
+      <div className='details'>
+        <div className='boximage'>
+          <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+        </div>
+        <div>
+          {album.Name} <br />
+          {album.artist.Name} <br />
         </div>
       </div>
-      <div className='bottom'>
+      <div>
         {isLiked ?
           <span onClick={handleDislike}><img class='icon' src={thumbsDownIcon}/></span>
           : <span onClick={handleLike}><img class='icon' src={thumbsUpIcon}/></span>
@@ -62,3 +60,4 @@ const handleDislike = (event) => {
 }
 
 export default AlbumBox
+

@@ -38,24 +38,17 @@ const SongBox = ({song}) => {
 
   return (
     <div className='musicalentity'>
-      <div className='top'>
-        <div className='left'>
-          <div className='music-image'>
-            <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
-          </div>
-          <div className='details'>
-            <h1>{song.Name} </h1>
-            <h3>{song.artist.Name}</h3>
-          </div>
+      <div className='details'>
+        <div className='boximage'>
+          <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
-        <div className='middle'>
-          <h2>{song.album.Name}</h2>
-        </div>
-        <div className='right'>
-          3:43
+        <div>
+          {song.Name} <br />
+          {song.artist.Name} <br/>
+          <span className='albumName'>{song.album.Name}</span>
         </div>
       </div>
-      <div className='bottom'>
+      <div>
         {isLiked ?
           <span onClick={handleDislike}><img class='icon' src={thumbsDownIcon}/></span>
         : <span onClick={handleLike}><img class='icon' src={thumbsUpIcon}/></span>
