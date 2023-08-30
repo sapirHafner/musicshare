@@ -1,7 +1,46 @@
+:root {
+  --sidebar-menu-width:6rem;
+  --background-grey:#333;
+  --top-bar-height:3rem;
+  --musicshare-green:darkgreen;
+}
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: black;
   color:white;
-  font-family: sans-serif
+  font-family: sans-serif;
+}
+
+.grid-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-areas: "sidebar content";
+  grid-template-columns: var(--sidebar-menu-width) 1fr;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  text-align: center;
+  background-color: var(--background-grey);
+}
+
+.main {
+  grid-area: content;
+  height: 100vh;
+}
+
+.topbar {
+  background-color: rgb(91, 90, 90);
+  position: sticky;
+  top: 0px;
+  height: var(--top-bar-height);
 }
 
 .button {
@@ -13,86 +52,8 @@ body {
   height: 2vh;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 5% 1fr;
-  grid-template-areas:
-    "navbar content"
-    "navbar content"
-    "navbar content";
-  min-height: 100vh; /* Ensure the container takes at least the viewport height */
-}
-
 .content {
-  grid-area: content;
-  background-color: #333;
-}
-
-.navbar {
-  grid-area: navbar;
-  text-align: center;
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-}
-
-#logout {
-  position: fixed;
-  bottom:0
-}
-
-.navitem {
-  padding: 1rem;
-  cursor: pointer;
-}
-
-.musicalentity {
-  border-style:solid;
-  border-color:gray;
-  background-color: rgb(77, 75, 75);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.musicalentity .top {
-  order: 1;
-  display: flex;
-  justify-content: space-between;
-}
-
-.musicalentity .bottom {
-  order: 2;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.musicalentity .top .left {
-  text-align: left;
-  display: flex;
-}
-
-.musicalentity .top .left .music-image {
-  order:1;
-  margin-top: 2.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
-.musicalentity .top .left .details {
-  order:2;
-  text-align: left;
-  width: 400px;
-}
-
-.musicalentity .top .middle {
-  order:2;
-}
-
-.musicalentity .top .right {
-  order:3;
+  background-color: var(--background-grey);
 }
 
 .musicimage {
@@ -101,31 +62,17 @@ body {
 }
 
 
-.musicdisplay .button {
-  padding-left: 1em;
-  padding-right: 1em;
-  margin: 0.5rem;
-  margin-top: 5em;
-  background-color: rgb(77, 75, 75);;
-  text-align: center;
-}
-
-.musicdisplay .selected {
-  color: black;
-  background-color: darkgreen;
-}
-
-.navitem:hover {
+.nav-item:hover {
   background-color: rgb(77, 75, 75);;
 }
 
-.navitem:active {
-  background-color: black;
+.nav-item:active {
+  background-color: rgb(34, 34, 34);
 }
 
 
 #selectnavitem {
-  background-color: darkgreen;
+  background-color:var(--musicshare-green);
 }
 
 code {

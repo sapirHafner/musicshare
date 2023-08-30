@@ -4,6 +4,7 @@ import MusicDisplay from '../Common/MusicDisplay'
 import LoadingScreen from '../Common/LoadingScreen';
 import { useCookies } from 'react-cookie';
 import { fetchFullDetails } from '../ServerFunctions/MusicalEntitiesFunctions'
+import Upperbar from './Upperbar';
 
 const Browse = () => {
   const [allArtists, setAllArtists] = useState([]);
@@ -25,18 +26,24 @@ const Browse = () => {
   }, [])
 
   return (
-
-    <div className='grid-container'>
-      <UserNavigationBar selectedItem="Browse"/>
-      <div className='content'>
-      {
+  <div className='grid-container'>
+    <div className='sidebar'>
+        <UserNavigationBar selectedItem = "Browse"/>
+    </div>
+    <div className='main'>
+        <div className='topbar'>
+          <Upperbar />
+        </div>
+        <div className='content'>
+        {
           isLoaded ?
             <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
           :
             <LoadingScreen />
-      }
+        }
       </div>
     </div>
+  </div>
   )
 }
 

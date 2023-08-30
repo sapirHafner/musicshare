@@ -7,6 +7,7 @@ import UserNavigationBar from './UserNavigationBar';
 import FriendsDisplay from "./FriendsDisplay"
 import FriendsDiscovery from './FriendsDiscovery';
 import LoadingScreen from '../Common/LoadingScreen';
+import Upperbar from './Upperbar';
 
 const Friends = () => {
     const [cookies] = useCookies(['userId']);
@@ -26,27 +27,35 @@ const Friends = () => {
       }, [])
 
   return (
-    <div className='grid-container'>
-        <UserNavigationBar selectedItem={"Friends"}/>
-        <div className='content'>
-        {
-          isLoaded ? (
-            <div>
-            {userFriends.length > 0 ? (
-              <FriendsDisplay friends={userFriends}/>
-            ) : (
-              <p>You don't have any friends...</p>
-            )
-            }
-            <FriendsDiscovery profiles={discoveryProfiles}/>
-            </div>
-          ) : (
-          <LoadingScreen />
-          )
-        }
+
+      <div className='grid-container'>
+      <div className='sidebar'>
+          <UserNavigationBar selectedItem = "Friends"/>
       </div>
-    </div>
+      <div className='main'>
+          <div className='topbar'>
+            <Upperbar />
+          </div>
+          <div className='content'>
+          {
+                  isLoaded ?
+                  <div>
+                  {userFriends.length > 0 ? (
+                    <FriendsDisplay friends={userFriends}/>
+                  ) : (
+                    <p>You don't have any friends...</p>
+                  )
+                  }
+                  <FriendsDiscovery profiles={discoveryProfiles}/>
+                  </div>
+                  :
+                    <LoadingScreen />
+          }
+        </div>
+      </div>
+      </div>
   )
 }
 
 export default Friends;
+

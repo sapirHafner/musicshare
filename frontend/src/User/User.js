@@ -9,6 +9,7 @@ import UserNavigationBar from './UserNavigationBar';
 import PostsDisplay from '../Common/PostsDisplay'
 import UserProfile from './UserProfile';
 import { useCookies } from 'react-cookie';
+import Upperbar from './Upperbar';
 
 const User = () => {
     const [profile, setProfile] = useState({});
@@ -35,21 +36,33 @@ const User = () => {
 
     return (
       <div className='grid-container'>
-          <UserNavigationBar selectedItem = "Profile" />
-          <div className='content'>
-              { isLoaded
-              ?
-              <div>
-                <UserProfile profile={profile} />
-                <PostsDisplay posts={userPosts}/>
-              </div>
-              :
-                <LoadingScreen />
-              }
+      <div className='sidebar'>
+          <UserNavigationBar selectedItem = "Profile"/>
+      </div>
+      <div className='main'>
+          <div className='topbar'>
+            <Upperbar />
           </div>
+          <div className='content'>
+          {
+                  isLoaded ?
+                  <>
+                    <UserProfile profile={profile} />
+                    <PostsDisplay posts={userPosts}/>
+                  </>
+                  :
+                    <LoadingScreen />
+          }
+        </div>
+      </div>
       </div>
       );
 }
 
 export default User;
+
+
+
+
+
 
