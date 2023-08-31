@@ -46,7 +46,7 @@ const AlbumBox = ({album, className}) => {
         </div>
       </div>
     :
-    <div className='musicalentity'>
+    <div className='musicalentity box'>
       <div className='details'>
         <div className='boximage'>
           <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />

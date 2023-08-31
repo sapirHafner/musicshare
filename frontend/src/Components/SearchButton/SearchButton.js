@@ -14,7 +14,7 @@ const SearchButton = () => {
         <div className='functions'>
             <input />
             <div onClick={onClick}>
-                X
+                <img className='icon clickable' src={searchIcon} alt='Search Icon' />
             </div>
         </div>
       )}

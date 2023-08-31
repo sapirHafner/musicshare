@@ -5,7 +5,7 @@ const Post = ({post}) => {
   return (
     <div className='post content'>
       <div className='left'>
-        <div>
+        <div className='box'>
             {post.User.FirstName} {post.User.LastName}
         </div>
         <div className='posttext'>

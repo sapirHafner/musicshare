@@ -9,7 +9,8 @@ const SongListItem = ({song}) => {
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
   const [isLiked, setIsLiked] = useState(song.liked);
-
+  console.log(song);
+  
   const onLike = () => {
     const handleLike = async () => {
       try {

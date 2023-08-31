@@ -96,7 +96,7 @@ const Artist = () => {
           loaded
           ?
             <>
-              <div className='content artistheader'>
+              <div className='content header'>
                 <div>
                   <div className='albumName'>artist</div>
                   <div>{artist.Name}</div>

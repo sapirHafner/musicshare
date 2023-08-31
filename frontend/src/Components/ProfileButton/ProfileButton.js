@@ -20,7 +20,9 @@ const ProfileButton = () => {
         ) : (
           <div className='userbuttonoptions'>
             <Link text={"Profile"} url={`/user/${userId}`}/>
-            <Link text={"Log Out"} url={`/logout`}/>
+            <span id="logout">
+              <Link text={"Log Out"} url={`/logout`}/>
+            </span>
           </div>
         )
       }

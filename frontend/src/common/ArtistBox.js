@@ -36,7 +36,7 @@ const ArtistBox = ({artist}) => {
 
 
   return (
-  <div className='musicalentity artistbox'>
+  <div className='musicalentity artistbox box'>
     <div className='details'>
       <div className='boximage'>
         <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
@@ -46,7 +46,7 @@ const ArtistBox = ({artist}) => {
         {artist.Name}
       </div>
     </div>
-    <div>
+    <div className='boxfunctions'>
       <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
       <ShareButton type="artist" id={artist._id} />
     </div>

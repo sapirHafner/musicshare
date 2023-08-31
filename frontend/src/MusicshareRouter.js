@@ -18,6 +18,7 @@ import AddAlbums from './Artist/AddAlbums';
 import MyMusic from './Artist/MyMusic';
 import AddNewAlbum from './Artist/AddNewAlbum';
 import Logout from './Common/Logout';
+import Album from './Common/Album';
 
 const router = createBrowserRouter([
       {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: 'artist/:artistId',
         element: <Artist />
+      },
+      {
+        path: 'album/:albumId',
+        element: <Album />
       },
       {
         path: "friends",
