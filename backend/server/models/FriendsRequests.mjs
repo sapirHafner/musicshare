@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const friendApplicationScheme = mongoose.Schema({
+const friendRequestScheme = mongoose.Schema({
     UserId: {
         type: String,
         required: true,
@@ -12,7 +12,7 @@ const friendApplicationScheme = mongoose.Schema({
       },
   })
 
-export default mongoose.model("FriendApplicationScheme", friendApplicationScheme);
+export default mongoose.model("FriendRequestScheme", friendRequestScheme);
 
 
 

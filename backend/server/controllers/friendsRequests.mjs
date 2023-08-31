@@ -1,5 +1,4 @@
 import FriendsRequests from '../models/FriendsRequests.mjs';
-import FriendsApplicaton from '../models/FriendsRequests.mjs'
 
 export const getFriendsRequestsByUserId = async (req, res) => {
     try {
@@ -11,21 +10,19 @@ export const getFriendsRequestsByUserId = async (req, res) => {
 }
 
 export const addFriendRequestByUserId = async (req, res) => {
-    try {
-        
+    try {   
         const askingUserId = req.body.askingUserId;
         const receivingUserId = req.body.receivingUserId;
         let receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
         
         if (receivingUserFriendsRequests===null){
-            receivingUserFriendsRequests = {RequestUsersIds:[]};
+            receivingUserFriendsRequests.RequestUsersIds = [];
         }
         
         receivingUserFriendsRequests.RequestUsersIds.push(askingUserId);
-        //await receivingUserFriendsRequests.save();
+        await receivingUserFriendsRequests.save();
         res.sendStatus(200);
        
-        
     } catch {
         res.sendStatus(500);
     }
