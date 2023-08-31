@@ -19,4 +19,4 @@ export const fetchFriendsRequests = async (userId) => {
 };
 
 export const addFriendRequest = async (myId, userId) => 
-    await axios.post(`${friendsRequestsServerUrl}`,{askingUserId: myId, receivingUserId: userId},{headers:{'Content-Type': 'application/x-www-form-urlencoded'}});
+    await axios.post(`${friendsRequestsServerUrl}`/{askingUserId: myId, receivingUserId: userId});
