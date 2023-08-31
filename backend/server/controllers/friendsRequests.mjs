@@ -21,7 +21,6 @@ export const addFriendRequestByUserId = async (req, res) => {
         
         receivingUserFriendsRequests.RequestUsersIds.push(askingUserId);
         await receivingUserFriendsRequests.save();
-        res.sendStatus(200);
        
     } catch {
         res.sendStatus(500);
