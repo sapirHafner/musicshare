@@ -46,7 +46,7 @@ const SongBox = ({song, className}) => {
         </div>
       </div>
       <div className="functions">
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber={song.likesNumber}/>
         <ShareButton type="song" id={song._id} />
       </div>
     </div>

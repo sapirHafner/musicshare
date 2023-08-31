@@ -2,7 +2,7 @@ import Likes from '../models/Likes.mjs';
 
 export const getMusicalEntityLikes = async (req, res) => {
     try {
-        const musicalEntityId = req.params.getMusicalEntityId;
+        const musicalEntityId = req.params.musicalEntityId;
         res.status(200).send(await Likes.findOne({'MusicalEntity.Id': musicalEntityId}));
     } catch (error) {
         console.log(error)

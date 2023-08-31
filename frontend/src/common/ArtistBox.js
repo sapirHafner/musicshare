@@ -73,7 +73,7 @@ const ArtistBox = ({artist}) => {
       </div>
     </div>
     <div className='boxfunctions'>
-      <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+      <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber={artist.likesNumber}/>
       <FollowersButton isFollowed={isFollowed} onFollow={onFollow} onUnfollow={onUnfollow}/>
       <ShareButton type="artist" id={artist._id} />
     </div>

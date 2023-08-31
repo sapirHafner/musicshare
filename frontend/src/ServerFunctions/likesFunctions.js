@@ -17,6 +17,12 @@ export const removeUserLike = async (userId, musicalEntity) =>
     UserId : userId
   })
 
+export const fetchEntityLikes = async (musicalEntityId) =>
+  (await axios.get(`${likesServerUrl}/${musicalEntityId}`)).data.UsersIds;
+
+export const getEntityLikesNumber = async (musicalEntityId) =>
+  (await fetchEntityLikes(musicalEntityId)).length;
+
 export const fetchUsersLikes = async (userIds) =>
   (await axios.get(`${likesServerUrl}?usersIds=${userIds.join()}`)).data;
 

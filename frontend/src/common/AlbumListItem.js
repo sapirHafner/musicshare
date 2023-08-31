@@ -9,6 +9,7 @@ const AlbumListItem = ({album}) => {
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
   const [isLiked, setIsLiked] = useState(album.liked);
+  console.log(album)
 
   const onLike = () => {
     const handleLike = async () => {
@@ -46,7 +47,7 @@ const AlbumListItem = ({album}) => {
         </div>
       </div>
       <div className='functions'>
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
         <ShareButton type="album" id={album._id} />
       </div>
     </div>

@@ -4,13 +4,10 @@ import UserNavigationBar from '../User/UserNavigationBar'
 import { useParams } from 'react-router-dom'
 import { fetchAlbum } from '../ServerFunctions/AlbumFunctions'
 import LoadingScreen from '../Common/LoadingScreen'
-import { fetchSongs } from '../ServerFunctions/SongFunctions'
 import { useCookies } from 'react-cookie'
-import {  fetchUserLikes, addAlbumLike, removeAlbumLike } from '../ServerFunctions/likesFunctions'
-import { setEntitiesLikes } from '../Common/Utilities'
+import { addAlbumLike, removeAlbumLike } from '../ServerFunctions/likesFunctions'
 import LikeButton from '../Components/LikeButton/LikeButton';
 import ShareButton from '../Components/ShareButton/ShareButton'
-import SongListItem from './SongListItem'
 import { fetchFullDetails } from '../ServerFunctions/MusicalEntitiesFunctions'
 import SongsDisplay from './SongsDisplay'
 
@@ -75,14 +72,16 @@ const Album = () => {
               <div className='content header'>
                 <div>
                   <div className='albumName'>album</div>
-                  <div>{album.Name}</div>
+                  <div className='title'>
+                    {album.Name}
+                  </div>
                 </div>
                 <div className='functions'>
                   <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
                   <ShareButton type="album" id={album._id} />
                 </div>
               </div>
-              <div className='content albums'>
+              <div className='content songs'>
                 <SongsDisplay songs={songs} />
               </div>
             </>

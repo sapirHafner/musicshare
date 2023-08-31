@@ -1,4 +1,4 @@
-import Follwers from "../models/Follwers.mjs";
+import Follwers from "../models/Followers.mjs";
 
 export const createNewArtistFollowers = async (req, res) => {
     try {
@@ -67,7 +67,7 @@ export const getFollowers = async (req, res) => {
         const query = {};
         const usersIds = req.query.usersIds;
         if (usersIds !== undefined) {
-            query.UsersIds = {$in: usersIds.split(',')};
+            query.followers = {$in: usersIds.split(',')};
         }
         res.status(200).send(await Follwers.find(query));
     } catch (error) {

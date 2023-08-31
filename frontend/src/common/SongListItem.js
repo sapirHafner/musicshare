@@ -9,8 +9,7 @@ const SongListItem = ({song}) => {
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
   const [isLiked, setIsLiked] = useState(song.liked);
-  console.log(song);
-  
+  console.log(song)
   const onLike = () => {
     const handleLike = async () => {
       try {
@@ -50,7 +49,7 @@ const SongListItem = ({song}) => {
         <Link text={song.album.Name} url={`/album/${song.album._id}`} />
       </span>
       <div className='functions'>
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} />
+        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber ={song.likesNumber} />
         <ShareButton type="song" id={song._id} />
       </div>
     </div>

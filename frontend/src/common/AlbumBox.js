@@ -4,6 +4,7 @@ import { useCookies } from 'react-cookie'
 import { addAlbumLike, removeAlbumLike } from '../ServerFunctions/likesFunctions'
 import LikeButton from '../Components/LikeButton/LikeButton'
 import ShareButton from '../Components/ShareButton/ShareButton'
+import Link from '../Components/Link/Link'
 
 const AlbumBox = ({album, className}) => {
 
@@ -38,15 +39,15 @@ const AlbumBox = ({album, className}) => {
   return (
     className === "min" ?
       <div className='box'>
-        <div className='boximage'>
+        <div className='boximage' >
           <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
-        <div className='name link'>
-          {album.Name}
-        </div>
+        <span className='name'>
+          <Link text={album.Name} url={`/album/${album._id}`} />
+        </span>
       </div>
     :
-    <div className='musicalentity box'>
+    <div className='musicalentity'>
       <div className='details'>
         <div className='boximage'>
           <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
@@ -57,7 +58,7 @@ const AlbumBox = ({album, className}) => {
         </div>
       </div>
       <div>
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
         <ShareButton type="album" id={album._id} />
       </div>
     </div>

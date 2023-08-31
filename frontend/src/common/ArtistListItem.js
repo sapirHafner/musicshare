@@ -73,7 +73,7 @@ const ArtistListItem = ({artist}) => {
         </span>
       </div>
       <div className='functions'>
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber={artist.likesNumber}/>
         <FollowersButton isFollowed={isFollowed} onFollow={onFollow} onUnfollow={onUnfollow}/>
         <ShareButton type="artist" id={artist._id} />
       </div>

@@ -32,7 +32,6 @@ export const addSongs = async (req, res) => {
         const createdSongs = await Promise.all(req.body.Songs.map(async song => await Song.create(song)));
         res.status(200).send(createdSongs.map(song => song._id));
     } catch (error) {
-        console.log(error)
         res.sendStatus(500);
     }
 }

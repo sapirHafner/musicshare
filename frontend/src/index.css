@@ -303,4 +303,6 @@ code {
 
 .content.albums {
   margin-top: 8rem;
+  height: fit-content;
 }
+
