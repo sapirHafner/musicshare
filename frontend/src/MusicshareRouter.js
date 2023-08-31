@@ -17,6 +17,7 @@ import CreateArtist from './Signing/CreateArtist';
 import AddAlbums from './Artist/AddAlbums';
 import MyMusic from './Artist/MyMusic';
 import AddNewAlbum from './Artist/AddNewAlbum';
+import Logout from './Common/Logout';
 
 const router = createBrowserRouter([
       {
@@ -79,7 +80,11 @@ const router = createBrowserRouter([
       {
         path: `addNewAlbum`,
         element: <AddNewAlbum />
-      }
+      },
+      {
+        path: `logout`,
+        element: <Logout />
+      },
     ])
 
 

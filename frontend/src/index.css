@@ -268,3 +268,16 @@ code {
   display: flex;
   gap:3rem;
 }
+
+
+.userbuttonoptions {
+  position: absolute;
+  background-color: rgb(142, 139, 139);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  top: calc(100% + 1rem);
+  right: 0;
+  z-index: 1;
+}
+
+

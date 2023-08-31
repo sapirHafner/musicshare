@@ -35,21 +35,15 @@ const UserNavigationBar = ({selectedItem}) => {
         route: "/friendsRequests"
     };
 
-    const logOut = () => {
-        removeCookie('userId')
-        navigate("/")
-    }
-
     const navigationItems = [
         homeNavItem,
         browseNavItem,
         LibraryNavItem,
-        profileNavItem,
         friendsNavItem,
         friendsRequestsNavItem
         ];
     return (
-        <NavigationBar navigationItems = { navigationItems } selectedItem = { selectedItem } onLogout={logOut}/>
+        <NavigationBar navigationItems = { navigationItems } selectedItem = { selectedItem }/>
     )
 }
 

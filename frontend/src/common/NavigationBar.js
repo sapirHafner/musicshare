@@ -20,7 +20,6 @@ const NavigationBar = ({ navigationItems, selectedItem, onLogout }) => {
         <nav className="navbar">
             <ul className="navbar-nav">
                 { NavigationButtons }
-                <li className='nav-item rounded p-3 m-1' onClick={onLogout}>logout</li>
             </ul>
         </nav>
     );
