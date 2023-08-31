@@ -18,5 +18,8 @@ export const fetchFriendsRequests = async (userId) => {
     return await fetchUsersProfileBoxes(friendsRequestsIds);
 };
 
-export const addFriendRequest = async (myId, userId) => 
-    await axios.post(`${friendsRequestsServerUrl}`,{askingUserId: myId, receivingUserId: userId});
+export const addFriendRequest = async (myId, userId) =>
+    await axios.put(friendsRequestsServerUrl,{askingUserId: myId, receivingUserId: userId});
+
+export const createNewFriendsArray = async (userId) =>
+    (await axios.post(friendsRequestsServerUrl, {UserId: userId})).data

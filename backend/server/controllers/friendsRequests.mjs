@@ -9,20 +9,31 @@ export const getFriendsRequestsByUserId = async (req, res) => {
     }
 }
 
+export const createNewFriendsRequestsArray = async (req, res) => {
+    try {
+        const userId = req.body.UserId;
+        const createdArray = await FriendsRequests.create({
+            UserId: userId,
+            RequestUsersIds: []
+        })
+        res.status(200).send(createdArray._id);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
+
 export const addFriendRequestByUserId = async (req, res) => {
-    try {   
+    try {
         const askingUserId = req.body.askingUserId;
         const receivingUserId = req.body.receivingUserId;
         let receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
-        
-        if (receivingUserFriendsRequests===null){
-            receivingUserFriendsRequests.RequestUsersIds = [];
-        }
-        
-        receivingUserFriendsRequests.RequestUsersIds.push(askingUserId);
+
+        console.log(receivingUserFriendsRequests)
+        receivingUserFriendsRequests.RequestUserIds.push(askingUserId);
         await receivingUserFriendsRequests.save();
-       
-    } catch {
+    } catch (error) {
+        console.log(error);
         res.sendStatus(500);
     }
 }

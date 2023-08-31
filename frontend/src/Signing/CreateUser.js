@@ -5,6 +5,7 @@ import { addProfile } from '../ServerFunctions/ProfilesFunctions';
 import { addNewFriendsList } from '../ServerFunctions/FriendsFunctions';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
+import { createNewFriendsArray } from '../ServerFunctions/FriendsFunctions';
 
 const CreateUser = () => {
   const [cookies, setCookie] = useCookies(['userId']);
@@ -16,6 +17,7 @@ const CreateUser = () => {
       profile.UserId = userId;
       await addProfile(profile);
       await addNewFriendsList(userId);
+      await createNewFriendsArray(userId);
       setCookie("userId", userId, { path: "/"});
       setCookie("userType", "user", { path: "/"});
       navigate("/home")
