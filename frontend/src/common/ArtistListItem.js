@@ -4,9 +4,12 @@ import { addArtistLike, removeArtistLike } from '../ServerFunctions/likesFunctio
 import LikeButton from '../Components/LikeButton/LikeButton';
 import ShareButton from '../Components/ShareButton/ShareButton'
 import Link from '../Components/Link/Link';
+import { addFollower, removeFollower } from '../ServerFunctions/followersFunctions';
+import FollowersButton from '../Components/FollowersButton/FollowersButton'
 
 const ArtistListItem = ({artist}) => {
   const [cookies] = useCookies(['userId']);
+  const [isFollowed, setIsFollowed] = useState(artist.followed);
   const { userId } = cookies;
   const [isLiked, setIsLiked] = useState(artist.liked);
 
@@ -34,6 +37,31 @@ const ArtistListItem = ({artist}) => {
     handleDislike();
   }
 
+
+  const onFollow = () => {
+    const handleFollow = async () => {
+      try {
+        setIsFollowed(true);
+        await addFollower(artist._id, userId)
+      } catch (error) {
+        setIsFollowed(false);
+      }
+    };
+    handleFollow();
+  }
+
+  const onUnfollow = () => {
+    const handleFollow = async () => {
+      try {
+        setIsFollowed(false);
+        await removeFollower(artist._id, userId)
+      } catch (error) {
+        setIsFollowed(true);
+      }
+    };
+    handleFollow();
+  }
+
   return (
     <div className='listitem artist'>
       <div className='details'>
@@ -46,6 +74,7 @@ const ArtistListItem = ({artist}) => {
       </div>
       <div className='functions'>
         <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+        <FollowersButton isFollowed={isFollowed} onFollow={onFollow} onUnfollow={onUnfollow}/>
         <ShareButton type="artist" id={artist._id} />
       </div>
     </div>

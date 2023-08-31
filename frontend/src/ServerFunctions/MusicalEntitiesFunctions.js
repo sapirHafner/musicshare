@@ -3,6 +3,8 @@ import { createEntitiesIdsDictionary, setEntitiesLikes } from "../Common/Utiliti
 import { fetchAlbum, fetchAlbums } from "./AlbumFunctions";
 import { fetchUserLikes } from "./likesFunctions";
 import { fetchArtist, fetchArtists } from "./ArtistFunctions";
+import { fetchUserFollows } from "./followersFunctions";
+import { setEntitiesFollows } from "./ArtistFunctions";\
 
 export const fetchMusicalEntity = async (musicalEntity) => {
   if (musicalEntity.Type === "artist") {
@@ -41,6 +43,7 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
     song.artist = artistsDict[song.album.ArtistId];
   });
   const likes = await fetchUserLikes(userId);
-  return [setEntitiesLikes(artists, likes), setEntitiesLikes(albums, likes), setEntitiesLikes(songs,likes)];
+  const follows = await fetchUserFollows(userId);
+  return [setEntitiesFollows(setEntitiesLikes(artists, likes), follows), setEntitiesLikes(albums, likes), setEntitiesLikes(songs,likes)];
 }
 

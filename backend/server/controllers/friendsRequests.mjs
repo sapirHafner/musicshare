@@ -3,9 +3,10 @@ import FriendsRequests from '../models/FriendsRequests.mjs';
 export const getFriendsRequestsByUserId = async (req, res) => {
     try {
         const userFriendsRequests = await FriendsRequests.findOne({UserId: req.params.userId});
-        res.status(200).send(userFriendsRequests.RequestUsersIds);
-    } catch {
-        res.send([]);
+        res.status(200).send(userFriendsRequests.RequestUserIds);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
     }
 }
 
@@ -29,7 +30,6 @@ export const addFriendRequestByUserId = async (req, res) => {
         const receivingUserId = req.body.receivingUserId;
         let receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
 
-        console.log(receivingUserFriendsRequests)
         receivingUserFriendsRequests.RequestUserIds.push(askingUserId);
         await receivingUserFriendsRequests.save();
     } catch (error) {

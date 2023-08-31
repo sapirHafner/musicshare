@@ -27,3 +27,7 @@ export const addAlbumToArtist = async (artistId, albumId) => {
     artist.AlbumsIds.push(albumId);
     await updateArtist(artistId, artist)
 }
+
+export const setEntitiesFollows = (entities, follows) => {
+    const followsIds = follows.map(follows => follows.MusicalEntity.Id);
+    return entities.map(entity => {return {...entity, liked: likesIds.includes(entity._id)}})

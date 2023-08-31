@@ -4,9 +4,12 @@ import { useCookies } from 'react-cookie'
 import { addArtistLike, removeArtistLike } from '../ServerFunctions/likesFunctions'
 import LikeButton from '../Components/LikeButton/LikeButton'
 import ShareButton from '../Components/ShareButton/ShareButton'
+import { addFollower, removeFollower } from '../ServerFunctions/followersFunctions';
+import FollowersButton from '../Components/FollowersButton/FollowersButton'
 
 const ArtistBox = ({artist}) => {
   const [isLiked, setIsLiked] = useState(artist.liked);
+  const [isFollowed, setIsFollowed] = useState(artist.followed);
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
 
@@ -34,6 +37,29 @@ const ArtistBox = ({artist}) => {
     handleDislike();
   }
 
+  const onFollow = () => {
+    const handleFollow = async () => {
+      try {
+        setIsFollowed(true);
+        await addFollower(artist._id, userId)
+      } catch (error) {
+        setIsFollowed(false);
+      }
+    };
+    handleFollow();
+  }
+
+  const onUnfollow = () => {
+    const handleFollow = async () => {
+      try {
+        setIsFollowed(false);
+        await removeFollower(artist._id, userId)
+      } catch (error) {
+        setIsFollowed(true);
+      }
+    };
+    handleFollow();
+  }
 
   return (
   <div className='musicalentity artistbox box'>
@@ -48,6 +74,7 @@ const ArtistBox = ({artist}) => {
     </div>
     <div className='boxfunctions'>
       <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
+      <FollowersButton isFollowed={isFollowed} onFollow={onFollow} onUnfollow={onUnfollow}/>
       <ShareButton type="artist" id={artist._id} />
     </div>
   </div>

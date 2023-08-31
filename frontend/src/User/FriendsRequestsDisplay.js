@@ -1,8 +1,7 @@
 import React from 'react'
 
-const FriendsRequestsDisplay = ({ FriendsRequests }) => {
-  
-  const friendsRequestsList = FriendsRequests.map((friendRequest) => {
+const FriendsRequestsDisplay = ({ friendsRequests }) => {
+  const friendsRequestsList = friendsRequests.map((friendRequest) => {
     return <div> {friendRequest.FirstName} {friendRequest.LastName} </div>
   });
 

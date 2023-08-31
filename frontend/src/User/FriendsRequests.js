@@ -12,10 +12,11 @@ const FriendsRequests = () => {
     const { userId } = cookies;
     const [userFriendsRequests, setUserFriendsRequests] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
-    
+
     const fetchData = async () => {
-        setUserFriendsRequests(await fetchFriendsRequests(userId));
-        setIsLoaded(true);
+      const profileBoxes = await fetchFriendsRequests(userId)
+      setUserFriendsRequests(profileBoxes);
+      setIsLoaded(true);
     }
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const FriendsRequests = () => {
 
       return (
         <div className='grid-container'>
-          
+
           <Upperbar />
           <div className='sidebar'>
             <UserNavigationBar selectedItem = "Friends Requests"/>
@@ -38,7 +39,7 @@ const FriendsRequests = () => {
                   {userFriendsRequests.length > 0 ? (
                     <FriendsRequestsDisplay friendsRequests={userFriendsRequests}/>
                   ) : (
-                        <p>You don't have any friends Requests...</p>
+                        <p>You don't have any friends requests...</p>
                       )
                     }
                 </div>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseServerUrl, createIdsQuery } from './serverFunctions';
+import { baseServerUrl } from './serverFunctions';
 
 const likesServerUrl = `${baseServerUrl}/likes`
 

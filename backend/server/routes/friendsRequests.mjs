@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 router.get('/friendsRequests/:userId', getFriendsRequestsByUserId);
 router.post('/friendsRequests', createNewFriendsRequestsArray);
-router.put('/friendsRequests/', addFriendRequestByUserId);
-router.delete('/friendsRequests/', removeFriendRequestByUserId);
+router.put('/friendsRequests', addFriendRequestByUserId);
+router.delete('/friendsRequests', removeFriendRequestByUserId);
 
 export default router;
