@@ -39,7 +39,9 @@ const CreateArtist = () => {
   return (
     <div className="createPagesDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
                                                 backgroundSize: "cover"}}>
+        <div className='createPagesDesignContainer'>
         <NewArtistFrom OnSignUp={OnSignUp} onBackButton={onBackButton}/>
+        </div>
     </div>
   )
 }

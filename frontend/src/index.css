@@ -316,23 +316,40 @@ input{
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   width: 100vw;
   height: 100vh;
+  padding-top: 5%;
 }
 
 .loginPageContainer{
-  background-color: white;
-  width: 750px;
-  height: 400px;
+  background-color:ghostwhite;
+  width: 760px;
+  height: 430px;
   align-items: center;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 15px;
   color:#3a3939;
-  opacity: 85%;
+  opacity: 83%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.7);
+  padding-top: 15px;
+}
+
+.loginPageContainer h1, h3{
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
 }
 
 .createPagesDesign{
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   width: 100vw;
   height: 100vh;
+}
+
+.createPagesDesignContainer{
+  width: 600px;
+  height: 500px;
+  padding-left: 80px;
+  padding-top: 20px;
+  border-bottom-color: white;
+  border-style: double;
 }
 
   
