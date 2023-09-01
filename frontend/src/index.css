@@ -315,3 +315,8 @@ input{
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   
 }
+
+.topbar .username {
+  position: relative;
+  right:35rem;
+}
