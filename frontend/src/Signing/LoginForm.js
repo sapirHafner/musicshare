@@ -8,7 +8,7 @@ const LoginForm = ({OnLogin}) => {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor='username'> User Name: </label>
+            <label htmlFor='username'> User Name:</label>
             <input type='text' name='username'/>
             <br/>
             <label htmlFor='password'> Password: </label>

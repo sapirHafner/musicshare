@@ -14,12 +14,12 @@ const ProfileBox = ({myId, userId, firstName, lastName, sendRequest}) => {
   return (
     friendRequestSent === true ? (
       <div onClick={onClickBox} style={{cursor: 'pointer'}}>
-        {firstName} {lastName}  (-) 
+        {firstName} {lastName} (Remove friend request) 
       </div>
     ) :
     (
       <div onClick={onClickBox} style={{cursor: 'pointer'}}>
-        {firstName} {lastName}  (+) 
+        {firstName} {lastName} (Add friend!) 
       </div>
     )
     

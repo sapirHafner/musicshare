@@ -14,6 +14,8 @@ const SignUpForm = ({OnSignUp}) => {
     }
     return (
         <form onSubmit={onSubmit}>
+            <h2>Let's create a MusicShare profile!</h2>
+            <br></br>
             <label htmlFor='firstname'> First Name: </label>
             <input type='text' name='firstname'/>
             <br/>
@@ -31,6 +33,10 @@ const SignUpForm = ({OnSignUp}) => {
             <br/>
             <br/>
             <input type='submit' value='Sign up!'/>
+            <br></br>
+            <br></br>
+            <input type='submit' value='Back to login page...'/>
+
         </form>
     );
 }

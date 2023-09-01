@@ -1,5 +1,5 @@
 import React from 'react'
-import NewArtistFrom from '../User/NewArtistFrom'
+import NewArtistFrom from './NewArtistFrom'
 import { addUser } from '../ServerFunctions/UserFunctions';
 import { createNewArtist } from '../ServerFunctions/ArtistFunctions';
 import { useNavigate } from 'react-router-dom';

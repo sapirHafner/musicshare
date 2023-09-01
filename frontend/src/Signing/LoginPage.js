@@ -24,9 +24,13 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
-            <h1>Login Page</h1>
+        <div class="loginPageDesign">
+            <h1>Hello and welcome to MusicShare!</h1>
+            <h3>Here is perfect place for you to share and talk about your favorite songs and artists</h3>
+            <br></br>
+            <h3>so.. lets begin!</h3>
             <LoginForm OnLogin={onLogin}  />
+            <br></br>
             <Link to ="/createUser">
                 <div>Create a new user</div>
             </Link>
