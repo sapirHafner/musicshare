@@ -34,7 +34,7 @@ const LoginPage = () => {
             <h3>Here is the perfect place for you to share and talk about your favorite songs and artists</h3>
             <br></br>
             <h3>so.. lets begin!</h3>
-            <LoginForm OnLogin={onLogin}  />
+            <LoginForm OnLogin={onLogin} />
             <br></br>
             <Link to ="/createUser">
                 <div>Create a new user</div>
@@ -42,6 +42,7 @@ const LoginPage = () => {
             <Link to ="/createArtist">
                 <div>Create a new artist account</div>
             </Link>
+
         </div>
     );
 }
