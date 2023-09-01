@@ -10,6 +10,7 @@ import { createNewFriendsArray } from '../ServerFunctions/FriendsFunctions';
 const CreateUser = () => {
   const [cookies, setCookie] = useCookies(['userId']);
   const navigate  = useNavigate()
+  
   const onSignUp = async (user, profile) => {
     try {
       user.Type = "user";
@@ -24,8 +25,15 @@ const CreateUser = () => {
     } catch {}
   }
 
+  const onBackButton = async () => {
+    try{
+      navigate("/login")
+    }
+    catch{}
+  }
+
     return (
-      <SignUpForm OnSignUp={onSignUp} />
+      <SignUpForm OnSignUp={onSignUp} onBackButton={onBackButton} />
   )
 }
 

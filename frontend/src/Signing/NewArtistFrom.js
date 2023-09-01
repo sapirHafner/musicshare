@@ -1,4 +1,4 @@
-const NewArtistFrom = ({OnSignUp}) => {
+const NewArtistFrom = ({OnSignUp, onBackButton}) => {
     const onSubmit= (event) => {
         event.preventDefault()
         const user = {
@@ -32,7 +32,7 @@ const NewArtistFrom = ({OnSignUp}) => {
             <input type='submit' value='Sign up!'/>
             <br></br>
             <br></br>
-            <input type='submit' value='Back to login page...'/>
+            <input type='button' value='Back to login page...' onClick={onBackButton}/>
         </form>
     );
 }

@@ -27,9 +27,17 @@ const CreateArtist = () => {
         setCookie('artistId', artistId, {path: '/'});
         navigate('/addAlbums');
     };
+
+    const onBackButton = async () => {
+      try{
+        navigate("/login")
+      }
+      catch{}
+    }
+    
   return (
     <div>
-        <NewArtistFrom OnSignUp={OnSignUp}/>
+        <NewArtistFrom OnSignUp={OnSignUp} onBackButton={onBackButton}/>
     </div>
   )
 }

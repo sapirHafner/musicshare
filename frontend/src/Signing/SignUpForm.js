@@ -1,4 +1,4 @@
-const SignUpForm = ({OnSignUp}) => {
+const SignUpForm = ({OnSignUp, onBackButton}) => {   
     const onSubmit= (event) => {
         event.preventDefault()
         const profile = {
@@ -13,7 +13,7 @@ const SignUpForm = ({OnSignUp}) => {
         OnSignUp(user, profile)
     }
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} >
             <h2>Let's create a MusicShare profile!</h2>
             <br></br>
             <label htmlFor='firstname'> First Name: </label>
@@ -35,7 +35,7 @@ const SignUpForm = ({OnSignUp}) => {
             <input type='submit' value='Sign up!'/>
             <br></br>
             <br></br>
-            <input type='submit' value='Back to login page...'/>
+            <input type='button' value='Back to login page...' onClick={onBackButton}/>
 
         </form>
     );
