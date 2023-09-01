@@ -3,11 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getUser } from '../ServerFunctions/UserFunctions';
 import { useCookies } from 'react-cookie';
 import { fetchArtistByUserId } from '../ServerFunctions/ArtistFunctions';
+import welcomeBackround from '../Components/backgrounds/background.jpg'
 
 const LoginPage = () => {
     const [cookies, setCookie] = useCookies(['userId']);
     const navigate = useNavigate();
-
+    
     const onLogin = async (username, password, rememberMe) => {
         try {
             const { Id, Type } = await getUser(username, password);
@@ -23,10 +24,14 @@ const LoginPage = () => {
         }
     }
 
+    //<img class='welcomeBackround' src={welcomeBackround}/>
+    //<div className="loginPageDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
+                                                //backgroundSize: "cover"}}>
     return (
-        <div class="loginPageDesign">
+     
+        <div className="loginPageDesign">            
             <h1>Hello and welcome to MusicShare!</h1>
-            <h3>Here is perfect place for you to share and talk about your favorite songs and artists</h3>
+            <h3>Here is the perfect place for you to share and talk about your favorite songs and artists</h3>
             <br></br>
             <h3>so.. lets begin!</h3>
             <LoginForm OnLogin={onLogin}  />

@@ -306,8 +306,12 @@ code {
   height: fit-content;
 }
 
-.loginPageDesign{
-  text-align: center;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+input{
+  margin-top: 5px;
 }
 
+.loginPageDesign{
+  text-align: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+}
