@@ -29,7 +29,7 @@ const LoginPage = () => {
                                                 backgroundSize: "cover"}}>
         <div className="loginPageContainer">            
             <h1>Hello and welcome to MusicShare!</h1>
-            <h3>Here is the perfect place for you to share and talk about your favorite songs and artists</h3>
+            <h3>Here is the perfect place for you to share and talk<br></br>about your favorite songs and artists</h3>
             <br></br>
             <h3>So.. let's begin!</h3>
             <LoginForm OnLogin={onLogin} />

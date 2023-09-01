@@ -34,10 +34,10 @@ const CreateUser = () => {
   }
 
     return (
-      <div className="createPagesDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
+      <div className="loginPageDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
                                                 backgroundSize: "cover"}}>
 
-        <div className='createPagesDesignContainer'>
+        <div className='loginPageContainer createPagesDesignContainer'>
 
         <SignUpForm OnSignUp={onSignUp} onBackButton={onBackButton} />
         </div>
