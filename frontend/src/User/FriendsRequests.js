@@ -39,7 +39,7 @@ const FriendsRequests = () => {
                   {userFriendsRequests.length > 0 ? (
                     <FriendsRequestsDisplay friendsRequests={userFriendsRequests}/>
                   ) : (
-                        <p>You don't have any friends requests...</p>
+                        <p>No new friend requests</p>
                       )
                     }
                 </div>

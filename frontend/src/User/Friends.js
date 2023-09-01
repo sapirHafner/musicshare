@@ -40,7 +40,7 @@ const Friends = () => {
               {userFriends.length > 0 ? (
                 <FriendsDisplay friends={userFriends}/>
               ) : (
-                    <p>You don't have any friends...</p>
+                    <p>Oops.. no friends yet?<br></br>Discover new people!</p>
                   )
                   }
                   <FriendsDiscovery profiles={discoveryProfiles} userId={userId}/>
