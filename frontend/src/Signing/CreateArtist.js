@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import {createEmptyLikesArray} from '../ServerFunctions/likesFunctions';
 import { createNewFollowers } from '../ServerFunctions/followersFunctions';
+import welcomeBackround from '../Components/backgrounds/background.jpg';
 
 const CreateArtist = () => {
     const navigate = useNavigate()
@@ -34,9 +35,10 @@ const CreateArtist = () => {
       }
       catch{}
     }
-    
+
   return (
-    <div>
+    <div className="createPagesDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
+                                                backgroundSize: "cover"}}>
         <NewArtistFrom OnSignUp={OnSignUp} onBackButton={onBackButton}/>
     </div>
   )

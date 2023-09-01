@@ -6,6 +6,7 @@ import { addNewFriendsList } from '../ServerFunctions/FriendsFunctions';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 import { createNewFriendsArray } from '../ServerFunctions/FriendsFunctions';
+import welcomeBackround from '../Components/backgrounds/background.jpg';
 
 const CreateUser = () => {
   const [cookies, setCookie] = useCookies(['userId']);
@@ -33,7 +34,11 @@ const CreateUser = () => {
   }
 
     return (
+      <div className="createPagesDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
+                                                backgroundSize: "cover"}}>
+                                                  
       <SignUpForm OnSignUp={onSignUp} onBackButton={onBackButton} />
+      </div>
   )
 }
 
