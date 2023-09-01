@@ -26,20 +26,13 @@ const CreateUser = () => {
     } catch {}
   }
 
-  const onBackButton = async () => {
-    try{
-      navigate("/login")
-    }
-    catch{}
-  }
-
     return (
       <div className="loginPageDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
                                                 backgroundSize: "cover"}}>
 
         <div className='loginPageContainer createPagesDesignContainer'>
 
-        <SignUpForm OnSignUp={onSignUp} onBackButton={onBackButton} />
+        <SignUpForm OnSignUp={onSignUp} />
         </div>
       </div>
   )

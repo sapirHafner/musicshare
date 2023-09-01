@@ -1,4 +1,5 @@
-const NewArtistFrom = ({OnSignUp, onBackButton}) => {
+import { Link } from 'react-router-dom';
+const NewArtistFrom = ({OnSignUp}) => {
     const onSubmit= (event) => {
         event.preventDefault()
         const user = {
@@ -32,7 +33,7 @@ const NewArtistFrom = ({OnSignUp, onBackButton}) => {
             <input type='submit' value='Sign up!'/>
             <br></br>
             <br></br>
-            <input type='button' value='Back to login page...' onClick={onBackButton}/>
+            <Link to='/login'>Back to login page...</Link>
         </form>
     );
 }

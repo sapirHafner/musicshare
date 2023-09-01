@@ -35,10 +35,11 @@ const LoginPage = () => {
             <LoginForm OnLogin={onLogin} />
             <br></br>
             <Link to ="/createUser">
-                <div>Create a new user</div>
+                Create a new user
             </Link>
+            <br></br>
             <Link to ="/createArtist">
-                <div>Create a new artist account</div>
+                Create a new artist account
             </Link>
         </div>
     </div>

@@ -29,18 +29,12 @@ const CreateArtist = () => {
         navigate('/addAlbums');
     };
 
-    const onBackButton = async () => {
-      try{
-        navigate("/login")
-      }
-      catch{}
-    }
 
   return (
     <div className="loginPageDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
                                                 backgroundSize: "cover"}}>
         <div className='loginPageContainer createPagesDesignContainer'>
-        <NewArtistFrom OnSignUp={OnSignUp} onBackButton={onBackButton}/>
+        <NewArtistFrom OnSignUp={OnSignUp}/>
         </div>
     </div>
   )
