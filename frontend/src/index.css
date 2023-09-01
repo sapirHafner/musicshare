@@ -2,7 +2,7 @@
   --sidebar-menu-width:8rem;
   --background-grey:#333;
   --top-bar-height:3rem;
-  --musicshare-green:darkgreen;
+  --musicshare-blue:rgb(37, 130, 135);
   --rightbar-menu-width:25rem;
   --content-grey:rgb(142, 139, 139);
 }
@@ -57,7 +57,7 @@ body {
 
 .topbar {
   grid-area: topbar;
-  background-color: var(--musicshare-green);
+  background-color: var(--musicshare-blue);
   position: sticky;
   display: flex;
   justify-content: space-between;
@@ -141,16 +141,16 @@ body {
 
 
 .selected {
-  background-color:var(--musicshare-green);
+  background-color:var(--musicshare-blue);
 }
 
 
 .button.selected {
-  background-color:var(--musicshare-green);
+  background-color:var(--musicshare-blue);
 }
 
 .button.selected:hover {
-  background-color:rgb(3, 137, 3);
+  background-color:var(--musicshare-blue);
 }
 
 .navbar-nav {
