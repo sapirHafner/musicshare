@@ -30,6 +30,9 @@ const Feed = ({}) => {
 
   return (
     loaded ?
+    <div> <h1>Welcome to MusicShare!</h1>
+            <br></br> 
+            <h2> What is new today?</h2>
     <div className='musicdisplay feed'>
       <div className='displaybuttons'>
           <Button text="All" selected={selectedCategory === "All"} onClick={() => {setSelectedCategory("All")}}/>
@@ -39,6 +42,7 @@ const Feed = ({}) => {
       <div>
         {categoryComponents[selectedCategory]}
       </div>
+    </div>
     </div>
     : <LoadingScreen />
   )

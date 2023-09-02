@@ -35,7 +35,8 @@ const Browse = () => {
       <div className='content'>
       {
         isLoaded ?
-          <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
+         <div> <h2>What music would you like to listen to today?</h2>
+          <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} /> </div>
         :
           <LoadingScreen />
       }

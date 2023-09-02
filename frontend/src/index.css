@@ -177,6 +177,10 @@ body {
   margin-left: 1rem;
 }
 
+.musicdisplay h2{
+  margin-left: 60px;
+}
+
 .post {
   display: flex;
   justify-content: space-between;

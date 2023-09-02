@@ -44,7 +44,8 @@ const Library = () => {
           <div className='content'>
           {
             isLoaded ?
-              <MusicDisplay artists={likedArtists} albums={likedAlbums} songs={likedSongs} />
+            <div> <h2>My playlist</h2>
+              <MusicDisplay artists={likedArtists} albums={likedAlbums} songs={likedSongs} /> </div>
             :
               <LoadingScreen />
           }
