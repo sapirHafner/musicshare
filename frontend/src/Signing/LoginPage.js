@@ -4,6 +4,7 @@ import { getUser } from '../ServerFunctions/UserFunctions';
 import { useCookies } from 'react-cookie';
 import { fetchArtistByUserId } from '../ServerFunctions/ArtistFunctions';
 import welcomeBackround from '../Components/backgrounds/background.jpg'
+import userIcon from '../Components/ProfileButton/user-286-64.png';
 
 const LoginPage = () => {
     const [cookies, setCookie] = useCookies(['userId']);
@@ -27,7 +28,8 @@ const LoginPage = () => {
     return (
     <div className="loginPageDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
                                                 backgroundSize: "cover"}}>
-        <div className="loginPageContainer">            
+        <div className="loginPageContainer"> 
+        <div><img class='userIcon' src={userIcon}/> </div>           
             <h1>Hello and welcome to MusicShare!</h1>
             <h3>Here is the perfect place for you to share and talk<br></br>about your favorite songs and artists</h3>
             <br></br>
