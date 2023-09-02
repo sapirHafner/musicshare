@@ -29,7 +29,7 @@ const Upperbar = () => {
         </div>
         <div className='username'>
           {
-            loaded && `Hello, ${username}!`
+            loaded && `Hello ${username}!`
           }
         </div>
          {userType === 'user' ?

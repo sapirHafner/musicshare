@@ -60,11 +60,17 @@ body {
 
 .main {
   grid-area: main;
-  display: grid;
+  display:grid;
   height: 100vh;
   padding: 0.25rem;
   padding-left: 2rem;
   padding-top: 3rem;
+  text-align: center;
+  margin-left: 15%;
+  align-items:baseline;
+  width:95%;
+  
+  
 }
 
 .topbar {
@@ -78,6 +84,8 @@ body {
   top: 0px;
   z-index: 100;
   height: var(--top-bar-height);
+  border-bottom:dimgrey;
+  box-shadow: rgba(44, 175, 187, 0.2) 0 -25px 18px -14px inset,rgba(44, 182, 187, 0.15) 0 1px 2px,rgba(44, 156, 187, 0.15) 0 2px 4px,rgba(44, 175, 187, 0.15) 0 4px 8px,rgba(44, 185, 187, 0.15) 0 8px 16px,rgba(44, 187, 182, 0.15) 0 16px 32px;
 }
 
 .musicalentity {
