@@ -9,8 +9,8 @@ import { useQuery, getMusicalEntityBoxComponent } from './Utilities'
 import LoadingScreen from '../Common/LoadingScreen';
 
 const NewPost = () => {
-  const [cookies] = useCookies(['userId']);
-  const userId = cookies['userId'];
+  const [cookies] = useCookies(['userId', 'userType']);
+  const { userId, userType } = cookies;
 
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ const NewPost = () => {
       UserId: userId
     }
     await createNewPost(Post);
-    navigate(`/user/${userId}`);
+    userType === "user" ? navigate(`/user/${userId}`) : navigate('/');
   }
 
 

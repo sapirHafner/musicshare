@@ -9,9 +9,9 @@ const LoadingScreen = () => {
           <span></span>
           <span></span>
           <span></span>
-          <span></span>    
+          <span></span>
         </div>
-        
+
         <div> Loading...</div>
       </div>
     </div>

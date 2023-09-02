@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import thumbsUpIcon from './thumbs-up-icon.png'
 import thumbsDownIcon from './thumbs-down-icon.png'
+import { useCookies } from 'react-cookie';
 
 const LikeButton = ({ isLiked, onLike, onDislike, likesNumber}) => {
   const [likesNum, setLikesNum] = useState(likesNumber ? likesNumber : 0);
+
+  const [cookies] = useCookies(['userType']);
+  const { userType } = cookies;
+  if (userType !== 'user') {
+    return (<></>)
+  }
+  
   const handleLike = () => {
     try {
       setLikesNum(likesNum + 1);

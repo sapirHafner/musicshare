@@ -26,7 +26,7 @@ const CreateArtist = () => {
         setCookie("userId", userId, { path: "/"});
         setCookie("userType", "artist", { path: "/"});
         setCookie('artistId', artistId, {path: '/'});
-        navigate('/addAlbums');
+        navigate('/');
     };
 
 

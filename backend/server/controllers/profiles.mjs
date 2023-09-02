@@ -54,6 +54,7 @@ export const getUsersProfileBoxInfo = async (req, res) => {
 
 export const getUserProfileBoxInfoById = async (req, res) => {
     const userId = req.params.userId;
+    console.log(userId)
     const profile = await Profile.findOne({"UserId": userId});
     const profileBox =  {
         UserId: profile.UserId,

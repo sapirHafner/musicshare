@@ -4,33 +4,43 @@ import { useNavigate } from 'react-router-dom'
 import SearchButton from '../Components/SearchButton/SearchButton'
 import ProfileButton from '../Components/ProfileButton/ProfileButton'
 import { fetchUserProfileBox } from '../ServerFunctions/ProfilesFunctions'
+import { fetchArtistByUserId } from '../ServerFunctions/ArtistFunctions'
+import Link from '../Components/Link/Link'
 
 const Upperbar = () => {
-    const [cookies] = useCookies(['userId'])
-    const [user, setUser] = useState({});
-    const {userId} = cookies;
+    const [cookies] = useCookies(['userId', 'userType'])
+    const [username, setUsername] = useState({});
+    const { userId, userType } = cookies;
+    const [ loaded, isLoaded ] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
       const fetchData = async () => {
-        setUser(await fetchUserProfileBox(userId));
+        setUsername(userType === "artist" ? (await fetchArtistByUserId(userId)).Name : (await fetchUserProfileBox(userId)).FirstName);
+        isLoaded(true);
       }
       fetchData();
     },[])
 
-    useEffect(()=> console.log(user), [user])
   return (
     <div className='topbar'>
         <div className='clickable' onClick={() => navigate('/home')}>
             MusicShare
         </div>
         <div className='username'>
-          Hello, {user.FirstName}!
+          {
+            loaded && `Hello, ${username}!`
+          }
         </div>
-        <div className='functions'>
+         {userType === 'user' ?
+         <div className='functions'>
             <SearchButton />
             <ProfileButton />
-        </div>
+          </div>
+          : <span id="logout">
+                <Link text="Log Out" url='/logout'/>
+            </span>
+ }
     </div>
   )
 }

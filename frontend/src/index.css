@@ -108,6 +108,7 @@ body {
   padding-left: 4rem;
   margin-left: 4rem;
   margin-bottom: 1rem;
+  height: fit-content;
 }
 
 .boximage {
@@ -522,4 +523,13 @@ button {
 }
 .animation span:nth-child(5){
   animation-delay: 1s;
+}
+
+.mymusic {
+  display: flex;
+  flex-direction: column;
+}
+
+.mymusic .button {
+  background-color: var(--musicshare-blue);
 }

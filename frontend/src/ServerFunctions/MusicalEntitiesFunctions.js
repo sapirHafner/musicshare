@@ -65,8 +65,12 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
     }
   }))
 
-  const likes = await fetchUserLikes(userId);
-  const follows = await fetchUserFollows(userId);
-  return [setArtistsFollows(setEntitiesLikes(artists, likes), follows), setEntitiesLikes(albums, likes), setEntitiesLikes(songs,likes)];
+  if (userId) {
+    const likes = await fetchUserLikes(userId);
+    const follows = await fetchUserFollows(userId);
+    return [setArtistsFollows(setEntitiesLikes(artists, likes), follows), setEntitiesLikes(albums, likes), setEntitiesLikes(songs,likes)];  
+  }
+
+  return [artists, albums, songs]
 }
 

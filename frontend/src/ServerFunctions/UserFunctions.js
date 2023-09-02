@@ -26,3 +26,5 @@ export const getUser = async (username, password) => {
     return response.data;
 };
 
+export const fetchUserType = async (userId) =>
+  (await axios.get(`${usersServerUrl}/${userId}`)).data;

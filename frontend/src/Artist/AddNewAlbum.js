@@ -1,5 +1,4 @@
 import React from 'react'
-import ArtistNavBar from './ArtistNavBar'
 import { addAlbumAndSongsToArtist } from '../ServerFunctions/AlbumFunctions'
 import NewAlbumForm from './NewAlbumForm'
 import { useCookies } from 'react-cookie'
@@ -12,11 +11,10 @@ const AddNewAlbum = () => {
     const navigate = useNavigate();
     const onSubmit = async (album, songs) => {
         await addAlbumAndSongsToArtist(artistId, album, songs)
-        navigate('/myMusic')
+        navigate('/')
     }
     return (
         <div>
-            <ArtistNavBar />
             <NewAlbumForm onSubmit={onSubmit} />
         </div>
       )

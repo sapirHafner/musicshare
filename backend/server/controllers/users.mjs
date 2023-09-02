@@ -26,3 +26,13 @@ export const addUser = async (req, res) => {
         res.sendStatus(400);
     }
 }
+
+export const getUserType = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const user = await User.findById(userId);
+        res.status(200).send(user.Type);
+    } catch {
+        res.sendStatus(400);
+    }
+}

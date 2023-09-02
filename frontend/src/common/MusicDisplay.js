@@ -4,12 +4,12 @@ import Button from './Button';
 import ArtistsDisplay from './ArtistsDisplay';
 import AlbumsDisplay from './AlbumsDisplay';
 
-const MusicDisplay = ({artists, albums, songs}) => {
+const MusicDisplay = ({artists, albums, songs, type}) => {
   const [ selectedCategory, setSelectedCategory ] = useState("Artists")
   const categoryComponents = {
-      "Artists": <ArtistsDisplay artists={artists} />,
-      "Albums": <AlbumsDisplay albums={albums} />,
-      "Songs": <SongsDisplay songs={songs} />
+      "Artists": <ArtistsDisplay artists={artists} type={type}/>,
+      "Albums": <AlbumsDisplay albums={albums} type={type}/>,
+      "Songs": <SongsDisplay songs={songs} type={type}/>
   }
 
   return (

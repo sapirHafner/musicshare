@@ -9,7 +9,6 @@ const AlbumListItem = ({album}) => {
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
   const [isLiked, setIsLiked] = useState(album.liked);
-  console.log(album)
 
   const onLike = () => {
     const handleLike = async () => {
