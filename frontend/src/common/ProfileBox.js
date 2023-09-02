@@ -13,13 +13,15 @@ const ProfileBox = ({myId, userId, firstName, lastName, sendRequest}) => {
   };
   return (
     friendRequestSent === true ? (
-      <div onClick={onClickBox} style={{cursor: 'pointer'}}>
-        {firstName} {lastName} (Remove friend request) 
+      <div className='friendsRequestsDisplayContainer'>
+        <div>{firstName} {lastName}</div>
+        <button id='addFriend' onClick={onClickBox}>Remove friend request</button> 
       </div>
     ) :
     (
-      <div onClick={onClickBox} style={{cursor: 'pointer'}}>
-        {firstName} {lastName} (Add friend!) 
+      <div className='friendsRequestsDisplayContainer'>
+        <div>{firstName} {lastName}</div>
+        <button id='addFriend' onClick={onClickBox}>Add friend!</button> 
       </div>
     )
     
