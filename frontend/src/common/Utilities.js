@@ -42,4 +42,5 @@ export const getMusicalEntityBoxComponent = (musicalEntity) => {
   }
 }
 
-
+export const getTypePosts = (array, type) => 
+  array.filter(element => element.type === type).map(element => element.post)

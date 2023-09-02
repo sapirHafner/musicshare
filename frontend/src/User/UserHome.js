@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import UserNavigationBar from './UserNavigationBar'
 import Upperbar from './Upperbar';
+import Feed from './Feed';
 
 const UserHome = () => {
   return (
@@ -11,7 +12,7 @@ const UserHome = () => {
       </div>
       <div className='main'>
         <div className='content'>
-          <h1>Welcome to MusicShare!</h1>
+          <Feed />
         </div>
       </div>
     </div>

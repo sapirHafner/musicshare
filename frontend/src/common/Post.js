@@ -1,8 +1,6 @@
 import React from 'react'
 import { getMusicalEntityBoxComponent } from '../Common/Utilities'
 const Post = ({post}) => {
-  console.log("###")
-  console.log(post)
   const musicalEntityComponent = getMusicalEntityBoxComponent(post.MusicalEntity)
   return (
     <div className='post content'>
