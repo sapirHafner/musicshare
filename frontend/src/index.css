@@ -555,4 +555,16 @@ button {
   top: -67px;
   margin-left: 38%;
   border-right: #3a3939;
+  opacity: 95%;
 }
+
+.glow {
+  font-size: 20px;
+  color:antiquewhite;
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2e00e6, 0 0 40px #008ae6, 0 0 50px #00a1e6;
+}
+

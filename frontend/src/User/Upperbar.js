@@ -25,7 +25,7 @@ const Upperbar = () => {
   return (
     <div className='topbar'>
         <div className='clickable' onClick={() => navigate('/home')}>
-            MusicShare
+            <span className="glow">MusicShare</span>
         </div>
         <div className='username'>
           {

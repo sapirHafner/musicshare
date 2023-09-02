@@ -1,11 +1,20 @@
 import React from 'react'
 
-
-
 const FriendsRequestsDisplay = ({ friendsRequests }) => {
   
+  
+  
+  
+  
+  
+  
+  
+  
+  const removeFriendRequestFromList = () => {
+    
+  }
  
-  const friendsRequestsList = friendsRequests.map((friendRequest,id) => {
+  const friendsRequestsList = friendsRequests.map((friendRequest) => {
    return(
      <div className='friendsRequestsDisplayContainer'>
       <div> {friendRequest.FirstName} {friendRequest.LastName} </div>
