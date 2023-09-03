@@ -20,6 +20,15 @@ const SignUpForm = ({OnSignUp}) => {
       function isFormNotValid() {
         return (!firstname || !lastname || !email || !username || !password);
       }
+
+      const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      };
+
+      const showAlertMessage = () => {
+        window.alert('This is an alert message!');
+      };
        
       const onSubmit= (event) => {
         event.preventDefault()
@@ -50,7 +59,6 @@ const SignUpForm = ({OnSignUp}) => {
             <br/>
             <label htmlFor='username'> User Name: </label>
             <input type='text' name='username' value={username} onChange={onChange}/>
-        
             <br/>
             <label htmlFor='password'> Password: </label>
             <input type='password' name='password' value={password} onChange={onChange}/>
@@ -62,7 +70,13 @@ const SignUpForm = ({OnSignUp}) => {
             <p>Don't be lazy! <br></br> Please fill all the boxes above..</p>
     
       ) : (
-        <input type='submit' value='Sign up!'/> 
+       
+        !validateEmail(email) ? 
+        <input type='submit' value='Sign up!' onClick={showAlertMessage}/>
+            : 
+            <div>
+        <input type='submit' value='Sign up!' onSubmit={onSubmit}/> </div>
+    
       )} 
         <div> 
          <br></br>
