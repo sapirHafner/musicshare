@@ -1,10 +1,10 @@
 import Post from "../models/Post.mjs";
 
-export const getPostByPostId = async (req, res) => {
+export const getMusicalEntityPosts = async (req, res) => {
     try {
-        const postId = req.params.postId;
-        const post = await Post.findById(postId);
-        res.status(200).send(post);
+        const musicalEntityId = req.params.musicalEntityId;
+        const posts = await Post.find({"MusicalEntity.Id": musicalEntityId});
+        res.status(200).send(posts);
     }
     catch (error) {
         console.log(error)

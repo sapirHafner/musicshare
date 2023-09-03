@@ -54,7 +54,9 @@ body {
 .sidebar {
   grid-area: sidebar;
   text-align: center;
-  position: sticky;
+  position: fixed;
+  height: 95vh;
+  bottom:0;
   background-color: var(--background-grey);
 }
 
@@ -259,7 +261,7 @@ code {
 
 .content.albums {
   position: relative;
-  bottom: 22rem;
+  bottom: 2rem;
 }
 
 .box {
@@ -568,3 +570,8 @@ button {
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #2e00e6, 0 0 40px #008ae6, 0 0 50px #00a1e6;
 }
 
+.artistcontainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}

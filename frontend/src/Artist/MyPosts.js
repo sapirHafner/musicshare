@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { fetchPostsFullDetails } from '../ServerFunctions/PostsFunctions';
 import LoadingScreen from '../Common/LoadingScreen';
 import { useCookies } from 'react-cookie';
 import PostsDisplay from '../Common/PostsDisplay'
+import { enrichPosts, fetchUserPosts } from '../ServerFunctions/PostsFunctions';
 
 const MyPosts = () => {
     const [posts, setPosts] = useState([])
@@ -12,7 +12,8 @@ const MyPosts = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            setPosts(await fetchPostsFullDetails(userId));
+            const myPosts = await fetchUserPosts(userId);
+            setPosts(await enrichPosts(myPosts));
             setIsLoaded(true);
         }
         fetchData();

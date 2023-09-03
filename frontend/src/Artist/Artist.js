@@ -13,11 +13,14 @@ import FollowersButton from '../Components/FollowersButton/FollowersButton'
 import LikeButton from '../Components/LikeButton/LikeButton';
 import ShareButton from '../Components/ShareButton/ShareButton'
 import { isUserFollowing, addFollower, removeFollower } from '../ServerFunctions/followersFunctions'
+import { enrichPosts, fetchMusicalEntityPosts } from '../ServerFunctions/PostsFunctions'
+import PostsDisplay from '../Common/PostsDisplay'
 
 const Artist = () => {
   const { artistId } = useParams();
   const [ artist, setArtist ] = useState();
   const [ albums, setAlbums ] = useState();
+  const [ posts, setPosts ] = useState();
   const [ loaded, setLoaded ] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isFollowed, setIsFollowed] = useState(false);
@@ -32,6 +35,8 @@ const Artist = () => {
       setAlbums(await fetchAlbums(fetchedArtist.AlbumsIds));
       setIsLiked(fetchedArtist.liked)
       setIsFollowed(await isUserFollowing(userId, artistId));
+      const postsAboutArtists = await fetchMusicalEntityPosts(artistId)
+      setPosts(await enrichPosts(postsAboutArtists, userId));
       setLoaded(true)
     };
     fetchData()
@@ -95,7 +100,7 @@ const Artist = () => {
         {
           loaded
           ?
-            <>
+            <div className='artistcontainer'>
               <div className='content header'>
                 <div>
                   <div className='albumName'>artist</div>
@@ -110,7 +115,8 @@ const Artist = () => {
               <div className='content albums'>
                 {albums.map(album => <AlbumBox album={album} className="min"/>)}
               </div>
-            </>
+              <PostsDisplay posts={posts} />
+            </div>
           :
           <LoadingScreen />
         }

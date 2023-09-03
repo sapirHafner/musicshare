@@ -6,6 +6,7 @@ import LikeButton from '../Components/LikeButton/LikeButton'
 import ShareButton from '../Components/ShareButton/ShareButton'
 import { addFollower, removeFollower } from '../ServerFunctions/followersFunctions';
 import FollowersButton from '../Components/FollowersButton/FollowersButton'
+import Link from '../Components/Link/Link'
 
 const ArtistBox = ({artist}) => {
   const [isLiked, setIsLiked] = useState(artist.liked);
@@ -68,8 +69,7 @@ const ArtistBox = ({artist}) => {
         <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
       </div>
       <div>
-        <br/>
-        {artist.Name}
+        <Link text={artist.Name} url={`/artist/${artist._id}`} />
       </div>
     </div>
     <div className='boxfunctions'>

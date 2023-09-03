@@ -19,6 +19,7 @@ import MyMusic from './Artist/MyMusic';
 import AddNewAlbum from './Artist/AddNewAlbum';
 import Logout from './Common/Logout';
 import Album from './Common/Album';
+import Song from './Common/Song'
 
 const router = createBrowserRouter([
       {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: `logout`,
         element: <Logout />
+      },
+      {
+        path: `song/:songId`,
+        element: <Song />
       },
     ])
 
