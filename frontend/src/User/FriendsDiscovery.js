@@ -16,6 +16,7 @@ const FriendsDiscovery = ({ profiles, userId}) => {
     )
   return (
     <div>
+        <br></br>
         ________________________________________________________________________
         <h2>Discover new people</h2>
         {profileBoxes}

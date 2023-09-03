@@ -23,3 +23,7 @@ export const addFriendRequest = async (myId, userId) =>
 
 export const createNewFriendsArray = async (userId) =>
     (await axios.post(friendsRequestsServerUrl, {UserId: userId})).data
+
+export const removeFriendRequestFromDB = async (askingId, userId) =>
+    (await axios.delete(friendsRequestsServerUrl, {askingUserId: askingId, receivingUserId: userId}))
+   

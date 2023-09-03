@@ -47,4 +47,25 @@ export const addFriendshipBetweenUsers = async (req, res) => {
     }
 }
 
+export const removeFriendshipBetweenUsers = async (req, res) => {
+    try {
+        const { FirstUserId, SecondUserId} = req.body;
+        const firstUserFriends = await Friends.findOne({UserId: FirstUserId});
+        const secondUserFriends = await Friends.findOne({UserId: SecondUserId});
+        if (!firstUserFriends || !secondUserFriends) {
+            res.sendStatus(404);
+        } else {
+            firstUserFriends.Friends.remove(secondUserId);
+            await firstUserFriends.save();
+            secondUserFriends.Friends.remove(firstUserId);
+            await secondUserFriends.save();
+            res.sendStatus(200);
+
+        }
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+}
+
 
