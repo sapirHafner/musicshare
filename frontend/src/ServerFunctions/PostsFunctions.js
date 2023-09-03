@@ -19,8 +19,7 @@ export const fetchUsersPosts = async (usersIds) =>
 export const fetchUserPosts = async (userId) =>
     await fetchUsersPosts([userId]);
 
-export const fetchPostsFullDetails = async (id, currentUserId) => {
-  const posts = await fetchUserPosts(id)
+export const enrichPosts = async (posts, currentUserId) => {
   let artistsIds = getTypeIds(posts, "artist");
   let albumsIds = getTypeIds(posts, "album");
   let songsIds = getTypeIds(posts, "song");
@@ -48,7 +47,8 @@ export const fetchFeedPosts = async (userId) => {
 
   let posts = await Promise.all(follows.map(async (follow) => {
     const followUserId = (await (fetchArtist(follow.artistId))).UserId;
-    const followPosts = await fetchPostsFullDetails(followUserId);
+    const followUserPosts = await fetchUserPosts(followUserId);
+    const followPosts = await enrichPosts(followUserPosts);
     return followPosts.map(post => { return {
       type: 'follow',
       post
@@ -60,3 +60,5 @@ export const fetchFeedPosts = async (userId) => {
   return posts;
 }
 
+export const fetchMusicalEntityPosts = async (musicalEntityId) =>
+  (await axios.get(`${postServerUrl}/${musicalEntityId}`)).data;

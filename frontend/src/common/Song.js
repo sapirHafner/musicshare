@@ -5,35 +5,33 @@ import { useParams } from 'react-router-dom'
 import { fetchAlbum } from '../ServerFunctions/AlbumFunctions'
 import LoadingScreen from '../Common/LoadingScreen'
 import { useCookies } from 'react-cookie'
-import { addAlbumLike, removeAlbumLike } from '../ServerFunctions/likesFunctions'
 import LikeButton from '../Components/LikeButton/LikeButton';
 import ShareButton from '../Components/ShareButton/ShareButton'
 import { fetchFullDetails } from '../ServerFunctions/MusicalEntitiesFunctions'
-import SongsDisplay from './SongsDisplay'
 import { fetchMusicalEntityPosts, enrichPosts } from '../ServerFunctions/PostsFunctions'
 import PostsDisplay from './PostsDisplay'
+import { fetchSong } from '../ServerFunctions/SongFunctions'
+import { addSongLike, removeSongLike } from '../ServerFunctions/likesFunctions'
 
-const Album = () => {
-  const { albumId } = useParams();
-  const [ artist, setArtist ] = useState();
-  const [ album, setAlbum ] = useState();
-  const [ songs, setSongs ] = useState();
+const Song = () => {
+  const { songId } = useParams();
+  const [ song, setSong ] = useState();
   const [ loaded, setLoaded ] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
+  const [ isLiked, setIsLiked ] = useState(false);
   const [ posts, setPosts ] = useState()
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedAlbum = await fetchAlbum(albumId)
-      const [fetchedArtists, fetchedAlbums, fetchedSongs] = await fetchFullDetails(userId, [fetchedAlbum.ArtistId], [albumId], fetchedAlbum.SongIds)
-      setArtist(fetchedArtists[0])
-      setAlbum(fetchedAlbums[0])
-      setSongs(fetchedSongs);
-      const postsAboutAlbum = await fetchMusicalEntityPosts(albumId)
-      setPosts(await enrichPosts(postsAboutAlbum, userId));
-      setIsLiked(fetchedAlbum.liked)
+      const fetchedSong = await fetchSong(songId)
+      const fetchedAlbum = await fetchAlbum(fetchedSong.AlbumId);
+      const [fetchedArtists, fetchedAlbums, fetchedSongs] = await fetchFullDetails(userId, [fetchedAlbum.ArtistId], [fetchedAlbum._id], [fetchedSong._id])
+      setSong(fetchedSong);
+      
+      const postsAboutSong = await fetchMusicalEntityPosts(songId)
+      setPosts(await enrichPosts(postsAboutSong, userId));
+      setIsLiked(fetchedSong.liked)
       setLoaded(true)
     };
     fetchData()
@@ -43,7 +41,7 @@ const Album = () => {
     const handleLike = async () => {
       try {
         setIsLiked(true);
-        await addAlbumLike(userId, album._id);
+        await addSongLike(userId, song._id);
       } catch (error) {
         setIsLiked(false);
       }
@@ -55,7 +53,7 @@ const Album = () => {
     const handleDislike = async () => {
       try {
         setIsLiked(false);
-        await removeAlbumLike(userId, album._id);
+        await removeSongLike(userId, song._id);
       } catch (error) {
         setIsLiked(true);
       }
@@ -76,18 +74,15 @@ const Album = () => {
             <>
               <div className='content header'>
                 <div>
-                  <div className='albumName'>album</div>
+                  <div className='albumName'>song</div>
                   <div className='title'>
-                    {album.Name}
+                    {song.Name}
                   </div>
                 </div>
                 <div className='functions'>
                   <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
-                  <ShareButton type="album" id={album._id} />
+                  <ShareButton type="song" id={song._id} />
                 </div>
-              </div>
-              <div className='content songs'>
-                <SongsDisplay songs={songs} />
               </div>
               <PostsDisplay posts={posts} />
             </>
@@ -99,4 +94,4 @@ const Album = () => {
   )
 }
 
-export default Album;
+export default Song;

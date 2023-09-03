@@ -3,6 +3,7 @@ import { useCookies } from 'react-cookie';
 import { addSongLike, removeSongLike } from '../ServerFunctions/likesFunctions';
 import LikeButton from '../Components/LikeButton/LikeButton';
 import ShareButton from '../Components/ShareButton/ShareButton'
+import Link from '../Components/Link/Link';
 
 const SongBox = ({song, className}) => {
     const [cookies] = useCookies(['userId']);
@@ -40,9 +41,11 @@ const SongBox = ({song, className}) => {
           <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
         <div>
-          {song.Name} <br />
-          {song.artist.Name} <br/>
-          <span className='albumName'>{song.album.Name}</span>
+          <Link text={song.Name} url={`/song/${song._id}`} />
+          <Link text={song.artist.Name} url={`/artist/${song.artist._id}`} />
+          <span className='albumName'>
+            <Link text={song.album.Name} url={`/album/${song.album._id}`} />
+          </span>
         </div>
       </div>
       <div className="functions">
