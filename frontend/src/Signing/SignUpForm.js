@@ -27,7 +27,7 @@ const SignUpForm = ({OnSignUp}) => {
       };
 
       const showAlertMessage = () => {
-        window.alert('This is an alert message!');
+        window.alert('Invalid mail!');
       };
        
       const onSubmit= (event) => {
