@@ -1,4 +1,11 @@
 import Album from '../models/Album.mjs';
+import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const moduleFilePath = fileURLToPath(import.meta.url);
+const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
+
 
 export const getAlbumById = async (req, res) => {
     try {
@@ -33,6 +40,7 @@ export const getAlbums = async (req, res) => {
 export const addAlbum = async (req, res) => {
     try {
         const createdAlbum = await Album.create(req.body);
+        await fs.appendFile(logsFilePath, `Album ${createdAlbum._id} created\n`)
         res.status(200).send(createdAlbum._id);
     } catch (error) {
         console.log(error);
@@ -44,6 +52,7 @@ export const deleteAlbum = async (req, res) => {
     try {
         const albumId = req.params.id;
         await Album.findByIdAndDelete(albumId);
+        await fs.appendFile(logsFilePath, `Album ${albumId} deleted\n`)
         res.sendStatus(200);
     } catch (error) {
         console.log(error);
@@ -55,6 +64,7 @@ export const updateAlbum = async (req, res) => {
     try {
         const albumId = req.body._id;
         await Album.findByIdAndUpdate(albumId, req.body);
+        await fs.appendFile(logsFilePath, `Album ${albumId} updated\n`)
         res.sendStatus(200);
     } catch (error) {
         console.log(error);

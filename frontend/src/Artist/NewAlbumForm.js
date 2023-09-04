@@ -19,7 +19,6 @@ const NewAlbumForm = ({ onSubmit }) => {
         }, songs);
     };
 
-    
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor='name'> Name: </label>

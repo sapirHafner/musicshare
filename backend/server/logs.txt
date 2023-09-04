@@ -1,0 +1,38 @@
+user 64f61c78786ebf1f8dcae542 created and logged in
+Created profile 64f61c78786ebf1f8dcae545 for user 64f61c78786ebf1f8dcae542
+Created empty friends list for user 64f61c78786ebf1f8dcae542
+Created empty friends list for user 64f61c78786ebf1f8dcae542
+user 64f61c78786ebf1f8dcae542 logged out
+user 64f61c89786ebf1f8dcae54f created and logged in
+Created profile 64f61c89786ebf1f8dcae552 for user 64f61c89786ebf1f8dcae54f
+Created empty friends list for user 64f61c89786ebf1f8dcae54f
+Created empty friends list for user 64f61c89786ebf1f8dcae54f
+Added friend request from user 64f61c89786ebf1f8dcae54f to user 64f61c78786ebf1f8dcae542
+user 64f61c89786ebf1f8dcae54f logged out
+user 64f61c78786ebf1f8dcae542 logged in
+Added friend request from user 64f61c78786ebf1f8dcae542 to user 64f61c89786ebf1f8dcae54f
+user 64f61c78786ebf1f8dcae542 logged out
+user 64f61c89786ebf1f8dcae54f logged in
+user 64f61c89786ebf1f8dcae54f logged in
+user 64f61c89786ebf1f8dcae54f logged out
+artist 64f621f78c0c73b30e934d15 created and logged in
+Artist profile for 64f621f78c0c73b30e934d18 created
+Created empty likes list for artist 64f621f78c0c73b30e934d18
+Created empty followers list for artist 64f621f78c0c73b30e934d18
+Album 64f621fc8c0c73b30e934d20 created
+Created empty likes list for album 64f621fc8c0c73b30e934d20
+Songs 64f621fc8c0c73b30e934d24 created
+Created empty likes list for song 64f621fc8c0c73b30e934d24
+Album 64f621fc8c0c73b30e934d20 updated
+Artist 64f621f78c0c73b30e934d18 updated
+artist 64f621f78c0c73b30e934d15 logged out
+user 64f61c78786ebf1f8dcae542 logged in
+Post 64f622d78c0c73b30e934d43 created by 64f61c78786ebf1f8dcae542 on artist 64f621f78c0c73b30e934d18
+user 64f61c78786ebf1f8dcae542 logged out
+user 64f61c89786ebf1f8dcae54f logged in
+user 64f61c89786ebf1f8dcae54f logged out
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged out
+admin 0 logged out
+admin 0 logged out
+admin 0 logged in

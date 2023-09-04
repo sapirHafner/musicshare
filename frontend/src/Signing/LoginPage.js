@@ -9,27 +9,44 @@ import userIcon from '../Components/ProfileButton/user-286-64.png';
 const LoginPage = () => {
     const [cookies, setCookie] = useCookies(['userId']);
     const navigate = useNavigate();
-    
-    const onLogin = async (username, password, rememberMe) => {
+
+  const getExpirationDate= (rememberMe) => {
+    const expirationDate = new Date();
+
+    if (rememberMe) {
+      expirationDate.setDate(expirationDate.getDate() + 10);
+    } else {
+      expirationDate.setTime(expirationDate.getTime() + 30 * 60 * 1000);
+    }
+
+    return expirationDate;
+  };
+
+    const onLogin = async (username, password, rememberMe, setErrorMessage) => {
         try {
             const { Id, Type } = await getUser(username, password);
-            setCookie("userId", Id, { path: "/"});
-            setCookie("userType", Type, { path: "/"});
+            const expirationDate = getExpirationDate(rememberMe);
+            setCookie("userId", Id, { path: "/", expires: expirationDate});
+            setCookie("userType", Type, { path: "/", expires: expirationDate});
             if (Type === "artist") {
                 const artistId = (await fetchArtistByUserId(Id))._id
-                setCookie("artistId", artistId, { path: "/"});
+                setCookie("artistId", artistId, { path: "/", expires: expirationDate});
             }
             navigate("/home");
-        } catch(error) {
-            console.log(error)
+        } catch (error) {
+            if (error.response && error.response.status === 404) {
+                setErrorMessage("User not found");
+            } else {
+                setErrorMessage("Login failed");
+            }
         }
     }
 
     return (
     <div className="loginPageDesign" style={{ backgroundImage: `url(${welcomeBackround})`,
                                                 backgroundSize: "cover"}}>
-        <div className="loginPageContainer"> 
-        <div><img class='userIcon' src={userIcon}/> </div>           
+        <div className="loginPageContainer">
+        <div><img class='userIcon' src={userIcon}/> </div>
             <h1>Hello and welcome to MusicShare!</h1>
             <h3>Here is the perfect place for you to share and talk<br></br>about your favorite songs and artists</h3>
             <br></br>

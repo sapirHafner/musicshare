@@ -11,8 +11,8 @@ import welcomeBackround from '../Components/backgrounds/background.jpg';
 const CreateUser = () => {
   const [cookies, setCookie] = useCookies(['userId']);
   const navigate  = useNavigate()
-  
-  const onSignUp = async (user, profile) => {
+
+  const onSignUp = async (user, profile, setErrorMessage) => {
     try {
       user.Type = "user";
       const userId = await addUser(user);
@@ -23,7 +23,11 @@ const CreateUser = () => {
       setCookie("userId", userId, { path: "/"});
       setCookie("userType", "user", { path: "/"});
       navigate("/home")
-    } catch {}
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
+        setErrorMessage("Username is already taken")
+      }
+    }
   }
 
     return (

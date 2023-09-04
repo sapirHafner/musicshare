@@ -18,10 +18,12 @@ const postScheme = mongoose.Schema({
     Title: {
         type: String,
         required: true,
+        maxlength: 40,
     },
     Content: {
         type: String,
         required: true,
+        maxlength: 300,
     },
     CreatedAt: {
         type: Date,

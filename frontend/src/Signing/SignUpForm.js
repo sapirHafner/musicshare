@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-    
-const SignUpForm = ({OnSignUp}) => { 
+import { useState } from 'react';
+
+const SignUpForm = ({OnSignUp}) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({
         firstname: '',
@@ -32,7 +32,7 @@ const SignUpForm = ({OnSignUp}) => {
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         return;
       };
-       
+
       const onSubmit= (event) => {
         event.preventDefault()
         const profile = {
@@ -44,7 +44,7 @@ const SignUpForm = ({OnSignUp}) => {
             Username: username,
             Password: password,
         }
-        OnSignUp(user, profile)
+        OnSignUp(user, profile, setErrorMessage)
     }
 
     return (
@@ -65,23 +65,22 @@ const SignUpForm = ({OnSignUp}) => {
             <br/>
             <label htmlFor='password'> Password: </label>
             <input type='password' name='password' value={password} onChange={onChange}/>
-    
+
             <br/>
             <br/>
-           
+            <p id="errormessage">{errorMessage}</p>
             {isFormNotValid() ? (
             <p>Don't be lazy! <br></br> Please fill all the boxes above..</p>
-    
+
       ) : (
-       
-        !validateEmail(email) ? 
+        !validateEmail(email) ?
             <p style={{ color: 'red' }}>invalid Mail!</p>
-            :            
-        <input type='submit' value='Sign up!'/> 
-      )} 
-        <div> 
+            :
+        <input type='submit' value='Sign up!'/>
+      )}
+        <div>
          <br></br>
-        <Link to='/login'>Back to login page...</Link> </div> 
+        <Link to='/login'>Back to login page...</Link> </div>
         </form>
     );
 

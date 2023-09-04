@@ -36,12 +36,7 @@ const FriendsRequests = () => {
             {
               isLoaded ?
                 <div>
-                  {userFriendsRequests.length > 0 ? (
-                    <FriendsRequestsDisplay friendsRequests={userFriendsRequests}/>
-                  ) : (
-                        <p>No new friend requests</p>
-                      )
-                    }
+                  <FriendsRequestsDisplay friendsRequests={userFriendsRequests}/>
                 </div>
                     :
                         <LoadingScreen />

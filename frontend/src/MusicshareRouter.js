@@ -14,7 +14,6 @@ import Library from './User/Library';
 import NewPost from './Common/NewPost';
 import Browse from './User/Browse';
 import CreateArtist from './Signing/CreateArtist';
-import AddAlbums from './Artist/AddAlbums';
 import MyMusic from './Artist/MyMusic';
 import AddNewAlbum from './Artist/AddNewAlbum';
 import Logout from './Common/Logout';
@@ -74,10 +73,6 @@ const router = createBrowserRouter([
       {
         path: `newpost`,
         element: <NewPost />
-      },
-      {
-        path: `addAlbums`,
-        element: <AddAlbums />
       },
       {
         path: `myMusic`,

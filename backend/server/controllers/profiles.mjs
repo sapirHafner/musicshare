@@ -1,4 +1,10 @@
 import Profile from "../models/Profile.mjs";
+import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const moduleFilePath = fileURLToPath(import.meta.url);
+const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getProfiles = async (req, res) => {
     try {
@@ -21,6 +27,7 @@ export const getProfileByUserId = async (req, res) => {
 export const addProfile = async (req, res) => {
     try {
         const createdProfile = await Profile.create(req.body);
+        await fs.appendFile(logsFilePath, `Created profile ${createdProfile._id} for user ${req.body.UserId}\n`)
         res.status(200).send(createdProfile._id);
     } catch {
         res.sendStatus(400);

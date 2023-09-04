@@ -1,38 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { removeFriendRequestFromDB } from '../ServerFunctions/FriendsFunctions';
+import React, { useState } from 'react';
 
 const FriendsRequestsDisplay = ({ friendsRequests }) => {
-  
-  const handleAccept = index => {
-    setList(newList.filter((friendRequest,i) => i !== index));
-    
+  const [ friendsRequestsItems, setFriendsRequestsItems ] = useState(friendsRequests);
+
+  const handleAccept = (friendRequest, index) => {
   }
 
-  const handleDecline= index => {
-    setList(newList.filter((friendRequest,i) => i !== index));
+  const handleDecline= (friendRequest, index) => {
   }
- 
-  const friendsRequestsList = friendsRequests.map((friendRequest, index) => {
-   return(
-     <div className='friendsRequestsDisplayContainer'>
-      <div>        
-        {friendRequest.FirstName} {friendRequest.LastName} </div>
-      
-      <button id='accept' onClick={() => handleAccept(index)}>Accept</button> 
-      <button id='decline' onClick={() => handleDecline(index)}>Decline</button>
-      </div>)
-  });
-
-  const [newList, setList] = React.useState(friendsRequestsList);
-
-  useEffect(() => {
-    console.log(newList);
-  }, [newList]);
 
   return (
+    friendsRequests.length > 0 ?
     <div> These are your friends Requests: <br />
-      {newList}
+      {
+        friendsRequestsItems.map((friendRequest, index) =>
+        <div className='friendsRequestsDisplayContainer'>
+          <div>
+            {friendRequest.FirstName} {friendRequest.LastName}
+          </div>
+          <button id='accept' onClick={() => handleAccept(friendRequest, index)}>Accept</button>
+          <button id='decline' onClick={() => handleDecline(friendRequest, index)}>Decline</button>
+        </div>)
+      }
     </div>
+    :
+    <p>No new friend requests</p>
   )
 }
 

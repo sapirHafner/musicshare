@@ -3,6 +3,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import ArtistHome from "../Artist/ArtistHome";
 import UserHome from "../User/UserHome";
+import AdminHome from "../Admin/AdminHome";
 
 const Home = () => {
     const [cookies] = useCookies(['userId', 'userType']);
@@ -10,13 +11,15 @@ const Home = () => {
     const navigate  = useNavigate()
 
     useEffect(() => {
-        if (userId === undefined) {
+        if (!userId) {
             navigate("/")
         }
     }, [])
+
     const homes = {
         "user":  <UserHome />,
-        "artist": <ArtistHome />
+        "artist": <ArtistHome />,
+        "admin": <AdminHome />
     }
 
     return (

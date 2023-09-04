@@ -1,4 +1,10 @@
 import FriendsRequests from '../models/FriendsRequests.mjs';
+import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const moduleFilePath = fileURLToPath(import.meta.url);
+const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getFriendsRequestsByUserId = async (req, res) => {
     try {
@@ -17,6 +23,7 @@ export const createNewFriendsRequestsArray = async (req, res) => {
             UserId: userId,
             RequestUsersIds: []
         })
+        await fs.appendFile(logsFilePath, `Created empty friends list for user ${userId}\n`)
         res.status(200).send(createdArray._id);
     } catch (error) {
         console.log(error);
@@ -26,11 +33,10 @@ export const createNewFriendsRequestsArray = async (req, res) => {
 
 export const addFriendRequestByUserId = async (req, res) => {
     try {
-        const askingUserId = req.body.askingUserId;
-        const receivingUserId = req.body.receivingUserId;
+        const { askingUserId, receivingUserId } = req.body;
         let receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
-
         receivingUserFriendsRequests.RequestUserIds.push(askingUserId);
+        await fs.appendFile(logsFilePath, `Added friend request from user ${askingUserId} to user ${receivingUserId}\n`)
         await receivingUserFriendsRequests.save();
     } catch (error) {
         console.log(error);
@@ -40,17 +46,18 @@ export const addFriendRequestByUserId = async (req, res) => {
 
 export const removeFriendRequestByUserId = async (req, res) => {
     try {
-        const askingUserId = req.body.askingUserId;
-        const receivingUserId = req.body.receivingUserId;
+        const { askingUserId, receivingUserId } = req.body;
         const receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
         if (!receivingUserFriendsRequests) {
             res.sendStatus(404);
         } else {
             receivingUserFriendsRequests.RequestUsersIds.remove(askingUserId);
             await receivingUserFriendsRequests.save();
+            await fs.appendFile(logsFilePath, `Removed friend request from user ${askingUserId} to user ${receivingUserId}\n`)
             res.sendStatus(200);
         }
-    } catch {
+    } catch (error) {
+        console.log(error)
         res.sendStatus(500);
     }
 }

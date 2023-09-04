@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 import Friends from "../models/Friends.mjs";
 import User from "../models/User.mjs";
+import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const moduleFilePath = fileURLToPath(import.meta.url);
+const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
+
 
 export const getFriendsRecommendationForUser = async (req, res) => {
     try {

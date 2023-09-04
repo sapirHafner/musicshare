@@ -1,4 +1,10 @@
 import Likes from '../models/Likes.mjs';
+import fs from 'fs/promises';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const moduleFilePath = fileURLToPath(import.meta.url);
+const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getMusicalEntityLikes = async (req, res) => {
     try {
@@ -29,6 +35,7 @@ const addUserLike = async (req, res) => {
         } else {
             musicalEntityLikes.UsersIds.push(userId);
             await musicalEntityLikes.save();
+            await fs.appendFile(logsFilePath, `User ${userId} liked ${musicalEntity.Type} ${musicalEntity.Id}\n`)
             res.sendStatus(200);
         }
     } catch (error) {
@@ -47,6 +54,7 @@ const removeUserLike = async (req, res) => {
         } else {
             musicalEntityLikes.UsersIds.remove(userId);
             await musicalEntityLikes.save();
+            await fs.appendFile(logsFilePath, `User ${userId} disliked ${musicalEntity.Type} ${musicalEntity.Id}\n`)
             res.sendStatus(200);
         }
     } catch (error) {
@@ -74,6 +82,7 @@ export const createLikes = async (req, res) => {
             MusicalEntity: req.body.MusicalEntity,
             UsersIds: []
         });
+        await fs.appendFile(logsFilePath, `Created empty likes list for ${req.body.MusicalEntity.Type} ${req.body.MusicalEntity.Id}\n`)
         res.status(200).send(createdLikes._id);
     } catch {
         res.sendStatus(404);

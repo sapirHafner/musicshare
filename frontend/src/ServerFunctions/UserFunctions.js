@@ -28,3 +28,6 @@ export const getUser = async (username, password) => {
 
 export const fetchUserType = async (userId) =>
   (await axios.get(`${usersServerUrl}/${userId}`)).data;
+
+export const logLogout = async (userId, userType) =>
+    (axios.post(`${usersServerUrl}/logout`, {userId, userType}))

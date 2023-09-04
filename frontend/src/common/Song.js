@@ -28,7 +28,7 @@ const Song = () => {
       const fetchedAlbum = await fetchAlbum(fetchedSong.AlbumId);
       const [fetchedArtists, fetchedAlbums, fetchedSongs] = await fetchFullDetails(userId, [fetchedAlbum.ArtistId], [fetchedAlbum._id], [fetchedSong._id])
       setSong(fetchedSong);
-      
+
       const postsAboutSong = await fetchMusicalEntityPosts(songId)
       setPosts(await enrichPosts(postsAboutSong, userId));
       setIsLiked(fetchedSong.liked)

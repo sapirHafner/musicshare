@@ -11,7 +11,7 @@ app.use(cors())
 app.use(router);
 
 
-const MONGODB_URI = "mongodb+srv://ilaymor:bJMYrepflmn0fDmC@cluster0.c1wocq5.mongodb.net/?retryWrites=true&w=majority";
+const MONGODB_URI = "mongodb://127.0.0.1:27017";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
@@ -21,5 +21,5 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
     })
   })
   .catch((err) => {
-    console.error('Error connecting to MongoDB:', err.message);
+    console.error('Error connecting to MongoDB:', err);
   });

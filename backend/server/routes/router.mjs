@@ -10,6 +10,7 @@ import artistRouter from './artist.mjs'
 import albumRouter from './album.mjs'
 import followersRouter from './followers.mjs'
 import friendsRequestsRouter from './friendsRequests.mjs';
+import logsRouter from './logs.mjs'
 
 const router = express.Router();
 router.use(songRouter);
@@ -23,5 +24,6 @@ router.use(artistRouter);
 router.use(albumRouter);
 router.use(friendsRequestsRouter)
 router.use(followersRouter);
+router.use(logsRouter);
 
 export default router;

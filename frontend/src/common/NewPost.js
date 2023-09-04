@@ -17,8 +17,8 @@ const NewPost = () => {
   const query = useQuery();
   const type = query.get("type")
   const musicalEntityId = query.get("id")
-  const [musicalEntityComponent, setMusicalEntityComponent] = useState();
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [ musicalEntityComponent, setMusicalEntityComponent ] = useState();
+  const [ isLoaded, setIsLoaded ] = useState(false);
 
   useEffect(() =>{
     const fetchData = async () => {

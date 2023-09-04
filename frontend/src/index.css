@@ -575,3 +575,11 @@ button {
   display: flex;
   flex-direction: column;
 }
+
+#errormessage {
+  color: red;
+}
+
+.logs {
+  text-align: left;
+}
