@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
     
 const SignUpForm = ({OnSignUp}) => { 
-
+    const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
@@ -26,8 +26,11 @@ const SignUpForm = ({OnSignUp}) => {
         return emailRegex.test(email);
       };
 
-      const showAlertMessage = () => {
-        window.alert('Invalid mail!');
+
+      const sendErrorMessage = () => {
+        setErrorMessage('Please enter a valid email address.');
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        return;
       };
        
       const onSubmit= (event) => {
@@ -72,11 +75,9 @@ const SignUpForm = ({OnSignUp}) => {
       ) : (
        
         !validateEmail(email) ? 
-        <input type='submit' value='Sign up!' onClick={showAlertMessage}/>
-            : 
-            <div>
-        <input type='submit' value='Sign up!' onSubmit={onSubmit}/> </div>
-    
+            <p style={{ color: 'red' }}>invalid Mail!</p>
+            :            
+        <input type='submit' value='Sign up!'/> 
       )} 
         <div> 
          <br></br>
