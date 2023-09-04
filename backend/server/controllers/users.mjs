@@ -14,7 +14,7 @@ export const getUser = async (req, res) => {
                 Id: 0,
                 Type: "admin"
             });
-        } else {~
+        } else {
             const user = await User.findOne(req.query);
             if (!user) {
                 return res.status(404).send({ message: 'User not found' });
