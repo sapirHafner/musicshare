@@ -8,8 +8,7 @@ const ProfileBox = ({myId, userId, firstName, lastName, sendRequest}) => {
       sendRequest(myId, userId);
     }
     setFriendRequestSent(!friendRequestSent);
-    
-    
+
   };
   return (
     friendRequestSent === true ? (
@@ -24,7 +23,7 @@ const ProfileBox = ({myId, userId, firstName, lastName, sendRequest}) => {
         <button id='addFriend' onClick={onClickBox}>Add friend!</button> 
       </div>
     )
-    
+
   )
 }
 
