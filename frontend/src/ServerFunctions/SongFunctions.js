@@ -30,3 +30,6 @@ export const fetchSongsFullDetails = async (songs, likes) => {
   songs.forEach(song => song.Album = albums[song.AlbumId]);
   return songs;
 }
+
+export const deleteAlbumSongs = async (albumId) =>
+  axios.delete(`${songServerUrl}?albumId=${albumId}`)

@@ -6,7 +6,6 @@ import path from 'path';
 const moduleFilePath = fileURLToPath(import.meta.url);
 const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
-
 export const getAlbumById = async (req, res) => {
     try {
         const albumId = req.params.id;
@@ -65,6 +64,19 @@ export const updateAlbum = async (req, res) => {
         const albumId = req.body._id;
         await Album.findByIdAndUpdate(albumId, req.body);
         await fs.appendFile(logsFilePath, `Album ${albumId} updated\n`)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
+
+export const deleteAlbums = async (req, res) => {
+    try {
+        const artistId = req.query.artistId;
+        if (artistId !== undefined) {
+            await Album.deleteMany({ArtistId: artistId})
+        }
         res.sendStatus(200);
     } catch (error) {
         console.log(error);

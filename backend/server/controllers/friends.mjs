@@ -78,4 +78,20 @@ export const removeFriendshipBetweenUsers = async (req, res) => {
     }
 }
 
+export const deleteUserFriends = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        await Friends.findOneAndDelete({UserId: userId});
+        await Friends.updateMany(
+            {},
+            { $pull: { "Friends": userId } })
+
+        await fs.appendFile(logsFilePath, `Delete user ${userId} friends\n`)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+}
+
 

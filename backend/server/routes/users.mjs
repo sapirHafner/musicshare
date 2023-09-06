@@ -3,7 +3,9 @@ import {
     getUser,
     addUser,
     getUserType,
-    logLogout
+    logLogout,
+    deleteUser,
+    updateUser
 }
 from '../controllers/users.mjs';
 
@@ -12,5 +14,7 @@ router.get('/users', getUser);
 router.get('/users/:id', getUserType);
 router.post('/users', addUser);
 router.post('/users/logout', logLogout);
+router.put('/users', updateUser)
+router.delete('/users/:id', deleteUser);
 
 export default router;

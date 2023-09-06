@@ -8,8 +8,11 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getUser = async (req, res) => {
     try {
-        if (req.query.Username === 'admin' && req.query.Password === 'admin') {
-            await fs.appendFile(logsFilePath, `admin 0 logged in\n`)
+        if (req.query.Username === undefined) {
+            const allUsers = await User.find({"Type":{$ne: "admin"}});
+            res.status(200).send(allUsers);
+        } else if (req.query.Username === 'admin' && req.query.Password === 'admin') {
+            await fs.appendFile(logsFilePath, `admin logged in\n`)
             res.status(200).send({
                 Id: 0,
                 Type: "admin"
@@ -43,7 +46,29 @@ export const addUser = async (req, res) => {
             res.status(200).send(createdUser._id);
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
+
+export const updateUser = async (req, res) => {
+    try {
+        const userId = req.body._id;
+        await User.findByIdAndUpdate(userId, req.body);
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
+
+export const deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        await User.findByIdAndDelete(userId);
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
         res.sendStatus(500);
     }
 }

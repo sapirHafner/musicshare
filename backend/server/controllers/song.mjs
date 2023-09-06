@@ -49,7 +49,21 @@ export const deleteSong = async (req, res) => {
         await Song.findByIdAndDelete(songId);
         await fs.appendFile(logsFilePath, `Song ${songId} deleted\n`)
         res.sendStatus(200);
-    } catch {
-        res.sendStatus(404);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+}
+
+export const deleteSongs = async (req, res) => {
+    try {
+        const albumId = req.query.albumId;
+        if (albumId !== undefined) {
+            await Song.deleteMany({AlbumId: albumId})
+        }
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
     }
 }

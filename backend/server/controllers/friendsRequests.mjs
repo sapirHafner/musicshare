@@ -61,3 +61,15 @@ export const removeFriendRequestByUserId = async (req, res) => {
         res.sendStatus(500);
     }
 }
+
+export const deleteUserFriendRequests = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        await FriendsRequests.findOneAndDelete({UserId: userId})
+        await fs.appendFile(logsFilePath, `Delete user ${userId} friend requests\n`)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+}

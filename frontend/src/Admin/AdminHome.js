@@ -12,9 +12,8 @@ const AdminHome = () => {
         </div>
         <div className='main'>
         <div className='content'>
-            <h1>Welcome to MusicShare</h1>
+            <h1>MusicShare</h1>
             <h3>This is the admin home page</h3>
-            
             <AdminDisplay />
         </div>
         </div>

@@ -54,3 +54,6 @@ export const fetchAlbumFullDetails = async (albumId) => {
     album.Artist = await fetchArtist(album.ArtistId)
     return album;
 }
+
+export const deleteArtistAlbums = async (artistId) =>
+    axios.delete(`${albumsServerUrl}?artistId=${artistId}`)

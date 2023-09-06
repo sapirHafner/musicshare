@@ -17,8 +17,14 @@ export const removeUserLike = async (userId, musicalEntity) =>
     UserId : userId
   })
 
+export const deleteUserLikes = async (userId) =>
+  await axios.delete(`${likesServerUrl}?userId=${userId}`)
+
 export const fetchEntityLikes = async (musicalEntityId) =>
   (await axios.get(`${likesServerUrl}/${musicalEntityId}`)).data.UsersIds;
+
+export const deleteMusicalEntityLikes = async (musicalEntityId) =>
+  axios.delete(`${likesServerUrl}/${musicalEntityId}`)
 
 export const getEntityLikesNumber = async (musicalEntityId) =>
   (await fetchEntityLikes(musicalEntityId)).length;

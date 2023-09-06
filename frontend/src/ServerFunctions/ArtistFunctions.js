@@ -32,3 +32,8 @@ export const setArtistsFollows = (artists, follows) => {
     const followsIds = follows.map(follows => follows.artistId);
     return artists.map(artist => {return {...artist, followed: followsIds.includes(artist._id)}})
 }
+
+export const deleteArtist = async (artistId) =>
+    await axios.delete(`${artistServerUrl}/${artistId}`);
+
+

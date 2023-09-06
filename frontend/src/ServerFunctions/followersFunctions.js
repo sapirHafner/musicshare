@@ -24,7 +24,10 @@ export const fetchUsersFollows = async (userIds) =>
 export const fetchUserFollows = async (userId) =>
     await fetchUsersFollows([userId])
 
-export const isUserFollowing = async(userId, artistId) => {
+export const isUserFollowing = async (userId, artistId) => {
     const artistFollowers = await fetchArtistFollowers(artistId);
     return artistFollowers.includes(userId);
 }
+
+export const deleteUserFollows = async (userId) =>
+    axios.delete(`${followersServerUrl}?userId=${userId}`)

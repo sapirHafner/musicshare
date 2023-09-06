@@ -24,7 +24,7 @@ export const getFriendsRecommendationForUser = async (req, res) => {
         res.status(200).send(recommendedProfilesIds);
     } catch (error) {
         console.log(error)
-        res.sendStatus(404);
+        res.sendStatus(500);
     }
 }
 

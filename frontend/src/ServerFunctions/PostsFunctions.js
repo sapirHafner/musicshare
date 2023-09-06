@@ -62,3 +62,9 @@ export const fetchFeedPosts = async (userId) => {
 
 export const fetchMusicalEntityPosts = async (musicalEntityId) =>
   (await axios.get(`${postServerUrl}/${musicalEntityId}`)).data;
+
+export const deleteUserPosts = async (userId) =>
+  (await axios.delete(`${postServerUrl}?userId=${userId}`))
+
+export const deleteMusicalEntityPosts = async (musicalEntityId) =>
+  (await axios.delete(`${postServerUrl}?musicalEntityId=${musicalEntityId}`))

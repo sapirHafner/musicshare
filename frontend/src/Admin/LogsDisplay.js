@@ -4,7 +4,7 @@ const LogsDisplay = () => {
     const [logs, setLogs] = useState();
     useEffect(() => {
         const fetchData = async () => {
-            setLogs((await fetchAllLogs()).split(',').map(log => <div> {log} </div>));
+            setLogs((await fetchAllLogs()).split(',').map(log => <div> {log} </div>).reverse());
         }
         fetchData();
     },[])

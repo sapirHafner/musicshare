@@ -69,3 +69,15 @@ export const getUserProfileBoxInfoById = async (req, res) => {
     }
     res.status(200).send(profileBox);
 }
+
+export const deleteProfile = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+        await Profile.findOneAndDelete({UserId: userId});
+        await fs.appendFile(logsFilePath, `Delete user ${userId} profile\n`)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+}

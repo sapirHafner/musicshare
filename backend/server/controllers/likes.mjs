@@ -84,9 +84,34 @@ export const createLikes = async (req, res) => {
         });
         await fs.appendFile(logsFilePath, `Created empty likes list for ${req.body.MusicalEntity.Type} ${req.body.MusicalEntity.Id}\n`)
         res.status(200).send(createdLikes._id);
-    } catch {
-        res.sendStatus(404);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
     }
 }
 
+export const deleteUserLikes = async (req, res) => {
+    try {
+        const userId = req.query.userId;
+        await Likes.updateMany(
+            {},
+            { $pull: { "UsersIds": userId } })
+        await fs.appendFile(logsFilePath, `Delete user ${userId} likes\n`)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
 
+export const deleteMusicalEntityLikes = async (req, res) => {
+    try {
+        const musicalEntityId = req.params.id;
+        await Likes.findOneAndDelete({"MusicalEntity.Id": musicalEntityId});
+        await fs.appendFile(logsFilePath, `Musical entity ${musicalEntityId} likes deleted\n`)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}

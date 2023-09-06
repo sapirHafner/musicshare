@@ -17,3 +17,6 @@ export const fetchUsersProfileBoxes = async (userIds) =>
     (await axios.get(`${profilesServerUrl}/boxes?ids=${userIds.join()}`)).data
     : []
 
+export const deleteProfile = async (userId) =>
+    axios.delete(`${profilesServerUrl}/${userId}`)
+

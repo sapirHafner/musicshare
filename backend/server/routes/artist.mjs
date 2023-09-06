@@ -11,7 +11,7 @@ const router = express.Router();
 router.get('/artist/:id', getArtistById);
 router.get('/artist', getArtists);
 router.post('/artist', addArtist);
-router.delete('/artist/:id', deleteArtist);
+router.delete('/artist/:artistId', deleteArtist);
 router.put('/artist', updateArtist)
 
 export default router;

@@ -38,7 +38,7 @@ export const getArtists = async (req, res) => {
 export const addArtist = async (req, res) => {
     try {
         const createdArtist = await Artist.create(req.body);
-        await fs.appendFile(logsFilePath, `Artist profile for ${createdArtist._id} created\n`)
+        await fs.appendFile(logsFilePath, `User ${req.body.UserId} artist profile created\n`)
         res.status(200).send(createdArtist._id);
     } catch (error) {
         console.log(error);
@@ -48,9 +48,9 @@ export const addArtist = async (req, res) => {
 
 export const deleteArtist = async (req, res) => {
     try {
-        const artistId = req.params.id;
-        await Artists.findByIdAndDelete(artistId)
-        await fs.appendFile(logsFilePath, `Artist ${artistId} created\n`)
+        const artistId = req.params.artistId;
+        await Artist.findByIdAndDelete(artistId);
+        await fs.appendFile(logsFilePath, `Artist ${artistId} ]deleted\n`)
         res.sendStatus(200);
     } catch (error) {
         console.log(error);

@@ -36,3 +36,374 @@ user 64f61c78786ebf1f8dcae542 logged out
 admin 0 logged out
 admin 0 logged out
 admin 0 logged in
+admin 0 logged in
+user 64f887ccfcac119cc0a5eeaf created and logged in
+Created profile 64f887ccfcac119cc0a5eeb2 for user 64f887ccfcac119cc0a5eeaf
+Created empty friends list for user 64f887ccfcac119cc0a5eeaf
+Created empty friends list for user 64f887ccfcac119cc0a5eeaf
+user 64f887ccfcac119cc0a5eeaf logged out
+admin 0 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+admin 0 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f61c78786ebf1f8dcae542 logged in
+user 64f8a5f96f39f509a3e02266 created and logged in
+Created profile 64f8a5f96f39f509a3e02269 for user 64f8a5f96f39f509a3e02266
+Created empty friends list for user 64f8a5f96f39f509a3e02266
+Created empty friends list for user 64f8a5f96f39f509a3e02266
+Post 64f8a60f6f39f509a3e0227e created by 64f8a5f96f39f509a3e02266 on artist 64f621f78c0c73b30e934d18
+User 64f8a5f96f39f509a3e02266 liked artist 64f621f78c0c73b30e934d18
+user 64f8a5f96f39f509a3e02266 logged out
+user 64f8a5f96f39f509a3e02266 logged out
+user 64f8a5f96f39f509a3e02266 logged out
+admin logged in
+admin 0 logged out
+user 64f8aa5e892e86d361093b96 created and logged in
+Created profile 64f8aa5e892e86d361093b99 for user 64f8aa5e892e86d361093b96
+Created empty friends list for user 64f8aa5e892e86d361093b96
+Created empty friends list for user 64f8aa5e892e86d361093b96
+user 64f8aa5e892e86d361093b96 logged out
+admin logged in
+admin 0 logged out
+artist 64f8ab20892e86d361093bb5 created and logged in
+Artist profile for 64f8ab20892e86d361093bb8 created
+Created empty likes list for artist 64f8ab20892e86d361093bb8
+Created empty followers list for artist 64f8ab20892e86d361093bb8
+Album 64f8ace99cca35b21b4c606f created
+Created empty likes list for album 64f8ace99cca35b21b4c606f
+Songs 64f8ace99cca35b21b4c6073 created
+Created empty likes list for song 64f8ace99cca35b21b4c6073
+Album 64f8ace99cca35b21b4c606f updated
+Artist 64f8ab20892e86d361093bb8 updated
+Post 64f8acf49cca35b21b4c6092 created by 64f8ab20892e86d361093bb5 on artist 64f8ab20892e86d361093bb8
+artist 64f8ab20892e86d361093bb5 logged out
+user 64f8b43b8bfb8c6e9cfde4e4 created and logged in
+Created profile 64f8b43b8bfb8c6e9cfde4e7 for user 64f8b43b8bfb8c6e9cfde4e4
+Created empty friends list for user 64f8b43b8bfb8c6e9cfde4e4
+Created empty friends list for user 64f8b43b8bfb8c6e9cfde4e4
+User 64f8b43b8bfb8c6e9cfde4e4 followed artist 64f8ab20892e86d361093bb8
+User 64f8b43b8bfb8c6e9cfde4e4 liked artist 64f8ab20892e86d361093bb8
+Post 64f8b4478bfb8c6e9cfde504 created by 64f8b43b8bfb8c6e9cfde4e4 on artist 64f8ab20892e86d361093bb8
+user 64f8b43b8bfb8c6e9cfde4e4 logged out
+admin logged in
+Delete user 64f8b43b8bfb8c6e9cfde4e4 posts
+Delete user 64f8b43b8bfb8c6e9cfde4e4 likes
+Delete user 64f8b43b8bfb8c6e9cfde4e4 friend requests
+admin 0 logged out
+user 64f8b4ab05f38f1dcf56f3e7 created and logged in
+Created profile 64f8b4ab05f38f1dcf56f3ea for user 64f8b4ab05f38f1dcf56f3e7
+Created empty friends list for user 64f8b4ab05f38f1dcf56f3e7
+Created empty friends list for user 64f8b4ab05f38f1dcf56f3e7
+User 64f8b4ab05f38f1dcf56f3e7 followed artist 64f8ab20892e86d361093bb8
+User 64f8b4ab05f38f1dcf56f3e7 liked artist 64f8ab20892e86d361093bb8
+Post 64f8b4b105f38f1dcf56f403 created by 64f8b4ab05f38f1dcf56f3e7 on artist 64f8ab20892e86d361093bb8
+user 64f8b4ab05f38f1dcf56f3e7 logged out
+admin logged in
+Delete user 64f8b4ab05f38f1dcf56f3e7 posts
+Delete user 64f8b4ab05f38f1dcf56f3e7 likes
+Delete user 64f8b4ab05f38f1dcf56f3e7 friend requests
+admin 0 logged out
+user 64f8b4fe9fa3c6dffaa4367b created and logged in
+Created profile 64f8b4fe9fa3c6dffaa4367e for user 64f8b4fe9fa3c6dffaa4367b
+Created empty friends list for user 64f8b4fe9fa3c6dffaa4367b
+Created empty friends list for user 64f8b4fe9fa3c6dffaa4367b
+User 64f8b4fe9fa3c6dffaa4367b followed artist 64f8ab20892e86d361093bb8
+User 64f8b4fe9fa3c6dffaa4367b liked artist 64f8ab20892e86d361093bb8
+Post 64f8b5069fa3c6dffaa43697 created by 64f8b4fe9fa3c6dffaa4367b on artist 64f8ab20892e86d361093bb8
+user 64f8b4fe9fa3c6dffaa4367b logged out
+admin logged in
+Delete user 64f8b4fe9fa3c6dffaa4367b posts
+Delete user 64f8b4fe9fa3c6dffaa4367b likes
+Delete user 64f8b4fe9fa3c6dffaa4367b friend requests
+Deleted user 64f8b4fe9fa3c6dffaa4367b follows
+Delete user 64f8b4fe9fa3c6dffaa4367b profile
+Delete user 64f8b4fe9fa3c6dffaa4367b friends
+Delete user 64f8ab20892e86d361093bb5 posts
+admin 0 logged out
+artist 64f8b57d9da2c0d52fd8f468 created and logged in
+User 64f8b57d9da2c0d52fd8f468 artist profile created
+Created empty likes list for artist 64f8b57e9da2c0d52fd8f46b
+Created empty followers list for artist 64f8b57e9da2c0d52fd8f46b
+Album 64f8b59a9da2c0d52fd8f473 created
+Created empty likes list for album 64f8b59a9da2c0d52fd8f473
+Songs 64f8b59a9da2c0d52fd8f477,64f8b59a9da2c0d52fd8f478,64f8b59a9da2c0d52fd8f479 created
+Created empty likes list for song 64f8b59a9da2c0d52fd8f477
+Created empty likes list for song 64f8b59a9da2c0d52fd8f478
+Created empty likes list for song 64f8b59a9da2c0d52fd8f479
+Album 64f8b59a9da2c0d52fd8f473 updated
+Artist 64f8b57e9da2c0d52fd8f46b updated
+artist 64f8b57d9da2c0d52fd8f468 logged out
+user 64f8b5a79da2c0d52fd8f48a created and logged in
+Created profile 64f8b5a79da2c0d52fd8f48d for user 64f8b5a79da2c0d52fd8f48a
+Created empty friends list for user 64f8b5a79da2c0d52fd8f48a
+Created empty friends list for user 64f8b5a79da2c0d52fd8f48a
+User 64f8b5a79da2c0d52fd8f48a liked artist 64f8b57e9da2c0d52fd8f46b
+User 64f8b5a79da2c0d52fd8f48a liked song 64f8b59a9da2c0d52fd8f477
+User 64f8b5a79da2c0d52fd8f48a liked album 64f8b59a9da2c0d52fd8f473
+Post 64f8b5b59da2c0d52fd8f4ab created by 64f8b5a79da2c0d52fd8f48a on album 64f8b59a9da2c0d52fd8f473
+User 64f8b5a79da2c0d52fd8f48a followed artist 64f8b57e9da2c0d52fd8f46b
+user 64f8b5a79da2c0d52fd8f48a logged out
+admin logged in
+Delete user 64f8b5a79da2c0d52fd8f48a posts
+Delete user 64f8b5a79da2c0d52fd8f48a likes
+Delete user 64f8b5a79da2c0d52fd8f48a friend requests
+Deleted user 64f8b5a79da2c0d52fd8f48a follows
+Delete user 64f8b5a79da2c0d52fd8f48a profile
+Delete user 64f8b5a79da2c0d52fd8f48a friends
+Delete user 64f8b57d9da2c0d52fd8f468 posts
+admin 0 logged out
+artist 64f8b605618394cc97233355 created and logged in
+User 64f8b605618394cc97233355 artist profile created
+Created empty likes list for artist 64f8b605618394cc97233358
+Created empty followers list for artist 64f8b605618394cc97233358
+Album 64f8b60a618394cc97233360 created
+Created empty likes list for album 64f8b60a618394cc97233360
+Songs 64f8b60a618394cc97233364,64f8b60a618394cc97233365,64f8b60a618394cc97233366 created
+Created empty likes list for song 64f8b60a618394cc97233364
+Created empty likes list for song 64f8b60a618394cc97233365
+Created empty likes list for song 64f8b60a618394cc97233366
+Album 64f8b60a618394cc97233360 updated
+Artist 64f8b605618394cc97233358 updated
+artist 64f8b605618394cc97233355 logged out
+admin logged in
+Delete user 64f8b605618394cc97233355 posts
+admin 0 logged out
+artist 64f8b635b4ef9186fdd7a922 created and logged in
+User 64f8b635b4ef9186fdd7a922 artist profile created
+Created empty likes list for artist 64f8b635b4ef9186fdd7a925
+Created empty followers list for artist 64f8b635b4ef9186fdd7a925
+Album 64f8b63bb4ef9186fdd7a92d created
+Created empty likes list for album 64f8b63bb4ef9186fdd7a92d
+Songs 64f8b63bb4ef9186fdd7a931,64f8b63bb4ef9186fdd7a932,64f8b63bb4ef9186fdd7a933 created
+Created empty likes list for song 64f8b63bb4ef9186fdd7a931
+Created empty likes list for song 64f8b63bb4ef9186fdd7a932
+Created empty likes list for song 64f8b63bb4ef9186fdd7a933
+Album 64f8b63bb4ef9186fdd7a92d updated
+Artist 64f8b635b4ef9186fdd7a925 updated
+artist 64f8b635b4ef9186fdd7a922 logged out
+admin logged in
+Delete user 64f8b635b4ef9186fdd7a922 posts
+Artist 64f8b635b4ef9186fdd7a925 ]deleted
+Deleted followers list for artist 64f8b635b4ef9186fdd7a925
+admin 0 logged out
+artist 64f8b65fb4ef9186fdd7a94c created and logged in
+User 64f8b65fb4ef9186fdd7a94c artist profile created
+Created empty likes list for artist 64f8b65fb4ef9186fdd7a94f
+Created empty followers list for artist 64f8b65fb4ef9186fdd7a94f
+Album 64f8b666b4ef9186fdd7a957 created
+Created empty likes list for album 64f8b666b4ef9186fdd7a957
+Songs 64f8b666b4ef9186fdd7a95b,64f8b666b4ef9186fdd7a95c,64f8b666b4ef9186fdd7a95d created
+Created empty likes list for song 64f8b666b4ef9186fdd7a95b
+Created empty likes list for song 64f8b666b4ef9186fdd7a95c
+Created empty likes list for song 64f8b666b4ef9186fdd7a95d
+Album 64f8b666b4ef9186fdd7a957 updated
+Artist 64f8b65fb4ef9186fdd7a94f updated
+Post 64f8b671b4ef9186fdd7a979 created by 64f8b65fb4ef9186fdd7a94c on artist 64f8b65fb4ef9186fdd7a94f
+artist 64f8b65fb4ef9186fdd7a94c logged out
+admin logged in
+Delete user 64f8b65fb4ef9186fdd7a94c posts
+Artist 64f8b65fb4ef9186fdd7a94f ]deleted
+Deleted followers list for artist 64f8b65fb4ef9186fdd7a94f
+admin 0 logged out
+artist 64f8ba0b90ac25361ba90181 created and logged in
+User 64f8ba0b90ac25361ba90181 artist profile created
+Created empty likes list for artist 64f8ba0c90ac25361ba90184
+Created empty followers list for artist 64f8ba0c90ac25361ba90184
+Album 64f8ba1690ac25361ba9018c created
+Created empty likes list for album 64f8ba1690ac25361ba9018c
+Songs 64f8ba1690ac25361ba90190,64f8ba1690ac25361ba90191,64f8ba1690ac25361ba90192,64f8ba1690ac25361ba90193 created
+Created empty likes list for song 64f8ba1690ac25361ba90190
+Created empty likes list for song 64f8ba1690ac25361ba90192
+Created empty likes list for song 64f8ba1690ac25361ba90191
+Created empty likes list for song 64f8ba1690ac25361ba90193
+Album 64f8ba1690ac25361ba9018c updated
+Artist 64f8ba0c90ac25361ba90184 updated
+Post 64f8ba1c90ac25361ba901a7 created by 64f8ba0b90ac25361ba90181 on artist 64f8ba0c90ac25361ba90184
+artist 64f8ba0b90ac25361ba90181 logged out
+user 64f8bc536d4704ab7bd4bffc created and logged in
+Created profile 64f8bc536d4704ab7bd4bfff for user 64f8bc536d4704ab7bd4bffc
+Created empty friends list for user 64f8bc536d4704ab7bd4bffc
+Created empty friends list for user 64f8bc536d4704ab7bd4bffc
+User 64f8bc536d4704ab7bd4bffc liked artist 64f8ba0c90ac25361ba90184
+User 64f8bc536d4704ab7bd4bffc followed artist 64f8ba0c90ac25361ba90184
+Post 64f8bc5f6d4704ab7bd4c01d created by 64f8bc536d4704ab7bd4bffc on song 64f8ba1690ac25361ba90190
+Post 64f8bc686d4704ab7bd4c037 created by 64f8bc536d4704ab7bd4bffc on artist 64f8ba0c90ac25361ba90184
+User 64f8bc536d4704ab7bd4bffc liked album 64f8ba1690ac25361ba9018c
+User 64f8bc536d4704ab7bd4bffc liked song 64f8ba1690ac25361ba90190
+User 64f8bc536d4704ab7bd4bffc liked song 64f8ba1690ac25361ba90191
+Post 64f8bc786d4704ab7bd4c065 created by 64f8bc536d4704ab7bd4bffc on album 64f8ba1690ac25361ba9018c
+user 64f8bc536d4704ab7bd4bffc logged out
+admin logged in
+Delete user 64f8ba0b90ac25361ba90181 posts
+Artist 64f8ba0c90ac25361ba90184 ]deleted
+Deleted followers list for artist 64f8ba0c90ac25361ba90184
+Musical entity 64f8ba1690ac25361ba9018c likes deleted
+Delete posts about musical entity 64f8ba1690ac25361ba9018c
+Delete user 64f8bc536d4704ab7bd4bffc posts
+Delete user 64f8bc536d4704ab7bd4bffc likes
+Delete user 64f8bc536d4704ab7bd4bffc friend requests
+Deleted user 64f8bc536d4704ab7bd4bffc follows
+Delete user 64f8bc536d4704ab7bd4bffc profile
+Delete user 64f8bc536d4704ab7bd4bffc friends
+admin 0 logged out
+artist 64f8bcd66c7600b263ec7e59 created and logged in
+User 64f8bcd66c7600b263ec7e59 artist profile created
+Created empty likes list for artist 64f8bcd76c7600b263ec7e5c
+Created empty followers list for artist 64f8bcd76c7600b263ec7e5c
+Album 64f8bce26c7600b263ec7e64 created
+Created empty likes list for album 64f8bce26c7600b263ec7e64
+Songs 64f8bce26c7600b263ec7e68,64f8bce26c7600b263ec7e69,64f8bce26c7600b263ec7e6a created
+Created empty likes list for song 64f8bce26c7600b263ec7e68
+Created empty likes list for song 64f8bce26c7600b263ec7e69
+Created empty likes list for song 64f8bce26c7600b263ec7e6a
+Album 64f8bce26c7600b263ec7e64 updated
+Artist 64f8bcd76c7600b263ec7e5c updated
+artist 64f8bcd66c7600b263ec7e59 logged out
+user 64f8bcfd6c7600b263ec7e7b created and logged in
+Created profile 64f8bcfd6c7600b263ec7e7e for user 64f8bcfd6c7600b263ec7e7b
+Created empty friends list for user 64f8bcfd6c7600b263ec7e7b
+Created empty friends list for user 64f8bcfd6c7600b263ec7e7b
+User 64f8bcfd6c7600b263ec7e7b followed artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b liked artist 64f8bcd76c7600b263ec7e5c
+Post 64f8bd086c7600b263ec7e9b created by 64f8bcfd6c7600b263ec7e7b on song 64f8bce26c7600b263ec7e68
+User 64f8bcfd6c7600b263ec7e7b unfollowed artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b disliked artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b followed artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b liked artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b disliked artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b liked artist 64f8bcd76c7600b263ec7e5c
+Post 64f8bd136c7600b263ec7ebd created by 64f8bcfd6c7600b263ec7e7b on artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b disliked artist 64f8bcd76c7600b263ec7e5c
+User 64f8bcfd6c7600b263ec7e7b liked artist 64f8bcd76c7600b263ec7e5c
+Post 64f8bd1f6c7600b263ec7ee7 created by 64f8bcfd6c7600b263ec7e7b on album 64f8bce26c7600b263ec7e64
+user 64f8bcfd6c7600b263ec7e7b logged out
+admin logged in
+Delete user 64f8bcd66c7600b263ec7e59 posts
+Artist 64f8bcd76c7600b263ec7e5c ]deleted
+Deleted followers list for artist 64f8bcd76c7600b263ec7e5c
+Musical entity 64f8bce26c7600b263ec7e64 likes deleted
+Delete posts about musical entity 64f8bce26c7600b263ec7e64
+admin 0 logged out
+artist 64f8bd596c7600b263ec7f0a created and logged in
+User 64f8bd596c7600b263ec7f0a artist profile created
+Created empty likes list for artist 64f8bd596c7600b263ec7f0d
+Created empty followers list for artist 64f8bd596c7600b263ec7f0d
+Album 64f8bd5d6c7600b263ec7f15 created
+Created empty likes list for album 64f8bd5d6c7600b263ec7f15
+Songs 64f8bd5d6c7600b263ec7f19 created
+Created empty likes list for song 64f8bd5d6c7600b263ec7f19
+Album 64f8bd5d6c7600b263ec7f15 updated
+Artist 64f8bd596c7600b263ec7f0d updated
+artist 64f8bd596c7600b263ec7f0a logged out
+admin logged in
+Delete user 64f8bd596c7600b263ec7f0a posts
+Artist 64f8bd596c7600b263ec7f0d ]deleted
+Deleted followers list for artist 64f8bd596c7600b263ec7f0d
+Musical entity 64f8bd5d6c7600b263ec7f15 likes deleted
+Delete posts about musical entity 64f8bd5d6c7600b263ec7f15
+Delete user 64f8bcfd6c7600b263ec7e7b posts
+Delete user 64f8bcfd6c7600b263ec7e7b likes
+Delete user 64f8bcfd6c7600b263ec7e7b friend requests
+Deleted user 64f8bcfd6c7600b263ec7e7b follows
+Delete user 64f8bcfd6c7600b263ec7e7b profile
+Delete user 64f8bcfd6c7600b263ec7e7b friends
+admin 0 logged out
+artist 64f8bdc0c68a52ee20b630cf created and logged in
+User 64f8bdc0c68a52ee20b630cf artist profile created
+Created empty likes list for artist 64f8bdc1c68a52ee20b630d2
+Created empty followers list for artist 64f8bdc1c68a52ee20b630d2
+Album 64f8bdc6c68a52ee20b630da created
+Created empty likes list for album 64f8bdc6c68a52ee20b630da
+Songs 64f8bdc6c68a52ee20b630de created
+Created empty likes list for song 64f8bdc6c68a52ee20b630de
+Album 64f8bdc6c68a52ee20b630da updated
+Artist 64f8bdc1c68a52ee20b630d2 updated
+artist 64f8bdc0c68a52ee20b630cf logged out
+admin logged in
+Delete user 64f8bdc0c68a52ee20b630cf posts
+Artist 64f8bdc1c68a52ee20b630d2 ]deleted
+Deleted followers list for artist 64f8bdc1c68a52ee20b630d2
+Musical entity 64f8bdc6c68a52ee20b630da likes deleted
+Delete posts about musical entity 64f8bdc6c68a52ee20b630da
+admin 0 logged out
+artist 64f8be1fa11718f9aa329c48 created and logged in
+User 64f8be1fa11718f9aa329c48 artist profile created
+Created empty likes list for artist 64f8be1fa11718f9aa329c4b
+Created empty followers list for artist 64f8be1fa11718f9aa329c4b
+Album 64f8be26a11718f9aa329c53 created
+Created empty likes list for album 64f8be26a11718f9aa329c53
+Songs 64f8be26a11718f9aa329c57 created
+Created empty likes list for song 64f8be26a11718f9aa329c57
+Album 64f8be26a11718f9aa329c53 updated
+Artist 64f8be1fa11718f9aa329c4b updated
+artist 64f8be1fa11718f9aa329c48 logged out
+admin logged in
+Delete user 64f8be1fa11718f9aa329c48 posts
+Artist 64f8be1fa11718f9aa329c4b ]deleted
+Deleted followers list for artist 64f8be1fa11718f9aa329c4b
+Musical entity 64f8be26a11718f9aa329c53 likes deleted
+Delete posts about musical entity 64f8be26a11718f9aa329c53
+admin 0 logged out
+artist 64f8bea9a11718f9aa329c72 created and logged in
+User 64f8bea9a11718f9aa329c72 artist profile created
+Created empty likes list for artist 64f8bea9a11718f9aa329c75
+Created empty followers list for artist 64f8bea9a11718f9aa329c75
+Album 64f8beb4a11718f9aa329c7d created
+Created empty likes list for album 64f8beb4a11718f9aa329c7d
+Songs 64f8beb4a11718f9aa329c81,64f8beb4a11718f9aa329c82,64f8beb4a11718f9aa329c83 created
+Created empty likes list for song 64f8beb4a11718f9aa329c81
+Created empty likes list for song 64f8beb4a11718f9aa329c82
+Created empty likes list for song 64f8beb4a11718f9aa329c83
+Album 64f8beb4a11718f9aa329c7d updated
+Artist 64f8bea9a11718f9aa329c75 updated
+artist 64f8bea9a11718f9aa329c72 logged out
+user 64f8bec1a11718f9aa329c94 created and logged in
+Created profile 64f8bec1a11718f9aa329c97 for user 64f8bec1a11718f9aa329c94
+Created empty friends list for user 64f8bec1a11718f9aa329c94
+Created empty friends list for user 64f8bec1a11718f9aa329c94
+User 64f8bec1a11718f9aa329c94 followed artist 64f8bea9a11718f9aa329c75
+User 64f8bec1a11718f9aa329c94 liked artist 64f8bea9a11718f9aa329c75
+Post 64f8bec8a11718f9aa329cb2 created by 64f8bec1a11718f9aa329c94 on artist 64f8bea9a11718f9aa329c75
+User 64f8bec1a11718f9aa329c94 liked album 64f8beb4a11718f9aa329c7d
+User 64f8bec1a11718f9aa329c94 disliked album 64f8beb4a11718f9aa329c7d
+User 64f8bec1a11718f9aa329c94 liked album 64f8beb4a11718f9aa329c7d
+Post 64f8bedea11718f9aa329cda created by 64f8bec1a11718f9aa329c94 on album 64f8beb4a11718f9aa329c7d
+User 64f8bec1a11718f9aa329c94 disliked artist 64f8bea9a11718f9aa329c75
+User 64f8bec1a11718f9aa329c94 liked artist 64f8bea9a11718f9aa329c75
+User 64f8bec1a11718f9aa329c94 disliked album 64f8beb4a11718f9aa329c7d
+User 64f8bec1a11718f9aa329c94 liked album 64f8beb4a11718f9aa329c7d
+Post 64f8bef7a11718f9aa329d19 created by 64f8bec1a11718f9aa329c94 on song 64f8beb4a11718f9aa329c82
+user 64f8bec1a11718f9aa329c94 logged out
+admin logged in
+Delete user 64f8bea9a11718f9aa329c72 posts
+Artist 64f8bea9a11718f9aa329c75 ]deleted
+Deleted followers list for artist 64f8bea9a11718f9aa329c75
+Musical entity 64f8bea9a11718f9aa329c75 likes deleted
+Delete posts about musical entity 64f8bea9a11718f9aa329c75
+Musical entity 64f8beb4a11718f9aa329c7d likes deleted
+Delete posts about musical entity 64f8beb4a11718f9aa329c7d
+Musical entity 64f8beb4a11718f9aa329c81 likes deleted
+Musical entity 64f8beb4a11718f9aa329c82 likes deleted
+Musical entity 64f8beb4a11718f9aa329c83 likes deleted
+Delete posts about musical entity 64f8beb4a11718f9aa329c81
+Delete posts about musical entity 64f8beb4a11718f9aa329c82
+Delete posts about musical entity 64f8beb4a11718f9aa329c83
+admin 0 logged out
+user 64f8bec1a11718f9aa329c94 logged in
+user 64f8bec1a11718f9aa329c94 logged out
+admin logged in
+Delete user 64f8bec1a11718f9aa329c94 posts
+Delete user 64f8bec1a11718f9aa329c94 likes
+Delete user 64f8bec1a11718f9aa329c94 friend requests
+Deleted user 64f8bec1a11718f9aa329c94 follows
+Delete user 64f8bec1a11718f9aa329c94 profile
+Delete user 64f8bec1a11718f9aa329c94 friends

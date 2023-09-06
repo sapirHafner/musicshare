@@ -2,12 +2,13 @@ import React from 'react';
 import LogsDisplay from './LogsDisplay';
 import { useState } from 'react';
 import Button from '../Common/Button';
+import UsersDisplay from './UsersDisplay';
 
 const AdminDisplay = () => {
     const [ selectedCategory, setSelectedCategory ] = useState("Logs")
     const categoryComponents = {
         "Logs": <LogsDisplay />,
-        "Users": <></>,
+        "Users": <UsersDisplay />,
         "Features": <></>
     }
 

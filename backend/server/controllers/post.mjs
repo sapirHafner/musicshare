@@ -60,6 +60,25 @@ export const deletePost = async (req, res) => {
         await fs.appendFile(logsFilePath, `Post ${createdPost._id} deleted\n`)
         res.sendStatus(200);
     } catch (error) {
-        res.sendStatus(400);
+        console.log(error)
+        res.sendStatus(500);
     }
 };
+
+export const deletePosts = async (req, res) => {
+    try {
+        const { userId, musicalEntityId } = req.query;
+        if (userId !== undefined) {
+            await Post.deleteMany({UserId: userId});
+            await fs.appendFile(logsFilePath, `Delete user ${userId} posts\n`)
+        }
+        if (musicalEntityId !== undefined){
+            await Post.deleteMany({"MusicalEntity.Id": musicalEntityId});
+            await fs.appendFile(logsFilePath, `Delete posts about musical entity ${musicalEntityId}\n`)
+        }
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+}

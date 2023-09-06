@@ -26,4 +26,6 @@ export const createNewFriendsArray = async (userId) =>
 
 export const removeFriendRequestFromDB = async (askingId, userId) =>
     (await axios.delete(friendsRequestsServerUrl, {askingUserId: askingId, receivingUserId: userId}))
-   
+
+export const deleteUserFriends = async (userId) =>
+    (await axios.delete(`${friendsServerUrl}/${userId}`))

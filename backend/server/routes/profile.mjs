@@ -4,7 +4,8 @@ import {
     getProfileByUserId,
     addProfile,
     getUsersProfileBoxInfo,
-    getUserProfileBoxInfoById
+    getUserProfileBoxInfoById,
+    deleteProfile
 } from '../controllers/profiles.mjs';
 
 const router = express.Router();
@@ -13,5 +14,6 @@ router.get('/profiles/boxes', getUsersProfileBoxInfo);
 router.get('/profiles/:userId', getProfileByUserId);
 router.get('/profiles', getProfiles);
 router.post('/profiles', addProfile);
+router.delete('/profiles/:userId', deleteProfile);
 
 export default router;

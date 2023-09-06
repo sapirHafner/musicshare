@@ -5,6 +5,7 @@ import { fetchUserLikes, getEntityLikesNumber } from "./likesFunctions";
 import { fetchArtist, fetchArtists } from "./ArtistFunctions";
 import { fetchUserFollows } from "./followersFunctions";
 import { setArtistsFollows } from "./ArtistFunctions";
+import { deleteMusicalEntityPosts } from "./PostsFunctions";
 
 export const fetchMusicalEntity = async (musicalEntity) => {
   if (musicalEntity.Type === "artist") {
@@ -73,4 +74,3 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
 
   return [artists, albums, songs]
 }
-

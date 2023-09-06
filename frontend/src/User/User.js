@@ -47,7 +47,7 @@ const User = () => {
             <div className="content">
               <UserProfile profile={profile} />
             </div>
-            <PostsDisplay posts={userPosts} />
+              <PostsDisplay posts={userPosts} />
             </>
           ) : (
             <LoadingScreen />

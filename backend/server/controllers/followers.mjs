@@ -1,4 +1,4 @@
-import Follwers from "../models/Followers.mjs";
+import Followers from "../models/Followers.mjs";
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -10,7 +10,7 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 export const createNewArtistFollowers = async (req, res) => {
     try {
         const artistId = req.body.artistId;
-        const createdFollowers = await Follwers.create({
+        const createdFollowers = await Followers.create({
             artistId,
             followers: []
         });
@@ -36,7 +36,7 @@ export const addFollower = async (req, res) => {
     try {
         const artistId = req.body.artistId;
         const userId = req.body.userId;
-        const artistFollowers = await Follwers.findOne({artistId})
+        const artistFollowers = await Followers.findOne({artistId})
         artistFollowers.followers.push(userId)
         await artistFollowers.save();
         await fs.appendFile(logsFilePath, `User ${userId} followed artist ${artistId}\n`)
@@ -51,7 +51,7 @@ export const removeFollower = async (req, res) => {
     try {
         const artistId = req.body.artistId;
         const userId = req.body.userId;
-        const artistFollowers = await Follwers.findOne({artistId})
+        const artistFollowers = await Followers.findOne({artistId})
         artistFollowers.followers.remove(userId)
         await artistFollowers.save();
         await fs.appendFile(logsFilePath, `User ${userId} unfollowed artist ${artistId}\n`)
@@ -65,7 +65,7 @@ export const removeFollower = async (req, res) => {
 export const getArtistFollowers = async (req, res) => {
     try {
         const artistId = req.params.artistId;
-        res.status(200).send(await Follwers.findOne({artistId}));
+        res.status(200).send(await Followers.findOne({artistId}));
     } catch (error) {
         console.log(error);
         res.sendStatus(500);
@@ -79,7 +79,7 @@ export const getFollowers = async (req, res) => {
         if (usersIds !== undefined) {
             query.followers = {$in: usersIds.split(',')};
         }
-        res.status(200).send(await Follwers.find(query));
+        res.status(200).send(await Followers.find(query));
     } catch (error) {
         console.log(error);
         res.sendStatus(500);
@@ -89,8 +89,22 @@ export const getFollowers = async (req, res) => {
 export const deleteArtistFollowers = async (req, res) => {
     try {
         const artistId = req.params.artistId;
-        await Follwers.findOneAndDelete({artistId});
+        await Followers.findOneAndDelete({artistId});
         await fs.appendFile(logsFilePath, `Deleted followers list for artist ${artistId}\n`)
+        res.sendStatus(200);
+    } catch (error) {
+        console.log(error);
+        res.sendStatus(500);
+    }
+}
+
+export const deleteFollowers = async (req, res) => {
+    try {
+        const userId = req.query.userId;
+        await Followers.updateMany(
+            {},
+            { $pull: { followers: userId } })
+        await fs.appendFile(logsFilePath, `Deleted user ${userId} follows\n`)
         res.sendStatus(200);
     } catch (error) {
         console.log(error);
