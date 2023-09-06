@@ -31,27 +31,39 @@ export const createNewFriendsRequestsArray = async (req, res) => {
     }
 }
 
-export const addFriendRequestByUserId = async (req, res) => {
+export const changeFriendsRequest = async (req, res) => {
+    if (req.body.add) {
+        await addFriendsRequest(req, res);
+    } else {
+        await removeFriendsRequest(req, res)
+    }
+}
+
+export const addFriendsRequest = async (req, res) => {
     try {
         const { askingUserId, receivingUserId } = req.body;
         let receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
-        receivingUserFriendsRequests.RequestUserIds.push(askingUserId);
-        await fs.appendFile(logsFilePath, `Added friend request from user ${askingUserId} to user ${receivingUserId}\n`)
-        await receivingUserFriendsRequests.save();
+        if (!receivingUserFriendsRequests || receivingUserFriendsRequests.RequestUserIds.includes(askingUserId)) {
+            res.sendStatus(404);
+        } else {
+            receivingUserFriendsRequests.RequestUserIds.push(askingUserId);
+            await fs.appendFile(logsFilePath, `Added friend request from user ${askingUserId} to user ${receivingUserId}\n`)
+            await receivingUserFriendsRequests.save();
+        }
     } catch (error) {
         console.log(error);
         res.sendStatus(500);
     }
 }
 
-export const removeFriendRequestByUserId = async (req, res) => {
+export const removeFriendsRequest = async (req, res) => {
     try {
         const { askingUserId, receivingUserId } = req.body;
         const receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
-        if (!receivingUserFriendsRequests) {
+        if (!receivingUserFriendsRequests || !receivingUserFriendsRequests.RequestUserIds.includes(askingUserId)) {
             res.sendStatus(404);
         } else {
-            receivingUserFriendsRequests.RequestUsersIds.remove(askingUserId);
+            receivingUserFriendsRequests.RequestUserIds.remove(askingUserId);
             await receivingUserFriendsRequests.save();
             await fs.appendFile(logsFilePath, `Removed friend request from user ${askingUserId} to user ${receivingUserId}\n`)
             res.sendStatus(200);

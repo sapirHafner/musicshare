@@ -15,7 +15,6 @@ const Friends = () => {
   const [userFriends, setUserFriends] = useState([]);
   const [discoveryProfiles, setDiscoveryProfiles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
-
   const fetchData = async () => {
       setUserFriends(await fetchFriends(userId));
       setDiscoveryProfiles(await fetchDiscoveryProfiles(userId));

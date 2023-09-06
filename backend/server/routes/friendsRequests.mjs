@@ -1,8 +1,7 @@
 import express from 'express';
 import {
     getFriendsRequestsByUserId,
-    addFriendRequestByUserId,
-    removeFriendRequestByUserId,
+    changeFriendsRequest,
     createNewFriendsRequestsArray,
     deleteUserFriendRequests
 } from '../controllers/friendsRequests.mjs';
@@ -10,8 +9,7 @@ import {
 const router = express.Router();
 router.get('/friendsRequests/:userId', getFriendsRequestsByUserId);
 router.post('/friendsRequests', createNewFriendsRequestsArray);
-router.put('/friendsRequests', addFriendRequestByUserId);
+router.put('/friendsRequests', changeFriendsRequest);
 router.delete('/friendsRequests/:userId', deleteUserFriendRequests);
-router.delete('/friendsRequests', removeFriendRequestByUserId);
 
 export default router;

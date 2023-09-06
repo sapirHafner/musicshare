@@ -2,14 +2,14 @@ import express from 'express';
 import {
     getFriendsByUserId,
     addNewFriendsListForUser,
-    addFriendshipBetweenUsers,
+    changeFriendshipBetweenUsers,
     deleteUserFriends
 } from '../controllers/friends.mjs';
 
 const router = express.Router();
 router.get('/friends/:userId', getFriendsByUserId);
 router.post('/friends/:userId', addNewFriendsListForUser);
-router.post('/friends', addFriendshipBetweenUsers);
+router.put('/friends', changeFriendshipBetweenUsers);
 router.delete('/friends/:userId', deleteUserFriends);
 
 export default router;

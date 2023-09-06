@@ -1,10 +1,8 @@
 import React from 'react'
 import ProfileBox from '../Common/ProfileBox'
-import { addFriendRequest } from '../ServerFunctions/FriendsFunctions';
-
+import { addFriendRequest, removeFriendRequestFromDB } from '../ServerFunctions/FriendsFunctions';
 
 const FriendsDiscovery = ({ profiles, userId}) => {
- 
     const profileBoxes = profiles.map(profile =>
         <ProfileBox
             myId={userId}
@@ -12,6 +10,9 @@ const FriendsDiscovery = ({ profiles, userId}) => {
             firstName={profile.FirstName}
             lastName={profile.LastName}
             sendRequest={addFriendRequest}
+            removeRequest={removeFriendRequestFromDB}
+            isFriend={profile.isFriend}
+            isFriendRequestSent={profile.isFriendRequestSent}
         />
     )
   return (

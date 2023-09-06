@@ -34,17 +34,25 @@ export const addNewFriendsListForUser = async (req, res) => {
     }
 }
 
+export const changeFriendshipBetweenUsers = async (req, res) => {
+    if (req.body.add) {
+        await addFriendshipBetweenUsers(req, res);
+    } else {
+        await removeFriendshipBetweenUsers(req, res);
+    }
+}
+
 export const addFriendshipBetweenUsers = async (req, res) => {
     try {
-        const { FirstUserId, SecondUserId} = req.body;
+        const { FirstUserId, SecondUserId } = req.body;
         const firstUserFriends = await Friends.findOne({UserId: FirstUserId});
         const secondUserFriends = await Friends.findOne({UserId: SecondUserId});
         if (!firstUserFriends || !secondUserFriends) {
             res.sendStatus(404);
         } else {
-            firstUserFriends.Friends.push(secondUserId);
+            firstUserFriends.Friends.push(SecondUserId);
             await firstUserFriends.save();
-            secondUserFriends.Friends.push(firstUserId);
+            secondUserFriends.Friends.push(FirstUserId);
             await secondUserFriends.save();
             await fs.appendFile(logsFilePath, `Added friendship between user ${FirstUserId} and user ${SecondUserId}\n`)
             res.sendStatus(200);

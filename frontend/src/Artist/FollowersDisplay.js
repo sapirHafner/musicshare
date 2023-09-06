@@ -8,11 +8,11 @@ const FollowersDisplay = () => {
     const [followers, setFollowers] = useState();
     const [isLoaded, setIsLoaded] = useState(false);
     const [cookies] = useCookies(['userId']);
-    const { artistId } = cookies
+    const { userId, artistId } = cookies
 
     useEffect(() => {
         const fetchData = async () => {
-          setFollowers(await fetchUsersProfileBoxes(await fetchArtistFollowers(artistId)));
+          setFollowers(await fetchUsersProfileBoxes(await fetchArtistFollowers(artistId), userId));
           setIsLoaded(true);
         };
         fetchData();

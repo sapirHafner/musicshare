@@ -17,8 +17,7 @@ export const getMusicalEntityLikes = async (req, res) => {
 }
 
 export const changeUserLike = async (req, res) => {
-    if (req.body.Add)
-    {
+    if (req.body.Add) {
         await addUserLike(req, res);
     } else {
         await removeUserLike(req, res);

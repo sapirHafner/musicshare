@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie'
+import { addFriendshipBetweenUsers, removeFriendRequestFromDB } from '../ServerFunctions/FriendsFunctions';
 
 const FriendsRequestsDisplay = ({ friendsRequests }) => {
   const [ friendsRequestsItems, setFriendsRequestsItems ] = useState(friendsRequests);
+  const [cookies] = useCookies(['userId']);
+  const { userId } = cookies;
 
-  const handleAccept = (friendRequest, index) => {
+  const handleAccept = async (friendRequest, index) => {
+    setFriendsRequestsItems(friendsRequestsItems.filter((friendRequest, i) => i !== index));
+    await addFriendshipBetweenUsers(userId, friendRequest.UserId);
+    await removeFriendRequestFromDB(friendRequest.UserId, userId);
   }
 
-  const handleDecline= (friendRequest, index) => {
+  const handleDecline = async (friendRequest, index) => {
+    setFriendsRequestsItems(friendsRequestsItems.filter((friendRequest, i) => i !== index));
+    await removeFriendRequestFromDB(friendRequest.UserId, userId);
   }
 
   return (
