@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom'
-import SongBox from './SongBox';
-import AlbumBox from './AlbumBox'
-import ArtistBox from './ArtistBox'
+import SongBox from '../Components/Boxes/SongBox';
+import AlbumBox from '../Components/Boxes/AlbumBox'
+import ArtistBox from '../Components/Boxes/ArtistBox'
 
 export const useQuery = () => {
     const { search } = useLocation();
