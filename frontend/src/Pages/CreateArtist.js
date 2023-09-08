@@ -13,14 +13,14 @@ const CreateArtist = () => {
     const [cookies, setCookie] = useCookies(['userId']);
 
     const OnSignUp = async (user, artist) => {
-        user.Type = "artist";
+        user.type = "artist";
         const userId = await addUser(user);
-        artist.Albums = [];
-        artist.UserId = userId;
+        artist.albums = [];
+        artist.userId = userId;
         const artistId = await createNewArtist(artist);
         await createEmptyLikesArray({
-          Id: artistId,
-          Type: "artist"
+          id: artistId,
+          type: "artist"
         });
         await createNewFollowers(artistId);
         setCookie("userId", userId, { path: "/"});

@@ -1,12 +1,11 @@
 import mongoose from 'mongoose';
 
 const FriendsSchema = new mongoose.Schema({
-  UserId: {
+  userId: {
     type: String,
     required: true,
   },
-
-  Friends: {
+  friends: {
     type: Array,
     required: true,
   },

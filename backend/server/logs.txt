@@ -1,256 +1,113 @@
-admin 0 logged out
-artist 64f8c04d7031a5f3ffee9ab9 created and logged in
-User 64f8c04d7031a5f3ffee9ab9 artist profile created
-Created empty likes list for artist 64f8c04d7031a5f3ffee9abc
-Created empty followers list for artist 64f8c04d7031a5f3ffee9abc
-Album 64f8c0547031a5f3ffee9ac4 created
-Created empty likes list for album 64f8c0547031a5f3ffee9ac4
-Album 64f8c0547031a5f3ffee9acd created
-Created empty likes list for album 64f8c0547031a5f3ffee9acd
-artist 64f8c04d7031a5f3ffee9ab9 logged out
-artist 64f8c0877031a5f3ffee9ae6 created and logged in
-User 64f8c0877031a5f3ffee9ae6 artist profile created
-Created empty likes list for artist 64f8c0877031a5f3ffee9ae9
-Created empty followers list for artist 64f8c0877031a5f3ffee9ae9
-Album 64f8c0af7031a5f3ffee9af1 created
-Created empty likes list for album 64f8c0af7031a5f3ffee9af1
-Songs 64f8c0af7031a5f3ffee9af5,64f8c0af7031a5f3ffee9af6,64f8c0af7031a5f3ffee9af7,64f8c0af7031a5f3ffee9af8 created
-Created empty likes list for song 64f8c0af7031a5f3ffee9af5
-Created empty likes list for song 64f8c0af7031a5f3ffee9af6
-Created empty likes list for song 64f8c0af7031a5f3ffee9af7
-Created empty likes list for song 64f8c0af7031a5f3ffee9af8
-Album 64f8c0af7031a5f3ffee9af1 updated
-Artist 64f8c0877031a5f3ffee9ae9 updated
-artist 64f8c0877031a5f3ffee9ae6 logged out
-user 64f8c0c37031a5f3ffee9b1a created and logged in
-Created profile 64f8c0c37031a5f3ffee9b1d for user 64f8c0c37031a5f3ffee9b1a
-Created empty friends list for user 64f8c0c37031a5f3ffee9b1a
-Created empty friends list for user 64f8c0c37031a5f3ffee9b1a
-Post 64f8c0d77031a5f3ffee9b35 created by 64f8c0c37031a5f3ffee9b1a on artist 64f8c0877031a5f3ffee9ae9
-User 64f8c0c37031a5f3ffee9b1a followed artist 64f8c0877031a5f3ffee9ae9
-user 64f8c0c37031a5f3ffee9b1a logged out
-artist 64f8c0877031a5f3ffee9ae6 logged in
-artist 64f8c0877031a5f3ffee9ae6 logged out
-admin logged in
-admin 0 logged out
-user 64f8c841c81c82cee0b268f0 created and logged in
-Created profile 64f8c841c81c82cee0b268f3 for user 64f8c841c81c82cee0b268f0
-Created empty friends list for user 64f8c841c81c82cee0b268f0
-Created empty friends list for user 64f8c841c81c82cee0b268f0
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-user 64f8c841c81c82cee0b268f0 logged out
-user 64f8c0c37031a5f3ffee9b1a logged in
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8c841c81c82cee0b268f0
-user 64f8c0c37031a5f3ffee9b1a logged in
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c841c81c82cee0b268f0 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8c841c81c82cee0b268f0
-user 64f8c0c37031a5f3ffee9b1a logged out
-user 64f8c841c81c82cee0b268f0 logged in
-Added friendship between user 64f8c841c81c82cee0b268f0 and user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8c841c81c82cee0b268f0
-user 64f8c841c81c82cee0b268f0 logged out
-user 64f8d1590fd5e07f08cd8fe9 created and logged in
-Created profile 64f8d1590fd5e07f08cd8fec for user 64f8d1590fd5e07f08cd8fe9
-Created empty friends list for user 64f8d1590fd5e07f08cd8fe9
-Created empty friends list for user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c841c81c82cee0b268f0
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c841c81c82cee0b268f0
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c841c81c82cee0b268f0
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c841c81c82cee0b268f0
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-user 64f8d1590fd5e07f08cd8fe9 logged out
-user 64f8c0c37031a5f3ffee9b1a logged in
-User 64f8c0c37031a5f3ffee9b1a liked artist 64f8c0877031a5f3ffee9ae9
-User 64f8c0c37031a5f3ffee9b1a disliked artist 64f8c0877031a5f3ffee9ae9
-Post 64f8d32caa8cc9b25575d0fa created by 64f8c0c37031a5f3ffee9b1a on album 64f8c0af7031a5f3ffee9af1
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8c0c37031a5f3ffee9b1a logged in
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8c0c37031a5f3ffee9b1a logged out
-user 64f8d1590fd5e07f08cd8fe9 logged in
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8d1590fd5e07f08cd8fe9 logged out
-user 64f8c0c37031a5f3ffee9b1a logged in
-Removed friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8c0c37031a5f3ffee9b1a logged out
-user 64f8d1590fd5e07f08cd8fe9 logged in
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8d1590fd5e07f08cd8fe9 logged out
-user 64f8c0c37031a5f3ffee9b1a logged in
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8c0c37031a5f3ffee9b1a logged out
-user 64f8d1590fd5e07f08cd8fe9 logged in
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8d1590fd5e07f08cd8fe9 logged out
-user 64f8c0c37031a5f3ffee9b1a logged in
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8c0c37031a5f3ffee9b1a logged out
-user 64f8d1590fd5e07f08cd8fe9 logged in
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8d1590fd5e07f08cd8fe9 logged out
-user 64f8c0c37031a5f3ffee9b1a logged in
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-Added friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8c0c37031a5f3ffee9b1a logged out
-user 64f8d1590fd5e07f08cd8fe9 logged in
-user 64f8d1590fd5e07f08cd8fe9 logged in
-Added friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-Added friendship between user 64f8d1590fd5e07f08cd8fe9 and user 64f8c0c37031a5f3ffee9b1a
-Removed friend request from user 64f8c0c37031a5f3ffee9b1a to user 64f8d1590fd5e07f08cd8fe9
-user 64f8c0c37031a5f3ffee9b1a logged in
-user 64f8c0c37031a5f3ffee9b1a logged in
-user 64f8c0c37031a5f3ffee9b1a logged in
-User 64f8c0c37031a5f3ffee9b1a liked artist 64f8c0877031a5f3ffee9ae9
-User 64f8c0c37031a5f3ffee9b1a unfollowed artist 64f8c0877031a5f3ffee9ae9
-User 64f8c0c37031a5f3ffee9b1a liked song 64f8c0af7031a5f3ffee9af5
-User 64f8c0c37031a5f3ffee9b1a liked song 64f8c0af7031a5f3ffee9af6
-User 64f8c0c37031a5f3ffee9b1a liked album 64f8c0af7031a5f3ffee9af1
-Removed friend request from user 64f8d1590fd5e07f08cd8fe9 to user 64f8c0c37031a5f3ffee9b1a
-user 64f8c0c37031a5f3ffee9b1a logged in
+artist 64fb00381d29684b2112d4e0 logged out
+artist 64fb00381d29684b2112d4e0 logged in
+artist 64fb00381d29684b2112d4e0 logged in
+artist 64fb00381d29684b2112d4e0 logged in
+Album 64fb084b28ce546c042077f1 created
+Created empty likes list for album 64fb084b28ce546c042077f1
+Album 64fb088d28ce546c042077f6 created
+Created empty likes list for album 64fb088d28ce546c042077f6
+Album 64fb08b928ce546c042077fb created
+Created empty likes list for album 64fb08b928ce546c042077fb
+Album 64fb08c928ce546c04207800 created
+Created empty likes list for album 64fb08c928ce546c04207800
+Album 64fb08f60d06c76c0bc6631f created
+Created empty likes list for album 64fb08f60d06c76c0bc6631f
+Album 64fb094421703a029b5c8896 created
+Created empty likes list for album 64fb094421703a029b5c8896
+Songs 64fb094421703a029b5c889a, 64fb094421703a029b5c889b, 64fb094421703a029b5c889c created
+Created empty likes list for song 64fb094421703a029b5c889a
+Created empty likes list for song 64fb094421703a029b5c889b
+Created empty likes list for song 64fb094421703a029b5c889c
+artist 64fb00381d29684b2112d4e0 logged out
+undefined 64fb098f162ce1917d432144 created and logged in
+Artist 64fb098f162ce1917d432144 created
+Created empty likes list for artist 64fb098f162ce1917d432146
+Created empty followers list for artist 64fb098f162ce1917d432146
+Album 64fb099d162ce1917d43214f created
+Created empty likes list for album 64fb099d162ce1917d43214f
+Songs 64fb099d162ce1917d432153, 64fb099d162ce1917d432154, 64fb099d162ce1917d432155 created
+Created empty likes list for song 64fb099d162ce1917d432153
+Created empty likes list for song 64fb099d162ce1917d432154
+Created empty likes list for song 64fb099d162ce1917d432155
+Album 64fb099d162ce1917d43214f updated
+Album 64fb09c0879fbab64a0d9051 created
+Created empty likes list for album 64fb09c0879fbab64a0d9051
+Songs 64fb09c0879fbab64a0d9055, 64fb09c0879fbab64a0d9056, 64fb09c0879fbab64a0d9057 created
+Created empty likes list for song 64fb09c0879fbab64a0d9055
+Created empty likes list for song 64fb09c0879fbab64a0d9056
+Created empty likes list for song 64fb09c0879fbab64a0d9057
+Album 64fb09c0879fbab64a0d9051 updated
+Album 64fb09df43cbe37512998944 created
+Created empty likes list for album 64fb09df43cbe37512998944
+Songs 64fb09df43cbe37512998948, 64fb09df43cbe37512998949 created
+Created empty likes list for song 64fb09df43cbe37512998948
+Created empty likes list for song 64fb09df43cbe37512998949
+Album 64fb09df43cbe37512998944 updated
+Artist 64fb098f162ce1917d432146 updated
+artist 64fb098f162ce1917d432144 logged out
+undefined 64fb0a5743cbe3751299895c created and logged in
+Created profile 64fb0a5743cbe3751299895f for user 64fb0a5743cbe3751299895c
+Created empty friends list for user 64fb0a5743cbe3751299895c
+Created empty friends list for user 64fb0a5743cbe3751299895c
+User 64fb0a5743cbe3751299895c liked song 64fb099d162ce1917d432153
+User 64fb0a5743cbe3751299895c liked album 64fb099d162ce1917d43214f
+User 64fb0a5743cbe3751299895c liked artist 64fb098f162ce1917d432146
+user 64fb0a5743cbe3751299895c logged out
+undefined 64fb0f3f404b28afe09df7c5 created and logged in
+Created profile 64fb0f3f404b28afe09df7c8 for user 64fb0f3f404b28afe09df7c5
+Created empty friends list for user 64fb0f3f404b28afe09df7c5
+Created empty friends list for user 64fb0f3f404b28afe09df7c5
+Added friend request from user undefined to user undefined
+Added friend request from user 64fb0f3f404b28afe09df7c5 to user 64fb0a5743cbe3751299895c
+Removed friend request from user 64fb0f3f404b28afe09df7c5 to user 64fb0a5743cbe3751299895c
+Added friend request from user 64fb0f3f404b28afe09df7c5 to user 64fb0a5743cbe3751299895c
+Removed friend request from user 64fb0f3f404b28afe09df7c5 to user 64fb0a5743cbe3751299895c
+Added friend request from user 64fb0f3f404b28afe09df7c5 to user 64fb0a5743cbe3751299895c
+user 64fb0f3f404b28afe09df7c5 logged out
+user 64fb0a5743cbe3751299895c logged in
+Added friendship between user 64fb0a5743cbe3751299895c and user 64fb0f3f404b28afe09df7c5
+Removed friend request from user 64fb0f3f404b28afe09df7c5 to user 64fb0a5743cbe3751299895c
+User 64fb0a5743cbe3751299895c unfollowed artist 64fb098f162ce1917d432146
+Post 64fb1aec7b8676591200cb22 created by 64fb0a5743cbe3751299895c on artist 64fb098f162ce1917d432146
+undefined undefined logged out
+undefined 64fb1f64cd94b42c88946491 created and logged in
+Created profile 64fb1f64cd94b42c88946494 for user 64fb1f64cd94b42c88946491
+Created empty friends list for user 64fb1f64cd94b42c88946491
+Created empty friends list for user 64fb1f64cd94b42c88946491
+user 64fb1f64cd94b42c88946491 logged out
+undefined 64fb1f8ccd94b42c889464b1 created and logged in
+Artist 64fb1f8ccd94b42c889464b1 created
+Created empty likes list for artist 64fb1f8ccd94b42c889464b3
+Created empty followers list for artist 64fb1f8ccd94b42c889464b3
+Album 64fb1fdbcd94b42c889464bc created
+Created empty likes list for album 64fb1fdbcd94b42c889464bc
+Songs 64fb1fdccd94b42c889464c0, 64fb1fdccd94b42c889464c1, 64fb1fdccd94b42c889464c2 created
+Created empty likes list for song 64fb1fdccd94b42c889464c0
+Created empty likes list for song 64fb1fdccd94b42c889464c1
+Created empty likes list for song 64fb1fdccd94b42c889464c2
+Album 64fb1fdbcd94b42c889464bc updated
+Artist 64fb1f8ccd94b42c889464b3 updated
+artist 64fb1f8ccd94b42c889464b1 logged out
+user 64fb1f64cd94b42c88946491 logged in
+User 64fb1f64cd94b42c88946491 liked artist 64fb1f8ccd94b42c889464b3
+User 64fb1f64cd94b42c88946491 liked song 64fb1fdccd94b42c889464c0
+User 64fb1f64cd94b42c88946491 liked song 64fb1fdccd94b42c889464c1
+User 64fb1f64cd94b42c88946491 disliked artist 64fb1f8ccd94b42c889464b3
+User 64fb1f64cd94b42c88946491 liked artist 64fb1f8ccd94b42c889464b3
+User 64fb1f64cd94b42c88946491 disliked artist 64fb1f8ccd94b42c889464b3
+User 64fb1f64cd94b42c88946491 liked album 64fb1fdbcd94b42c889464bc
+Post 64fb233b445af91a410a1300 created by 64fb1f64cd94b42c88946491 on album 64fb1fdbcd94b42c889464bc
+user 64fb1f64cd94b42c88946491 logged out
+undefined 64fb235b445af91a410a133b created and logged in
+Created profile 64fb235b445af91a410a133e for user 64fb235b445af91a410a133b
+Created empty friends list for user 64fb235b445af91a410a133b
+Created empty friends list for user 64fb235b445af91a410a133b
+Added friend request from user 64fb235b445af91a410a133b to user 64fb1f64cd94b42c88946491
+user 64fb235b445af91a410a133b logged out
+user 64fb1f64cd94b42c88946491 logged in
+Added friendship between user 64fb1f64cd94b42c88946491 and user 64fb235b445af91a410a133b
+Removed friend request from user 64fb235b445af91a410a133b to user 64fb1f64cd94b42c88946491
+user 64fb1f64cd94b42c88946491 logged out
+user 64fb235b445af91a410a133b logged in
+Post 64fb254a899f759435219f5f created by 64fb235b445af91a410a133b on artist 64fb1f8ccd94b42c889464b3
+user 64fb1f64cd94b42c88946491 logged in

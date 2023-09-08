@@ -1,11 +1,11 @@
 import React from 'react'
 import SignUpForm from '../Components/Forms/SignUpForm'
-import { addUser } from '../Common/ServerFunctions/UserFunctions';
+import { addUser, deleteUser } from '../Common/ServerFunctions/UserFunctions';
 import { addProfile } from '../Common/ServerFunctions/ProfilesFunctions';
 import { addNewFriendsList } from '../Common/ServerFunctions/FriendsFunctions';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
-import { createNewFriendsArray } from '../Common/ServerFunctions/FriendsFunctions';
+import { createNewFriendsRequestsList } from '../Common/ServerFunctions/FriendsRequestsFunctions';
 import welcomeBackround from '../Assets/backgrounds/background.jpg';
 
 const CreateUser = () => {
@@ -14,19 +14,33 @@ const CreateUser = () => {
 
   const onSignUp = async (user, profile, setErrorMessage) => {
     try {
-      user.Type = "user";
-      const userId = await addUser(user);
-      profile.UserId = userId;
-      await addProfile(profile);
+      user.type = "user";
+      let userId;
+      try {
+        userId = await addUser(user);
+      } catch (error) {
+        if (error.response && error.response.status === 409) {
+          setErrorMessage("Username is already taken")
+          return;
+        }
+      }
+      profile.userId = userId;
+      try {
+        await addProfile(profile);
+      } catch (error) {
+        if (error.response && error.response.status === 409) {
+          setErrorMessage("Email is already taken")
+          await deleteUser(userId);
+        }
+        return;
+      }
       await addNewFriendsList(userId);
-      await createNewFriendsArray(userId);
+      await createNewFriendsRequestsList(userId);
       setCookie("userId", userId, { path: "/"});
       setCookie("userType", "user", { path: "/"});
       navigate("/home")
     } catch (error) {
-      if (error.response && error.response.status === 404) {
-        setErrorMessage("Username is already taken")
-      }
+
     }
   }
 

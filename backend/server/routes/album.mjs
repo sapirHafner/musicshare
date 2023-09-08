@@ -1,6 +1,6 @@
 import express from 'express'
 import {
-    getAlbumById,
+    getAlbum,
     getAlbums,
     addAlbum,
     deleteAlbum,
@@ -9,7 +9,7 @@ import {
 } from '../controllers/album.mjs'
 
 const router = express.Router();
-router.get('/album/:id', getAlbumById);
+router.get('/album/:id', getAlbum);
 router.get('/album', getAlbums);
 router.post('/album', addAlbum);
 router.put('/album', updateAlbum);

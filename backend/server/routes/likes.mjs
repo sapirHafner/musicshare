@@ -5,7 +5,8 @@ import {
     getMusicalEntityLikes,
     createLikes,
     deleteUserLikes,
-    deleteMusicalEntityLikes
+    deleteMusicalEntityLikes,
+    getUserLikes
 } from '../controllers/likes.mjs';
 
 const router = express.Router();
@@ -14,6 +15,8 @@ router.get('/likes', getLikes);
 router.post('/likes', createLikes);
 router.put('/likes', changeUserLike);
 router.delete('/likes/:id', deleteMusicalEntityLikes);
-router.delete('/likes', deleteUserLikes);
+
+router.get('/likes/user/:id', getUserLikes);
+router.delete('/likes/user/:id', deleteUserLikes);
 
 export default router;

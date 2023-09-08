@@ -2,15 +2,15 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
-import ArtistHome from "./ArtistHome";
-import UserHome from "./UserHome";
-import AdminHome from "./AdminHome";
+import ArtistHome from "../Components/Homes/ArtistHome";
+import UserHome from "../Components/Homes/UserHome";
+import AdminHome from "../Components/Homes/AdminHome";
 
 const Home = () => {
-    const [cookies] = useCookies(['userId', 'userType']);
-    const { userId, userType } = cookies;
+    const [cookies] = useCookies();
     const navigate  = useNavigate()
 
+    const { userId, userType } = cookies;
     useEffect(() => {
         if (!userId) {
             navigate("/")
@@ -22,7 +22,6 @@ const Home = () => {
         "artist": <ArtistHome />,
         "admin": <AdminHome />
     }
-
     return (
         homes[userType]
     );

@@ -43,7 +43,7 @@ const AlbumBox = ({album, className}) => {
           <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
         <span className='name'>
-          <Link text={album.Name} url={`/album/${album._id}`} />
+          <Link text={album.name} url={`/album/${album._id}`} />
         </span>
       </div>
     :
@@ -53,8 +53,8 @@ const AlbumBox = ({album, className}) => {
           <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
         <div>
-          <Link text={album.Name} url={`/album/${album._id}`} />
-          <Link text={album.artist.Name} url={`/artist/${album.artist._id}`} />
+          <Link text={album.name} url={`/album/${album._id}`} />
+          <Link text={album.artist.name} url={`/artist/${album.artist._id}`} />
         </div>
       </div>
       <div>

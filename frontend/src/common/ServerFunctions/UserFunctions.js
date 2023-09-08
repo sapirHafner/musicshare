@@ -12,26 +12,11 @@ import { deleteAlbumSongs } from './SongFunctions';
 
 const usersServerUrl = `${baseServerUrl}/users`
 
-export const addUser = async (user) => {
-    try {
-      const response = await axios.post(usersServerUrl, user)
-      return response.data;
-    }
-    catch (error) {
-      if (error.response.status === 400){
-        alert("user name already exists")
-      }
-      throw (error);
-    }
-}
+export const addUser = async (user) =>
+  (await axios.post(usersServerUrl, user)).data;
 
-export const getUser = async (username, password) => {
-    const response = await axios.get(usersServerUrl, {
-        params: {
-            Username: username,
-            Password: password
-        }
-    });
+export const validateUser = async (username, password) => {
+    const response = await axios.post(`${usersServerUrl}/validate`, {username, password});
     return response.data;
 };
 
@@ -67,7 +52,7 @@ export const deleteUser = async (userId, userType) => {
   }
 }
 
-export const fetchUserType = async (userId) =>
+export const fetchUser = async (userId) =>
   (await axios.get(`${usersServerUrl}/${userId}`)).data;
 
 export const logLogout = async (userId, userType) =>

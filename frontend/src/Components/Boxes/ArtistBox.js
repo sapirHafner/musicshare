@@ -69,7 +69,7 @@ const ArtistBox = ({artist}) => {
         <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
       </div>
       <div>
-        <Link text={artist.Name} url={`/artist/${artist._id}`} />
+        <Link text={artist.name} url={`/artist/${artist._id}`} />
       </div>
     </div>
     <div className='boxfunctions'>

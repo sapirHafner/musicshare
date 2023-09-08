@@ -130,6 +130,10 @@ body {
   color:gray;
 }
 
+.header-type {
+  color:gray;
+}
+
 .artistbox {
   position: relative;
   right:2rem;
@@ -582,4 +586,9 @@ button {
 
 .logs {
   text-align: left;
+}
+
+.artist-name {
+  margin-top: 0.5rem;
+  font-size: 13px;
 }

@@ -9,6 +9,7 @@ import FriendsDiscovery from '../Components/FriendsDiscovery';
 
 import { fetchFriends } from '../Common/ServerFunctions/FriendsFunctions';
 import { fetchDiscoveryProfiles } from '../Common/ServerFunctions/DiscoveryFunctions';
+import { addFriendRequest, removeFriendRequest } from '../Common/ServerFunctions/FriendsRequestsFunctions';
 
 const Friends = () => {
   const [cookies] = useCookies(['userId']);
@@ -16,9 +17,10 @@ const Friends = () => {
   const [userFriends, setUserFriends] = useState([]);
   const [discoveryProfiles, setDiscoveryProfiles] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+
   const fetchData = async () => {
       setUserFriends(await fetchFriends(userId));
-      setDiscoveryProfiles(await fetchDiscoveryProfiles(userId));
+      setDiscoveryProfiles(await fetchDiscoveryProfiles(userId, 5));
       setIsLoaded(true);
   }
 
@@ -30,7 +32,10 @@ const Friends = () => {
     <UserPage selectedNavItem='friends' isLoaded={isLoaded} component=
         <div>
             <FriendsDisplay friends={userFriends}/>
-            <FriendsDiscovery profiles={discoveryProfiles} userId={userId}/>
+            <FriendsDiscovery profiles={discoveryProfiles}
+                              sendFriendRequest={(id) => addFriendRequest(userId, id)}
+                              removeFriendRequest={(id) => removeFriendRequest(userId, id)}
+            />
         </div>
     />
 

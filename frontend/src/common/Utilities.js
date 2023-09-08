@@ -10,7 +10,7 @@ export const useQuery = () => {
 }
 
 export const setEntitiesLikes = (entities, likes) => {
-  const likesIds = likes.map(like => like.MusicalEntity.Id);
+  const likesIds = likes.map(like => like.musicalEntity.id);
   return entities.map(entity => {return {...entity, liked: likesIds.includes(entity._id)}})
 }
 
@@ -19,7 +19,7 @@ export const createEntitiesIdsDictionary = (entities) => {
 }
 
 export const getTypeIds = (array, type) =>
-    array.filter(element => element.MusicalEntity.Type === type).map(element => element.MusicalEntity.Id)
+    array.filter(element => element.musicalEntity.type === type).map(element => element.musicalEntity.id)
 
 export const createIdsQuery = (ids) => {
   if (ids === undefined) {
@@ -33,14 +33,14 @@ export const isEmptyArray = (array) =>
   Array.isArray(array) && array.length === 0;
 
 export const getMusicalEntityBoxComponent = (musicalEntity) => {
-  if (musicalEntity.Type === "song") {
+  if (musicalEntity.type === "song") {
     return <SongBox song={musicalEntity.entity} />
-  } else if (musicalEntity.Type === "album") {
+  } else if (musicalEntity.type === "album") {
     return <AlbumBox album={musicalEntity.entity} />
-  } else if (musicalEntity.Type === "artist") {
+  } else if (musicalEntity.type === "artist") {
     return <ArtistBox artist={musicalEntity.entity} />
   }
 }
 
-export const getTypePosts = (array, type) => 
+export const getTypePosts = (array, type) =>
   array.filter(element => element.type === type).map(element => element.post)

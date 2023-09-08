@@ -13,10 +13,10 @@ export const fetchSong = async (songId) =>
   (await axios.get(`${songServerUrl}/${songId}`)).data;
 
 export const createSongs = async (songs) => {
-  const songIds = (await axios.post(songServerUrl, {Songs: songs})).data
+  const songIds = (await axios.post(songServerUrl, {songs})).data
   await Promise.all(songIds.map(songId => createEmptyLikesArray({
-      Id: songId,
-      Type: "song"
+      id: songId,
+      type: "song"
   })))
   return songIds;
 }

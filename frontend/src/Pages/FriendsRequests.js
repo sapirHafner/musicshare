@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import UserPage from '../Components/UserPage';
 import FriendsRequestsDisplay from "./FriendsRequestsDisplay"
 
-import { fetchFriendsRequests } from '../Common/ServerFunctions/FriendsFunctions';
+import { fetchFriendsRequests } from '../Common/ServerFunctions/FriendsRequestsFunctions';
 
 const FriendsRequests = () => {
     const [cookies] = useCookies(['userId']);

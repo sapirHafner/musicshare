@@ -1,18 +1,17 @@
 import mongoose from 'mongoose';
 
-const friendRequestScheme = mongoose.Schema({
-    UserId: {
-        type: String,
-        required: true,
-      },
+const friendsRequestsScheme = mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
+  requestsUserIds: {
+    type: Array,
+    required: true,
+  },
+})
 
-      RequestUserIds: {
-        type: Array,
-        required: true,
-      },
-  })
-
-export default mongoose.model("FriendRequestScheme", friendRequestScheme);
+export default mongoose.model("FriendsRequests", friendsRequestsScheme);
 
 
 

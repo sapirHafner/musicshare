@@ -7,21 +7,21 @@ import { fetchUserFollows } from "./followersFunctions";
 import { setArtistsFollows } from "./ArtistFunctions";
 
 export const fetchMusicalEntity = async (musicalEntity) => {
-  if (musicalEntity.Type === "artist") {
-    musicalEntity.entity = await fetchArtist(musicalEntity.Id);
+  if (musicalEntity.type === "artist") {
+    musicalEntity.entity = await fetchArtist(musicalEntity.id);
     return musicalEntity;
-  } else if (musicalEntity.Type === "album") {
-      const album = await fetchAlbum(musicalEntity.Id);
-      const artist = await fetchArtist(album.ArtistId);
+  } else if (musicalEntity.type === "album") {
+      const album = await fetchAlbum(musicalEntity.id);
+      const artist = await fetchArtist(album.artistId);
       musicalEntity.entity = {
         ...album,
         artist
       }
       return musicalEntity;
-    } else if (musicalEntity.Type === "song") {
-    const song = await fetchSong(musicalEntity.Id);
-    const album = await fetchAlbum(song.AlbumId);
-    const artist = await fetchArtist(album.ArtistId);
+    } else if (musicalEntity.type === "song") {
+    const song = await fetchSong(musicalEntity.id);
+    const album = await fetchAlbum(song.albumId);
+    const artist = await fetchArtist(album.artistId);
     musicalEntity.entity =  {
       ...song,
       album,
@@ -36,20 +36,20 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
   let albums = await fetchAlbums(albumsIds);
   let songs = await fetchSongs(songsIds);
 
-  const albumsDict = createEntitiesIdsDictionary([...albums, ...await fetchAlbums(songs.map(song => song.AlbumId))]);
-  const artistsDict = createEntitiesIdsDictionary([...artists, ...await fetchArtists(Object.values(albumsDict).map(album => album.ArtistId)) ]);
+  const albumsDict = createEntitiesIdsDictionary([...albums, ...await fetchAlbums(songs.map(song => song.albumId))]);
+  const artistsDict = createEntitiesIdsDictionary([...artists, ...await fetchArtists(Object.values(albumsDict).map(album => album.artistId)) ]);
 
   albums = await Promise.all(albums.map(async (album) => {
     return {
       ...album,
-      artist: artistsDict[album.ArtistId],
+      artist: artistsDict[album.artistId],
       likesNumber: await getEntityLikesNumber(album._id),
     }
   }));
 
   songs = await Promise.all(songs.map(async (song) => {
-    const album = albumsDict[song.AlbumId];
-    const artist = artistsDict[album.ArtistId]
+    const album = albumsDict[song.albumId];
+    const artist = artistsDict[album.artistId]
     return {
       ...song,
       album,
@@ -68,7 +68,7 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
   if (userId) {
     const likes = await fetchUserLikes(userId);
     const follows = await fetchUserFollows(userId);
-    return [setArtistsFollows(setEntitiesLikes(artists, likes), follows), setEntitiesLikes(albums, likes), setEntitiesLikes(songs,likes)];  
+    return [setArtistsFollows(setEntitiesLikes(artists, likes), follows), setEntitiesLikes(albums, likes), setEntitiesLikes(songs,likes)];
   }
 
   return [artists, albums, songs]

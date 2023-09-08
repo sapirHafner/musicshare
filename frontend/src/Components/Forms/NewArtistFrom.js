@@ -22,12 +22,12 @@ const NewArtistFrom = ({OnSignUp}) => {
     const onSubmit= (event) => {
         event.preventDefault()
         const user = {
-            Username: username,
-            Password: password,
+            username: username,
+            password: password,
         }
         const artist = {
-            Name: fullname,
-            Email: email,
+            name: fullname,
+            email: email,
         }
         OnSignUp(user, artist)
     }

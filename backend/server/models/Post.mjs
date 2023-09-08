@@ -1,34 +1,34 @@
 import mongoose from 'mongoose';
 
 const postScheme = mongoose.Schema({
-  MusicalEntity: {
-    Type: {
+  musicalEntity: {
+    type: {
       type: String,
       required: true,
     },
-    Id: {
+    id: {
       type: String,
       required: true,
     },
   },
-    UserId: {
+  userId: {
+    type: String,
+    required: true,
+  },
+  title: {
       type: String,
       required: true,
-    },
-    Title: {
-        type: String,
-        required: true,
-        maxlength: 40,
-    },
-    Content: {
-        type: String,
-        required: true,
-        maxlength: 300,
-    },
-    CreatedAt: {
-        type: Date,
-        required: true
-    },
-  })
+      maxlength: 40,
+  },
+  content: {
+      type: String,
+      required: true,
+      maxlength: 300,
+  },
+  createdAt: {
+      type: Date,
+      required: true
+  },
+})
 
 export default mongoose.model("Post", postScheme);

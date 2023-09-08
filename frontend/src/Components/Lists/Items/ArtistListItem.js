@@ -15,32 +15,6 @@ const ArtistListItem = ({artist}) => {
   const [cookies] = useCookies(['userId']);
   const [isFollowed, setIsFollowed] = useState(artist.followed);
   const { userId } = cookies;
-  const [isLiked, setIsLiked] = useState(artist.liked);
-
-  const onLike = () => {
-    const handleLike = async () => {
-      try {
-        setIsLiked(true);
-        await addArtistLike(userId, artist._id);
-      } catch (error) {
-        setIsLiked(false);
-      }
-    };
-    handleLike();
-  }
-
-  const onDislike = () => {
-    const handleDislike = async () => {
-      try {
-        setIsLiked(false);
-        await removeArtistLike(userId, artist._id);
-      } catch (error) {
-        setIsLiked(true);
-      }
-    };
-    handleDislike();
-  }
-
 
   const onFollow = () => {
     const handleFollow = async () => {
@@ -73,11 +47,11 @@ const ArtistListItem = ({artist}) => {
           <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
         </div>
         <span className='artistName'>
-          <Link text={artist.Name} url={`/artist/${artist._id}`} />
+          <Link text={artist.name} url={`/artist/${artist._id}`} />
         </span>
       </div>
       <div className='functions'>
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber={artist.likesNumber}/>
+        <LikeButton isLiked={artist.liked} onLike={() => addArtistLike(userId, artist._id)} onDislike={() => removeArtistLike(userId, artist._id)} likesNumber={artist.likesNumber}/>
         <FollowersButton isFollowed={isFollowed} onFollow={onFollow} onUnfollow={onUnfollow}/>
         <ShareButton type="artist" id={artist._id} />
       </div>

@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
 import thumbsUpIcon from '../../Assets/Icons/thumbs-up-icon.png'
 import thumbsDownIcon from '../../Assets/Icons/thumbs-down-icon.png'
-import { useCookies } from 'react-cookie';
 
 const LikeButton = ({ isLiked, onLike, onDislike, likesNumber}) => {
+  const [liked, setLiked] = useState(isLiked);
   const [likesNum, setLikesNum] = useState(likesNumber ? likesNumber : 0);
-
-  const [cookies] = useCookies(['userType']);
-  const { userType } = cookies;
-  if (userType !== 'user') {
-    return (<></>)
-  }
 
   const handleLike = () => {
     try {
+      setLiked(true);
       setLikesNum(likesNum + 1);
       onLike();
     } catch (error) {
+      setLiked(false);
       setLikesNum(likesNum - 1);
     }
   }
 
   const handleDisike = () => {
     try {
+      setLiked(false);
       setLikesNum(likesNum - 1);
       onDislike();
     } catch (error) {
+      setLiked(true);
       setLikesNum(likesNum + 1);
     }
   }
@@ -33,7 +31,7 @@ const LikeButton = ({ isLiked, onLike, onDislike, likesNumber}) => {
   return (
     <span className='clickable'>
     {likesNum}
-      {isLiked ? (
+      {liked ? (
         <img className='icon' src={thumbsDownIcon} onClick={handleDisike} />
       ) : (
         <img className='icon' src={thumbsUpIcon} onClick={handleLike} />

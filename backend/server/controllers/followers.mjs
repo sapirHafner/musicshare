@@ -9,23 +9,24 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const createNewArtistFollowers = async (req, res) => {
     try {
-        const artistId = req.body.artistId;
         const createdFollowers = await Followers.create({
-            artistId,
+            artistId: req.body.artistId,
             followers: []
         });
-        await fs.appendFile(logsFilePath, `Created empty followers list for artist ${artistId}\n`)
+        await fs.appendFile(logsFilePath, `Created empty followers list for artist ${req.body.artistId}\n`)
         res.status(200).send(createdFollowers._id);
-
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        if (error.name === 'ValidationError') {
+            res.status(400).send(error.message);
+            return;
+        }
+        res.status(500).send(error.message);
     }
 }
 
 export const changeFollower = async (req, res) => {
-    if (req.body.add)
-    {
+    if (req.body.add) {
         await addFollower(req, res);
     } else {
         await removeFollower(req, res);
@@ -34,80 +35,92 @@ export const changeFollower = async (req, res) => {
 
 export const addFollower = async (req, res) => {
     try {
-        const artistId = req.body.artistId;
-        const userId = req.body.userId;
-        const artistFollowers = await Followers.findOne({artistId})
-        artistFollowers.followers.push(userId)
+        const artistFollowers = await Followers.findOne({artistId: req.body.artistId})
+        if (!artistFollowers) {
+            res.sendStatus(404);
+            return;
+        }
+        artistFollowers.followers.push(req.body.userId)
         await artistFollowers.save();
-        await fs.appendFile(logsFilePath, `User ${userId} followed artist ${artistId}\n`)
+        await fs.appendFile(logsFilePath, `User ${body.userId} followed artist ${req.body.artistId}\n`)
         res.sendStatus(200);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const removeFollower = async (req, res) => {
     try {
-        const artistId = req.body.artistId;
-        const userId = req.body.userId;
-        const artistFollowers = await Followers.findOne({artistId})
-        artistFollowers.followers.remove(userId)
+        const artistFollowers = await Followers.findOne({artistId: req.body.artistId})
+        artistFollowers.followers.remove(req.body.userId)
         await artistFollowers.save();
-        await fs.appendFile(logsFilePath, `User ${userId} unfollowed artist ${artistId}\n`)
+        await fs.appendFile(logsFilePath, `User ${req.body.userId} unfollowed artist ${req.body.artistId}\n`)
         res.sendStatus(200);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const getArtistFollowers = async (req, res) => {
     try {
-        const artistId = req.params.artistId;
-        res.status(200).send(await Followers.findOne({artistId}));
+        const artistFollowers = await Followers.findOne({artistId: req.params.artistId});
+        if (!artistFollowers) {
+            res.sendStatus(404);
+            return;
+        }
+        res.status(200).send(artistFollowers);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const getFollowers = async (req, res) => {
     try {
-        const query = {};
-        const usersIds = req.query.usersIds;
-        if (usersIds !== undefined) {
-            query.followers = {$in: usersIds.split(',')};
-        }
-        res.status(200).send(await Followers.find(query));
+        res.status(200).send(Followers.find());
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
+
+export const getUserFollows = async (req, res) => {
+    try {
+        const userFollows = await Followers.find({followers: {$in: req.params.id}});
+        res.status(200).send(userFollows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error.message);
+    }
+}
+
 
 export const deleteArtistFollowers = async (req, res) => {
     try {
-        const artistId = req.params.artistId;
-        await Followers.findOneAndDelete({artistId});
-        await fs.appendFile(logsFilePath, `Deleted followers list for artist ${artistId}\n`)
+        const deletedArtistFollowers = await Followers.findOneAndDelete({artistId: req.params.artistId});
+        if (!deletedArtistFollowers) {
+            res.sendStatus(404);
+            return;
+        }
+        await fs.appendFile(logsFilePath, `Deleted followers list for artist ${req.params.artistId}\n`)
         res.sendStatus(200);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
-export const deleteFollowers = async (req, res) => {
+export const deleteUserFollows = async (req, res) => {
     try {
-        const userId = req.query.userId;
-        await Followers.updateMany(
+        const updateResult = await Followers.updateMany(
             {},
-            { $pull: { followers: userId } })
-        await fs.appendFile(logsFilePath, `Deleted user ${userId} follows\n`)
-        res.sendStatus(200);
+            { $pull: { followers: req.params.id } })
+        await fs.appendFile(logsFilePath, `Deleted user ${userId} follows from ${updateResult.modifiedCount} documents\n`)
+        res.status(200).send(`Matched ${updateResult.matchedCount} documents, modified ${updateResult.modifiedCount} documents`);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }

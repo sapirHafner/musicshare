@@ -5,7 +5,7 @@ import { useCookies } from 'react-cookie';
 import welcomeBackround from '../Assets/backgrounds/background.jpg'
 import userIcon from '../Assets/Icons/user-icon.png';
 
-import { getUser } from '../Common/ServerFunctions/UserFunctions';
+import { validateUser } from '../Common/ServerFunctions/UserFunctions';
 import { fetchArtistByUserId } from '../Common/ServerFunctions/ArtistFunctions';
 
 const LoginPage = () => {
@@ -26,12 +26,12 @@ const LoginPage = () => {
 
     const onLogin = async (username, password, rememberMe, setErrorMessage) => {
         try {
-            const { Id, Type } = await getUser(username, password);
+            const { id, type } = await validateUser(username, password);
             const expirationDate = getExpirationDate(rememberMe);
-            setCookie("userId", Id, { path: "/", expires: expirationDate});
-            setCookie("userType", Type, { path: "/", expires: expirationDate});
-            if (Type === "artist") {
-                const artistId = (await fetchArtistByUserId(Id))._id
+            setCookie("userId", id, { path: "/", expires: expirationDate});
+            setCookie("userType", type, { path: "/", expires: expirationDate});
+            if (type === "artist") {
+                const artistId = (await fetchArtistByUserId(id))._id
                 setCookie("artistId", artistId, { path: "/", expires: expirationDate});
             }
             navigate("/home");

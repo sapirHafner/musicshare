@@ -1,17 +1,17 @@
 import mongoose from 'mongoose';
 
 const LikesSchema = new mongoose.Schema({
-  MusicalEntity: {
-    Type: {
+  musicalEntity: {
+    type: {
       type: String,
       required: true,
     },
-    Id: {
+    id: {
       type: String,
       required: true,
     },
   },
-  UsersIds: {
+  usersIds: {
     type: Array,
     required: true,
   },

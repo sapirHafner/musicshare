@@ -8,26 +8,33 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getFriendsRequestsByUserId = async (req, res) => {
     try {
-        const userFriendsRequests = await FriendsRequests.findOne({UserId: req.params.userId});
-        res.status(200).send(userFriendsRequests.RequestUserIds);
+        const userFriendsRequests = await FriendsRequests.findOne({userId: req.params.userId});
+        if (!userFriendsRequests) {
+            res.sendStatus(404).send('User friends requests not found');
+            return;
+        }
+        res.status(200).send(userFriendsRequests.requestsUserIds);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
-export const createNewFriendsRequestsArray = async (req, res) => {
+export const createNewFriendsRequestsList = async (req, res) => {
     try {
-        const userId = req.body.UserId;
         const createdArray = await FriendsRequests.create({
-            UserId: userId,
-            RequestUsersIds: []
+            userId: req.body.userId,
+            requestsUserIds: []
         })
-        await fs.appendFile(logsFilePath, `Created empty friends list for user ${userId}\n`)
+        await fs.appendFile(logsFilePath, `Created empty friends list for user ${req.body.userId}\n`)
         res.status(200).send(createdArray._id);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        if (error.name === 'ValidationError') {
+            res.status(400).send(error.message);
+            return;
+        }
+        res.status(500).send(error.message);
     }
 }
 
@@ -42,46 +49,58 @@ export const changeFriendsRequest = async (req, res) => {
 export const addFriendsRequest = async (req, res) => {
     try {
         const { askingUserId, receivingUserId } = req.body;
-        let receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
-        if (!receivingUserFriendsRequests || receivingUserFriendsRequests.RequestUserIds.includes(askingUserId)) {
-            res.sendStatus(404);
-        } else {
-            receivingUserFriendsRequests.RequestUserIds.push(askingUserId);
-            await fs.appendFile(logsFilePath, `Added friend request from user ${askingUserId} to user ${receivingUserId}\n`)
-            await receivingUserFriendsRequests.save();
+        let receivingUserFriendsRequests = await FriendsRequests.findOne({userId: receivingUserId});
+        if (!receivingUserFriendsRequests) {
+            res.sendStatus(404).send;('Receiving user id friends requests not found');
+            return;
         }
+        if (receivingUserFriendsRequests.requestsUserIds.includes(askingUserId)) {
+            res.sendStatus(400).send;('Receiving user id friends requests already includes asking user Id');
+            return;
+        }
+        receivingUserFriendsRequests.requestsUserIds.push(askingUserId);
+        await fs.appendFile(logsFilePath, `Added friend request from user ${askingUserId} to user ${receivingUserId}\n`)
+        await receivingUserFriendsRequests.save();
+        res.sendStatus(200);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const removeFriendsRequest = async (req, res) => {
     try {
         const { askingUserId, receivingUserId } = req.body;
-        const receivingUserFriendsRequests = await FriendsRequests.findOne({UserId: receivingUserId});
-        if (!receivingUserFriendsRequests || !receivingUserFriendsRequests.RequestUserIds.includes(askingUserId)) {
-            res.sendStatus(404);
-        } else {
-            receivingUserFriendsRequests.RequestUserIds.remove(askingUserId);
-            await receivingUserFriendsRequests.save();
-            await fs.appendFile(logsFilePath, `Removed friend request from user ${askingUserId} to user ${receivingUserId}\n`)
-            res.sendStatus(200);
+        const receivingUserFriendsRequests = await FriendsRequests.findOne({userId: receivingUserId});
+        if (!receivingUserFriendsRequests) {
+            res.sendStatus(404).send;('Receiving user id friends requests not found');
+            return;
         }
+        if (!receivingUserFriendsRequests.requestsUserIds.includes(askingUserId)) {
+            res.sendStatus(400).send;("Receiving user id doesn't include asking user Id");
+            return;
+        }
+        receivingUserFriendsRequests.requestsUserIds.remove(askingUserId);
+        await receivingUserFriendsRequests.save();
+        await fs.appendFile(logsFilePath, `Removed friend request from user ${askingUserId} to user ${receivingUserId}\n`)
+        res.sendStatus(200);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const deleteUserFriendRequests = async (req, res) => {
     try {
         const userId = req.params.userId;
-        await FriendsRequests.findOneAndDelete({UserId: userId})
+        const deletedFriendsRequests = await FriendsRequests.findOneAndDelete({UserId: userId});
+        if (!deletedFriendsRequests) {
+            res.sendStatus(404).send('User friends requests not found');
+        }
         await fs.appendFile(logsFilePath, `Delete user ${userId} friend requests\n`)
         res.sendStatus(200);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }

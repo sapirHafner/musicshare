@@ -1,31 +1,39 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 
-const ProfileBox = ({myId, userId, firstName, lastName, sendRequest, removeRequest, isFriend, isFriendRequestSent}) => {
-  const [friendRequestSent, setFriendRequestSent] = useState(isFriendRequestSent);
-  const onClickBox = () => {
-    if(!friendRequestSent){
-      sendRequest(myId, userId);
-    } else {
-      removeRequest(myId, userId);
+const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest}) => {
+  const [friendRequestSent, setFriendRequestSent] = useState(profile.isFriendRequestSent);
+
+  const handleSendRequst = async () => {
+    try {
+      setFriendRequestSent(true);
+      sendFriendRequest(profile.userId)
+    } catch {
+      setFriendRequestSent(false);
     }
-    setFriendRequestSent(!friendRequestSent);
+  }
 
-  };
+  const handleRemoveRequst = async () => {
+    try {
+      setFriendRequestSent(false);
+      removeFriendRequest(profile.userId)
+    } catch {
+      setFriendRequestSent(true);
+    }
+  }
+
   return (
-    friendRequestSent === true ? (
       <div className='friendsRequestsDisplayContainer'>
-        <div>{firstName} {lastName}</div>
-        <button id='addFriend' onClick={onClickBox}>Remove friend request</button>
+        <div>{profile.firstName} {profile.lastName}</div>
+        {
+          sendFriendRequest && removeFriendRequest && (
+            friendRequestSent ?
+              <button id='addFriend' onClick={handleRemoveRequst}>Remove friend request</button>
+            :
+              <button id='addFriend' onClick={handleSendRequst}>Send friend request</button>
+          )
+        }
       </div>
-    ) :
-    (
-      <div className='friendsRequestsDisplayContainer'>
-        <div>{firstName} {lastName}</div>
-        <button id='addFriend' onClick={onClickBox}>Add friend!</button>
-      </div>
-    )
-
   )
 }
 

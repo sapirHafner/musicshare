@@ -1,9 +1,8 @@
 import React from 'react'
+import ProfileBox from '../Components/Boxes/ProfileBox';
 
 const FriendsDisplay = ({ friends }) => {
-  const friendsList = friends.map((friend) => {
-    return <div> {friend.FirstName} {friend.LastName} </div>
-  });
+  const friendsList = friends.map((friend) => <ProfileBox profile={friend}/>);
   return (
     friendsList.length > 0 ?
     <div>

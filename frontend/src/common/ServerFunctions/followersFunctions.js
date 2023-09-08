@@ -18,11 +18,9 @@ export const removeFollower = async (artistId, userId) =>
 export const deleteArtistFollowers = async (artistId) =>
     (await axios.delete(`${followersServerUrl}/${artistId}`)).data;
 
-export const fetchUsersFollows = async (userIds) =>
-    (await axios.get(`${followersServerUrl}?usersIds=${userIds.join()}`)).data;
-
 export const fetchUserFollows = async (userId) =>
-    await fetchUsersFollows([userId])
+    (await axios.get(`${followersServerUrl}/user/${userId}`)).data;
+
 
 export const isUserFollowing = async (userId, artistId) => {
     const artistFollowers = await fetchArtistFollowers(artistId);

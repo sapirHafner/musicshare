@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { fetchAllLogs } from '../Common/ServerFunctions/LogsFunctions';
-const LogsDisplay = () => {
+const Logs = () => {
     const [logs, setLogs] = useState();
     useEffect(() => {
         const fetchData = async () => {
@@ -16,4 +16,4 @@ const LogsDisplay = () => {
   )
 }
 
-export default LogsDisplay
+export default Logs

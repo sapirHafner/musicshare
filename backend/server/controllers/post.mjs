@@ -8,77 +8,95 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getMusicalEntityPosts = async (req, res) => {
     try {
-        const musicalEntityId = req.params.musicalEntityId;
-        const posts = await Post.find({"MusicalEntity.Id": musicalEntityId});
+        const posts = await Post.find({"musicalEntity.id": req.params.musicalEntityId});
+        if (!posts) {
+            res.sendStatus(404);
+            return;
+        }
         res.status(200).send(posts);
     }
     catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 };
+
+export const getUserPosts = async (req, res) => {
+    const sort = {}
+    if (req.query.orderby == 'createdat_desc') {
+        sort.createdAt = -1
+    }
+
+    const userPosts = await Post.find({userId: req.params.id}).sort(sort);
+    if (!userPosts) {
+        res.sendStatus(404);
+        return;
+    }
+    res.status(200).send(userPosts);
+}
 
 export const getPosts = async (req, res) => {
     try {
         const query = {};
-        const userIds = req.query.userIds;
-        if (userIds !== undefined) {
-            query.UserId = {$in: userIds}
-        }
 
         const sort = {};
-        const order = req.query.orderby;
-        if (order == 'createdat_desc') {
-            sort.CreatedAt = -1
+        if (req.query.orderby == 'createdat_desc') {
+            sort.createdAt = -1
         }
 
-        const userPosts = await Post.find(query).sort(sort);
+        const userPosts = await Post.find(query).sort(sort)
         res.status(200).send(userPosts);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 };
 
 export const createNewPost = async (req, res) => {
     try {
-        const post = req.body;
-        post.CreatedAt = new Date();
-        const createdPost = await Post.create(post);
-        await fs.appendFile(logsFilePath, `Post ${createdPost._id} created by ${post.UserId} on ${post.MusicalEntity.Type} ${post.MusicalEntity.Id}\n`)
+        req.body.createdAt = new Date();
+        const createdPost = await Post.create(req.body);
+        await fs.appendFile(logsFilePath, `Post ${createdPost._id} created by ${createdPost.userId} on ${createdPost.musicalEntity.type} ${createdPost.musicalEntity.id}\n`)
         res.status(200).send(createdPost._id);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error)
+        if (error.name === 'ValidationError') {
+            res.status(400).send(error.message);
+            return;
+        }
+        res.status(500).send(error.message);
     }
 
 };
 export const deletePost = async (req, res) => {
     try {
-        const postId = req.params.postId;
-        await Post.findByIdAndDelete(postId);
-        await fs.appendFile(logsFilePath, `Post ${createdPost._id} deleted\n`)
+        const deletedPost = await Post.findByIdAndDelete(req.params.postId);
+        if (!deletePost) {
+            res.sendStatus(404);
+            return;
+        }
+        await fs.appendFile(logsFilePath, `Post ${deletedPost._id} deleted\n`)
         res.sendStatus(200);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 };
 
 export const deletePosts = async (req, res) => {
     try {
-        const { userId, musicalEntityId } = req.query;
-        if (userId !== undefined) {
-            await Post.deleteMany({UserId: userId});
-            await fs.appendFile(logsFilePath, `Delete user ${userId} posts\n`)
+        const query = {}
+        if (req.query.userId !== undefined) {
+            query.userId = req.query.userId;
         }
-        if (musicalEntityId !== undefined){
-            await Post.deleteMany({"MusicalEntity.Id": musicalEntityId});
-            await fs.appendFile(logsFilePath, `Delete posts about musical entity ${musicalEntityId}\n`)
+        if (req.query.musicalEntityId !== undefined) {
+            query.musicalEntity.id = req.query.musicalEntityId;
         }
-        res.sendStatus(200);
+        const deleteResult = Post.deleteMany(query);
+        await fs.appendFile(logsFilePath, `Deleted ${deletedResult.deletedCount} posts\n`)
+        res.status(200).send(`Matched ${deleteResult.n} documents, deleted ${deleteResult.deletedCount} documents`);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie';
 
-import UserPage from '../Components/UserPage';
-import Display from '../Components/Display';
-import PostsList from '../Components/Lists/PostsList';
+import UserPage from '../UserPage';
+import Display from '../Display';
+import PostsList from '../Lists/PostsList';
 
-import { fetchFeedPosts } from '../Common/ServerFunctions/PostsFunctions';
-import { getTypePosts } from '../Common/Utilities';
+import { fetchFeedPosts } from '../../Common/ServerFunctions/PostsFunctions';
+import { getTypePosts } from '../../Common/Utilities';
 
 const UserHome = () => {
   const [cookies] = useCookies(['userId']);
@@ -14,7 +14,6 @@ const UserHome = () => {
 
   const [posts, setPosts] = useState([])
   const [isLoaded, setIsLoaded] = useState(false);
-
   useEffect(() => {
     const fetchData = async () => {
       setPosts(await fetchFeedPosts(userId))

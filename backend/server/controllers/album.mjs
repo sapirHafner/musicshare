@@ -6,80 +6,98 @@ import path from 'path';
 const moduleFilePath = fileURLToPath(import.meta.url);
 const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
-export const getAlbumById = async (req, res) => {
+export const getAlbum = async (req, res) => {
     try {
-        const albumId = req.params.id;
-        const album = await Album.findById(albumId);
+        const album = await Album.findById(req.params.id);
+        if (!album) {
+            res.sendStatus(404);
+            return;
+        }
         res.status(200).send(album);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const getAlbums = async (req, res) => {
     try {
         const query = {};
-        const albumsIds = req.query.ids;
-        if (albumsIds != undefined) {
-            query._id = {$in: albumsIds.split(',')}
+        if (req.query.ids != undefined) {
+            query._id = {$in: req.query.ids.split(',')}
         }
-        const artistId = req.query.artistId;
-        if (artistId != undefined) {
-            query.ArtistId = artistId;
+        if (req.query.artistId != undefined) {
+            query.ArtistId = req.query.artistId;
         }
         const albums = await Album.find(query);
         res.status(200).send(albums);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const addAlbum = async (req, res) => {
     try {
         const createdAlbum = await Album.create(req.body);
-        await fs.appendFile(logsFilePath, `Album ${createdAlbum._id} created\n`)
+        await fs.appendFile(logsFilePath, `Album ${createdAlbum._id} created\n`);
         res.status(200).send(createdAlbum._id);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        if (error.name === "ValidationError") {
+            res.status(400).send(error.message);
+            return;
+        }
+        res.status(500).send(error.message);
     }
 }
 
 export const deleteAlbum = async (req, res) => {
     try {
-        const albumId = req.params.id;
-        await Album.findByIdAndDelete(albumId);
-        await fs.appendFile(logsFilePath, `Album ${albumId} deleted\n`)
+        const deletedAlbum = await Album.findByIdAndDelete(req.params.id);
+        if (!deletedAlbum) {
+            res.sendStatus(404);
+            return;
+        }
+        await fs.appendFile(logsFilePath, `Album ${deletedAlbum.id} deleted\n`);
         res.sendStatus(200);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const updateAlbum = async (req, res) => {
     try {
-        const albumId = req.body._id;
-        await Album.findByIdAndUpdate(albumId, req.body);
-        await fs.appendFile(logsFilePath, `Album ${albumId} updated\n`)
+        const updatedAlbum = await Album.findByIdAndUpdate(req.body._id, req.body, { new: true });
+        if (!updatedAlbum) {
+            res.sendStatus(404);
+            return;
+        }
+        await fs.appendFile(logsFilePath, `Album ${updatedAlbum._id} updated\n`);
         res.sendStatus(200);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        if (error.name === 'ValidationError') {
+            res.status(400).send(error.message);
+            return;
+        }
+        res.status(500).send(error.message);
     }
 }
 
 export const deleteAlbums = async (req, res) => {
     try {
-        const artistId = req.query.artistId;
-        if (artistId !== undefined) {
-            await Album.deleteMany({ArtistId: artistId})
+        const query = {}
+        if (req.query.artistId !== undefined) {
+            query.artistId = req.req.query.artistId.userId;
         }
-        res.sendStatus(200);
+
+        const deleteResult = Album.deleteMany(query);
+        await fs.appendFile(logsFilePath, `Deleted ${deletedResult.deletedCount} posts\n`)
+        res.status(200).send(`Matched ${deleteResult.n} documents, deleted ${deleteResult.deletedCount} documents`);
     } catch (error) {
-        console.log(error);
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }

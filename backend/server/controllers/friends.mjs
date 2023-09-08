@@ -9,28 +9,33 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getFriendsByUserId = async (req, res) => {
     try {
-        const userId = req.params.userId
-        const userFriends = await Friends.findOne({UserId: userId});
-        res.status(200).send(userFriends.Friends);
+        const userFriends = await Friends.findOne({userId: req.params.userId});
+        if (!userFriends) {
+            res.sendStatus(404);
+            return;
+        }
+        res.status(200).send(userFriends.friends);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
-
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const addNewFriendsListForUser = async (req, res) => {
     try {
-        const userId = req.params.userId
         const createdFriends = await Friends.create({
-            UserId: userId,
-            Friends: []
+            userId: req.params.userId,
+            friends: []
         });
+        await fs.appendFile(logsFilePath, `Created empty friends list for user ${req.params.userId}\n`)
         res.status(200).send(createdFriends._id);
-        await fs.appendFile(logsFilePath, `Created empty friends list for user ${userId}\n`)
-    } catch (errror) {
-        console.log(error)
-        res.sendStatus(500);
+    } catch (error) {
+        console.error(error);
+        if (error.name === 'ValidationError') {
+            res.status(400).send(error.message);
+            return;
+        }
+        res.status(500).send(error.message);
     }
 }
 
@@ -45,60 +50,84 @@ export const changeFriendshipBetweenUsers = async (req, res) => {
 export const addFriendshipBetweenUsers = async (req, res) => {
     try {
         const { FirstUserId, SecondUserId } = req.body;
-        const firstUserFriends = await Friends.findOne({UserId: FirstUserId});
-        const secondUserFriends = await Friends.findOne({UserId: SecondUserId});
-        if (!firstUserFriends || !secondUserFriends) {
-            res.sendStatus(404);
-        } else {
-            firstUserFriends.Friends.push(SecondUserId);
-            await firstUserFriends.save();
-            secondUserFriends.Friends.push(FirstUserId);
-            await secondUserFriends.save();
-            await fs.appendFile(logsFilePath, `Added friendship between user ${FirstUserId} and user ${SecondUserId}\n`)
-            res.sendStatus(200);
-
+        const firstUserFriends = await Friends.findOne({userId: FirstUserId});
+        const secondUserFriends = await Friends.findOne({userId: SecondUserId});
+        if (!firstUserFriends) {
+            res.status(404).send(`User ${FirstUserId} friends not found`);
+            return;
         }
+        if (!secondUserFriends) {
+            res.status(404).send(`User ${SecondUserId} friends not found`);
+            return;
+        }
+        if (firstUserFriends.friends.includes(SecondUserId)) {
+            res.status(400).send(`User ${FirstUserId} friends already include ${SecondUserId}`);
+            return;
+        }
+        if (secondUserFriends.friends.includes(FirstUserId)) {
+            res.status(400).send(`User ${SecondUserId} friends already include ${FirstUserId}`);
+            return;
+        }
+        firstUserFriends.friends.push(SecondUserId);
+        await firstUserFriends.save();
+        secondUserFriends.friends.push(FirstUserId);
+        await secondUserFriends.save();
+        await fs.appendFile(logsFilePath, `Added friendship between user ${FirstUserId} and user ${SecondUserId}\n`)
+        res.sendStatus(200);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const removeFriendshipBetweenUsers = async (req, res) => {
     try {
         const { FirstUserId, SecondUserId} = req.body;
-        const firstUserFriends = await Friends.findOne({UserId: FirstUserId});
-        const secondUserFriends = await Friends.findOne({UserId: SecondUserId});
-        if (!firstUserFriends || !secondUserFriends) {
-            res.sendStatus(404);
-        } else {
-            firstUserFriends.Friends.remove(secondUserId);
-            await firstUserFriends.save();
-            secondUserFriends.Friends.remove(firstUserId);
-            await secondUserFriends.save();
-            await fs.appendFile(logsFilePath, `Removed friendship between user ${FirstUserId} and user ${SecondUserId}\n`)
-            res.sendStatus(200);
-
+        const firstUserFriends = await Friends.findOne({userId: FirstUserId});
+        const secondUserFriends = await Friends.findOne({userId: SecondUserId});
+        if (!firstUserFriends) {
+            res.status(404).send(`User ${FirstUserId} friends not found`);
+            return;
         }
+        if (!secondUserFriends) {
+            res.status(404).send(`User ${SecondUserId} friends not found`);
+            return;
+        }
+        if (!firstUserFriends.friends.includes(SecondUserId)) {
+            res.status(400).send(`User ${FirstUserId} friends don't include ${SecondUserId}`);
+            return;
+        }
+        if (!secondUserFriends.friends.includes(FirstUserId)) {
+            res.status(400).send(`User ${SecondUserId} friends don't include ${FirstUserId}`);
+            return;
+        }
+        firstUserFriends.Friends.friends.remove(secondUserId);
+        await firstUserFriends.save();
+        secondUserFriends.Friends.remove(firstUserId);
+        await secondUserFriends.save();
+        await fs.appendFile(logsFilePath, `Removed friendship between user ${FirstUserId} and user ${SecondUserId}\n`)
+        res.sendStatus(200);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 
 export const deleteUserFriends = async (req, res) => {
     try {
-        const userId = req.params.userId;
-        await Friends.findOneAndDelete({UserId: userId});
-        await Friends.updateMany(
+        const userFriends = await Friends.findOneAndDelete({userId: req.params.userId});
+        if (!userFriends) {
+            res.sendStatus(404).send('User friends not found');
+            return;
+        }
+        const updateResult = await Friends.updateMany(
             {},
-            { $pull: { "Friends": userId } })
-
+            { $pull: { friends: userId } })
         await fs.appendFile(logsFilePath, `Delete user ${userId} friends\n`)
-        res.sendStatus(200);
+        res.status(200).send(`Matched ${updateResult.matchedCount} documents, modified ${updateResult.modifiedCount} documents`);
     } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
+        console.error(error);
+        res.status(500).send(error.message);
     }
 }
 

@@ -14,7 +14,7 @@ export const fetchArtist = async (artistId) =>
     (await axios.get(`${artistServerUrl}/${artistId}`)).data;
 
 export const fetchArtistByUserId = async (userId) =>
-    (await axios.get(`${artistServerUrl}?userIds=${userId}`)).data[0];
+    (await axios.get(`${artistServerUrl}?userId=${userId}`)).data[0];
 
 export const updateArtist = async (artistId, artist) =>
     await axios.put(artistServerUrl, {
@@ -24,7 +24,7 @@ export const updateArtist = async (artistId, artist) =>
 
 export const addAlbumToArtist = async (artistId, albumId) => {
     const artist = await fetchArtist(artistId);
-    artist.AlbumsIds.push(albumId);
+    artist.albumsIds.push(albumId);
     await updateArtist(artistId, artist)
 }
 

@@ -16,7 +16,7 @@ const TopBar = () => {
 
     useEffect(() => {
       const fetchData = async () => {
-        setUsername(userType === "artist" ? (await fetchArtistByUserId(userId)).Name : (await fetchUserProfileBox(userId)).FirstName);
+        setUsername(userType === "artist" ? (await fetchArtistByUserId(userId)).name : (await fetchUserProfileBox(userId)).firstName);
         isLoaded(true);
       }
       fetchData();

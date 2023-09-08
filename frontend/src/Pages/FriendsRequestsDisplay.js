@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCookies } from 'react-cookie'
-import { addFriendshipBetweenUsers, removeFriendRequestFromDB } from '../Common/ServerFunctions/FriendsFunctions';
+import { addFriendshipBetweenUsers } from '../Common/ServerFunctions/FriendsFunctions';
+import { removeFriendRequest } from '../Common/ServerFunctions/FriendsRequestsFunctions';
 
 const FriendsRequestsDisplay = ({ friendsRequests }) => {
   const [ friendsRequestsItems, setFriendsRequestsItems ] = useState(friendsRequests);
@@ -9,13 +10,13 @@ const FriendsRequestsDisplay = ({ friendsRequests }) => {
 
   const handleAccept = async (friendRequest, index) => {
     setFriendsRequestsItems(friendsRequestsItems.filter((friendRequest, i) => i !== index));
-    await addFriendshipBetweenUsers(userId, friendRequest.UserId);
-    await removeFriendRequestFromDB(friendRequest.UserId, userId);
+    await addFriendshipBetweenUsers(userId, friendRequest.userId);
+    await removeFriendRequest(friendRequest.userId, userId);
   }
 
   const handleDecline = async (friendRequest, index) => {
     setFriendsRequestsItems(friendsRequestsItems.filter((friendRequest, i) => i !== index));
-    await removeFriendRequestFromDB(friendRequest.UserId, userId);
+    await removeFriendRequest(friendRequest.userId, userId);
   }
 
   return (
@@ -25,7 +26,7 @@ const FriendsRequestsDisplay = ({ friendsRequests }) => {
         friendsRequestsItems.map((friendRequest, index) =>
         <div className='friendsRequestsDisplayContainer'>
           <div>
-            {friendRequest.FirstName} {friendRequest.LastName}
+            {friendRequest.firstName} {friendRequest.lastName}
           </div>
           <button id='accept' onClick={() => handleAccept(friendRequest, index)}>Accept</button>
           <button id='decline' onClick={() => handleDecline(friendRequest, index)}>Decline</button>

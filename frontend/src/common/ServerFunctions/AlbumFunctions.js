@@ -19,25 +19,24 @@ export const getArtistAlbums = async (artistId) =>
 export const addNewAlbum = async (artistId, album) => {
     const albumId = (await axios.post(albumsServerUrl, {
         ...album,
-        ArtistId: artistId,
+        artistId,
     })).data;
 
     await createEmptyLikesArray({
-        Id: albumId,
-        Type: "album"
+        id: albumId,
+        type: "album"
     });
     return albumId;
 }
 
 export const addAlbumAndSongsToArtist = async (artistId, album, songs) => {
-    const albumId = await addNewAlbum(artistId,
-        {
+    const albumId = await addNewAlbum(artistId, {
             ...album,
-            SongIds: []
-        })
-    songs.forEach(song => song.AlbumId = albumId)
-    const songIds = await createSongs(songs);
-    album.SongIds = songIds;
+            songsIds: []
+    })
+    songs.forEach(song => song.albumId = albumId)
+    const songsIds = await createSongs(songs);
+    album.songsIds = songsIds;
     await updateAlbum(albumId, album)
     await addAlbumToArtist(artistId, albumId)
     return albumId;
@@ -51,7 +50,7 @@ export const updateAlbum = async (albumId, album) =>
 
 export const fetchAlbumFullDetails = async (albumId) => {
     const album = await fetchAlbum(albumId);
-    album.Artist = await fetchArtist(album.ArtistId)
+    album.artist = await fetchArtist(album.ArtistId)
     return album;
 }
 

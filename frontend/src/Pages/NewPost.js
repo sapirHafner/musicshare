@@ -24,24 +24,24 @@ const NewPost = () => {
   useEffect(() =>{
     const fetchData = async () => {
       const musicalEntity = await fetchMusicalEntity({
-        Type: type,
-        Id: musicalEntityId
+        type,
+        id: musicalEntityId
       });
       setMusicalEntityComponent(getMusicalEntityBoxComponent(musicalEntity));
-       setIsLoaded(true);
+      setIsLoaded(true);
     }
     fetchData();
   }, [])
 
   const onSubmit = async (title, content) => {
     const Post = {
-      Title: title,
-      Content: content,
-      MusicalEntity: {
-        Type: type,
-        Id: musicalEntityId
+      title,
+      content,
+      musicalEntity: {
+        type,
+        id: musicalEntityId
       },
-      UserId: userId
+      userId
     }
     await createNewPost(Post);
     userType === "user" ? navigate(`/user/${userId}`) : navigate('/');

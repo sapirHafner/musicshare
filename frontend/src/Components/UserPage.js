@@ -7,7 +7,6 @@ import TopBar from './TopBar'
 import UserNavigationBar from './UserNavigationBar'
 
 const UserPage = ({ component, isLoaded, selectedNavItem }) => {
-  console.log(isLoaded)
   const [cookies] = useCookies();
   const navigate = useNavigate();
 

@@ -14,7 +14,6 @@ import Library from './Pages/Library';
 import NewPost from './Pages/NewPost';
 import Browse from './Pages/Browse';
 import CreateArtist from './Pages/CreateArtist';
-import MyMusic from './Pages/MyMusic';
 import AddNewAlbum from './Pages/AddNewAlbum';
 import Logout from './Pages/Logout';
 import Album from './Pages/Album';
@@ -74,10 +73,7 @@ const router = createBrowserRouter([
         path: `newpost`,
         element: <NewPost />
       },
-      {
-        path: `myMusic`,
-        element: <MyMusic />
-      },
+
       {
         path: `addNewAlbum`,
         element: <AddNewAlbum />

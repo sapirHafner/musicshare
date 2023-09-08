@@ -26,7 +26,6 @@ const SignUpForm = ({OnSignUp}) => {
         return emailRegex.test(email);
       };
 
-
       const sendErrorMessage = () => {
         setErrorMessage('Please enter a valid email address.');
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
@@ -36,13 +35,13 @@ const SignUpForm = ({OnSignUp}) => {
       const onSubmit= (event) => {
         event.preventDefault()
         const profile = {
-            FirstName: firstname,
-            LastName: lastname,
-            Email: email,
+            firstName: firstname,
+            lastName: lastname,
+            email: email,
         }
         const user = {
-            Username: username,
-            Password: password,
+            username: username,
+            password: password,
         }
         OnSignUp(user, profile, setErrorMessage)
     }

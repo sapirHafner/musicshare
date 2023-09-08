@@ -1,22 +1,19 @@
 import mongoose from 'mongoose';
 
 const ProfileScema = new mongoose.Schema({
-  UserId: {
+  userId: {
     type: String,
     required: true,
   },
-
-  FirstName: {
+  firstName: {
     type: String,
     required: true,
   },
-
-  LastName: {
+  lastName: {
     type: String,
     required: true,
   },
-
-  Email: {
+  email: {
     type: String,
     required: true,
   },

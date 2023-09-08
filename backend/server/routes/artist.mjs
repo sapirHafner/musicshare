@@ -1,6 +1,6 @@
 import express from 'express';
 import {
-    getArtistById,
+    getArtist,
     getArtists,
     addArtist,
     deleteArtist,
@@ -8,7 +8,7 @@ import {
 } from '../controllers/artist.mjs';
 
 const router = express.Router();
-router.get('/artist/:id', getArtistById);
+router.get('/artist/:id', getArtist);
 router.get('/artist', getArtists);
 router.post('/artist', addArtist);
 router.delete('/artist/:artistId', deleteArtist);

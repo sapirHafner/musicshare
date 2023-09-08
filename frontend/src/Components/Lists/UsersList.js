@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import DeleteButton from '../Components/Buttons/DeleteButton';
-import LoadingScreen from '../Components/LoadingScreen';
+import DeleteButton from '../Buttons/DeleteButton';
+import LoadingScreen from '../LoadingScreen';
 
-import { getAllUsers, deleteUser } from '../Common/ServerFunctions/UserFunctions';
+import { getAllUsers, deleteUser } from '../../Common/ServerFunctions/UserFunctions';
 
 const UsersDisplay = () => {
   const [users, setUsers] = useState([]);
