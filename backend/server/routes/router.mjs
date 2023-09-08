@@ -11,6 +11,7 @@ import albumRouter from './album.mjs'
 import followersRouter from './followers.mjs'
 import friendsRequestsRouter from './friendsRequests.mjs';
 import logsRouter from './logs.mjs'
+import featureFlagRouter from './featureFlags.mjs';
 
 const router = express.Router();
 router.use(songRouter);
@@ -25,5 +26,6 @@ router.use(albumRouter);
 router.use(friendsRequestsRouter)
 router.use(followersRouter);
 router.use(logsRouter);
+router.use(featureFlagRouter);
 
 export default router;

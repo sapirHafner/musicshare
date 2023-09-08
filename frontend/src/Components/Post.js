@@ -1,5 +1,7 @@
 import React from 'react'
 import { getMusicalEntityBoxComponent } from '../Common/Utilities'
+import ProfileBox from './Boxes/ProfileBox'
+
 const Post = ({post}) => {
   const musicalEntityComponent = getMusicalEntityBoxComponent(post.musicalEntity)
   return (
@@ -9,7 +11,7 @@ const Post = ({post}) => {
             {
               post.user.userType === "artist" ?
                 post.user.info.name
-              : (<>{post.user.info.firstName} {post.user.info.lastName}</>)
+              : <ProfileBox profile={post.user.info}/>
             }
         </div>
         <div className='posttext'>

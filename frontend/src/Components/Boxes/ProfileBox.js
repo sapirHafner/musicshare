@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import Link from '../Link';
 
 const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest}) => {
   const [friendRequestSent, setFriendRequestSent] = useState(profile.isFriendRequestSent);
@@ -24,7 +25,7 @@ const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest}) => {
 
   return (
       <div className='friendsRequestsDisplayContainer'>
-        <div>{profile.firstName} {profile.lastName}</div>
+        <Link text={`${profile.firstName} ${profile.lastName}`} url={`/user/${profile.userId}`} />
         {
           sendFriendRequest && removeFriendRequest && (
             friendRequestSent ?

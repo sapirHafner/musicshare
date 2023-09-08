@@ -30,7 +30,7 @@ export const changeUserLike = async (req, res) => {
 
 const addUserLike = async (req, res) => {
     try {
-        const musicalEntityLikes = await Likes.findOne({musicalEntity: req.body.musicalEntity})
+        const musicalEntityLikes = await Likes.findOne({'musicalEntity.id': req.body.musicalEntityId})
         if (!musicalEntityLikes) {
             res.sendStatus(404);
             return;
@@ -41,7 +41,7 @@ const addUserLike = async (req, res) => {
         }
         musicalEntityLikes.usersIds.push(req.body.userId);
         await musicalEntityLikes.save();
-        await fs.appendFile(logsFilePath, `User ${req.body.userId} liked ${req.body.musicalEntity.type} ${req.body.musicalEntity.id}\n`)
+        await fs.appendFile(logsFilePath, `User ${req.body.userId} liked ${req.body.musicalEntityId}\n`)
         res.sendStatus(200);
     } catch (error) {
         console.error(error);
@@ -51,7 +51,7 @@ const addUserLike = async (req, res) => {
 
 const removeUserLike = async (req, res) => {
     try {
-        const musicalEntityLikes = await Likes.findOne({musicalEntity: req.body.musicalEntity});
+        const musicalEntityLikes = await Likes.findOne({'musicalEntity.id': req.body.musicalEntityId})
         if (!musicalEntityLikes) {
             res.sendStatus(404);
             return;
@@ -62,7 +62,7 @@ const removeUserLike = async (req, res) => {
         }
         musicalEntityLikes.usersIds.remove(req.body.userId);
         await musicalEntityLikes.save();
-        await fs.appendFile(logsFilePath, `User ${req.body.userId} disliked ${req.body.musicalEntity.type} ${req.body.musicalEntity.id}\n`)
+        await fs.appendFile(logsFilePath, `User ${req.body.userId} disliked ${req.body.musicalEntityId}\n`)
         res.sendStatus(200);
     } catch (error) {
         console.error(error);
@@ -115,7 +115,7 @@ export const deleteUserLikes = async (req, res) => {
         const updateResult = await Likes.updateMany(
             {},
             { $pull: { "usersIds": req.params.id } })
-        await fs.appendFile(logsFilePath, `Delete user ${userId} likes\n`)
+        await fs.appendFile(logsFilePath, `Delete user ${req.params.id} likes\n`)
         res.status(200).send(`Matched ${updateResult.matchedCount} documents, modified ${updateResult.modifiedCount} documents`);
     } catch (error) {
         console.error(error);
@@ -125,12 +125,12 @@ export const deleteUserLikes = async (req, res) => {
 
 export const deleteMusicalEntityLikes = async (req, res) => {
     try {
-        const deletedMusicalEntity = await Likes.findOneAndDelete({"MusicalEntity.Id": req.params.id});
+        const deletedMusicalEntity = await Likes.findOneAndDelete({"musicalEntity.id": req.params.id});
         if (!deletedMusicalEntity) {
             res.sendStatus(404);
             return;
         }
-        await fs.appendFile(logsFilePath, `Musical entity ${musicalEntityId} likes deleted\n`)
+        await fs.appendFile(logsFilePath, `Musical entity ${req.params.id} likes deleted\n`)
         res.sendStatus(200);
     } catch (error) {
         console.error(error);

@@ -64,10 +64,9 @@ export const fetchFeedPosts = async (userId) => {
     }})
   })))
 
-  console.log(posts)
-  posts = posts.flatMap(innerArray => innerArray)[0];
-  posts = posts.sort((a, b) => new Date(b.post.CreatedAt) - new Date(a.post.CreatedAt));
-  console.log(posts)
+  posts = posts.flatMap(innerArray => innerArray);
+  posts = posts.flatMap(innerArray => innerArray);
+  posts.sort((a, b) => new Date(b.post.CreatedAt) - new Date(a.post.CreatedAt));
   return posts
 }
 

@@ -9,7 +9,7 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 export const getUsers = async (req, res) => {
     try {
         const query = {};
-        res.status(200).send(User.find(query));
+        res.status(200).send(await User.find(query));
     } catch (error) {
         console.error(error);
         res.status(500).send(error.message);
@@ -71,7 +71,7 @@ export const addUser = async (req, res) => {
             return;
         }
         const createdUser = await User.create(req.body)
-        await fs.appendFile(logsFilePath, `${createdUser.Type} ${createdUser._id} created and logged in\n`)
+        await fs.appendFile(logsFilePath, `${createdUser.type} ${createdUser._id} created and logged in\n`)
         res.status(200).send(createdUser._id);
     } catch (error) {
         console.error(error);

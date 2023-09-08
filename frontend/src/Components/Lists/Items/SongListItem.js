@@ -1,38 +1,9 @@
-import React, { useState } from 'react'
-import { useCookies } from 'react-cookie';
-import { addSongLike, removeSongLike } from '../../../Common/ServerFunctions/likesFunctions';
+import React from 'react'
 import LikeButton from '../../Buttons/LikeButton';
 import ShareButton from '../../Buttons/ShareButton';
 import Link from '../../Link'
 
-const SongListItem = ({song}) => {
-  const [cookies] = useCookies(['userId']);
-  const { userId } = cookies;
-  const [isLiked, setIsLiked] = useState(song.liked);
-  const onLike = () => {
-    const handleLike = async () => {
-      try {
-        setIsLiked(true);
-        await addSongLike(userId, song._id);
-      } catch (error) {
-        setIsLiked(false);
-      }
-    };
-    handleLike();
-  }
-
-  const onDislike = () => {
-    const handleDislike = async () => {
-      try {
-        setIsLiked(false);
-        await removeSongLike(userId, song._id);
-      } catch (error) {
-        setIsLiked(true);
-      }
-    };
-    handleDislike();
-  }
-
+const SongListItem = ({song, onLike, onDislike}) => {
   return (
     <div className='listitem'>
       <div className='details'>
@@ -48,7 +19,10 @@ const SongListItem = ({song}) => {
         <Link text={song.album.name} url={`/album/${song.album._id}`} />
       </span>
       <div className='functions'>
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber ={song.likesNumber} />
+        {
+          onLike && onDislike &&
+          <LikeButton id={song._id} isLiked={song.liked} onLike={onLike} onDislike={onDislike} likesNumber ={song.likesNumber} />
+        }
         <ShareButton type="song" id={song._id} />
       </div>
     </div>

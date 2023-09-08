@@ -5,13 +5,24 @@ import SongsList from './Lists/SongsList';
 import ArtistsList from './Lists/ArtistsList';
 import AlbumsList from './Lists/AlbumsList';
 
-const MusicDisplay = ({artists, albums, songs}) => {
+const MusicDisplay = ({artists, albums, songs, onLike, onDislike, onFollow, onUnfollow}) => {
   return (
     <div className='music-display'>
       <Display components={{
-        "Artists": <ArtistsList artists={artists}/>,
-        "Albums": <AlbumsList albums={albums}/>,
-        "Songs": <SongsList songs={songs}/>
+        "Artists": <ArtistsList artists={artists}
+                                onLike={onLike}
+                                onDislike={onDislike}
+                                onFollow={onFollow}
+                                onUnfollow={onUnfollow}
+                                />,
+        "Albums": <AlbumsList albums={albums}
+                              onLike={onLike}
+                              onDislike={onDislike}
+                              />,
+        "Songs": <SongsList songs={songs}
+                              onLike={onLike}
+                              onDislike={onDislike}
+                              />,
       }}/>
     </div>
   )

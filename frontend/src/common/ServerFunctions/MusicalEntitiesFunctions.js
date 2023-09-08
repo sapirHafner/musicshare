@@ -38,7 +38,6 @@ export const fetchFullDetails = async (userId, artistsIds, albumsIds, songsIds) 
 
   const albumsDict = createEntitiesIdsDictionary([...albums, ...await fetchAlbums(songs.map(song => song.albumId))]);
   const artistsDict = createEntitiesIdsDictionary([...artists, ...await fetchArtists(Object.values(albumsDict).map(album => album.artistId)) ]);
-
   albums = await Promise.all(albums.map(async (album) => {
     return {
       ...album,

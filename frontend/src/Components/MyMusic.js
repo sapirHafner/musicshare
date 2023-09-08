@@ -23,7 +23,7 @@ const MyMusic = () => {
     const fetchData = async () => {
       const fetchedArtist = await fetchArtist(artistId);
       setArtist(fetchedArtist);
-      setAlbums(await fetchAlbums(fetchedArtist.AlbumsIds));
+      setAlbums(await fetchAlbums(fetchedArtist.albumsIds));
       setLoaded(true)
     };
     fetchData()

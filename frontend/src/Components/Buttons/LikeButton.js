@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import thumbsUpIcon from '../../Assets/Icons/thumbs-up-icon.png'
 import thumbsDownIcon from '../../Assets/Icons/thumbs-down-icon.png'
 
-const LikeButton = ({ isLiked, onLike, onDislike, likesNumber}) => {
+const LikeButton = ({ id, isLiked, onLike, onDislike, likesNumber}) => {
   const [liked, setLiked] = useState(isLiked);
   const [likesNum, setLikesNum] = useState(likesNumber ? likesNumber : 0);
-
   const handleLike = () => {
     try {
       setLiked(true);
       setLikesNum(likesNum + 1);
-      onLike();
+      onLike(id);
     } catch (error) {
       setLiked(false);
       setLikesNum(likesNum - 1);
@@ -21,7 +20,7 @@ const LikeButton = ({ isLiked, onLike, onDislike, likesNumber}) => {
     try {
       setLiked(false);
       setLikesNum(likesNum - 1);
-      onDislike();
+      onDislike(id);
     } catch (error) {
       setLiked(true);
       setLikesNum(likesNum + 1);

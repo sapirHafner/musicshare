@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useCookies } from 'react-cookie';
 
 import Link from '../../Link';
 
@@ -7,39 +6,7 @@ import LikeButton from '../../Buttons/LikeButton'
 import ShareButton from '../../Buttons/ShareButton'
 import FollowersButton from '../../Buttons/FollowersButton'
 
-import { addFollower, removeFollower } from '../../../Common/ServerFunctions/followersFunctions';
-import { addArtistLike, removeArtistLike } from '../../../Common/ServerFunctions/likesFunctions';
-
-
-const ArtistListItem = ({artist}) => {
-  const [cookies] = useCookies(['userId']);
-  const [isFollowed, setIsFollowed] = useState(artist.followed);
-  const { userId } = cookies;
-
-  const onFollow = () => {
-    const handleFollow = async () => {
-      try {
-        setIsFollowed(true);
-        await addFollower(artist._id, userId)
-      } catch (error) {
-        setIsFollowed(false);
-      }
-    };
-    handleFollow();
-  }
-
-  const onUnfollow = () => {
-    const handleFollow = async () => {
-      try {
-        setIsFollowed(false);
-        await removeFollower(artist._id, userId)
-      } catch (error) {
-        setIsFollowed(true);
-      }
-    };
-    handleFollow();
-  }
-
+const ArtistListItem = ({ artist, onLike, onDislike, onFollow, onUnfollow }) => {
   return (
     <div className='listitem artist'>
       <div className='details'>
@@ -51,8 +18,14 @@ const ArtistListItem = ({artist}) => {
         </span>
       </div>
       <div className='functions'>
-        <LikeButton isLiked={artist.liked} onLike={() => addArtistLike(userId, artist._id)} onDislike={() => removeArtistLike(userId, artist._id)} likesNumber={artist.likesNumber}/>
-        <FollowersButton isFollowed={isFollowed} onFollow={onFollow} onUnfollow={onUnfollow}/>
+      {
+        onLike && onDislike &&
+        <LikeButton id={artist._id} isLiked={artist.liked} onLike={onLike} onDislike={onDislike} likesNumber={artist.likesNumber}/>
+      }
+      {
+        onFollow && onUnfollow &&
+        <FollowersButton id={artist._id} isFollowed={artist.followed} onFollow={onFollow} onUnfollow={onUnfollow}/>
+      }
         <ShareButton type="artist" id={artist._id} />
       </div>
     </div>

@@ -122,8 +122,8 @@ export const deleteUserFriends = async (req, res) => {
         }
         const updateResult = await Friends.updateMany(
             {},
-            { $pull: { friends: userId } })
-        await fs.appendFile(logsFilePath, `Delete user ${userId} friends\n`)
+            { $pull: { friends: req.params.userId } })
+        await fs.appendFile(logsFilePath, `Delete user ${req.params.userId} friends\n`)
         res.status(200).send(`Matched ${updateResult.matchedCount} documents, modified ${updateResult.modifiedCount} documents`);
     } catch (error) {
         console.error(error);

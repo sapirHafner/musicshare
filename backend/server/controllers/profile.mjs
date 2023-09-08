@@ -79,7 +79,7 @@ export const deleteProfile = async (req, res) => {
             res.sendStatus(404);
             return;
         }
-        await fs.appendFile(logsFilePath, `Delete user ${userId} profile\n`)
+        await fs.appendFile(logsFilePath, `Delete user ${req.params.userId} profile\n`)
         res.sendStatus(200);
     } catch (error) {
         console.error(error);

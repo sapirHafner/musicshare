@@ -27,7 +27,7 @@ const UsersDisplay = () => {
       <div>
         {users.map(user => (
           <div key={user._id}>
-            {user.Type}: {user.Username} <DeleteButton onDelete={() => {handleDelete(user._id, user.Type)}} />
+            {user.type}: {user.username} <DeleteButton onDelete={() => {handleDelete(user._id, user.type)}} />
           </div>
         ))}
       </div>

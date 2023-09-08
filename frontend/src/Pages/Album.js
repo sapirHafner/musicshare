@@ -6,6 +6,7 @@ import SongsList from '../Components/Lists/SongsList'
 import PostsList from '../Components/Lists/PostsList'
 import UserPage from '../Components/UserPage'
 
+import { addSongLike, removeSongLike } from '../Common/ServerFunctions/likesFunctions'
 import { fetchAlbum } from '../Common/ServerFunctions/AlbumFunctions'
 import { addAlbumLike, removeAlbumLike } from '../Common/ServerFunctions/likesFunctions'
 import { fetchFullDetails } from '../Common/ServerFunctions/MusicalEntitiesFunctions'
@@ -24,7 +25,7 @@ const Album = () => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchedAlbum = await fetchAlbum(albumId)
-      const [fetchedArtists, fetchedAlbums, fetchedSongs] = await fetchFullDetails(userId, [fetchedAlbum.ArtistId], [albumId], fetchedAlbum.SongIds)
+      const [fetchedArtists, fetchedAlbums, fetchedSongs] = await fetchFullDetails(userId, [fetchedAlbum.artistId], [albumId], fetchedAlbum.songIds)
       setAlbum({...fetchedAlbums[0], artist: fetchedArtists[0].Name})
       setSongs(fetchedSongs);
       const postsAboutAlbum = await fetchMusicalEntityPosts(albumId)
@@ -34,38 +35,18 @@ const Album = () => {
     fetchData()
   }, [])
 
-  const onLike = () => {
-    const handleLike = async () => {
-      try {
-        setAlbum({...album, liked: true})
-        await addAlbumLike(userId, album._id);
-      } catch (error) {
-        setAlbum({...album, liked: false})
-      }
-    };
-    handleLike();
-  }
-
-  const onDislike = () => {
-    const handleDislike = async () => {
-      try {
-        setAlbum({...album, liked: false})
-        await removeAlbumLike(userId, album._id);
-      } catch (error) {
-        setAlbum({...album, liked: true})
-      }
-    };
-    handleDislike();
-  }
 
   return (
     <UserPage isLoaded={isLoaded} component=
       <div>
         <AlbumHeader album={album}
-                    onLike={onLike}
-                    onDislike={onDislike}/>
+                    onLike={() => addAlbumLike(userId, album._id)}
+                    onDislike={() => removeAlbumLike(userId, album._id)}/>
         <div className='content songs'>
-          <SongsList songs={songs} />
+          <SongsList songs={songs}
+                     onLike={(id) => addSongLike(userId, id)}
+                     onDislike={(id) => removeSongLike(userId, id)}
+          />
         </div>
         <PostsList posts={posts} />
       </div>

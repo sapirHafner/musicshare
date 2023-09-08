@@ -4,12 +4,11 @@ import { fetchUserProfile } from "../Common/ServerFunctions/ProfilesFunctions";
 import { enrichPosts, fetchUserPosts} from "../Common/ServerFunctions/PostsFunctions";
 import { useParams } from "react-router-dom";
 import Error from "../Components/Error";
-import LoadingScreen from "../Components/LoadingScreen";
-import UserNavigationBar from "../Components/UserNavigationBar";
 import PostsList from "../Components/Lists/PostsList";
 import UserProfile from "../Components/UserProfile";
 import { useCookies } from "react-cookie";
-import TopBar from "../Components/TopBar";
+import UserPage from "../Components/UserPage";
+import Link from "../Components/Link";
 
 const User = () => {
   const [profile, setProfile] = useState({});
@@ -32,30 +31,19 @@ const User = () => {
       return <Error />;
     }
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
-    <div className="grid-container">
-      <TopBar />
-      <div className="sidebar">
-        <UserNavigationBar selectedItem={id === userId ? "Profile" : ""} />
-      </div>
-      <div className="main">
-        <div>
-          {isLoaded ? (
-            <>
+    <UserPage isLoaded={isLoaded} component={
+          <>
             <div className="content">
               <UserProfile profile={profile} />
+              <Link text="Library" url={`/library/${id}`}/>
             </div>
-              <PostsList posts={userPosts} />
-            </>
-          ) : (
-            <LoadingScreen />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
-
+            <PostsList posts={userPosts} />
+          </>
+    }
+    />
+  )
+}
 export default User;

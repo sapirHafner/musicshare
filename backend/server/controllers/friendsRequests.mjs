@@ -92,12 +92,12 @@ export const removeFriendsRequest = async (req, res) => {
 
 export const deleteUserFriendRequests = async (req, res) => {
     try {
-        const userId = req.params.userId;
-        const deletedFriendsRequests = await FriendsRequests.findOneAndDelete({UserId: userId});
+        const deletedFriendsRequests = await FriendsRequests.findOneAndDelete({userId: req.params.userId});
         if (!deletedFriendsRequests) {
             res.sendStatus(404).send('User friends requests not found');
+            return;
         }
-        await fs.appendFile(logsFilePath, `Delete user ${userId} friend requests\n`)
+        await fs.appendFile(logsFilePath, `Delete user ${req.params.userId} friend requests\n`)
         res.sendStatus(200);
     } catch (error) {
         console.error(error);

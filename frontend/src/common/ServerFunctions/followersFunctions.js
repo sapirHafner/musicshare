@@ -28,4 +28,4 @@ export const isUserFollowing = async (userId, artistId) => {
 }
 
 export const deleteUserFollows = async (userId) =>
-    axios.delete(`${followersServerUrl}?userId=${userId}`)
+    axios.delete(`${followersServerUrl}/user/${userId}`)

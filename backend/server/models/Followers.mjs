@@ -4,6 +4,7 @@ const followersSchema = new mongoose.Schema({
   artistId: {
     type: String,
     required: true,
+    unique: true,
   },
   followers: {
     type: Array,

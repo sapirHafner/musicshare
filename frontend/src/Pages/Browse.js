@@ -3,6 +3,8 @@ import UserPage from '../Components/UserPage'
 import MusicDisplay from '../Components/MusicDisplay'
 import { useCookies } from 'react-cookie';
 import { fetchFullDetails } from '../Common/ServerFunctions/MusicalEntitiesFunctions'
+import { addUserLike, removeUserLike } from '../Common/ServerFunctions/likesFunctions'
+import { addFollower, removeFollower } from '../Common/ServerFunctions/followersFunctions';
 
 const Browse = () => {
   const [cookies] = useCookies(['userId']);
@@ -28,7 +30,14 @@ const Browse = () => {
     <UserPage selectedNavItem='browse' isLoaded={isLoaded} component=
       <div>
         <h2>What music would you like to listen to today?</h2>
-        <MusicDisplay artists={allArtists} albums={allAlbums} songs={allSongs} />
+        <MusicDisplay artists={allArtists}
+                      albums={allAlbums}
+                      songs={allSongs}
+                      onLike={(musicalEntity) => addUserLike(userId, musicalEntity)}
+                      onDislike={(musicalEntity) => removeUserLike(userId, musicalEntity)}
+                      onFollow={(artistId) => addFollower(artistId, userId)}
+                      onUnollow={(artistId) => removeFollower(artistId, userId)}
+                      />
       </div>
     />
   )

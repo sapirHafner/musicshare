@@ -38,12 +38,12 @@ export const deleteUser = async (userId, userType) => {
     await deleteArtistFollowers(artist._id);
     await deleteMusicalEntityLikes(artist._id);
     await deleteMusicalEntityPosts(artist._id);
-    await Promise.all(artist.AlbumsIds.map(async albumId => {
+    await Promise.all(artist.albumsIds.map(async albumId => {
       const album = await fetchAlbum(albumId);
       await deleteMusicalEntityLikes(albumId);
       await deleteMusicalEntityPosts(albumId);
       await deleteAlbumSongs(albumId);
-      await Promise.all(album.SongIds.map(async songId => {
+      await Promise.all(album.songsIds.map(async songId => {
         await deleteMusicalEntityLikes(songId);
         await deleteMusicalEntityPosts(songId);
       }))

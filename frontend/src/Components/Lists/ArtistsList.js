@@ -1,11 +1,16 @@
 import React from 'react'
 import ArtistListItem from './Items/ArtistListItem'
 
-const ArtistsList = ({artists}) => {
-  const artistsComponents = artists.map(artist => <ArtistListItem artist={artist}/>)
+const ArtistsList = ({artists, onLike, onDislike, onFollow, onUnfollow}) => {
   return (
     <div>
-      {artistsComponents}
+      {artists.map(artist => <ArtistListItem
+                                  artist={artist}
+                                  onLike={onLike}
+                                  onDislike={onDislike}
+                                  onFollow={onFollow}
+                                  onUnfollow={onUnfollow}
+      />)}
     </div>
   )
 }

@@ -10,7 +10,7 @@ const AlbumHeader = ({ album, onLike, onDislike }) => {
                 album
             </div>
             <div>
-                {album.Name}
+                {album.name}
             </div>
             <div className='artist-name'>
               {album.artist}

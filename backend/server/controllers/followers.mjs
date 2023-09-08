@@ -42,7 +42,7 @@ export const addFollower = async (req, res) => {
         }
         artistFollowers.followers.push(req.body.userId)
         await artistFollowers.save();
-        await fs.appendFile(logsFilePath, `User ${body.userId} followed artist ${req.body.artistId}\n`)
+        await fs.appendFile(logsFilePath, `User ${req.body.userId} followed artist ${req.body.artistId}\n`)
         res.sendStatus(200);
     } catch (error) {
         console.error(error);
@@ -52,6 +52,7 @@ export const addFollower = async (req, res) => {
 
 export const removeFollower = async (req, res) => {
     try {
+        console.log(req.body)
         const artistFollowers = await Followers.findOne({artistId: req.body.artistId})
         artistFollowers.followers.remove(req.body.userId)
         await artistFollowers.save();
@@ -117,7 +118,7 @@ export const deleteUserFollows = async (req, res) => {
         const updateResult = await Followers.updateMany(
             {},
             { $pull: { followers: req.params.id } })
-        await fs.appendFile(logsFilePath, `Deleted user ${userId} follows from ${updateResult.modifiedCount} documents\n`)
+        await fs.appendFile(logsFilePath, `Deleted user ${req.params.id} follows from ${updateResult.modifiedCount} documents\n`)
         res.status(200).send(`Matched ${updateResult.matchedCount} documents, modified ${updateResult.modifiedCount} documents`);
     } catch (error) {
         console.error(error);

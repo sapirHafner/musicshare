@@ -59,7 +59,7 @@ export const deleteArtist = async (req, res) => {
             res.sendStatus(404);
             return;
         }
-        await fs.appendFile(logsFilePath, `Artist ${deletedArtist._id} ]deleted\n`)
+        await fs.appendFile(logsFilePath, `Artist ${deletedArtist._id} deleted\n`)
         res.sendStatus(200);
     } catch (error) {
         console.error(error);

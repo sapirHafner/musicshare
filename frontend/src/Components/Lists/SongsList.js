@@ -1,14 +1,16 @@
 import React from 'react'
 import SongListItem from './Items/SongListItem'
 
-const SongsList = ({ songs }) => {
-  const songsComponents = songs.map(song => <SongListItem song={song}/>);
-
+const SongsList = ({ songs, onLike, onDislike }) => {
   return (
-    <ul>
-      {songsComponents}
-    </ul>
-  );
-};
+    <div>
+      {songs.map(song => <SongListItem
+                              song={song}
+                              onLike={onLike}
+                              onDislike={onDislike}
+      />)}
+    </div>
+  )
+}
 
 export default SongsList;

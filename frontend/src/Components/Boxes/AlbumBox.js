@@ -1,41 +1,9 @@
 import React from 'react'
-import { useState } from 'react'
-import { useCookies } from 'react-cookie'
-import { addAlbumLike, removeAlbumLike } from '../../Common/ServerFunctions/likesFunctions'
 import LikeButton from '../Buttons/LikeButton'
 import ShareButton from '../Buttons/ShareButton'
 import Link from '../Link'
 
-const AlbumBox = ({album, className}) => {
-
-  const [isLiked, setIsLiked] = useState(album.liked);
-  const [cookies] = useCookies(['userId']);
-  const { userId } = cookies;
-  const onLike = () => {
-    const handleLike = async () => {
-      try {
-        setIsLiked(true);
-        await addAlbumLike(userId, album._id);
-      } catch (error) {
-        setIsLiked(false);
-      }
-    };
-    handleLike();
-  }
-
-  const onDislike = () => {
-    const handleDislike = async () => {
-      try {
-        setIsLiked(false);
-        await removeAlbumLike(userId, album._id);
-      } catch (error) {
-        setIsLiked(true);
-      }
-    };
-    handleDislike();
-  }
-
-
+const AlbumBox = ({album, onLike, onDislike, className}) => {
   return (
     className === "min" ?
       <div className='box'>
@@ -58,8 +26,11 @@ const AlbumBox = ({album, className}) => {
         </div>
       </div>
       <div>
-        <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
-        <ShareButton type="album" id={album._id} />
+      {
+        onLike && onDislike &&
+          <LikeButton isLiked={album.liked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
+      }
+      <ShareButton type="album" id={album._id} />
       </div>
     </div>
   )

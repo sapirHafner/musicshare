@@ -9,11 +9,16 @@ import MusicDisplay from '../Components/MusicDisplay';
 import { getTypeIds } from '../Common/Utilities';
 import { fetchFullDetails } from '../Common/ServerFunctions/MusicalEntitiesFunctions'
 import { fetchUserLikes } from '../Common/ServerFunctions/likesFunctions';
+import { addUserLike, removeUserLike } from '../Common/ServerFunctions/likesFunctions'
+import { addFollower, removeFollower } from '../Common/ServerFunctions/followersFunctions';
+import { fetchUserProfileBox } from '../Common/ServerFunctions/ProfilesFunctions';
+import ProfileBox from '../Components/Boxes/ProfileBox';
 
 const Library = () => {
-    const [likedArtists, setLikedArtists] = useState([]);
-    const [likedAlbums, setLikedAlbums] = useState([]);
-    const [likedSongs, setLikedSongs] = useState([]);
+    const [profile, setProfile] = useState()
+    const [likedArtists, setLikedArtists] = useState();
+    const [likedAlbums, setLikedAlbums] = useState();
+    const [likedSongs, setLikedSongs] = useState();
     const [isLoaded, setIsLoaded] = useState(false);
 
     const { id } = useParams();
@@ -22,6 +27,7 @@ const Library = () => {
 
     useEffect(() => {
       const fetchData = async () => {
+        setProfile(await fetchUserProfileBox(id));
         const userLikes = await fetchUserLikes(id)
         const likedArtistsIds = getTypeIds(userLikes, "artist");
         const likedAlbumsIds = getTypeIds(userLikes, "album");
@@ -36,8 +42,18 @@ const Library = () => {
     }, [])
 
     return (
-      <UserPage selectedNavItem='library' isLoaded={isLoaded} component=
-        <MusicDisplay artists={likedArtists} albums={likedAlbums} songs={likedSongs} />
+      <UserPage selectedNavItem={userId === id ? "library" : ""} isLoaded={isLoaded} component=
+      <div>
+        <ProfileBox profile={profile} />
+        <MusicDisplay artists={likedArtists}
+                      albums={likedAlbums}
+                      songs={likedSongs}
+                      onLike={(musicalEntity) => addUserLike(userId, musicalEntity)}
+                      onDislike={(musicalEntity) => removeUserLike(userId, musicalEntity)}
+                      onFollow={(artistId) => addFollower(artistId, userId)}
+                      onUnollow={(artistId) => removeFollower(artistId, userId)}
+        />
+      </div>
       />
     )
 }

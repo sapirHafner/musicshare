@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import followIcon from '../../Assets/Icons/follow-icon.png'
 import unfollowIcon from '../../Assets/Icons/unfollow-icon.png'
-import { useCookies } from 'react-cookie'
 
-const FollowersButton = ({isFollowed, onFollow, onUnfollow}) => {
-  const [cookies] = useCookies(['userType']);
-  const { userType } = cookies;
-  if (userType !== 'user') {
-    return (<></>)
+const FollowersButton = ({id, isFollowed, onFollow, onUnfollow}) => {
+  const [followed, setFollowed] = useState(isFollowed);
+  const handleFollow = () => {
+    try {
+      setFollowed(true);
+      onFollow(id);
+    } catch (error) {
+      setFollowed(false);
+    }
   }
 
+  const handleUnfollow = () => {
+    try {
+      setFollowed(false);
+      onUnfollow(id);
+    } catch (error) {
+      setFollowed(true);
+    }
+  }
   return (
     <span className='clickable'>
-      {isFollowed ? (
-        <img className='icon' src={unfollowIcon} onClick={onUnfollow} />
+      {followed ? (
+        <img className='icon' src={unfollowIcon} onClick={handleUnfollow} />
       ) : (
-        <img className='icon' src={followIcon} onClick={onFollow} />
+        <img className='icon' src={followIcon} onClick={handleFollow} />
       )}
     </span>
   )

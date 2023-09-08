@@ -9,6 +9,7 @@ const LikesSchema = new mongoose.Schema({
     id: {
       type: String,
       required: true,
+      unique: true,
     },
   },
   usersIds: {

@@ -4,6 +4,7 @@ const ProfileScema = new mongoose.Schema({
   userId: {
     type: String,
     required: true,
+    unique: true,
   },
   firstName: {
     type: String,
@@ -16,6 +17,7 @@ const ProfileScema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
 });
 

@@ -90,10 +90,10 @@ export const deletePosts = async (req, res) => {
             query.userId = req.query.userId;
         }
         if (req.query.musicalEntityId !== undefined) {
-            query.musicalEntity.id = req.query.musicalEntityId;
+            query['musicalEntity.id'] = req.query.musicalEntityId;
         }
-        const deleteResult = Post.deleteMany(query);
-        await fs.appendFile(logsFilePath, `Deleted ${deletedResult.deletedCount} posts\n`)
+        const deleteResult = await Post.deleteMany(query);
+        await fs.appendFile(logsFilePath, `Deleted ${deleteResult.deletedCount} posts\n`)
         res.status(200).send(`Matched ${deleteResult.n} documents, deleted ${deleteResult.deletedCount} documents`);
     } catch (error) {
         console.error(error);

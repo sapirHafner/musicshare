@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const commentSchema = mongoose.Schema({
     userId: {
         type: String,
-        required: true
+        required: true,
     },
     text: {
         type: String,

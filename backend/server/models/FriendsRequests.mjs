@@ -4,6 +4,7 @@ const friendsRequestsScheme = mongoose.Schema({
   userId: {
     type: String,
     required: true,
+    unique: true,
   },
   requestsUserIds: {
     type: Array,

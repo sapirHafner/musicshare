@@ -3,22 +3,22 @@ import { baseServerUrl } from './serverFunctions';
 
 const likesServerUrl = `${baseServerUrl}/likes`
 
-export const addUserLike = async (userId, musicalEntity) =>{
+export const addUserLike = async (userId, musicalEntityId) =>{
   await axios.put(likesServerUrl, {
     add: true,
-    musicalEntity,
+    musicalEntityId,
     userId,
   })}
 
-export const removeUserLike = async (userId, musicalEntity) =>
+export const removeUserLike = async (userId, musicalEntityId) =>
   await axios.put(likesServerUrl, {
     add: false,
-    musicalEntity,
+    musicalEntityId,
     userId
   })
 
 export const deleteUserLikes = async (userId) =>
-  await axios.delete(`${likesServerUrl}?userId=${userId}`)
+  await axios.delete(`${likesServerUrl}/user/${userId}`)
 
 export const fetchEntityLikes = async (musicalEntityId) =>
   (await axios.get(`${likesServerUrl}/${musicalEntityId}`)).data.usersIds;
@@ -59,7 +59,7 @@ export const removeAlbumLike = async (userId, albumId) =>
       id: albumId
     });
 
-export const addArtistLike = async (userId, artistId) =>
+export const addArtistLike = async (userId, artistId) => 
   await addUserLike(userId, {
     type: "artist",
     id: artistId
@@ -72,6 +72,6 @@ export const removeArtistLike = async (userId, artistId) =>
     });
 
 export const isUserLiking = async (userId, musicalEntityId) => {
-  const userLikes = (await fetchUserLikes(userId)).map(like => like.MusicalEntity.Id)
+  const userLikes = (await fetchUserLikes(userId)).map(like => like.musicalEntity.id)
   return userLikes.includes(musicalEntityId);
 }

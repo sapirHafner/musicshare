@@ -31,7 +31,7 @@ const Artist = () => {
       fetchedArtist.followed = await isUserFollowing(userId, artistId);
       fetchedArtist.likesNumber = await getEntityLikesNumber(artistId);
       setArtist(fetchedArtist);
-      setAlbums(await fetchAlbums(fetchedArtist.AlbumsIds));
+      setAlbums(await fetchAlbums(fetchedArtist.albumsIds));
       const postsAboutArtists = await fetchMusicalEntityPosts(artistId)
       setPosts(await enrichPosts(postsAboutArtists, userId));
       setIsLoaded(true)
@@ -39,62 +39,14 @@ const Artist = () => {
     fetchData()
   }, [])
 
-  const onLike = () => {
-    const handleLike = async () => {
-      try {
-        setArtist({...artist, liked: true})
-        await addArtistLike(userId, artist._id);
-      } catch (error) {
-        setArtist({...artist, liked: false})
-      }
-    };
-    handleLike();
-  }
-
-  const onDislike = () => {
-    const handleDislike = async () => {
-      try {
-        setArtist({...artist, liked: false})
-        await removeArtistLike(userId, artist._id);
-      } catch (error) {
-        setArtist({...artist, liked: true})
-      }
-    };
-    handleDislike();
-  }
-
-  const onFollow = () => {
-    const handleFollow = async () => {
-      try {
-        setArtist({...artist, followed: true})
-        await addFollower(artist._id, userId)
-      } catch (error) {
-        setArtist({...artist, followed: false})
-      }
-    };
-    handleFollow();
-  }
-
-  const onUnfollow = () => {
-    const handleFollow = async () => {
-      try {
-        setArtist({...artist, followed: false})
-        await removeFollower(artist._id, userId)
-      } catch (error) {
-        setArtist({...artist, followed: true})
-      }
-    };
-    handleFollow();
-  }
-
   return (
     <UserPage isLoaded={isLoaded} component= {isLoaded &&
       <div className='artistcontainer'>
         <ArtistHeader artist={artist}
-                      onLike={onLike}
-                      onDislike={onDislike}
-                      onFollow={onFollow}
-                      onUnfollow={onUnfollow}
+                      onLike={() => addArtistLike(userId, artist._id)}
+                      onDislike={() => removeArtistLike(userId, artist._id)}
+                      onFollow={() => addFollower(artist._id, userId)}
+                      onUnfollow={() => removeFollower(artist._id, userId)}
         />
         <div className='content albums'>
           {albums.map(album => <AlbumBox album={album} className="min"/>)}
