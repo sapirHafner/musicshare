@@ -5,10 +5,10 @@ import Button from '../Buttons/Button'
 import Display from '../Display'
 import Logs from '../Logs'
 import UsersList from '../Lists/UsersList'
-import FeatureFlags from '../FeatureFlags'
+import FeatureFlags from '../Lists/FeatureFlags'
 import LoadingScreen from '../LoadingScreen'
 
-import { createFeatureFlag, deleteFeatureFlag, getFeatureFlags } from '../../Common/ServerFunctions/featureFlagsFunctions'
+import { createFeatureFlag, deleteFeatureFlag, getFeatureFlags, updateFeatureFlag } from '../../Common/ServerFunctions/featureFlagsFunctions'
 
 const AdminHome = () => {
   const [featureFlags, setFeatureFlags] = useState();
@@ -42,6 +42,7 @@ const AdminHome = () => {
                 "Feature Flags": <FeatureFlags featureFlags={featureFlags}
                                                 onCreate={(name) => createFeatureFlag({name, active: false})}
                                                 onDelete={(name) => deleteFeatureFlag(name)}
+                                                onUpdate={(name, active) => updateFeatureFlag({name, active})}
                                 />
 
               }} />
