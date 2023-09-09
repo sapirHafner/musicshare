@@ -34,6 +34,7 @@ const Artist = () => {
       const postsAboutArtists = await fetchMusicalEntityPosts(artistId)
       setPosts(await enrichPosts(postsAboutArtists, userId));
       setIsLoaded(true)
+
     };
     fetchData()
   }, [])
