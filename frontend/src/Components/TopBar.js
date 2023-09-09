@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import SearchButton from './Buttons/SearchButton'
 import ProfileButton from './Buttons/ProfileButton'
 
 const TopBar = ({ profile }) => {

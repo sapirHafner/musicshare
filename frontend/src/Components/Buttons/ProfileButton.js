@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from '../Link';
 
 const ProfileButton = ({ profile }) => {
+  console.log(profile)
   const [ isClicked, setIsClicked ] = useState([false]);
   const onClick = () => setIsClicked(!isClicked)
   return (

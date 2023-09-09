@@ -13,6 +13,7 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
   const [cookies] = useCookies();
   const navigate = useNavigate();
   const [ profileBox, setProfileBox ] = useState()
+  const [ isProfileLoaded, setIsProfileLoaded ] = useState(false);
 
   const { userId, userType } = cookies;
 
@@ -27,13 +28,14 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
         delete fetchedProfile.imageUrl;
       }
       setProfileBox(fetchedProfile);
+      setIsProfileLoaded(true);
     }
     fetchData();
   }, [userId, userType]);
 
   return (
     <div className='grid-container'>
-      {isLoaded ?
+      {isLoaded && isProfileLoaded ?
       <>
         <TopBar profile={profileBox}/>
         <UserNavigationBar selectedItem={selectedNavItem}/>
