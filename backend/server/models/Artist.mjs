@@ -18,6 +18,9 @@ const artistSchema = new mongoose.Schema({
       type: Array,
       required: true,
   },
+  imageUrl: {
+    type: String
+  }
 });
 
 export default mongoose.model("Artist", artistSchema);

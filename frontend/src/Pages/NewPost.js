@@ -49,12 +49,18 @@ const NewPost = () => {
 
 
   return (
+    userType === "user" ?
     <UserPage isLoaded={true} component=
       <div>
         {musicalEntityComponent}
         <NewPostForm onSubmit={onSubmit}/>
       </div>
     />
+  :
+  <div>
+    {musicalEntityComponent}
+    <NewPostForm onSubmit={onSubmit}/>
+  </div>
   )
 }
 

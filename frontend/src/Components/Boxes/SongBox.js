@@ -3,7 +3,7 @@ import LikeButton from '../Buttons/LikeButton';
 import ShareButton from '../Buttons/ShareButton'
 import Link from '../Link';
 
-const SongBox = ({song, onLike, onDislike}) => {
+const SongBox = ({song, onLike, onDislike, onShare}) => {
 
   return (
     <div className='musicalentity box'>
@@ -24,7 +24,11 @@ const SongBox = ({song, onLike, onDislike}) => {
         onLike && onDislike &&
           <LikeButton isLiked={song.liked} onLike={onLike} onDislike={onDislike} likesNumber={song.likesNumber}/>
       }
-      <ShareButton type="song" id={song._id} />
+      {
+        onShare &&
+          <ShareButton id={song._id} onShare={onShare} />
+      }
+
       </div>
     </div>
   )

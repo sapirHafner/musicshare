@@ -9,6 +9,7 @@ import UserProfile from "../Components/UserProfile";
 import { useCookies } from "react-cookie";
 import UserPage from "../Components/UserPage";
 import Link from "../Components/Link";
+import { getFeatureFlag } from "../Common/ServerFunctions/featureFlagsFunctions";
 
 const User = () => {
   const [profile, setProfile] = useState({});
@@ -21,10 +22,15 @@ const User = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setProfile(await fetchUserProfile(id));
-      const userPosts = await fetchUserPosts(id);
-      setUserPosts(await enrichPosts(userPosts, userId));
-      setIsLoaded(true);
+    const imagesFeatureFlag = await getFeatureFlag("images");
+    const fetchedProfile = await fetchUserProfile(id);
+    if (!imagesFeatureFlag) {
+      delete fetchedProfile.imageUrl;
+    }
+    setProfile(fetchedProfile);
+    const userPosts = await fetchUserPosts(id);
+    setUserPosts(await enrichPosts(userPosts, userId));
+    setIsLoaded(true);
     };
 
     if (id === undefined) {

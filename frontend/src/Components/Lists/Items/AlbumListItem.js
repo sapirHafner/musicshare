@@ -3,7 +3,8 @@ import LikeButton from '../../Buttons/LikeButton';
 import ShareButton from '../../Buttons/ShareButton';
 import Link from '../../Link';
 
-const AlbumListItem = ({album, onLike, onDislike }) => {
+const AlbumListItem = ({album, onLike, onDislike, onShare }) => {
+  console.log(album)
   return (
     <div className='listitem album'>
       <div className='details'>
@@ -20,7 +21,10 @@ const AlbumListItem = ({album, onLike, onDislike }) => {
         onLike && onDislike &&
           <LikeButton id={album._id} isLiked={album.liked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
       }
-      <ShareButton type="album" id={album._id} />
+      {
+        onShare &&
+          <ShareButton id={album._id} onShare={onShare} />
+      }
       </div>
     </div>
   )

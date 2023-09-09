@@ -18,7 +18,8 @@ export const getProfiles = async (req, res) => {
                 return {
                     userId: profile.userId,
                     firstName: profile.firstName,
-                    lastName: profile.lastName
+                    lastName: profile.lastName,
+                    imageUrl: profile.imageUrl
             }});
             res.status(200).send(profilesBoxes);
             return;
@@ -41,7 +42,8 @@ export const getProfileByUserId = async (req, res) => {
             res.status(200).send({
                 userId: profile.userId,
                 firstName: profile.firstName,
-                lastName: profile.lastName
+                lastName: profile.lastName,
+                imageUrl: profile.imageUrl
             });
             return;
         }
@@ -54,6 +56,7 @@ export const getProfileByUserId = async (req, res) => {
 
 export const addProfile = async (req, res) => {
     try {
+        console.log(req.body)
         const emailExists = await Profile.exists({email: req.body.email});
         if (emailExists) {
             res.status(409).send('Email already exists');

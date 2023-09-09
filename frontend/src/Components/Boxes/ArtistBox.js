@@ -4,7 +4,7 @@ import ShareButton from '../Buttons/ShareButton'
 import FollowersButton from '../Buttons/FollowersButton'
 import Link from '../Link'
 
-const ArtistBox = ({artist, onLike, onDislike, onFollow, onUnfollow}) => {
+const ArtistBox = ({artist, onLike, onDislike, onFollow, onUnfollow, onShare}) => {
   return (
   <div className='musicalentity artistbox box'>
     <div className='details'>
@@ -24,7 +24,10 @@ const ArtistBox = ({artist, onLike, onDislike, onFollow, onUnfollow}) => {
         onFollow && onUnfollow &&
         <FollowersButton isFollowed={artist.followed} onFollow={onFollow} onUnfollow={onUnfollow}/>
       }
-      <ShareButton type="artist" id={artist._id} />
+      {
+        onShare &&
+          <ShareButton id={artist._id} onShare={onShare} />
+      }
     </div>
   </div>
   )

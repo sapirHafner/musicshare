@@ -2,7 +2,7 @@ import React from 'react'
 import LikeButton from '../Buttons/LikeButton'
 import ShareButton from '../Buttons/ShareButton'
 
-const AlbumHeader = ({ album, onLike, onDislike }) => {
+const AlbumHeader = ({ album, onLike, onDislike, onShare }) => {
   return (
     <div className='content header'>
         <div>
@@ -18,7 +18,10 @@ const AlbumHeader = ({ album, onLike, onDislike }) => {
         </div>
         <div className='functions'>
           <LikeButton isLiked={album.liked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
-          <ShareButton type="album" id={album._id} />
+          {
+            onShare &&
+              <ShareButton id={album._id} onShare={onShare} />
+          }
         </div>
       </div>
   )

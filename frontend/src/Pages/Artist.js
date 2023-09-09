@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import UserPage from '../Components/UserPage'
-import AlbumBox from '../Components/Boxes/AlbumBox'
-import PostsList from '../Components/Lists/PostsList'
-import ArtistHeader from '../Components/Headers/ArtistHeader'
 
 import { fetchArtist } from '../Common/ServerFunctions/ArtistFunctions'
 import { fetchAlbums } from '../Common/ServerFunctions/AlbumFunctions'
 import {  isUserLiking, addArtistLike, removeArtistLike, getEntityLikesNumber } from '../Common/ServerFunctions/likesFunctions'
 import { isUserFollowing, addFollower, removeFollower } from '../Common/ServerFunctions/followersFunctions'
 import { enrichPosts, fetchMusicalEntityPosts } from '../Common/ServerFunctions/PostsFunctions'
+import ArtistProfile from '../Components/ArtistProfile'
 
 const Artist = () => {
   const [cookies] = useCookies(['userId']);
-  const { userId } = cookies;
+  const navigate = useNavigate()
+  const { userId, userType } = cookies;
   const { artistId } = useParams();
 
   const [artist, setArtist] = useState();
@@ -40,20 +39,16 @@ const Artist = () => {
   }, [])
 
   return (
-    <UserPage isLoaded={isLoaded} component= {isLoaded &&
-      <div className='artistcontainer'>
-        <ArtistHeader artist={artist}
+      <UserPage isLoaded={isLoaded} component= {isLoaded &&
+        <ArtistProfile artist={artist}
+                      albums={albums}
+                      posts={posts}
                       onLike={() => addArtistLike(userId, artist._id)}
                       onDislike={() => removeArtistLike(userId, artist._id)}
                       onFollow={() => addFollower(artist._id, userId)}
                       onUnfollow={() => removeFollower(artist._id, userId)}
-        />
-        <div className='content albums'>
-          {albums.map(album => <AlbumBox album={album} className="min"/>)}
-        </div>
-        <PostsList posts={posts} />
-      </div>
-    }/>
+                      onShare={() => navigate(`/newpost?type=artist&id=${artist._id}`)}
+          />} />
   )
 }
 

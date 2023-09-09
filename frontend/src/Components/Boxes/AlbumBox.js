@@ -3,7 +3,7 @@ import LikeButton from '../Buttons/LikeButton'
 import ShareButton from '../Buttons/ShareButton'
 import Link from '../Link'
 
-const AlbumBox = ({album, onLike, onDislike, className}) => {
+const AlbumBox = ({album, onLike, onDislike, onShare, className}) => {
   return (
     className === "min" ?
       <div className='box'>
@@ -30,7 +30,10 @@ const AlbumBox = ({album, onLike, onDislike, className}) => {
         onLike && onDislike &&
           <LikeButton isLiked={album.liked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
       }
-      <ShareButton type="album" id={album._id} />
+      {
+        onShare &&
+          <ShareButton id={album._id} onShare={onShare} />
+      }
       </div>
     </div>
   )

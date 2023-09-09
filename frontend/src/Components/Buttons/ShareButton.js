@@ -1,15 +1,11 @@
 import React from 'react'
 import shareIcon from '../../Assets/Icons/share-icon.png'
-import { useNavigate } from 'react-router-dom'
 
-const ShareButton = ({type, id}) => {
-    const navigate = useNavigate();
-    const onClick = () => {
-        navigate(`/newpost?type=${type}&id=${id}`);
-    }
+const ShareButton = ({id, onShare}) => {
+    const handleShare = (event) => onShare(event.target.id);
     return (
-        <span className='clickable' onClick={onClick}>
-            <img class='icon' src={shareIcon}/>
+        <span className='clickable' onClick={handleShare}>
+            <img id={id} class='icon' src={shareIcon}/>
         </span>
     )
 }

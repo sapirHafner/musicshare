@@ -4,7 +4,7 @@ import { baseServerUrl } from './serverFunctions';
 const featureFlagServerUrl = `${baseServerUrl}/featureFlag`
 
 export const getFeatureFlag = async (name) =>
-    (await axios.get(`${featureFlagServerUrl}/${name}`)).data;
+    (await axios.get(`${featureFlagServerUrl}/${name}`)).data.active;
 
 export const getFeatureFlags = async (name) =>
     (await axios.get(featureFlagServerUrl)).data;

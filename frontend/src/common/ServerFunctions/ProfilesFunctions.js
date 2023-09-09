@@ -24,7 +24,6 @@ export const fetchUsersProfileBoxes = async (userIds, currentUserId) => {
             ...profileBox,
             isFriend: await isUsersFriends(profileBox.userId, currentUserId),
             isFriendRequestSent: await isFriendRequestSent(currentUserId, profileBox.userId),
-
         }
     }));
 }

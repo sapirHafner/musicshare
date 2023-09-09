@@ -13,6 +13,9 @@ const AlbumSchema = new mongoose.Schema({
       type: Array,
       required: true,
   },
+  imageUrl: {
+    type: String
+  }
 });
 
 export default mongoose.model("Album", AlbumSchema);

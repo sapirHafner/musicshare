@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import UserPage from '../Components/UserPage';
 import MusicDisplay from '../Components/MusicDisplay';
@@ -24,6 +25,7 @@ const Library = () => {
     const { id } = useParams();
     const [ cookies ] = useCookies()
     const { userId } = cookies
+    const navigate = useNavigate()
 
     useEffect(() => {
       const fetchData = async () => {
@@ -52,6 +54,7 @@ const Library = () => {
                       onDislike={(musicalEntity) => removeUserLike(userId, musicalEntity)}
                       onFollow={(artistId) => addFollower(artistId, userId)}
                       onUnollow={(artistId) => removeFollower(artistId, userId)}
+                      onShare={(type, id) => navigate(`/newpost?type=${type}&id=${id}`)}
         />
       </div>
       />

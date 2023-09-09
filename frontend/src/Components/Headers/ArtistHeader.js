@@ -4,7 +4,7 @@ import FollowersButton from '../Buttons/FollowersButton'
 import LikeButton from '../Buttons/LikeButton';
 import ShareButton from '../Buttons/ShareButton'
 
-const ArtistHeader = ({ artist, onLike, onDislike, onFollow, onUnfollow }) => {
+const ArtistHeader = ({ artist, onLike, onDislike, onFollow, onUnfollow, onShare }) => {
   return (
     <div className='content header'>
       <div>
@@ -31,7 +31,10 @@ const ArtistHeader = ({ artist, onLike, onDislike, onFollow, onUnfollow }) => {
             onUnfollow={onUnfollow}
           />
         )}
-        <ShareButton type="artist" id={artist._id} />
+        {
+          onShare &&
+            <ShareButton id={artist._id}  onShare={onShare}/>
+        }
       </div>
     </div>
   )

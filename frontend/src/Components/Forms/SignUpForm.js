@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import UploadImage from './UploadImage';
 
-const SignUpForm = ({OnSignUp}) => {
+const SignUpForm = ({ onSignUp , uploadImage }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [formData, setFormData] = useState({
         firstname: '',
@@ -9,13 +10,16 @@ const SignUpForm = ({OnSignUp}) => {
         email: '',
         username: '',
         password: '',
+        imageUrl: '',
       });
-      const { firstname, lastname, email, username, password } = formData;
+      const { firstname, lastname, email, username, password, imageUrl } = formData;
 
       const onChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
       };
+
+      const onImageChange = (imageUrl) => setFormData({ ...formData, ["imageUrl"]: imageUrl });
 
       function isFormNotValid() {
         return (!firstname || !lastname || !email || !username || !password);
@@ -37,13 +41,14 @@ const SignUpForm = ({OnSignUp}) => {
         const profile = {
             firstName: firstname,
             lastName: lastname,
-            email: email,
+            email,
+            imageUrl
         }
         const user = {
-            username: username,
-            password: password,
+            username,
+            password,
         }
-        OnSignUp(user, profile, setErrorMessage)
+        onSignUp(user, profile, setErrorMessage)
     }
 
     return (
@@ -64,7 +69,10 @@ const SignUpForm = ({OnSignUp}) => {
             <br/>
             <label htmlFor='password'> Password: </label>
             <input type='password' name='password' value={password} onChange={onChange}/>
-
+            {
+              uploadImage &&
+                <UploadImage onChange={onImageChange}/>
+            }
             <br/>
             <br/>
             <p id="errormessage">{errorMessage}</p>

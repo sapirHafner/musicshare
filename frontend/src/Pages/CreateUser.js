@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import SignUpForm from '../Components/Forms/SignUpForm'
 import { addUser, deleteUser } from '../Common/ServerFunctions/UserFunctions';
 import { addProfile } from '../Common/ServerFunctions/ProfilesFunctions';
@@ -7,10 +7,23 @@ import { useCookies } from 'react-cookie';
 import { useNavigate } from "react-router-dom";
 import { createNewFriendsRequestsList } from '../Common/ServerFunctions/FriendsRequestsFunctions';
 import welcomeBackround from '../Assets/backgrounds/background.jpg';
+import { getFeatureFlag } from '../Common/ServerFunctions/featureFlagsFunctions';
+import UploadImage from '../Components/Forms/UploadImage';
 
 const CreateUser = () => {
   const [cookies, setCookie] = useCookies(['userId']);
+  const [imagesFeatureFlag, setImagesFeatureFlag] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const navigate  = useNavigate()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setImagesFeatureFlag(await getFeatureFlag("images"))
+      setIsLoaded(true)
+    }
+    fetchData();
+  }, [])
 
   const onSignUp = async (user, profile, setErrorMessage) => {
     try {
@@ -49,8 +62,11 @@ const CreateUser = () => {
                                                 backgroundSize: "cover"}}>
 
         <div className='loginPageContainer createPagesDesignContainer'>
-
-        <SignUpForm OnSignUp={onSignUp} />
+        {
+          isLoaded &&
+            <SignUpForm onSignUp={onSignUp}
+                        uploadImage={imagesFeatureFlag}/>
+        }
         </div>
       </div>
   )

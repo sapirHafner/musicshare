@@ -12,6 +12,7 @@ import { fetchMusicalEntityPosts, enrichPosts } from '../Common/ServerFunctions/
 import PostsList from '../Components/Lists/PostsList'
 import { fetchSong } from '../Common/ServerFunctions/SongFunctions'
 import { addSongLike, removeSongLike } from '../Common/ServerFunctions/likesFunctions'
+import { useNavigate } from 'react-router-dom'
 
 const Song = () => {
   const { songId } = useParams();
@@ -21,6 +22,8 @@ const Song = () => {
   const [ posts, setPosts ] = useState()
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,7 +84,7 @@ const Song = () => {
                 </div>
                 <div className='functions'>
                   <LikeButton isLiked={isLiked} onLike={onLike} onDislike={onDislike}/>
-                  <ShareButton type="song" id={song._id} />
+                  <ShareButton onShare={() => navigate(`/newpost?type=song&id=${songId}`)} />
                 </div>
               </div>
               <PostsList posts={posts} />

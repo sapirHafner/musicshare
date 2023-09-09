@@ -19,6 +19,10 @@ const ProfileScema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  imageUrl: {
+    type: String,
+    default: null
+  }
 });
 
 export default mongoose.model("Profile", ProfileScema);

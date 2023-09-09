@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import UserPage from '../Components/UserPage'
+import { useNavigate } from 'react-router-dom';
+
 import MusicDisplay from '../Components/MusicDisplay'
 import { useCookies } from 'react-cookie';
 import { fetchFullDetails } from '../Common/ServerFunctions/MusicalEntitiesFunctions'
@@ -9,6 +11,7 @@ import { addFollower, removeFollower } from '../Common/ServerFunctions/followers
 const Browse = () => {
   const [cookies] = useCookies(['userId']);
   const { userId } = cookies;
+  const navigate = useNavigate();
 
   const [allArtists, setAllArtists] = useState();
   const [allAlbums, setAllAlbums] = useState();
@@ -36,7 +39,8 @@ const Browse = () => {
                       onLike={(musicalEntity) => addUserLike(userId, musicalEntity)}
                       onDislike={(musicalEntity) => removeUserLike(userId, musicalEntity)}
                       onFollow={(artistId) => addFollower(artistId, userId)}
-                      onUnollow={(artistId) => removeFollower(artistId, userId)}
+                      onUnfollow={(artistId) => removeFollower(artistId, userId)}
+                      onShare={(type, id) => navigate(`/newpost?type=${type}&id=${id}`)}
                       />
       </div>
     />

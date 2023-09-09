@@ -6,7 +6,7 @@ import LikeButton from '../../Buttons/LikeButton'
 import ShareButton from '../../Buttons/ShareButton'
 import FollowersButton from '../../Buttons/FollowersButton'
 
-const ArtistListItem = ({ artist, onLike, onDislike, onFollow, onUnfollow }) => {
+const ArtistListItem = ({ artist, onLike, onDislike, onFollow, onUnfollow, onShare }) => {
   return (
     <div className='listitem artist'>
       <div className='details'>
@@ -26,7 +26,10 @@ const ArtistListItem = ({ artist, onLike, onDislike, onFollow, onUnfollow }) => 
         onFollow && onUnfollow &&
         <FollowersButton id={artist._id} isFollowed={artist.followed} onFollow={onFollow} onUnfollow={onUnfollow}/>
       }
-        <ShareButton type="artist" id={artist._id} />
+      {
+        onShare &&
+        <ShareButton id={artist._id} onShare={onShare}/>
+      }
       </div>
     </div>
   )
