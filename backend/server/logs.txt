@@ -320,3 +320,34 @@ user 64fc9620b860355c754253e4 logged in
 User 64fc9620b860355c754253e4 liked 64fc9807b860355c754254f5
 User 64fc9620b860355c754253e4 liked 64fc9807b860355c754254f6
 user 64fc9620b860355c754253e4 logged out
+admin logged in
+Feature flag 64fcb36b6f9e63e81f8d2277 created
+Feature flag 64fcb36b6f9e63e81f8d2277 updated
+admin 0 logged out
+artist 64fcb39e6f9e63e81f8d227d created and logged in
+Artist 64fcb39e6f9e63e81f8d227d created
+Created empty likes list for artist 64fcb39e6f9e63e81f8d227f
+Created empty followers list for artist 64fcb39e6f9e63e81f8d227f
+Album 64fcb4406f9e63e81f8d2295 created
+Created empty likes list for album 64fcb4406f9e63e81f8d2295
+Songs 64fcb4406f9e63e81f8d229c, 64fcb4406f9e63e81f8d229d, 64fcb4406f9e63e81f8d229e, 64fcb4406f9e63e81f8d229f, 64fcb4406f9e63e81f8d22a0, 64fcb4406f9e63e81f8d22a1, 64fcb4406f9e63e81f8d22a2 created
+Created empty likes list for song 64fcb4406f9e63e81f8d229c
+Created empty likes list for song 64fcb4406f9e63e81f8d229d
+Created empty likes list for song 64fcb4406f9e63e81f8d229f
+Created empty likes list for song 64fcb4406f9e63e81f8d229e
+Created empty likes list for song 64fcb4406f9e63e81f8d22a0
+Created empty likes list for song 64fcb4406f9e63e81f8d22a1
+Created empty likes list for song 64fcb4406f9e63e81f8d22a2
+Album 64fcb4406f9e63e81f8d2295 updated
+Artist 64fcb39e6f9e63e81f8d227f updated
+Album 64fcb49d6f9e63e81f8d22cf created
+Created empty likes list for album 64fcb49d6f9e63e81f8d22cf
+Songs 64fcb49d6f9e63e81f8d22d5, 64fcb49d6f9e63e81f8d22d6, 64fcb49d6f9e63e81f8d22d7, 64fcb49d6f9e63e81f8d22d8, 64fcb49d6f9e63e81f8d22d9, 64fcb49d6f9e63e81f8d22da created
+Created empty likes list for song 64fcb49d6f9e63e81f8d22d5
+Created empty likes list for song 64fcb49d6f9e63e81f8d22d6
+Created empty likes list for song 64fcb49d6f9e63e81f8d22d7
+Created empty likes list for song 64fcb49d6f9e63e81f8d22da
+Created empty likes list for song 64fcb49d6f9e63e81f8d22d8
+Created empty likes list for song 64fcb49d6f9e63e81f8d22d9
+Album 64fcb49d6f9e63e81f8d22cf updated
+Artist 64fcb39e6f9e63e81f8d227f updated
