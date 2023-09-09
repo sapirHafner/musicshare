@@ -36,4 +36,8 @@ export const setArtistsFollows = (artists, follows) => {
 export const deleteArtist = async (artistId) =>
     await axios.delete(`${artistServerUrl}/${artistId}`);
 
-
+export const removeAlbumFromArtist = async (artistId, albumId) => {
+    const artist = await fetchArtist(artistId);
+    artist.albumsIds = artist.albumsIds.filter(id => id != albumId)
+    await updateArtist(artistId, artist);
+}

@@ -24,8 +24,17 @@ const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest}) => {
   }
 
   return (
-      <div className='friendsRequestsDisplayContainer'>
-        <Link text={`${profile.firstName} ${profile.lastName}`} url={`/user/${profile.userId}`} />
+      <div className='profile-box' style={{width:"max-content"}}>
+        {
+          profile.imageUrl &&
+          <span className='user' style={{width:"6rem", height:"6rem"}}>
+            <img src={profile.imageUrl}/>
+          </span>
+        }
+        <div>
+          <span style={{color:'grey'}}>user</span>
+          <Link text={`${profile.firstName} ${profile.lastName}`} url={`/user/${profile.userId}`} />
+        </div>
         {
           sendFriendRequest && removeFriendRequest && (
             friendRequestSent ?

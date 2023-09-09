@@ -46,7 +46,9 @@ const Library = () => {
     return (
       <UserPage selectedNavItem={userId === id ? "library" : ""} isLoaded={isLoaded} component=
       <div>
-        <ProfileBox profile={profile} />
+        <div className='content'>
+          <ProfileBox profile={profile} />
+        </div>
         <MusicDisplay artists={likedArtists}
                       albums={likedAlbums}
                       songs={likedSongs}

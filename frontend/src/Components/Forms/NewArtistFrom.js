@@ -1,19 +1,23 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import UploadImage from './UploadImage';
 
-const NewArtistFrom = ({OnSignUp}) => {
+const NewArtistFrom = ({ onSignUp, uploadImage}) => {
     const [formData, setFormData] = useState({
         fullname: '',
         email: '',
         username: '',
         password: '',
+        imageUrl: ''
       });
-      const {fullname, email, username, password } = formData;
+      const {fullname, email, username, password, imageUrl } = formData;
 
       const onChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
       };
+
+      const onImageChange = (imageUrl) => setFormData({ ...formData, ["imageUrl"]: imageUrl });
 
       function isFormNotValid() {
         return (!fullname || !email || !username || !password);
@@ -27,9 +31,10 @@ const NewArtistFrom = ({OnSignUp}) => {
         }
         const artist = {
             name: fullname,
-            email: email,
+            email,
+            imageUrl
         }
-        OnSignUp(user, artist)
+        onSignUp(user, artist)
     }
     return (
         <form onSubmit={onSubmit}>
@@ -49,16 +54,19 @@ const NewArtistFrom = ({OnSignUp}) => {
             <input type='password' name='password' value={password} onChange={onChange}/>
             <br/>
             <br/>
+            {
+              uploadImage &&
+                <UploadImage onChange={onImageChange}/>
+            }
 
             {isFormNotValid() ? (
             <p>Don't be lazy! <br></br> Please fill all the boxes above..</p>
-    
       ) : (
-        <input type='submit' value='Sign up!'/> 
-      )} 
-        <div> 
-         <br></br>
-        <Link to='/login'>Back to login page...</Link> </div> 
+        <input type='submit' value='Sign up!'/>
+      )}
+        <div>
+        <br></br>
+        <Link to='/login'>Back to login page...</Link> </div>
         </form>
     );
 }

@@ -7,9 +7,12 @@ const SongListItem = ({song, onLike, onDislike, onShare}) => {
   return (
     <div className='listitem'>
       <div className='details'>
-          <div className='boximage'>
-            <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
-          </div>
+      {
+          song.album.imageUrl &&
+            <div className='boximage'>
+              <img class='musicimage' src={song.album.imageUrl} />
+            </div>
+        }
           <div>
             {song.name}
             <Link text={song.artist.name} url={`/artist/${song.artist._id}`} />

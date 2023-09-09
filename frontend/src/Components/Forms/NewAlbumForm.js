@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import UploadImage from './UploadImage';
 
-const NewAlbumForm = ({ onSubmit }) => {
+const NewAlbumForm = ({ onSubmit, uploadImage }) => {
     const [songs, setSongs] = useState([{ name: "" }]);
+    const [imageUrl, setImageUrl] = useState("" );
 
     const removeSongInput = index => {
         setSongs(songs.filter((song, i) => i !== index));
@@ -12,10 +14,13 @@ const NewAlbumForm = ({ onSubmit }) => {
         setSongs(updatedSongs);
     };
 
+    const onImageChange = (url) => setImageUrl(url);
+
     const handleSubmit = event => {
         event.preventDefault();
         onSubmit({
             name: event.target.name.value,
+            imageUrl,
         }, songs);
     };
 
@@ -38,6 +43,10 @@ const NewAlbumForm = ({ onSubmit }) => {
                 )
             }
             <div onClick={() => setSongs([...songs, { name: "" }])}>(+)</div>
+            {
+              uploadImage &&
+                <UploadImage onChange={onImageChange}/>
+            }
             <input type='submit' value='Create Album' />
             <br/>
         </form>

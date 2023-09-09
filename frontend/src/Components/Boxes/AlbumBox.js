@@ -1,15 +1,20 @@
 import React from 'react'
 import LikeButton from '../Buttons/LikeButton'
 import ShareButton from '../Buttons/ShareButton'
+import deleteIcon from '../../Assets/Icons/delete-icon.png'
 import Link from '../Link'
 
-const AlbumBox = ({album, onLike, onDislike, onShare, className}) => {
+const AlbumBox = ({album, onLike, onDislike, onShare, className, onDelete}) => {
   return (
     className === "min" ?
       <div className='box'>
-        <div className='boximage' >
-          <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+      { onDelete && <img className='icon' src={deleteIcon} onClick={() => onDelete(album._id)}/>}
+      {
+        album.imageUrl &&
+        <div className='boximage'>
+          <img class='musicimage' src={album.imageUrl}/>
         </div>
+      }
         <span className='name'>
           <Link text={album.name} url={`/album/${album._id}`} />
         </span>
@@ -17,9 +22,12 @@ const AlbumBox = ({album, onLike, onDislike, onShare, className}) => {
     :
     <div className='musicalentity box'>
       <div className='details'>
+      {
+        album.imageUrl &&
         <div className='boximage'>
-          <img src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+          <img class='musicimage' src={album.imageUrl}/>
         </div>
+      }
         <div>
           <Link text={album.name} url={`/album/${album._id}`} />
           <Link text={album.artist.name} url={`/artist/${album.artist._id}`} />

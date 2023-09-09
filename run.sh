@@ -1,6 +1,9 @@
 cd frontend
+npm install &
 npm start &
 cd ../backend/mongodb/
-mongod --dbpath /Users/apiiro/Desktop/Ilay/Code/musicshare/backend/mongodb/data/db &
+pwd
+mongod --dbpath ./data/db &
 cd ../server/
+npm install &
 npm start

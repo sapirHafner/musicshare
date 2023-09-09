@@ -7,12 +7,17 @@ import ShareButton from '../Buttons/ShareButton'
 const ArtistHeader = ({ artist, onLike, onDislike, onFollow, onUnfollow, onShare }) => {
   return (
     <div className='content header'>
-      <div>
-        <div className='header-type'>
-          artist
-        </div>
-        <div>
-          {artist.name}
+      <div className='music-box'style={{"height": "max-content"}}>
+        {
+          artist.imageUrl && <img className="musical" src={artist.imageUrl} />
+        }
+        <div className='details'>
+          <div className='header-type'>
+            artist
+          </div>
+          <div>
+            {artist.name}
+          </div>
         </div>
       </div>
       <div className='functions'>

@@ -3,8 +3,13 @@ import { baseServerUrl } from './serverFunctions';
 
 const featureFlagServerUrl = `${baseServerUrl}/featureFlag`
 
-export const getFeatureFlag = async (name) =>
-    (await axios.get(`${featureFlagServerUrl}/${name}`)).data.active;
+export const getFeatureFlag = async (name) => {
+    try {
+        return (await axios.get(`${featureFlagServerUrl}/${name}`)).data.active;
+    } catch {
+        return false;
+    }
+}
 
 export const getFeatureFlags = async (name) =>
     (await axios.get(featureFlagServerUrl)).data;

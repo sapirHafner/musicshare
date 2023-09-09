@@ -16,7 +16,7 @@ const AddNewAlbum = () => {
         <div>
             <NewAlbumForm onSubmit={onSubmit} />
         </div>
-      )
+    )
 }
 
 export default AddNewAlbum;

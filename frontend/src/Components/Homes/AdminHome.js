@@ -9,7 +9,6 @@ import FeatureFlags from '../Lists/FeatureFlags'
 import LoadingScreen from '../LoadingScreen'
 
 import { createFeatureFlag, deleteFeatureFlag, getFeatureFlags, updateFeatureFlag } from '../../Common/ServerFunctions/featureFlagsFunctions'
-
 const AdminHome = () => {
   const [featureFlags, setFeatureFlags] = useState();
   const [isLoaded, setIsLoaded] = useState(false);

@@ -39,6 +39,7 @@ export const getAlbums = async (req, res) => {
 
 export const addAlbum = async (req, res) => {
     try {
+        console.log(req.body)
         const createdAlbum = await Album.create(req.body);
         await fs.appendFile(logsFilePath, `Album ${createdAlbum._id} created\n`);
         res.status(200).send(createdAlbum._id);

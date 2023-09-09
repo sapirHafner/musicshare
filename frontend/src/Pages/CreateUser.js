@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { createNewFriendsRequestsList } from '../Common/ServerFunctions/FriendsRequestsFunctions';
 import welcomeBackround from '../Assets/backgrounds/background.jpg';
 import { getFeatureFlag } from '../Common/ServerFunctions/featureFlagsFunctions';
-import UploadImage from '../Components/Forms/UploadImage';
 
 const CreateUser = () => {
   const [cookies, setCookie] = useCookies(['userId']);

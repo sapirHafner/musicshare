@@ -35,18 +35,12 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
 
   return (
     <div className='grid-container'>
-      {isLoaded && isProfileLoaded ?
-      <>
-        <TopBar profile={profileBox}/>
-        <UserNavigationBar selectedItem={selectedNavItem}/>
-        <div className='main'>
-        {component}
-        </div>
-      </>
-      :
-        <LoadingScreen />
-      }
+      {isProfileLoaded ? <TopBar profile={profileBox}/> : <TopBar profile={{}}/>}
+      <UserNavigationBar selectedItem={selectedNavItem}/>
 
+        <div className='main'>
+        {isLoaded ? component : <LoadingScreen /> }
+        </div>
     </div>
   )
 }

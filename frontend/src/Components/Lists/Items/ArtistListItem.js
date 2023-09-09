@@ -10,9 +10,12 @@ const ArtistListItem = ({ artist, onLike, onDislike, onFollow, onUnfollow, onSha
   return (
     <div className='listitem artist'>
       <div className='details'>
-        <div className='boximage'>
-          <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
-        </div>
+        {
+          artist.imageUrl &&
+            <div className='boximage'>
+              <img class='musicimage' src={artist.imageUrl } />
+            </div>
+        }
         <span className='artistName'>
           <Link text={artist.name} url={`/artist/${artist._id}`} />
         </span>

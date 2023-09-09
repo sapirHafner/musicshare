@@ -4,18 +4,16 @@ import { useState } from 'react';
 import Link from '../Link';
 
 const ProfileButton = ({ profile }) => {
-  console.log(profile)
-  const [ isClicked, setIsClicked ] = useState([false]);
+  const [ isClicked, setIsClicked ] = useState(false);
   const onClick = () => setIsClicked(!isClicked)
   return (
-    <div>
+    <div className='profilebutton'>
       <span onClick={onClick}>
         <img class='icon clickable' src={profile.imageUrl ? profile.imageUrl : profileButton}/>
       </span>
       {
-        isClicked ? (
-          <></>
-        ) : (
+        isClicked &&
+        (
           <div style={{"width": "max-content"}} className='userbuttonoptions' >
             <div style={{"color": "black"}} >
               { profile.firstName } { profile.lastName }

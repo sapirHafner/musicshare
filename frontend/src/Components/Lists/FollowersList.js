@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { fetchArtistFollowers } from '../../Common/ServerFunctions/followersFunctions'
 import { useCookies } from 'react-cookie';
 import { fetchUsersProfileBoxes } from '../../Common/ServerFunctions/ProfilesFunctions';
-import LoadingScreen from '../Common/LoadingScreen';
 
 const FollowersList = () => {
     const [followers, setFollowers] = useState();
@@ -24,10 +23,12 @@ const FollowersList = () => {
       {followers.length} followers
       {followers.map(follower =>
         <div>
-          {follower.FirstName} {follower.LastName}
+          {follower.firstName} {follower.lastName}
         </div>)}
         </>)
-    : <LoadingScreen />
+    : <p>
+      loading...
+    </p>
   )
 }
 

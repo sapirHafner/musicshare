@@ -4,7 +4,7 @@ import ArtistHeader from './Headers/ArtistHeader'
 import AlbumBox from './Boxes/AlbumBox'
 import PostsList from './Lists/PostsList'
 
-const ArtistProfile = ({ artist, albums, posts, onLike, onDislike, onFollow, onUnfollow, onShare }) => {
+const ArtistProfile = ({ artist, albums, posts, onLike, onDislike, onFollow, onUnfollow, onShare, onDeleteAlbum }) => {
     return (
     <div className='artistcontainer'>
         <ArtistHeader artist={artist}
@@ -15,7 +15,7 @@ const ArtistProfile = ({ artist, albums, posts, onLike, onDislike, onFollow, onU
                     onShare={onShare}
         />
         <div className='content albums'>
-            {albums.map(album => <AlbumBox album={album} className="min"/>)}
+            {albums.map(album => <AlbumBox album={album} className="min" onDelete={onDeleteAlbum} />)}
         </div>
         <PostsList posts={posts} />
     </div>

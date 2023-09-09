@@ -8,8 +8,8 @@ const NewPostForm = ({onSubmit}) => {
       if (!title) {
         setErrorMessage("Title cannot be empty")
         return;
-      } if (title.length > 40) {
-        setErrorMessage("Title cannot be more than 40 characters long")
+      } if (title.length > 80) {
+        setErrorMessage("Title cannot be more than 80 characters long")
         return;
       }
       const content = event.target.content.value;

@@ -5,11 +5,12 @@ import { enrichPosts, fetchUserPosts} from "../Common/ServerFunctions/PostsFunct
 import { useParams } from "react-router-dom";
 import Error from "../Components/Error";
 import PostsList from "../Components/Lists/PostsList";
-import UserProfile from "../Components/UserProfile";
+import ProfileBox from "../Components/Boxes/ProfileBox";
 import { useCookies } from "react-cookie";
 import UserPage from "../Components/UserPage";
 import Link from "../Components/Link";
 import { getFeatureFlag } from "../Common/ServerFunctions/featureFlagsFunctions";
+import Display from "../Components/Display";
 
 const User = () => {
   const [profile, setProfile] = useState({});
@@ -41,13 +42,16 @@ const User = () => {
 
   return (
     <UserPage isLoaded={isLoaded} component={
-          <>
+          <div>
             <div className="content">
-              <UserProfile profile={profile} />
-              <Link text="Library" url={`/library/${id}`}/>
+              <ProfileBox profile={profile} />
             </div>
-            <PostsList posts={userPosts} />
-          </>
+            <Display components={{
+              "Posts": <PostsList posts={userPosts} />,
+              "Library": <></>
+
+            }}/>
+          </div>
     }
     />
   )
