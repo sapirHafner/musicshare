@@ -20,7 +20,7 @@ const AllUsers = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const fetchData = async () => {
-      const fetchedUsers = await fetchAllUsersProfileBoxes(userId);
+      const fetchedUsers = (await fetchAllUsersProfileBoxes(userId)).filter(_ => _.userId != userId);
       setAllUsers(fetchedUsers);
       setRelevantUsers(fetchedUsers);
       setDiscoveryProfiles(await fetchDiscoveryProfiles(userId, 5));
@@ -51,6 +51,7 @@ const AllUsers = () => {
                               removeFriendRequest(id, userId)
                            }}
                            declineFriendRequest={(id) => removeFriendRequest(userId, id)}
+                           other={true}
            />
            _______________________________________________________________________
               <SearchButton onChange={onChange} />
@@ -62,6 +63,7 @@ const AllUsers = () => {
                               removeFriendRequest(id, userId)
                            }}
                            declineFriendRequest={(id) => removeFriendRequest(userId, id)}
+                           other={true}
               />
             </div>
           <br/><br/><br/>

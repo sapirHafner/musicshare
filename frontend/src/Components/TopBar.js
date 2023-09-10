@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProfileButton from './Buttons/ProfileButton'
 
-const TopBar = ({ profile }) => {
+const TopBar = ({ profile, deleteButton }) => {
     const navigate = useNavigate();
 
   return (
@@ -11,7 +11,7 @@ const TopBar = ({ profile }) => {
             <span className="glow">MusicShare</span>
         </div>
          <div className='functions'>
-            <ProfileButton profile={ profile }/>
+            <ProfileButton profile={ profile } deleteButton={deleteButton}/>
           </div>
     </div>
   )

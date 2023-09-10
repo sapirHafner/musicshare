@@ -33,15 +33,25 @@ const UserHome = () => {
                           onLike={(id) => addUserLike(userId, id)}
                           onDislike={(id) => removeUserLike(userId, id)}
                           onFollow={(id) => addFollower(id, userId)}
-                          onUnfollow={(id) => {
-                            console.log("###")
-                            console.log(id);
-                            removeFollower(id, userId)
-                          }}
+                          onUnfollow={(id) => removeFollower(id, userId)}
                           onShare={(id, type) => navigate(`/newpost?type=${type}&id=${id}`)}
         />,
-        "Friends": <PostsList posts={getTypePosts(posts, "friend")}/>,
-        "Follows": <PostsList posts={getTypePosts(posts, "follow")}/>
+        "Friends": <PostsList posts={getTypePosts(posts, "friend")}
+                              onLike={(id) => addUserLike(userId, id)}
+                              onDislike={(id) => removeUserLike(userId, id)}
+                              onFollow={(id) => addFollower(id, userId)}
+                              onUnfollow={(id) => removeFollower(id, userId)}
+                              onShare={(id, type) => navigate(`/newpost?type=${type}&id=${id}`)}
+
+        />,
+        "Follows": <PostsList posts={getTypePosts(posts, "follow")}
+                              onLike={(id) => addUserLike(userId, id)}
+                              onDislike={(id) => removeUserLike(userId, id)}
+                              onFollow={(id) => addFollower(id, userId)}
+                              onUnfollow={(id) => removeFollower(id, userId)}
+                              onShare={(id, type) => navigate(`/newpost?type=${type}&id=${id}`)}
+
+        />
         }}
       />
     />

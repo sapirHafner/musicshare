@@ -33,6 +33,7 @@ const Library = () => {
     const [userFriends, setUserFriends] = useState();
 
     const [isLoaded, setIsLoaded] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState("Artists")
 
     const { id } = useParams();
     const [ cookies ] = useCookies()
@@ -57,7 +58,9 @@ const Library = () => {
         setIsLoaded(true);
       }
       fetchData();
-    }, [id])
+    }, [id, selectedCategory])
+
+    const onChange = (category) => setSelectedCategory(category)
 
     return (
       <UserPage selectedNavItem={userId === id ? "library" : ""} isLoaded={isLoaded} component=
@@ -75,8 +78,8 @@ const Library = () => {
 
           />
         </div>
-        <Display components={{
-                "Library": <MusicDisplay artists={likedArtists}
+        <Display onChange={onChange} components={{
+                "Library": <MusicDisplay artists={likedArtists} onChange={onChange}
                       albums={likedAlbums}
                       songs={likedSongs}
                       onLike={(musicalEntity) => addUserLike(userId, musicalEntity)}
@@ -84,7 +87,7 @@ const Library = () => {
                       onFollow={(artistId) => addFollower(artistId, userId)}
                       onUnollow={(artistId) => removeFollower(artistId, userId)}
                       onShare={(type, id) => navigate(`/newpost?type=${type}&id=${id}`)} />,
-                "Posts": <PostsList posts={userPosts} />,
+                "Posts": <PostsList posts={userPosts}  />,
                 "Follows": <ArtistsList artists={userFollows}
                                         onLike={(musicalEntity) => addUserLike(userId, musicalEntity)}
                                         onDislike={(musicalEntity) => removeUserLike(userId, musicalEntity)}

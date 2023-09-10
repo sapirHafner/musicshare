@@ -11,6 +11,8 @@ import Post from './models/Post.mjs';
 export const populateDatabase = async () => {
    try {
     await ((new FeatureFlag({name: "images", active:"true"})).save())
+    await ((new FeatureFlag({name: "deletes", active:"true"})).save())
+
     const artistsUsers = [
         {
             _id: new mongoose.Types.ObjectId(),
@@ -294,6 +296,51 @@ export const populateDatabase = async () => {
     const albumsIds = {}
     const songsIds = {}
     const usersIds = {}
+  
+    const users = [{
+      _id: new mongoose.Types.ObjectId(),
+      type: "user",
+      username: "amiti",
+      password: 123456
+  },
+  {
+      _id: new mongoose.Types.ObjectId(),
+      type: "user",
+      username: "tomeriko",
+      password: 654321
+  },
+  {
+      _id: new mongoose.Types.ObjectId(),
+      type: "user",
+      username: "danash",
+      password: 987654
+  },
+  {
+      _id: new mongoose.Types.ObjectId(),
+      type: "user",
+      username: "reuto",
+      password: 111222
+  },
+  {
+      _id: new mongoose.Types.ObjectId(),
+      type: "user",
+      username: "idani",
+      password: 333444
+  },
+  {
+      _id: new mongoose.Types.ObjectId(),
+      type: "user",
+      username: "yaellll",
+      password: 555666
+  },
+  {
+      _id: new mongoose.Types.ObjectId(),
+      type: "user",
+      username: "omers",
+      password: 777888
+  }]
+
+    const profiles = [{}]
 
     await Promise.all(artists.map(async (artist, index) => {
         const artistUser = artistsUsers[index];
@@ -349,6 +396,7 @@ export const populateDatabase = async () => {
        await artistDoc.save();
        artistsIds[artistDoc.name] = artistDoc._id;
     }))
+
 
     const posts = [
 

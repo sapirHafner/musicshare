@@ -14,6 +14,7 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
   const navigate = useNavigate();
   const [ profileBox, setProfileBox ] = useState()
   const [ isProfileLoaded, setIsProfileLoaded ] = useState(false);
+  const [ deleteProfileFeatureFlag, setDeleteProfileFeatureFlag ] = useState(false);
 
   const { userId, userType } = cookies;
 
@@ -22,11 +23,8 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
       navigate('/');
     }
     const fetchData = async () => {
-      const imagesFeatureFlag = await getFeatureFlag("images");
+      setDeleteProfileFeatureFlag(await getFeatureFlag("deletes"));
       const fetchedProfile = await fetchUserProfileBox(userId);
-      if (!imagesFeatureFlag) {
-        delete fetchedProfile.imageUrl;
-      }
       setProfileBox(fetchedProfile);
       setIsProfileLoaded(true);
     }
@@ -35,7 +33,7 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
 
   return (
     <div className='grid-container'>
-      {isProfileLoaded ? <TopBar profile={profileBox}/> : <TopBar profile={{}}/>}
+      {isProfileLoaded ? <TopBar profile={profileBox} deleteButton={deleteProfileFeatureFlag}/> : <TopBar profile={{}} />}
       <UserNavigationBar selectedItem={selectedNavItem}/>
 
         <div className='main'>
