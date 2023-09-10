@@ -32,7 +32,7 @@ const AllUsers = () => {
   }, [])
 
 
-  const onChange = (searchTerm) => setRelevantUsers(allUsers.filter(user => `${user.firstName} ${user.lastName}`.startsWith(searchTerm)))
+  const onChange = (searchTerm) => setRelevantUsers(allUsers.filter(user => `${user.firstName} ${user.lastName}`.toLowerCase().startsWith(searchTerm)))
 
   return (
     <UserPage selectedNavItem='allUsers' isLoaded={isLoaded} component={

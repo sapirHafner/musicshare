@@ -44,7 +44,6 @@ const ArtistHome = () => {
       setArtist(fetchedArtist);
       setArtistAlbums(await fetchAlbums(fetchedArtist.albumsIds));
       setPosts(await enrichPosts(await fetchUserPosts(userId)))
-
       setImagesFeatureFlags(await getFeatureFlag("images"))
       setIsLoaded(true);
     }
@@ -77,7 +76,7 @@ const ArtistHome = () => {
                 <Display components={{
                     "Profile": <ArtistProfile artist={artist}
                                               albums={artistAlbums}
-                                              posts={posts}
+                                              artistPosts={posts}
                                               onDeleteAlbum={deleteAlbum}
                                               />,
                     "Browse": <MusicDisplay

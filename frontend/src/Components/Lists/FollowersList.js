@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { fetchArtistFollowers } from '../../Common/ServerFunctions/followersFunctions'
 import { useCookies } from 'react-cookie';
 import { fetchUsersProfileBoxes } from '../../Common/ServerFunctions/ProfilesFunctions';
+import ProfileBox from '../Boxes/ProfileBox';
 
 const FollowersList = () => {
     const [followers, setFollowers] = useState();
@@ -11,7 +12,7 @@ const FollowersList = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-          setFollowers(await fetchUsersProfileBoxes(await fetchArtistFollowers(artistId), userId));
+          setFollowers(await fetchUsersProfileBoxes(await fetchArtistFollowers(artistId), userId, "artist"));
           setIsLoaded(true);
         };
         fetchData();
@@ -23,7 +24,7 @@ const FollowersList = () => {
       {followers.length} followers
       {followers.map(follower =>
         <div>
-          {follower.firstName} {follower.lastName}
+          <ProfileBox profile={follower}/>
         </div>)}
         </>)
     : <p>

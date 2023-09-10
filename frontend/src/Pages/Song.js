@@ -35,7 +35,6 @@ const Song = () => {
       setArtist(fetchedArtists[0]);
       const postsAboutSong = await fetchMusicalEntityPosts(songId)
       setPosts(await enrichPosts(postsAboutSong, userId));
-      console.log(fetchedSong)
       setIsLoaded(true)
     };
     fetchData()

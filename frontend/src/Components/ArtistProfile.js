@@ -21,7 +21,7 @@ const ArtistProfile = ({ artist, albums, posts, artistPosts, onLike, onDislike, 
         <Display components={
            {
             "Artist Posts": <PostsList posts={artistPosts} />,
-            "Posted About": <PostsList posts={posts} />
+            ...(posts && { "Posted About": <PostsList posts={posts} /> })
            }
         }/>
     </div>

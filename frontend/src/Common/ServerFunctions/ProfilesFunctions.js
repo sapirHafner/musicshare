@@ -25,11 +25,14 @@ export const fetchUserProfileBox = async (userId, currentUserId) =>
     }
 }
 
-export const fetchUsersProfileBoxes = async (userIds, currentUserId) => {
+export const fetchUsersProfileBoxes = async (userIds, currentUserId, type) => {
     if (userIds.length === 0) {
         return []
     }
     const profileBoxes = (await axios.get(`${profilesServerUrl}?ids=${userIds.join()}&box=true`)).data
+    if (type === "artist") {
+        return profileBoxes;
+    }
     return Promise.all(profileBoxes.map(async profileBox => {
         return {
             ...profileBox,
