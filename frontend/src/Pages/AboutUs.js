@@ -5,7 +5,6 @@ const AboutUs = () => {
      <div className='aboutUs'>
         <h1>About Us</h1>
         <br></br>
-        
         <div className='developerDesign'>
         <h3>Sapir Hafner:</h3>
         <p>
