@@ -18,6 +18,7 @@ import Logout from './Pages/Logout';
 import Album from './Pages/Album';
 import Song from './Pages/Song'
 import AboutUs from './Pages/AboutUs'
+import CodeOfConduct from './Pages/CodeOfConduct'
 
 const router = createBrowserRouter([
       {
@@ -87,9 +88,12 @@ const router = createBrowserRouter([
       {
         path: 'aboutUs',
         element: <AboutUs />
-      }
+      },
       
-
+      {
+        path: 'codeOfConduct',
+        element: <CodeOfConduct />
+      }
     ])
 
 
