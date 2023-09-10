@@ -3,8 +3,8 @@ import { getMusicalEntityBoxComponent } from '../Common/Utilities'
 import ProfileBox from './Boxes/ProfileBox'
 import ArtistBox from './Boxes/ArtistBox'
 
-const Post = ({post}) => {
-  const musicalEntityComponent = getMusicalEntityBoxComponent(post.musicalEntity)
+const Post = ({post, onLike, onDislike, onFollow, onUnfollow, onShare}) => {
+  const musicalEntityComponent = getMusicalEntityBoxComponent(post.musicalEntity, onLike, onDislike, onFollow, onUnfollow, onShare)
   return (
     <div className='post content'>
       <div className='left'>

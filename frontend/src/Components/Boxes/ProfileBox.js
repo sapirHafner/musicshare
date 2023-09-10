@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from '../Link';
 import friendsIcon from '../../Assets/Icons/friends-icon.png'
 
-const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest, acceptFriendRequest, declineFriendRequest}) => {
+const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest, acceptFriendRequest, declineFriendRequest, other}) => {
   const [friendRequestSent, setFriendRequestSent] = useState(profile.isFriendRequestSent);
   const [friendRequestReceived, setFriendRequestReceived] = useState(profile.isFriendRequestReceived);
   const [isFriend, setIsFriend] = useState(profile.isFriend)
@@ -61,7 +61,7 @@ const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest, acceptFrie
           <Link text={`${profile.firstName} ${profile.lastName}`} url={`/library/${profile.userId}`} />
         </div>
         {
-          sendFriendRequest && removeFriendRequest && !friendRequestReceived && !isFriend && (
+          other && sendFriendRequest && removeFriendRequest && !friendRequestReceived && !isFriend && (
             friendRequestSent ?
               <button id='addFriend' onClick={handleRemoveRequst}>Remove friend request</button>
             :
@@ -69,14 +69,14 @@ const ProfileBox = ({profile, sendFriendRequest, removeFriendRequest, acceptFrie
           )
         }
         {
-          acceptFriendRequest && declineFriendRequest && friendRequestReceived &&
+          other && acceptFriendRequest && declineFriendRequest && friendRequestReceived &&
           <div>
             <button id='accept' onClick={handleAcceptRequest}>Accept</button>
             <button id='decline' onClick={handleDeclineRequest}>Decline</button>
           </div>
         }
         {
-          isFriend && <img className='icon' src={friendsIcon} />
+          other && isFriend && <img className='icon' src={friendsIcon} />
         }
       </div>
   )

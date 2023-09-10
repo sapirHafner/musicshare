@@ -66,6 +66,24 @@ export const fetchFeedPosts = async (userId) => {
 
   posts = posts.flatMap(innerArray => innerArray);
   posts = posts.flatMap(innerArray => innerArray);
+  const songsIds = posts.map(_ => _.post).filter(_ => _.musicalEntity.type === "song").map(_ => _.musicalEntity.entity._id)
+  const albumsIds = posts.map(_ => _.post).filter(_ => _.musicalEntity.type === "album").map(_ => _.musicalEntity.entity._id)
+  const artistsIds = posts.map(_ => _.post).filter(_ => _.musicalEntity.type === "artist").map(_ => _.musicalEntity.entity._id)
+  const [artists, albums, songs] = await fetchFullDetails(userId, artistsIds, albumsIds, songsIds);
+
+  posts.forEach(post => {
+    const id = post.post.musicalEntity.entity._id;
+    const type = post.post.musicalEntity.type;
+    if (type === "song") {
+      post.post.musicalEntity.entity = songs.find(song => song._id === id)
+    }
+    else if (type === "album") {
+      post.post.musicalEntity.entity = albums.find(album => album._id === id)
+    }
+    else if (type === "artist") {
+      post.post.musicalEntity.entity = artists.find(artist => artist._id === id)
+    }
+  })
   posts = posts.sort((a, b) => new Date(b.post.createdAt) - new Date(a.post.createdAt));
   return posts;
 }

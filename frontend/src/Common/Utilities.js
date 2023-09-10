@@ -32,13 +32,13 @@ export const createIdsQuery = (ids) => {
 export const isEmptyArray = (array) =>
   Array.isArray(array) && array.length === 0;
 
-export const getMusicalEntityBoxComponent = (musicalEntity) => {
+export const getMusicalEntityBoxComponent = (musicalEntity, onLike, onDislike, onFollow, onUnfollow, onShare) => {
   if (musicalEntity.type === "song") {
-    return <SongBox song={musicalEntity.entity} />
+    return <SongBox song={musicalEntity.entity} onLike={onLike} onDislike={onDislike} onShare={(id) => onShare(id, "song")}/>
   } else if (musicalEntity.type === "album") {
-    return <AlbumBox album={musicalEntity.entity} />
+    return <AlbumBox album={musicalEntity.entity} onLike={onLike} onDislike={onDislike} onShare={(id) => onShare(id, "album")}/>
   } else if (musicalEntity.type === "artist") {
-    return <ArtistBox artist={musicalEntity.entity} />
+    return <ArtistBox artist={musicalEntity.entity} onLike={onLike} onDislike={onDislike} onFollow={onFollow} onUnfollow={onUnfollow} onShare={(id) => onShare(id, "artist")}/>
   }
 }
 

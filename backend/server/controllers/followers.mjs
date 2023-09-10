@@ -52,6 +52,7 @@ export const addFollower = async (req, res) => {
 
 export const removeFollower = async (req, res) => {
     try {
+        console.log(req.body)
         const artistFollowers = await Followers.findOne({artistId: req.body.artistId})
         artistFollowers.followers.remove(req.body.userId)
         await artistFollowers.save();

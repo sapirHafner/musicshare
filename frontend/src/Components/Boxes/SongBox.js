@@ -25,7 +25,7 @@ const SongBox = ({song, onLike, onDislike, onShare}) => {
       <div className="functions">
       {
         onLike && onDislike &&
-          <LikeButton isLiked={song.liked} onLike={onLike} onDislike={onDislike} likesNumber={song.likesNumber}/>
+          <LikeButton id={song._id} isLiked={song.liked} onLike={onLike} onDislike={onDislike} likesNumber={song.likesNumber}/>
       }
       {
         onShare &&

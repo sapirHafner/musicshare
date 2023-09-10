@@ -71,6 +71,7 @@ const Library = () => {
                         removeFriendRequest(id, userId)
                         }}
                       declineFriendRequest={(id) => removeFriendRequest(userId, id)}
+                      other={id != userId}
 
           />
         </div>
