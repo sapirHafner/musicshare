@@ -8,9 +8,12 @@ const SongBox = ({song, onLike, onDislike, onShare}) => {
   return (
     <div className='musicalentity box'>
       <div className='details'>
+      {
+        song.album.imageUrl &&
         <div className='boximage'>
-          <img class='musicimage' src='https://m.media-amazon.com/images/I/31wx3zcYTfL._UF1000,1000_QL80_.jpg' />
+          <img class='musicimage' src={song.album.imageUrl}/>
         </div>
+      }
         <div>
           <Link text={song.name} url={`/song/${song._id}`} />
           <Link text={song.artist.name} url={`/artist/${song.artist._id}`} />
@@ -22,7 +25,7 @@ const SongBox = ({song, onLike, onDislike, onShare}) => {
       <div className="functions">
       {
         onLike && onDislike &&
-          <LikeButton isLiked={song.liked} onLike={onLike} onDislike={onDislike} likesNumber={song.likesNumber}/>
+          <LikeButton id={song._id} isLiked={song.liked} onLike={onLike} onDislike={onDislike} likesNumber={song.likesNumber}/>
       }
       {
         onShare &&

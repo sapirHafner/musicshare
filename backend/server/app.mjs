@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import router from './routes/router.mjs';
 import cors from 'cors'
+import { populateDatabase } from './populateDatabase.mjs';
 
 const app = express();
 const port = 4000;
@@ -18,6 +19,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
     console.log('Connected to MongoDB');
     app.listen(port, () => {
       console.log(`server listening on port ${port}`)
+      populateDatabase();
     })
   })
   .catch((err) => {

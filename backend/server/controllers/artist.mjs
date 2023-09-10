@@ -1,4 +1,5 @@
 import Artist from '../models/Artist.mjs';
+import FeatureFlag from '../models/FeatureFlag.mjs';
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import path from 'path';
@@ -8,10 +9,14 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getArtist = async (req, res) => {
     try {
+        const imagesFeatureFlag = (await FeatureFlag.findOne({"name": "images"})).active;
         const artist = await Artist.findById(req.params.id);
         if (!artist) {
             res.sendStatus(404);
             return;
+        }
+        if (!imagesFeatureFlag) {
+            artist.imageUrl = null;
         }
         res.status(200).send(artist);
     } catch (error) {
@@ -21,6 +26,7 @@ export const getArtist = async (req, res) => {
 }
 export const getArtists = async (req, res) => {
     try {
+        const imagesFeatureFlag = (await FeatureFlag.findOne({"name": "images"})).active;
         const query = {};
         if (req.query.ids !== undefined) {
             query._id = {$in: req.query.ids.split(',')}
@@ -30,6 +36,9 @@ export const getArtists = async (req, res) => {
             query.userId = req.query.userId
         }
         const artists = await Artist.find(query);
+        if (!imagesFeatureFlag) {
+            artists.forEach(_ => _.imageUrl = null)
+        }
         res.status(200).send(artists);
     } catch (error) {
         console.error(error);

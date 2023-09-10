@@ -64,15 +64,10 @@ export const deleteArtistAlbums = async (artistId) =>
 export const deleteAlbum = async (albumId) => {
     const album = await fetchAlbum(albumId);
     await axios.delete(`${albumsServerUrl}/${albumId}`)
-    console.log("f[dsfds")
     await removeAlbumFromArtist(album.artistId, albumId);
-    console.log("er-0odgskgo")
     await deleteMusicalEntityLikes(albumId);
-    console.log("###")
     await deleteMusicalEntityPosts(albumId);
-    console.log("#")
     await deleteAlbumSongs(albumId);
-    console.log("wqer-wertk-o")
     await Promise.all(album.songsIds.map(async songId => {
       await deleteMusicalEntityLikes(songId);
       await deleteMusicalEntityPosts(songId);

@@ -3,8 +3,9 @@ import React from 'react'
 import ArtistHeader from './Headers/ArtistHeader'
 import AlbumBox from './Boxes/AlbumBox'
 import PostsList from './Lists/PostsList'
+import Display from './Display'
 
-const ArtistProfile = ({ artist, albums, posts, onLike, onDislike, onFollow, onUnfollow, onShare, onDeleteAlbum }) => {
+const ArtistProfile = ({ artist, albums, posts, artistPosts, onLike, onDislike, onFollow, onUnfollow, onShare, onDeleteAlbum }) => {
     return (
     <div className='artistcontainer'>
         <ArtistHeader artist={artist}
@@ -17,7 +18,12 @@ const ArtistProfile = ({ artist, albums, posts, onLike, onDislike, onFollow, onU
         <div className='content albums'>
             {albums.map(album => <AlbumBox album={album} className="min" onDelete={onDeleteAlbum} />)}
         </div>
-        <PostsList posts={posts} />
+        <Display components={
+           {
+            "Artist Posts": <PostsList posts={artistPosts} />,
+            ...(posts && { "Posted About": <PostsList posts={posts} /> })
+           }
+        }/>
     </div>
   )
 }

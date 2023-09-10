@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import searchIcon from '../../Assets/Icons/search-icon.png';
 
-const SearchButton = () => {
+const SearchButton = ({ onChange }) => {
     const [ isClicked, setIsClicked ] = useState([false]);
     const onClick = () => setIsClicked(!isClicked)
   return (
     <>
-      { isClicked ? (
-        <div onClick={onClick}>
-            <img className='icon clickable' src={searchIcon} alt='Search Icon' />
-        </div>
-      ) : (
         <div className='functions'>
-            <input />
+          {isClicked &&  <input onChange={(event) => onChange(event.target.value)}/> }
             <div onClick={onClick}>
                 <img className='icon clickable' src={searchIcon} alt='Search Icon' />
             </div>
         </div>
-      )}
     </>
   );
 };

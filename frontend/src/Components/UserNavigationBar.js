@@ -22,10 +22,10 @@ const UserNavigationBar = ({ selectedItem }) => {
         route: `/library/${userId}`
     };
 
-    const friendsNavItem = {
-        key: "friends",
-        title: "Friends",
-        route: "/friends"
+    const allUsersNavItem = {
+        key: "allUsers",
+        title: "All Users",
+        route: "/allUsers"
     };
 
     const friendsRequestsNavItem = {
@@ -38,7 +38,7 @@ const UserNavigationBar = ({ selectedItem }) => {
         homeNavItem,
         browseNavItem,
         LibraryNavItem,
-        friendsNavItem,
+        allUsersNavItem,
         friendsRequestsNavItem
         ];
 

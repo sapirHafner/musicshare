@@ -6,9 +6,8 @@ import {
 import CreateUser from './Pages/CreateUser'
 import Home from './Pages/Home';
 import LoginPage from './Pages/LoginPage';
-import User from './Pages/User';
 import Artist from './Pages/Artist'
-import Friends from './Pages/Friends';
+import AllUsers from './Pages/AllUsers';
 import FriendsRequests from './Pages/FriendsRequests';
 import Library from './Pages/Library';
 import NewPost from './Pages/NewPost';
@@ -46,10 +45,6 @@ const router = createBrowserRouter([
         element: <Browse />
       },
       {
-        path: "user/:id",
-        element: <User />
-      },
-      {
         path: 'artist/:artistId',
         element: <Artist />
       },
@@ -58,8 +53,8 @@ const router = createBrowserRouter([
         element: <Album />
       },
       {
-        path: "friends",
-        element: <Friends />
+        path: "allUsers",
+        element: <AllUsers />
       },
       {
         path: "friendsRequests",

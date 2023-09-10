@@ -8,7 +8,12 @@ const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getMusicalEntityPosts = async (req, res) => {
     try {
-        const posts = await Post.find({"musicalEntity.id": req.params.musicalEntityId});
+        const sort = {};
+        if (req.query.orderby == 'createdat_desc') {
+            sort.createdAt = -1
+        }
+
+        const posts = await Post.find({"musicalEntity.id": req.params.musicalEntityId}).sort(sort);
         if (!posts) {
             res.sendStatus(404);
             return;

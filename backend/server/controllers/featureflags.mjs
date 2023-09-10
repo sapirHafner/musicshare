@@ -70,7 +70,6 @@ export const updateFeatureFlag = async (req, res) => {
 
 export const deleteFeatureFlag = async (req, res) => {
     try {
-        console.log(req.params)
         const deletedFeatureFlag = await FeatureFlag.findOneAndDelete({name: req.params.name});
         if (!deletedFeatureFlag) {
             res.status(404).send('Feature flag not found');

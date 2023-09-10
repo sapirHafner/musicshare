@@ -36,7 +36,7 @@ const AlbumBox = ({album, onLike, onDislike, onShare, className, onDelete}) => {
       <div>
       {
         onLike && onDislike &&
-          <LikeButton isLiked={album.liked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
+          <LikeButton id={album._id} isLiked={album.liked} onLike={onLike} onDislike={onDislike} likesNumber={album.likesNumber}/>
       }
       {
         onShare &&

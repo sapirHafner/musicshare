@@ -10,7 +10,7 @@ export const getFriendsRequestsByUserId = async (req, res) => {
     try {
         const userFriendsRequests = await FriendsRequests.findOne({userId: req.params.userId});
         if (!userFriendsRequests) {
-            res.sendStatus(404).send('User friends requests not found');
+            res.status(404).send('User friends requests not found');
             return;
         }
         res.status(200).send(userFriendsRequests.requestsUserIds);

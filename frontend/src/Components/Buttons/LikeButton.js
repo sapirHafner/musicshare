@@ -6,7 +6,7 @@ const LikeButton = ({ id, isLiked, onLike, onDislike, likesNumber}) => {
   const [liked, setLiked] = useState(isLiked);
   const [likesNum, setLikesNum] = useState(likesNumber ? likesNumber : 0);
   const handleLike = () => {
-    try {
+    try { 
       setLiked(true);
       setLikesNum(likesNum + 1);
       onLike(id);

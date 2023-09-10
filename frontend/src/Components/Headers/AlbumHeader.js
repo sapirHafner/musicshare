@@ -6,6 +6,9 @@ const AlbumHeader = ({ album, onLike, onDislike, onShare }) => {
   return (
     <div className='content header'>
         <div>
+        {
+          album.imageUrl && <img className="musical" src={album.imageUrl} />
+        }
             <div className='header-type'>
                 album
             </div>

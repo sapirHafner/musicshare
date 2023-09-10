@@ -620,3 +620,24 @@ button {
   margin: 1rem;
   border-radius: 0.5rem;
 }
+
+.post .component {
+  width: 30rem;
+  background-color: rgb(red, green, blue);
+  border-radius: 0.5rem;
+}
+
+.post .component .box {
+  background-color: rgba(45, 44, 44, 0.745)
+}
+
+.post {
+  position: relative;
+  right:10rem;
+  width: 90rem;
+}
+
+.display-buttons {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}

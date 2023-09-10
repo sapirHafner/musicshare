@@ -2,11 +2,13 @@ import Profile from "../models/Profile.mjs";
 import fs from 'fs/promises';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import FeatureFlag from '../models/FeatureFlag.mjs'
 
 const moduleFilePath = fileURLToPath(import.meta.url);
 const logsFilePath = path.join(path.dirname(moduleFilePath), '../logs.txt');
 
 export const getProfiles = async (req, res) => {
+    const imagesFeatureFlag = (await FeatureFlag.findOne({"name": "images"})).active;
     try {
         const query = {};
         if (req.query.ids !== undefined) {
@@ -19,10 +21,13 @@ export const getProfiles = async (req, res) => {
                     userId: profile.userId,
                     firstName: profile.firstName,
                     lastName: profile.lastName,
-                    imageUrl: profile.imageUrl
+                    imageUrl: imagesFeatureFlag ? profile.imageUrl : null
             }});
             res.status(200).send(profilesBoxes);
             return;
+        }
+        if (!imagesFeatureFlag) {
+            profiles.forEach(_ => delete _.imageUrl)
         }
         res.status(200).send(profiles);
     } catch {
@@ -32,6 +37,7 @@ export const getProfiles = async (req, res) => {
 }
 
 export const getProfileByUserId = async (req, res) => {
+    const imagesFeatureFlag = (await FeatureFlag.findOne({"name": "images"})).active;
     try {
         const profile = await Profile.findOne({userId: req.params.userId});
         if (!profile) {
@@ -43,9 +49,12 @@ export const getProfileByUserId = async (req, res) => {
                 userId: profile.userId,
                 firstName: profile.firstName,
                 lastName: profile.lastName,
-                imageUrl: profile.imageUrl
+                imageUrl: imagesFeatureFlag ? profile.imageUrl : null
             });
             return;
+        }
+        if (!imagesFeatureFlag) {
+            delete profile.imageUrl
         }
         res.status(200).send(profile);
     } catch {
@@ -56,7 +65,6 @@ export const getProfileByUserId = async (req, res) => {
 
 export const addProfile = async (req, res) => {
     try {
-        console.log(req.body)
         const emailExists = await Profile.exists({email: req.body.email});
         if (emailExists) {
             res.status(409).send('Email already exists');

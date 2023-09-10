@@ -14,7 +14,7 @@ const SongListItem = ({song, onLike, onDislike, onShare}) => {
             </div>
         }
           <div>
-            {song.name}
+            <Link text={song.name} url={`/song/${song._id}`} />
             <Link text={song.artist.name} url={`/artist/${song.artist._id}`} />
           </div>
       </div>

@@ -6,9 +6,8 @@ import SongsList from '../Components/Lists/SongsList'
 import PostsList from '../Components/Lists/PostsList'
 import UserPage from '../Components/UserPage'
 
-import { addSongLike, removeSongLike } from '../Common/ServerFunctions/likesFunctions'
+import { addUserLike, removeUserLike } from '../Common/ServerFunctions/likesFunctions'
 import { fetchAlbum } from '../Common/ServerFunctions/AlbumFunctions'
-import { addAlbumLike, removeAlbumLike } from '../Common/ServerFunctions/likesFunctions'
 import { fetchFullDetails } from '../Common/ServerFunctions/MusicalEntitiesFunctions'
 import { fetchMusicalEntityPosts, enrichPosts } from '../Common/ServerFunctions/PostsFunctions'
 import AlbumHeader from '../Components/Headers/AlbumHeader';
@@ -25,7 +24,7 @@ const Album = () => {
   useEffect(() => {
     const fetchData = async () => {
       const fetchedAlbum = await fetchAlbum(albumId)
-      const [fetchedArtists, fetchedAlbums, fetchedSongs] = await fetchFullDetails(userId, [fetchedAlbum.artistId], [albumId], fetchedAlbum.songIds)
+      const [fetchedArtists, fetchedAlbums, fetchedSongs] = await fetchFullDetails(userId, [fetchedAlbum.artistId], [albumId], fetchedAlbum.songsIds)
       setAlbum({...fetchedAlbums[0], artist: fetchedArtists[0].Name})
       setSongs(fetchedSongs);
       const postsAboutAlbum = await fetchMusicalEntityPosts(albumId)
@@ -40,12 +39,12 @@ const Album = () => {
     <UserPage isLoaded={isLoaded} component=
       <div>
         <AlbumHeader album={album}
-                    onLike={() => addAlbumLike(userId, album._id)}
-                    onDislike={() => removeAlbumLike(userId, album._id)}/>
+                    onLike={() => addUserLike(userId, album._id)}
+                    onDislike={() => removeUserLike(userId, album._id)}/>
         <div className='content songs'>
           <SongsList songs={songs}
-                     onLike={(id) => addSongLike(userId, id)}
-                     onDislike={(id) => removeSongLike(userId, id)}
+                     onLike={(id) => addUserLike(userId, id)}
+                     onDislike={(id) => removeUserLike(userId, id)}
           />
         </div>
         <PostsList posts={posts} />

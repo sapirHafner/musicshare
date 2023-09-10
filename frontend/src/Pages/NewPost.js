@@ -44,7 +44,7 @@ const NewPost = () => {
       userId
     }
     await createNewPost(Post);
-    userType === "user" ? navigate(`/user/${userId}`) : navigate('/');
+    userType === "user" ? navigate(`/library/${userId}`) : navigate('/');
   }
 
 
