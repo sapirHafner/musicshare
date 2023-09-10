@@ -20,6 +20,7 @@ export const isFriendRequestSent = async (askingUserId, receivingUserId) => {
     return receivingUserFriendsRequests.includes(askingUserId);
 }
 
+
 export const createNewFriendsRequestsList = async (userId) =>
     (await axios.post(friendsRequestsServerUrl, {userId})).data
 

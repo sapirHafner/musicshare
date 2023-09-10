@@ -6,9 +6,9 @@ import UserPage from '../Components/UserPage'
 
 import { fetchArtist } from '../Common/ServerFunctions/ArtistFunctions'
 import { fetchAlbums } from '../Common/ServerFunctions/AlbumFunctions'
-import {  isUserLiking, addArtistLike, removeArtistLike, getEntityLikesNumber } from '../Common/ServerFunctions/likesFunctions'
+import {  isUserLiking, addUserLike, removeUserLike, getEntityLikesNumber } from '../Common/ServerFunctions/likesFunctions'
 import { isUserFollowing, addFollower, removeFollower } from '../Common/ServerFunctions/followersFunctions'
-import { enrichPosts, fetchMusicalEntityPosts } from '../Common/ServerFunctions/PostsFunctions'
+import { enrichPosts, fetchMusicalEntityPosts, fetchUserPosts } from '../Common/ServerFunctions/PostsFunctions'
 import ArtistProfile from '../Components/ArtistProfile'
 
 const Artist = () => {
@@ -20,6 +20,7 @@ const Artist = () => {
   const [artist, setArtist] = useState();
   const [albums, setAlbums] = useState();
   const [posts, setPosts ] = useState();
+  const [artistPosts, setArtistPosts] = useState();
 
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -33,6 +34,7 @@ const Artist = () => {
       setAlbums(await fetchAlbums(fetchedArtist.albumsIds));
       const postsAboutArtists = await fetchMusicalEntityPosts(artistId)
       setPosts(await enrichPosts(postsAboutArtists, userId));
+      setArtistPosts(await enrichPosts(await fetchUserPosts(fetchedArtist.userId), userId))
       setIsLoaded(true)
 
     };
@@ -44,8 +46,9 @@ const Artist = () => {
         <ArtistProfile artist={artist}
                       albums={albums}
                       posts={posts}
-                      onLike={() => addArtistLike(userId, artist._id)}
-                      onDislike={() => removeArtistLike(userId, artist._id)}
+                      artistPosts={artistPosts}
+                      onLike={() => addUserLike(userId, artist._id)}
+                      onDislike={() => removeUserLike(userId, artist._id)}
                       onFollow={() => addFollower(artist._id, userId)}
                       onUnfollow={() => removeFollower(artist._id, userId)}
                       onShare={() => navigate(`/newpost?type=artist&id=${artist._id}`)}

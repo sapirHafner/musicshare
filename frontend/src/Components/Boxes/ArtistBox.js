@@ -6,7 +6,7 @@ import Link from '../Link'
 
 const ArtistBox = ({ artist, onLike, onDislike, onFollow, onUnfollow, onShare }) => {
   return (
-  <div className='profile-box' style={{width:"max-content"}}>
+  <div className='musicalentity box profile-box' style={{width:"15rem"}}>
     <div className='details'>
       {
         artist.imageUrl &&
@@ -15,7 +15,7 @@ const ArtistBox = ({ artist, onLike, onDislike, onFollow, onUnfollow, onShare })
         </span>
       }
       <div>
-        <span style={{color:'grey'}}>user</span>
+        <span style={{color:'grey'}}>artist</span>
         <Link text={artist.name} url={`/artist/${artist._id}`} />
       </div>
     </div>

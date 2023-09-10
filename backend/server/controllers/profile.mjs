@@ -56,7 +56,6 @@ export const getProfileByUserId = async (req, res) => {
 
 export const addProfile = async (req, res) => {
     try {
-        console.log(req.body)
         const emailExists = await Profile.exists({email: req.body.email});
         if (emailExists) {
             res.status(409).send('Email already exists');

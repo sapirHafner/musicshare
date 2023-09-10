@@ -2,9 +2,12 @@ import React from 'react'
 import profileButton from '../../Assets/Icons/user-icon.png'
 import { useState } from 'react';
 import Link from '../Link';
+import { deleteUser } from '../../Common/ServerFunctions/UserFunctions';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileButton = ({ profile }) => {
   const [ isClicked, setIsClicked ] = useState(false);
+  const navigate = useNavigate;
   const onClick = () => setIsClicked(!isClicked)
   return (
     <div className='profilebutton'>
@@ -18,7 +21,12 @@ const ProfileButton = ({ profile }) => {
             <div style={{"color": "black"}} >
               { profile.firstName } { profile.lastName }
             </div>
-            <Link text={"Profile"} url={`/user/${profile.userId}`}/>
+            <span className='clickable' onClick={() => {
+               deleteUser(profile.userId, "user")
+               navigate('/logout')
+            }}>
+              delete user
+            </span>
             <span id="logout">
               <Link text={"Log Out"} url={`/logout`}/>
             </span>

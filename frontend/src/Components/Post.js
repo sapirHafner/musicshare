@@ -27,7 +27,7 @@ const Post = ({post}) => {
         </div>
       </div>
 
-      <div>
+      <div className='component'>
         {musicalEntityComponent}
       </div>
     </div>

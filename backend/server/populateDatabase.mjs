@@ -327,7 +327,7 @@ export const populateDatabase = async () => {
             })
             await albumLikes.save()
             const albumSongs = songs[album.name];
-            Promise.all(albumSongs.map(async song => {
+            await Promise.all(albumSongs.map(async song => {
                 const createdSong = new Song({name: song, albumId: createdAlbum._id})
                 const songLikes = new Likes({
                     musicalEntity: {
@@ -952,7 +952,6 @@ export const populateDatabase = async () => {
 
 
     }  catch (error) {
-        console.log(erro)
    }
 
 }

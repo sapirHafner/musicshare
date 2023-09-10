@@ -67,7 +67,7 @@ export const fetchFeedPosts = async (userId) => {
   posts = posts.flatMap(innerArray => innerArray);
   posts = posts.flatMap(innerArray => innerArray);
   posts.sort((a, b) => new Date(b.post.CreatedAt) - new Date(a.post.CreatedAt));
-  return posts
+  return posts;
 }
 
 export const fetchMusicalEntityPosts = async (musicalEntityId) =>

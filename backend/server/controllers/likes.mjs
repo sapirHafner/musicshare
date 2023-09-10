@@ -51,6 +51,7 @@ const addUserLike = async (req, res) => {
 
 const removeUserLike = async (req, res) => {
     try {
+        console.log(req.body)
         const musicalEntityLikes = await Likes.findOne({'musicalEntity.id': req.body.musicalEntityId})
         if (!musicalEntityLikes) {
             res.sendStatus(404);
