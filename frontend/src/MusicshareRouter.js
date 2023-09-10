@@ -17,6 +17,7 @@ import AddNewAlbum from './Pages/AddNewAlbum';
 import Logout from './Pages/Logout';
 import Album from './Pages/Album';
 import Song from './Pages/Song'
+import AboutUs from './Pages/AboutUs'
 
 const router = createBrowserRouter([
       {
@@ -77,10 +78,18 @@ const router = createBrowserRouter([
         path: `logout`,
         element: <Logout />
       },
+      
       {
         path: `song/:songId`,
         element: <Song />
       },
+
+      {
+        path: 'aboutUs',
+        element: <AboutUs />
+      }
+      
+
     ])
 
 

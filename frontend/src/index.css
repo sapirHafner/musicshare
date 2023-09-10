@@ -641,3 +641,34 @@ button {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+
+.developerDesign{
+  position: relative;
+  background:rgb(226, 231, 232);
+  width: 70%;
+  height: 70%;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px 20px 20px 20px;
+  border-radius: 15px;
+  color:#3a3939;
+}
+
+.aboutUs{
+  position: relative;
+  background:rgb(179, 176, 176);
+  width: 70%;
+  height: 70%;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 15px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 15px;
+  color:#3a3939;
+  text-align: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3), 0 3px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.aboutUs h1{
+  font-family:monospace;
+}
