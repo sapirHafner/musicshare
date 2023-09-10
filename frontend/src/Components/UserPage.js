@@ -15,6 +15,8 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
   const [ profileBox, setProfileBox ] = useState()
   const [ isProfileLoaded, setIsProfileLoaded ] = useState(false);
   const [ deleteProfileFeatureFlag, setDeleteProfileFeatureFlag ] = useState(false);
+  const [ aboutUsPageFeatureFlag, setAboutUsPageFeatureFlag ] = useState(false);
+  const [ codeOfConductPageFeatureFlag, setCodeOfConductPageFeatureFlag ] = useState(false);
 
   const { userId, userType } = cookies;
 
@@ -24,6 +26,8 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
     }
     const fetchData = async () => {
       setDeleteProfileFeatureFlag(await getFeatureFlag("deletes"));
+      setAboutUsPageFeatureFlag(await getFeatureFlag("aboutUsPage"))
+      setCodeOfConductPageFeatureFlag(await getFeatureFlag("codeOfConductPage"))
       const fetchedProfile = await fetchUserProfileBox(userId);
       setProfileBox(fetchedProfile);
       setIsProfileLoaded(true);
@@ -33,7 +37,7 @@ const UserPage = ({ component, isLoaded, selectedNavItem }) => {
 
   return (
     <div className='grid-container'>
-      {isProfileLoaded ? <TopBar profile={profileBox} deleteButton={deleteProfileFeatureFlag}/> : <TopBar profile={{}} />}
+      {isProfileLoaded ? <TopBar profile={profileBox} deleteButton={deleteProfileFeatureFlag} aboutUs={aboutUsPageFeatureFlag} codeOfConduct={codeOfConductPageFeatureFlag}cp/>  : <TopBar profile={{}} />}
       <UserNavigationBar selectedItem={selectedNavItem}/>
 
         <div className='main'>

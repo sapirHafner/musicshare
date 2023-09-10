@@ -1,0 +1,22 @@
+user 64fd91950531424528157220 logged in
+user 64fd91950531424528157220 logged out
+admin logged in
+admin 0 logged out
+user 64fdc910a80bccc9dba66485 created and logged in
+Created profile 64fdc910a80bccc9dba66488 for user 64fdc910a80bccc9dba66485
+Created empty friends list for user 64fdc910a80bccc9dba66485
+Created empty friends list for user 64fdc910a80bccc9dba66485
+user 64fdc910a80bccc9dba66485 logged out
+admin logged in
+Feature flag 64fdc8c9a80bccc9dba6629b updated
+Feature flag 64fdc8c9a80bccc9dba6629b updated
+Feature flag 64fdc8c9a80bccc9dba66299 updated
+Feature flag 64fdc8c9a80bccc9dba6629b updated
+Feature flag 64fdc8c9a80bccc9dba6629b updated
+admin 0 logged out
+user 64fdc910a80bccc9dba66485 logged in
+user 64fdc910a80bccc9dba66485 logged out
+admin logged in
+Feature flag 64fdc8c9a80bccc9dba66299 updated
+admin 0 logged out
+user 64fdc910a80bccc9dba66485 logged in

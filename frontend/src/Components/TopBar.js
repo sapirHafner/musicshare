@@ -1,8 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import ProfileButton from './Buttons/ProfileButton'
+import Link from './Link'
 
-const TopBar = ({ profile, deleteButton }) => {
+const TopBar = ({ profile, deleteButton, aboutUs, codeOfConduct }) => {
+  console.log(aboutUs)
     const navigate = useNavigate();
 
   return (
@@ -11,6 +13,14 @@ const TopBar = ({ profile, deleteButton }) => {
             <span className="glow">MusicShare</span>
         </div>
          <div className='functions'>
+            <div className='links'>
+            {
+              aboutUs && <Link text="About Us" url='/aboutus' />
+            }
+            {
+              codeOfConduct && <Link text="Code of Conduct" url='/codeOfConduct' />
+            }
+            </div>
             <ProfileButton profile={ profile } deleteButton={deleteButton}/>
           </div>
     </div>

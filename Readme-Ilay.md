@@ -2,6 +2,7 @@ Social network name:
 Musicshare
 
 Additional pages:
+Code of Conduct, about us
 
 What additional features did you add:
 Images (for users, artists, albums)
@@ -14,6 +15,13 @@ Partner:
 Sapir Hafner 209373620
 
 We wrote it mostly together
+
+Things I would add if I had more time:
+Ability to edit posts / albums
+Groups
+Comments
+Playlists
+Direct messages
 
 Routes:
 '/album/:id', getAlbum;

@@ -12,6 +12,8 @@ export const populateDatabase = async () => {
    try {
     await ((new FeatureFlag({name: "images", active:"true"})).save())
     await ((new FeatureFlag({name: "deletes", active:"true"})).save())
+    await ((new FeatureFlag({name: "aboutUsPage", active:"true"})).save())
+    await ((new FeatureFlag({name: "codeOfConductPage", active:"true"})).save())
 
     const artistsUsers = [
         {

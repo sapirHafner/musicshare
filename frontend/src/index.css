@@ -672,3 +672,9 @@ button {
 .aboutUs h1{
   font-family:monospace;
 }
+
+.links {
+  display: flex;
+  margin-top: 2rem;
+  gap:4rem
+}
