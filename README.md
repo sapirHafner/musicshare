@@ -1,2 +1,0 @@
-# musicshare
-For 'Applications' course
