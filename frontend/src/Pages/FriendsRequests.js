@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie';
 import { useState, useEffect } from 'react';
 
 import UserPage from '../Components/UserPage';
-import FriendsRequestsDisplay from "./FriendsRequestsDisplay"
+import FriendsRequestsDisplay from "../Components/FriendsRequestsDisplay"
 
 import { fetchFriendsRequests } from '../Common/ServerFunctions/FriendsRequestsFunctions';
 

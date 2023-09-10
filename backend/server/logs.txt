@@ -351,3 +351,32 @@ Created empty likes list for song 64fcb49d6f9e63e81f8d22d8
 Created empty likes list for song 64fcb49d6f9e63e81f8d22d9
 Album 64fcb49d6f9e63e81f8d22cf updated
 Artist 64fcb39e6f9e63e81f8d227f updated
+admin logged in
+Feature flag 64fcb5a57c962ed47466d59a created
+Feature flag 64fcb5a57c962ed47466d59a updated
+admin 0 logged out
+user 64fcb62c7c962ed47466d59f created and logged in
+Created profile 64fcb62c7c962ed47466d5a2 for user 64fcb62c7c962ed47466d59f
+Created empty friends list for user 64fcb62c7c962ed47466d59f
+Created empty friends list for user 64fcb62c7c962ed47466d59f
+user 64fcb62c7c962ed47466d59f logged out
+user 64fcb62c7c962ed47466d59f logged in
+user 64fcb62c7c962ed47466d59f logged out
+artist 64fcb7157c962ed47466d612 created and logged in
+Artist 64fcb7157c962ed47466d612 created
+Created empty likes list for artist 64fcb7157c962ed47466d614
+Created empty followers list for artist 64fcb7157c962ed47466d614
+artist 64fcb7157c962ed47466d612 logged out
+Deleted 0 posts
+Artist 64fcb7157c962ed47466d614 deleted
+Deleted followers list for artist 64fcb7157c962ed47466d614
+Musical entity 64fcb7157c962ed47466d614 likes deleted
+Deleted 0 posts
+Deleted 0 albums
+user 64fcb62c7c962ed47466d59f logged in
+user 64fcb62c7c962ed47466d59f logged out
+user 64fcb62c7c962ed47466d59f logged in
+undefined undefined logged out
+user 64fcb62c7c962ed47466d59f logged in
+user 64fcb62c7c962ed47466d59f logged out
+user 64fcb62c7c962ed47466d59f logged in
