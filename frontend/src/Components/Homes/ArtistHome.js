@@ -29,6 +29,7 @@ const ArtistHome = () => {
   const [posts, setPosts ] = useState([]);
 
   const [imagesFeatureFlags, setImagesFeatureFlags] = useState()
+  const [deleteFeatureFlag, setDeleteFeatureFlag] = useState()
 
   const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
@@ -45,6 +46,7 @@ const ArtistHome = () => {
       setArtistAlbums(await fetchAlbums(fetchedArtist.albumsIds));
       setPosts(await enrichPosts(await fetchUserPosts(userId)))
       setImagesFeatureFlags(await getFeatureFlag("images"))
+      setDeleteFeatureFlag(await getFeatureFlag("deletes"));
       setIsLoaded(true);
     }
     fetchData();
@@ -60,10 +62,13 @@ const ArtistHome = () => {
           <span className='clickable' style={{color: "red"}} onClick={() => navigate('/logout')}>
             logout
           </span>
-          <Button text="delete" onClick={() => {
+          {
+            deleteFeatureFlag &&
+            <Button text="delete" onClick={() => {
                 deleteUser(userId, "artist");
                 navigate('/logout')
             }}/>
+          }
         </div>
 
     </div>
@@ -77,7 +82,7 @@ const ArtistHome = () => {
                     "Profile": <ArtistProfile artist={artist}
                                               albums={artistAlbums}
                                               artistPosts={posts}
-                                              onDeleteAlbum={deleteAlbum}
+                                              onDeleteAlbum={deleteFeatureFlag ? deleteAlbum : null}
                                               />,
                     "Browse": <MusicDisplay
                                 artists={allArtists}

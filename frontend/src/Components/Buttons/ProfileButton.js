@@ -5,7 +5,7 @@ import Link from '../Link';
 import { deleteUser } from '../../Common/ServerFunctions/UserFunctions';
 import { useNavigate } from 'react-router-dom';
 
-const ProfileButton = ({ profile }) => {
+const ProfileButton = ({ profile, deleteButton }) => {
   const [ isClicked, setIsClicked ] = useState(false);
   const navigate = useNavigate;
   const onClick = () => setIsClicked(!isClicked)
@@ -21,12 +21,16 @@ const ProfileButton = ({ profile }) => {
             <div style={{"color": "black"}} >
               { profile.firstName } { profile.lastName }
             </div>
-            <span className='clickable' onClick={() => {
+            {
+              deleteButton &&
+              <span className='clickable' onClick={() => {
                deleteUser(profile.userId, "user")
                navigate('/logout')
             }}>
               delete user
             </span>
+            }
+
             <span id="logout">
               <Link text={"Log Out"} url={`/logout`}/>
             </span>

@@ -17,6 +17,7 @@ const Browse = () => {
   const [allAlbums, setAllAlbums] = useState();
   const [allSongs, setAllSongs] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("Artists")
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,8 +28,10 @@ const Browse = () => {
       setIsLoaded(true);
     }
     fetchData();
-  }, [userId])
+  }, [userId, selectedCategory])
 
+  const onChange = (category) => setSelectedCategory(category)
+  
   return (
     <UserPage selectedNavItem='browse' isLoaded={isLoaded} component=
       <div>
@@ -41,6 +44,7 @@ const Browse = () => {
                       onFollow={(artistId) => addFollower(artistId, userId)}
                       onUnfollow={(artistId) => removeFollower(artistId, userId)}
                       onShare={(type, id) => navigate(`/newpost?type=${type}&id=${id}`)}
+                      onChange={onChange}
                       />
       </div>
     />
